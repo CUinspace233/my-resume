@@ -2,11 +2,11 @@ import { FC } from 'react';
 
 const TechnicalSkills: FC = () => {
   return (
-    <section className="w-full max-w-3xl mx-auto py-8">
-      <h2 className="text-2xl font-bold mb-6 text-center sm:text-left">Technical Skills</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <section className="w-full max-w-3xl mx-auto py-2">
+      <h2 className="text-xl font-bold mb-2 text-center sm:text-left">Technical Skills</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
         <div className="p-4 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
-          <strong>Languages:</strong> C, JavaScript, TypeScript, Python, Java
+          <strong>Languages:</strong> C, JavaScript, TypeScript, Python, Java, Shell
         </div>
         <div className="p-4 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
           <strong>Frameworks:</strong> React, Vue 3, Nuxt 3, Vite, TailwindCSS, Vuetify

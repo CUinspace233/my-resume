@@ -2,9 +2,9 @@ import { FC } from 'react';
 
 const Projects: FC = () => {
   return (
-    <section className="w-full max-w-3xl mx-auto mb-8">
-      <h2 className="text-2xl font-bold mb-4">Projects</h2>
-      <div className="space-y-4">
+    <section className="w-full max-w-3xl mx-auto mb-2">
+      <h2 className="text-xl font-bold">Projects</h2>
+      <div className="space-y-2">
         <div className="bg-black/[.05] dark:bg-white/[.06] p-4 rounded-lg">
           <div className="mb-2">
             <h3 className="text-lg font-semibold">
