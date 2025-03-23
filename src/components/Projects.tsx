@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 const Projects: FC = () => {
   return (
-    <section className="w-full max-w-3xl mx-auto mb-2">
+    <section className="w-full max-w-3xl mx-auto mb-2 mt-16">
       <h2 className="text-xl font-bold">Projects</h2>
       <div className="space-y-2">
         <div className="bg-black/[.05] dark:bg-white/[.06] p-4 rounded-lg">
