@@ -1,0 +1,24 @@
+import { FC } from 'react';
+
+const Header: FC = () => {
+  return (
+    <header className="w-full max-w-3xl mx-auto mb-4">
+      <h1 className="text-2xl font-bold mb-2">Zehan (Henrick) Lin</h1>
+      <div className="flex flex-wrap gap-2 text-xs">
+        <a href="mailto:gmforzh@gmail.com" className="hover:underline">gmforzh@gmail.com</a>
+        <span className="text-gray-400">|</span>
+        <span>+61 452 294 270</span>
+        <span className="text-gray-400">|</span>
+        <a href="https://github.com/CUinspace233" target="_blank" rel="noopener noreferrer" className="hover:underline">
+          GitHub: github.com/CUinspace233
+        </a>
+        <span className="text-gray-400">|</span>
+        <a href="https://www.linkedin.com/in/henrick-lin-8a2043325/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+          LinkedIn: linkedin.com/in/henrick-lin-8a2043325/
+        </a>
+      </div>
+    </header>
+  );
+};
+
+export default Header; 

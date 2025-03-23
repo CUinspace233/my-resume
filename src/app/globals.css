@@ -5,6 +5,11 @@
   --foreground: #171717;
 }
 
+html.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -12,15 +17,65 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Ensure the main content area also follows dark mode */
+.dark main {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+@media print {
+  body {
+    background: none !important;
+    margin: 0;
+    padding: 0;
+  }
+  
+  main {
+    width: 100% !important;
+    min-height: auto !important;
+    box-shadow: none !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  .print-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 16px;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: black !important;
+  }
+
+  .bg-black\/\[\.05\], .dark\:bg-white\/\[\.06\] {
+    background-color: #f5f5f5 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 12mm;
+}
+
+@media screen {
+  .print-section {
+    width: 100%;
+  }
 }
