@@ -1,0 +1,39 @@
+'use client';
+
+import { useCallback } from 'react';
+import { FaFilePdf } from 'react-icons/fa6';
+
+const ExportPdfButton = () => {
+  const handleExportPdf = useCallback(() => {
+    // Hide the button and theme toggle
+    const exportButton = document.querySelector('.export-pdf-container');
+    const themeToggle = document.querySelector('.theme-toggle-container');
+    
+    if (exportButton) exportButton.classList.add('hidden');
+    if (themeToggle) themeToggle.classList.add('hidden');
+    
+    // Use the browser's print function to save as PDF
+    window.print();
+    
+    // After the print dialog is closed, restore the button visibility
+    setTimeout(() => {
+      if (exportButton) exportButton.classList.remove('hidden');
+      if (themeToggle) themeToggle.classList.remove('hidden');
+    }, 500);
+  }, []);
+
+  return (
+    <div className="export-pdf-container print:hidden">
+      <button
+        onClick={handleExportPdf}
+        className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 cursor-pointer text-white px-3 py-2 rounded-md transition-colors"
+        aria-label="Export as PDF"
+      >
+        <FaFilePdf />
+        <span>Export PDF</span>
+      </button>
+    </div>
+  );
+};
+
+export default ExportPdfButton; 
