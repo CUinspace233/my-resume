@@ -28,4 +28,4 @@ const TechnicalSkills: FC = () => {
   );
 };
 
-export default TechnicalSkills; 
+export default TechnicalSkills;

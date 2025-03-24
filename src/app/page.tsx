@@ -5,7 +5,7 @@ import Education from '@/components/Education';
 import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
 import TechnicalSkills from '@/components/TechnicalSkills';
-import Leadership from '@/components/Leadership';
+import Leadership from '@/components/Societies';
 import ThemeToggle from '@/components/ThemeToggle';
 import ExportPdfButton from '@/components/ExportPdfButton';
 
@@ -24,16 +24,16 @@ export default function Home() {
             <Experience />
             <TechnicalSkills />
           </div>
-          
+
           <div className="page-break"></div>
-          
+
           <div className="second-page">
             <Projects />
             <Leadership />
           </div>
         </article>
       </main>
-      
+
       <style jsx global>{`
         @media print {
           @page {
@@ -50,12 +50,12 @@ export default function Home() {
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
           }
-          
+
           /* Add styles to remove gray background when printing */
           div.min-h-screen {
             background: white !important;
           }
-          
+
           main {
             margin: 0;
             padding: 12mm !important;
@@ -66,17 +66,18 @@ export default function Home() {
           .absolute {
             display: none !important;
           }
-          
+
           .page-break {
             page-break-after: always;
             height: 0;
             display: block;
           }
-          
-          .first-page, .second-page {
+
+          .first-page,
+          .second-page {
             display: block;
           }
-          
+
           .second-page > * {
             page-break-inside: avoid;
           }

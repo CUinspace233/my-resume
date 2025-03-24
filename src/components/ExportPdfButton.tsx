@@ -8,10 +8,10 @@ const ExportPdfButton = () => {
     // Hide the button and theme toggle
     const exportButton = document.querySelector('.export-pdf-container');
     const themeToggle = document.querySelector('.theme-toggle-container');
-    
+
     if (exportButton) exportButton.classList.add('hidden');
     if (themeToggle) themeToggle.classList.add('hidden');
-    
+
     // Add print-specific styles for page breaks
     const style = document.createElement('style');
     style.id = 'print-styles';
@@ -28,10 +28,10 @@ const ExportPdfButton = () => {
       }
     `;
     document.head.appendChild(style);
-    
+
     // Use the browser's print function to save as PDF
     window.print();
-    
+
     // After the print dialog is closed, restore the button visibility and remove styles
     setTimeout(() => {
       if (exportButton) exportButton.classList.remove('hidden');
@@ -55,4 +55,4 @@ const ExportPdfButton = () => {
   );
 };
 
-export default ExportPdfButton; 
+export default ExportPdfButton;

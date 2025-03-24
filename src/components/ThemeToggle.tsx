@@ -35,7 +35,9 @@ export default function ThemeToggle() {
       aria-label="Toggle dark mode"
     >
       <span className="sr-only">Toggle dark mode</span>
-      <span className={`pointer-events-none relative inline-block h-7 w-7 transform rounded-full bg-white shadow-md transition duration-200 ease-in-out ${darkMode ? 'translate-x-6' : 'translate-x-0'}`}>
+      <span
+        className={`pointer-events-none relative inline-block h-7 w-7 transform rounded-full bg-white shadow-md transition duration-200 ease-in-out ${darkMode ? 'translate-x-6' : 'translate-x-0'}`}
+      >
         <span
           aria-hidden="true"
           className={`absolute inset-0 flex h-full w-full items-center justify-center transition-opacity duration-200 ease-in ${darkMode ? 'opacity-0' : 'opacity-100'}`}
@@ -51,4 +53,4 @@ export default function ThemeToggle() {
       </span>
     </button>
   );
-} 
+}

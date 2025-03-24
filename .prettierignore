@@ -1,0 +1,18 @@
+# Ignore artifacts
+.next
+build
+coverage
+node_modules
+public
+out
+
+# Ignore all HTML files
+*.html
+
+# Ignore specific files
+next-env.d.ts
+package-lock.json
+yarn.lock 
+
+# Ignore prettier config
+.prettierrc.js
