@@ -8,9 +8,11 @@ const ExportPdfButton = () => {
     // Hide the button and theme toggle
     const exportButton = document.querySelector('.export-pdf-container');
     const themeToggle = document.querySelector('.theme-toggle-container');
+    const languageSwitcher = document.querySelector('.language-switcher-container');
 
     if (exportButton) exportButton.classList.add('hidden');
     if (themeToggle) themeToggle.classList.add('hidden');
+    if (languageSwitcher) languageSwitcher.classList.add('hidden');
 
     // Add print-specific styles for page breaks
     const style = document.createElement('style');
@@ -36,6 +38,7 @@ const ExportPdfButton = () => {
     setTimeout(() => {
       if (exportButton) exportButton.classList.remove('hidden');
       if (themeToggle) themeToggle.classList.remove('hidden');
+      if (languageSwitcher) languageSwitcher.classList.remove('hidden');
       const printStyles = document.getElementById('print-styles');
       if (printStyles) printStyles.remove();
     }, 500);

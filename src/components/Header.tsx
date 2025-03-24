@@ -1,9 +1,14 @@
+'use client';
+
 import { FC } from 'react';
+import { useTranslations } from 'next-intl';
 
 const Header: FC = () => {
+  const t = useTranslations('header');
+
   return (
     <header className="w-full max-w-3xl mx-auto mb-4">
-      <h1 className="text-2xl font-bold mb-2">Zehan (Henrick) Lin</h1>
+      <h1 className="text-2xl font-bold mb-2">{t('name')}</h1>
       <div className="flex flex-wrap gap-2 text-xs">
         <a href="mailto:gmforzh@gmail.com" className="hover:underline">
           gmforzh@gmail.com

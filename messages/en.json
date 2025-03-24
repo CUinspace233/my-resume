@@ -1,0 +1,93 @@
+{
+  "header": {
+    "name": "Zehan (Henrick) Lin",
+    "email": "gmforzh@gmail.com",
+    "phone": "+61 452 294 270"
+  },
+  "sections": {
+    "education": {
+      "title": "Education",
+      "university": "University of New South Wales (UNSW), Sydney",
+      "degree": "Bachelor of Computer Science",
+      "period": "Feb 2024 - Dec 2026",
+      "coursework": "Relevant Coursework",
+      "courses": "Web Front-End Programming, Data Structures and Algorithms, Object-Oriented Programming, Software Engineering Fundamentals, Computer Systems Fundamentals, Software Construction: Techniques and Tools"
+    },
+    "experience": {
+      "title": "Experience",
+      "projects": "Projects",
+      "experienceData": [
+        {
+          "company": "Graviti",
+          "position": "Full Stack Developer Intern",
+          "achievements": [
+            "Built and optimized core features for internal tools using modern frontend stacks.",
+            "Participated in code reviews and implemented performance improvements."
+          ],
+          "projects": [
+            {
+              "title": "AI Image Generation Platform Website",
+              "technologies": ["Vue 3", "Nuxt 3", "Tailwind CSS", "MongoDB", "i18n"],
+              "projectUrl": "https://www.diffus.me",
+              "siteName": "Diffus",
+              "description": [
+                "Designed and implemented the frontend of an AI image generation platform using Vue 3 and Nuxt 3 framework.",
+                "Migrated and transformed data to MongoDB, including data cleaning and restructuring to optimize database performance.",
+                "Implemented i18n internationalization to support multiple languages, enhancing global user accessibility.",
+                "Handled website SEO (Search Engine Optimization) to enhance discoverability and improve performance metrics."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "skills": {
+      "title": "Technical Skills",
+      "languages": "Languages",
+      "frameworks": "Frameworks",
+      "devTools": "Development Tools",
+      "testing": "Testing",
+      "databases": "Databases",
+      "3dSoftware": "3D Software"
+    },
+    "projects": {
+      "title": "Projects",
+      "projectsData": [
+        {
+          "title": "StudyShare - Note Sharing Platform",
+          "repoUrl": "https://github.com/sususu5/StudyShare",
+          "repoName": "StudyShare",
+          "technologies": ["React", "Vite", "TypeScript", "Node.js", "Express"],
+          "description": [
+            "Led a team of 4 developers to build a full-stack note-sharing platform during the 6-day DevSoc Blueprint Hackathon at UNSW.",
+            "Implemented the complete note upload system and note details page, including frontend UI and backend integration.",
+            "Designed an intuitive interface for students to easily upload, browse, and download course notes in PDF format.",
+            "Organized notes by courses with efficient categorization to enhance searchability and user experience.",
+            "Collaborated closely with team members to ensure seamless integration between frontend and backend components.",
+            "Planned future AI integration to analyze notes and automatically generate practice questions for enhanced learning."
+          ]
+        }
+      ]
+    },
+    "societies": {
+      "title": "Societies & Activities",
+      "societiesData": [
+        {
+          "organization": "UNSW Artificial Intelligence Society (AISoc)",
+          "position": "IT Subcommittee Member",
+          "achievements": [
+            "Contributed to the development of the association homepage using NextJS",
+            "Assisted in building the Discord bot management system for community engagement.",
+            "Developed backend services for the society website using FastAPI and Python.",
+            "Creating course display and management system for AI-related educational content.",
+            "Collaborated with other subcommittees to align technical solutions with society needs."
+          ]
+        }
+      ]
+    }
+  },
+  "buttons": {
+    "exportPdf": "Export PDF",
+    "switchLanguage": "Switch Language"
+  }
+}

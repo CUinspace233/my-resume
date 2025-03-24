@@ -1,0 +1,93 @@
+{
+  "header": {
+    "name": "林则翰 (Henrick Lin)",
+    "email": "gmforzh@gmail.com",
+    "phone": "+61 452 294 270"
+  },
+  "sections": {
+    "education": {
+      "title": "教育背景",
+      "university": "新南威尔士大学 (UNSW), 悉尼",
+      "degree": "计算机科学学士",
+      "period": "2024年2月 - 2026年12月",
+      "coursework": "相关课程",
+      "courses": "Web前端编程, 数据结构与算法, 面向对象编程, 软件工程基础, 计算机系统基础, 软件构建：技术与工具"
+    },
+    "experience": {
+      "title": "工作经验",
+      "projects": "项目",
+      "experienceData": [
+        {
+          "company": "Graviti",
+          "position": "全栈开发实习生",
+          "achievements": [
+            "使用现代前端技术栈构建和优化内部工具的核心功能。",
+            "参与代码审查并实现性能改进。"
+          ],
+            "projects": [
+              {
+                "title": "AI 图像生成平台网站",
+                "technologies": ["Vue 3", "Nuxt 3", "Tailwind CSS", "MongoDB", "i18n"],
+                "projectUrl": "https://www.diffus.me",
+                "siteName": "Diffus",
+                "description": [
+                    "使用 Vue 3 和 Nuxt 3 框架设计并实现了一个 AI 图像生成平台的前端。",
+                    "将数据迁移到 MongoDB，包括数据清洗和重构以优化数据库性能。",
+                    "实现 i18n 国际化以支持多种语言，提升全球用户访问性。",
+                    "处理网站 SEO（搜索引擎优化）以提高可发现性和性能指标。"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "skills": {
+      "title": "技术技能",
+      "languages": "编程语言",
+      "frameworks": "框架",
+      "devTools": "开发工具",
+      "testing": "测试",
+      "databases": "数据库",
+      "3dSoftware": "3D软件"
+    },
+    "projects": {
+      "title": "项目经验",
+      "projectsData": [
+        {
+          "title": "StudyShare - 笔记分享平台",
+          "repoUrl": "https://github.com/sususu5/StudyShare",
+          "repoName": "StudyShare",
+          "technologies": ["React", "Vite", "TypeScript", "Node.js", "Express"],
+          "description": [
+            "在6天的DevSoc蓝图黑客马拉松中，带领4名开发者构建了一个全栈的笔记分享平台。",
+            "实现了完整的笔记上传系统以及笔记详情页面，包括前端UI和后端集成。",
+            "设计了一个直观的界面，让学生可以轻松上传、浏览和下载PDF格式的课程笔记。",
+            "通过高效的课程分类增强了搜索功能和用户体验。",
+            "与团队成员紧密合作，确保前端和后端组件之间的无缝集成。",
+            "计划未来集成AI分析笔记并自动生成练习题，以增强学习体验。"
+          ]
+        }
+      ]
+    },
+    "societies": {
+      "title": "社团与活动",
+      "societiesData": [
+        {
+          "organization": "新南威尔士大学人工智能协会 (AISoc)",
+          "position": "IT部门成员",
+          "achievements": [
+            "使用 NextJS 开发协会主页。",
+            "协助构建 Discord 机器人管理系统以促进社区参与。",
+            "使用 FastAPI 和 Python 开发协会网站的后端服务。",
+            "创建用于 AI 相关教育内容的课程展示和管理系统。",
+            "与其它部门成员合作，确保技术解决方案符合协会需求。"
+          ]
+        }
+      ]
+    }
+  },
+  "buttons": {
+    "exportPdf": "导出PDF",
+    "switchLanguage": "切换语言"
+  }
+}

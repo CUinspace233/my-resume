@@ -1,11 +1,5 @@
 import { FC } from 'react';
-
-interface ExperienceItem {
-  company: string;
-  position: string;
-  achievements: string[];
-  projects: ProjectData[];
-}
+import { useTranslations } from 'next-intl';
 
 interface ProjectData {
   title: string;
@@ -17,35 +11,22 @@ interface ProjectData {
   siteName?: string;
 }
 
-const experienceData: ExperienceItem[] = [
-  {
-    company: 'Graviti',
-    position: 'Full Stack Developer Intern',
-    achievements: [
-      'Built and optimized core features for internal tools using modern frontend stacks.',
-      'Participated in code reviews and implemented performance improvements.',
-    ],
-    projects: [
-      {
-        title: 'AI Image Generation Platform Website',
-        technologies: ['Vue 3', 'Nuxt 3', 'Tailwind CSS', 'MongoDB', 'i18n'],
-        projectUrl: 'https://www.diffus.me',
-        siteName: 'Diffus',
-        description: [
-          'Designed and implemented the frontend of an AI image generation platform using Vue 3 and Nuxt 3 framework.',
-          'Migrated and transformed data to MongoDB, including data cleaning and restructuring to optimize database performance.',
-          'Implemented i18n internationalization to support multiple languages, enhancing global user accessibility.',
-          'Handled website SEO (Search Engine Optimization) to enhance discoverability and improve performance metrics.',
-        ],
-      },
-    ],
-  },
-];
+interface ExperienceItem {
+  company: string;
+  position: string;
+  achievements: string[];
+  projects: ProjectData[];
+}
 
 const Experience: FC = () => {
+  const t = useTranslations('sections.experience');
+
+  // Get experience data from translations
+  const experienceData: ExperienceItem[] = t.raw('experienceData') as ExperienceItem[];
+
   return (
     <section className="w-full max-w-3xl mx-auto mb-4">
-      <h2 className="text-xl font-bold mb-2">Experience</h2>
+      <h2 className="text-xl font-bold mb-2">{t('title')}</h2>
       {experienceData.map((item, index) => (
         <div key={index} className="bg-black/[.05] dark:bg-white/[.06] p-4 rounded-lg mb-3">
           <h3 className="text-lg font-semibold mb-2">
@@ -60,7 +41,7 @@ const Experience: FC = () => {
           {/* Projects */}
           {item.projects && item.projects.length > 0 && (
             <div className="mt-2">
-              <h4 className="text-lg font-medium">Projects</h4>
+              <h4 className="text-lg font-medium">{t('projects')}</h4>
               {item.projects.map((project, i) => (
                 <div key={i} className="mt-1 pl-4 border-l-2 border-gray-200">
                   <div className="font-medium text-lg">

@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useTranslations } from 'next-intl';
 
 // Project metadata definition
 interface ProjectData {
@@ -11,28 +12,13 @@ interface ProjectData {
   siteName?: string;
 }
 
-// Projects metadata
-const projectsData: ProjectData[] = [
-  {
-    title: 'StudyShare - Note Sharing Platform',
-    repoUrl: 'https://github.com/sususu5/StudyShare',
-    repoName: 'StudyShare',
-    technologies: ['React', 'Vite', 'TypeScript', 'Node.js', 'Express'],
-    description: [
-      'Led a team of 4 developers to build a full-stack note-sharing platform during the 6-day DevSoc Blueprint Hackathon at UNSW.',
-      'Implemented the complete note upload system and note details page, including frontend UI and backend integration.',
-      'Designed an intuitive interface for students to easily upload, browse, and download course notes in PDF format.',
-      'Organized notes by courses with efficient categorization to enhance searchability and user experience.',
-      'Collaborated closely with team members to ensure seamless integration between frontend and backend components.',
-      'Planned future AI integration to analyze notes and automatically generate practice questions for enhanced learning.',
-    ],
-  },
-];
-
 const Projects: FC = () => {
+  const t = useTranslations('sections.projects');
+  const projectsData: ProjectData[] = t.raw('projectsData') as ProjectData[];
+
   return (
     <section className="w-full max-w-3xl mx-auto mb-4 mt-16">
-      <h2 className="text-xl font-bold mb-2">Projects</h2>
+      <h2 className="text-xl font-bold mb-2">{t('title')}</h2>
       <div className="space-y-2">
         {projectsData.map((project, index) => (
           <div key={index} className="bg-black/[.05] dark:bg-white/[.06] p-4 rounded-lg">
