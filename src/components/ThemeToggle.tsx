@@ -31,24 +31,24 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleDarkMode}
-      className={`group relative inline-flex h-8 w-14 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none ${darkMode ? 'bg-indigo-600' : 'bg-blue-100'} theme-toggle-container print:hidden`}
+      className={`group relative inline-flex h-6 sm:h-8 w-10 sm:w-14 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none ${darkMode ? 'bg-indigo-600' : 'bg-blue-100'} theme-toggle-container print:hidden`}
       aria-label="Toggle dark mode"
     >
       <span className="sr-only">Toggle dark mode</span>
       <span
-        className={`pointer-events-none relative inline-block h-7 w-7 transform rounded-full bg-white shadow-md transition duration-200 ease-in-out ${darkMode ? 'translate-x-6' : 'translate-x-0'}`}
+        className={`pointer-events-none relative inline-block h-5 sm:h-7 w-5 sm:w-7 transform rounded-full bg-white shadow-md transition duration-200 ease-in-out ${darkMode ? 'translate-x-4 sm:translate-x-6' : 'translate-x-0'}`}
       >
         <span
           aria-hidden="true"
           className={`absolute inset-0 flex h-full w-full items-center justify-center transition-opacity duration-200 ease-in ${darkMode ? 'opacity-0' : 'opacity-100'}`}
         >
-          <SunIcon className="h-4 w-4 text-yellow-500" />
+          <SunIcon className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-500" />
         </span>
         <span
           aria-hidden="true"
           className={`absolute inset-0 flex h-full w-full items-center justify-center transition-opacity duration-200 ease-in ${darkMode ? 'opacity-100' : 'opacity-0'}`}
         >
-          <MoonIcon className="h-4 w-4 text-indigo-200" />
+          <MoonIcon className="h-3 w-3 sm:h-4 sm:w-4 text-indigo-200" />
         </span>
       </span>
     </button>

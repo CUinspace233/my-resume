@@ -34,15 +34,15 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <div className="relative print:hidden">
+    <div className="relative print:hidden language-switcher-container">
       <button
         onClick={e => {
           e.stopPropagation();
           setIsOpen(!isOpen);
         }}
-        className="flex items-center gap-2 bg-blue-100 dark:bg-black hover:bg-blue-200 dark:hover:bg-gray-600 text-blue-800 dark:text-blue-100 px-3 py-2 rounded-md transition-colors cursor-pointer"
+        className="flex items-center gap-2 bg-blue-100 dark:bg-black hover:bg-blue-200 dark:hover:bg-gray-600 text-blue-800 dark:text-blue-100 px-2 sm:px-3 py-1.5 sm:py-2 rounded-md transition-colors cursor-pointer"
       >
-        <IconLanguage size={20} />
+        <IconLanguage size={16} className="sm:w-5 sm:h-5" />
       </button>
 
       <Transition

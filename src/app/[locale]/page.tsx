@@ -14,14 +14,14 @@ import ScalableContent from '@/components/ScalableContent';
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col items-center p-8 font-[family-name:var(--font-geist-sans)] bg-gray-100">
-      <div className="absolute top-4 right-4 flex items-center gap-4">
+      <div className="fixed z-20 top-2 right-2 sm:top-4 sm:right-4 flex items-center gap-1 sm:gap-2">
         <ExportPdfButton />
         <LanguageSwitcher />
         <ThemeToggle />
       </div>
 
       <ScalableContent baseWidth={793}>
-        <main className="bg-white shadow-lg p-[20mm] my-8 print:shadow-none print:my-0 print:p-[12mm] text-sm">
+        <main className="bg-white shadow-lg p-[20mm] mt-12 sm:mt-16 mb-8 print:shadow-none print:my-0 print:p-[12mm] text-sm">
           <article className="flex flex-col space-y-3">
             <div className="first-page">
               <Header />
