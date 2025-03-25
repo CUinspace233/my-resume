@@ -20,6 +20,7 @@
         {
           "company": "Graviti",
           "position": "Full Stack Developer Intern",
+          "period": "Dec 2024 - Now",
           "achievements": [
             "Built and optimized core features for internal tools using modern frontend stacks.",
             "Participated in code reviews and implemented performance improvements."
@@ -75,8 +76,9 @@
         {
           "organization": "UNSW Artificial Intelligence Society (AISoc)",
           "position": "IT Subcommittee Member",
+          "period": "Mar 2025 - Now",
           "achievements": [
-            "Contributed to the development of the association homepage using NextJS",
+            "Contributed to the development of the association website homepage using NextJS",
             "Assisted in building the Discord bot management system for community engagement.",
             "Developed backend services for the society website using FastAPI and Python.",
             "Creating course display and management system for AI-related educational content.",

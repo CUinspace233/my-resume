@@ -20,6 +20,7 @@
         {
           "company": "Graviti",
           "position": "全栈开发实习生",
+          "period": "2024年12月 - 至今",
           "achievements": [
             "使用现代前端技术栈构建和优化内部工具的核心功能。",
             "参与代码审查并实现性能改进。"
@@ -75,8 +76,9 @@
         {
           "organization": "新南威尔士大学人工智能协会 (AISoc)",
           "position": "IT部门成员",
+          "period": "2025年3月 - 至今",
           "achievements": [
-            "使用 NextJS 开发协会主页。",
+            "使用 NextJS 开发协会网站主页。",
             "协助构建 Discord 机器人管理系统以促进社区参与。",
             "使用 FastAPI 和 Python 开发协会网站的后端服务。",
             "创建用于 AI 相关教育内容的课程展示和管理系统。",

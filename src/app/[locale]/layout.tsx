@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import '../globals.css';
 import IntlProvider from '@/components/IntlProvider';
+import { notFound } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: "Henrick Lin's Resume",
@@ -10,20 +11,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function LocaleLayout({
-  children,
-  params: { locale },
-}: {
+type Props = {
   children: React.ReactNode;
-  params: { locale: string };
-}) {
-  // 加载消息
-  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  params: Promise<{ locale: string }>;
+};
+
+export default async function RootLayout({ children, params }: Props) {
+  const { locale } = await params;
+
+  const validLocales = ['en', 'zh'];
+  if (!validLocales.includes(locale)) {
+    notFound();
+  }
 
   return (
     <html lang={locale}>
       <body>
-        <IntlProvider locale={locale} messages={messages}>
+        <IntlProvider locale={locale} messages={{}}>
           {children}
         </IntlProvider>
       </body>
