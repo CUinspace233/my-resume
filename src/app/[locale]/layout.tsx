@@ -24,10 +24,13 @@ export default async function RootLayout({ children, params }: Props) {
     notFound();
   }
 
+  // load messages
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
+
   return (
     <html lang={locale}>
       <body>
-        <IntlProvider locale={locale} messages={{}}>
+        <IntlProvider locale={locale} messages={messages} timeZone="UTC">
           {children}
         </IntlProvider>
       </body>
