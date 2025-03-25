@@ -2,8 +2,11 @@
 
 import { useCallback } from 'react';
 import { FaFilePdf } from 'react-icons/fa6';
+import { useTranslations } from 'next-intl';
 
 const ExportPdfButton = () => {
+  const t = useTranslations('buttons');
+
   const handleExportPdf = useCallback(() => {
     // Hide the button and theme toggle
     const exportButton = document.querySelector('.export-pdf-container');
@@ -52,7 +55,7 @@ const ExportPdfButton = () => {
         aria-label="Export as PDF"
       >
         <FaFilePdf />
-        <span>Export PDF</span>
+        <span className="hidden sm:inline">{t('exportPdf')}</span>
       </button>
     </div>
   );

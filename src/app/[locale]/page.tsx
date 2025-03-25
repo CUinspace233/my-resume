@@ -9,6 +9,7 @@ import Leadership from '@/components/Societies';
 import ThemeToggle from '@/components/ThemeToggle';
 import ExportPdfButton from '@/components/ExportPdfButton';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import ScalableContent from '@/components/ScalableContent';
 
 export default function Home() {
   return (
@@ -18,23 +19,26 @@ export default function Home() {
         <LanguageSwitcher />
         <ThemeToggle />
       </div>
-      <main className="w-[210mm] bg-white shadow-lg p-[20mm] my-8 print:shadow-none print:my-0 print:p-[12mm] text-sm">
-        <article className="flex flex-col space-y-3">
-          <div className="first-page">
-            <Header />
-            <Education />
-            <Experience />
-            <TechnicalSkills />
-          </div>
 
-          <div className="page-break"></div>
+      <ScalableContent baseWidth={793}>
+        <main className="bg-white shadow-lg p-[20mm] my-8 print:shadow-none print:my-0 print:p-[12mm] text-sm">
+          <article className="flex flex-col space-y-3">
+            <div className="first-page">
+              <Header />
+              <Education />
+              <Experience />
+              <TechnicalSkills />
+            </div>
 
-          <div className="second-page">
-            <Projects />
-            <Leadership />
-          </div>
-        </article>
-      </main>
+            <div className="page-break"></div>
+
+            <div className="second-page">
+              <Projects />
+              <Leadership />
+            </div>
+          </article>
+        </main>
+      </ScalableContent>
 
       <style jsx global>{`
         @media print {
