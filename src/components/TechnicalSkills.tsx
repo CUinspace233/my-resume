@@ -6,8 +6,8 @@ const TechnicalSkills: FC = () => {
 
   return (
     <section className="w-full max-w-3xl mx-auto py-2">
-      <h2 className="text-xl font-bold mb-2 text-center sm:text-left">{t('title')}</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+      <h2 className="text-xl font-bold mb-2 text-left">{t('title')}</h2>
+      <div className="grid grid-cols-2 gap-1">
         <div className="p-4 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
           <strong>{t('languages')}:</strong> C, JavaScript, TypeScript, Python, Java, Shell
         </div>
