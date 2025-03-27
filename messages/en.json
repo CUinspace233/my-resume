@@ -33,7 +33,7 @@
               "projectUrl": "https://www.diffus.me",
               "siteName": "Diffus",
               "description": [
-                "Designed and implemented the frontend of an AI image generation platform using Vue 3 and Nuxt 3 framework.",
+                "Implemented the frontend of an AI image generation platform using Vue 3 and Nuxt 3 framework.",
                 "Migrated and transformed data to MongoDB, including data cleaning and restructuring to optimize database performance.",
                 "Implemented i18n internationalization to support multiple languages, enhancing global user accessibility.",
                 "Handled website SEO (Search Engine Optimization) to enhance discoverability and improve performance metrics."
