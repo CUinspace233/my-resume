@@ -11,10 +11,8 @@ const Header: FC = () => {
       <h1 className="text-2xl font-bold mb-2">{t('name')}</h1>
       <div className="flex flex-wrap gap-2 text-xs">
         <a href="mailto:gmforzh@gmail.com" className="hover:underline">
-          gmforzh@gmail.com
+          Email: gmforzh@gmail.com
         </a>
-        <span className="text-gray-400">|</span>
-        <span>+61 452 294 270</span>
         <span className="text-gray-400">|</span>
         <a
           href="https://github.com/CUinspace233"
