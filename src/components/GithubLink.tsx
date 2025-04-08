@@ -5,7 +5,7 @@ import { FC } from 'react';
 interface GithubLinkProps {
   repoUrl: string;
   className?: string;
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'responsive';
 }
 
 const GithubLink: FC<GithubLinkProps> = ({ repoUrl, className = '', size = 'medium' }) => {
@@ -13,6 +13,8 @@ const GithubLink: FC<GithubLinkProps> = ({ repoUrl, className = '', size = 'medi
     small: 'w-6 h-6',
     medium: 'w-8 h-8',
     large: 'w-10 h-10',
+    responsive:
+      'w-6.5 h-6.5 sm:w-7.5 sm:h-7.5 md:w-8.5 md:h-8.5 lg:w-9.5 lg:h-9.5 xl:w-10.5 xl:h-10.5',
   };
 
   return (

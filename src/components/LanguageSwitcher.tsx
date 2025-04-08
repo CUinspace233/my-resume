@@ -40,9 +40,9 @@ export default function LanguageSwitcher() {
           e.stopPropagation();
           setIsOpen(!isOpen);
         }}
-        className="flex items-center gap-2 bg-blue-100 dark:bg-black hover:bg-blue-200 dark:hover:bg-gray-600 text-blue-800 dark:text-blue-100 px-2 sm:px-3 py-1.5 sm:py-2 rounded-md transition-colors cursor-pointer"
+        className="flex items-center gap-2 bg-gray-900 dark:bg-black hover:bg-gray-800 dark:hover:bg-gray-600 text-gray-300 dark:text-gray-100 px-2 sm:px-3 py-1.5 sm:py-2 rounded-md transition-colors cursor-pointer"
       >
-        <IconLanguage size={16} className="sm:w-5 sm:h-5" />
+        <IconLanguage size={16} className="h-3.5 w-3.5 sm:h-4.5 sm:w-4.5" />
       </button>
 
       <Transition
