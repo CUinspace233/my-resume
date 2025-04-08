@@ -18,7 +18,7 @@ const Header: FC = () => {
           href="https://github.com/CUinspace233"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:underline"
+          className="underline underline-offset-3"
         >
           GitHub: github.com/CUinspace233
         </a>
@@ -27,7 +27,7 @@ const Header: FC = () => {
           href="https://www.linkedin.com/in/henrick-lin-8a2043325/"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:underline"
+          className="underline underline-offset-3"
         >
           LinkedIn: linkedin.com/in/henrick-lin-8a2043325/
         </a>

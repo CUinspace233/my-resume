@@ -10,6 +10,7 @@ import ThemeToggle from '@/components/ThemeToggle';
 import ExportPdfButton from '@/components/ExportPdfButton';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ScalableContent from '@/components/ScalableContent';
+import GithubLink from '@/components/GithubLink';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <div className="fixed z-20 top-2 right-2 sm:top-4 sm:right-4 flex items-center gap-1 sm:gap-2">
         <ExportPdfButton />
         <LanguageSwitcher />
+        <GithubLink repoUrl="https://github.com/CUinspace233/my-resume" />
         <ThemeToggle />
       </div>
 

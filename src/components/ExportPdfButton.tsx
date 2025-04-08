@@ -51,7 +51,7 @@ const ExportPdfButton = () => {
     <div className="export-pdf-container print:hidden">
       <button
         onClick={handleExportPdf}
-        className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 cursor-pointer text-white px-2 sm:px-3 py-1.5 sm:py-2 rounded-md transition-colors text-xs sm:text-sm"
+        className="flex items-center gap-2 bg-black hover:bg-gray-800 cursor-pointer text-white px-2 sm:px-3 py-1.5 sm:py-2 rounded-md transition-colors text-xs sm:text-sm"
         aria-label="Export as PDF"
       >
         <FaFilePdf className="h-3.5 w-3.5 sm:h-4 sm:w-4" />

@@ -55,7 +55,7 @@ const Experience: FC = () => {
                         href={project.projectUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-500 hover:underline"
+                        className="text-indigo-400 hover:underline"
                       >
                         {' '}
                         ({project.siteName})
@@ -63,7 +63,7 @@ const Experience: FC = () => {
                     )}
                   </div>
 
-                  <div className="text-xs text-gray-600 dark:text-gray-400 mb-1 flex flex-col">
+                  <div className="text-xs text-gray-400 mb-1 flex flex-col">
                     {project.technologies.join(', ')}
                     {project.projectUrl && (
                       <a

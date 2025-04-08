@@ -6,7 +6,7 @@
 }
 
 html.dark {
-  --background: #0a0a0a;
+  --background: rgb(32, 33, 39);
   --foreground: #ededed;
 }
 
@@ -95,7 +95,6 @@ body {
   }
 }
 
-
 html {
   font-size: 14px;
 }
@@ -132,4 +131,3 @@ html {
     transform-origin: top center;
   }
 }
-

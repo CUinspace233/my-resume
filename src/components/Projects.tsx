@@ -32,7 +32,7 @@ const Projects: FC = () => {
                       href={project.repoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-600 dark:text-blue-400 hover:underline"
+                      className="text-indigo-400 hover:underline"
                     >
                       {project.repoName}
                     </a>
@@ -40,7 +40,7 @@ const Projects: FC = () => {
                       href={project.projectUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-600 dark:text-blue-400 hover:underline"
+                      className="text-indigo-400 hover:underline"
                     >
                       {project.siteName}
                     </a>
