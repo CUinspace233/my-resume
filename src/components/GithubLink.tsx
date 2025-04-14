@@ -22,7 +22,7 @@ const GithubLink: FC<GithubLinkProps> = ({ repoUrl, className = '', size = 'medi
       href={repoUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`text-black hover:text-gray-600 inline-block ${sizeClasses[size]} ${className}`}
+      className={`text-black hover:text-gray-600 inline-block print:hidden ${sizeClasses[size]} ${className}`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
