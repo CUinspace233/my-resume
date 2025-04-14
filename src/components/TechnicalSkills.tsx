@@ -21,7 +21,7 @@ const TechnicalSkills: FC = () => {
           <strong>{t('testing')}:</strong> Jest, JUnit
         </div>
         <div className="p-4 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
-          <strong>{t('databases')}:</strong> MongoDB
+          <strong>{t('databases')}:</strong> PostgreSQL, MongoDB
         </div>
         <div className="p-4 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
           <strong>{t('3dSoftware')}:</strong> Autodesk Maya
