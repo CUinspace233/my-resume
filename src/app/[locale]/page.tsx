@@ -32,8 +32,6 @@ export default function Home() {
               <TechnicalSkills />
             </div>
 
-            <div className="page-break"></div>
-
             <div className="second-page">
               <Projects />
               <Leadership />

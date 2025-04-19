@@ -45,7 +45,8 @@
     "skills": {
       "title": "技术技能",
       "languages": "编程语言",
-      "frameworks": "框架",
+      "frontend_frameworks": "前端框架",
+      "backend_frameworks": "后端框架",
       "devTools": "开发工具",
       "testing": "测试",
       "databases": "数据库",

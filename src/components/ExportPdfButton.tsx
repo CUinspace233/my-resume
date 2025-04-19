@@ -17,34 +17,39 @@ const ExportPdfButton = () => {
     if (themeToggle) themeToggle.classList.add('hidden');
     if (languageSwitcher) languageSwitcher.classList.add('hidden');
 
+    // Restore the visibility of the button and theme toggle
+    const restore = () => {
+      if (exportButton) exportButton.classList.remove('hidden');
+      if (themeToggle) themeToggle.classList.remove('hidden');
+      if (languageSwitcher) languageSwitcher.classList.remove('hidden');
+      window.removeEventListener('afterprint', restore);
+    };
+
+    window.addEventListener('afterprint', restore);
+
     // Add print-specific styles for page breaks
-    const style = document.createElement('style');
-    style.id = 'print-styles';
-    style.innerHTML = `
-      @media print {
-        .print-section {
-          page-break-inside: avoid;
-          margin-top: 10mm;
-        }
-        @page {
-          margin-top: 15mm;
-          margin-bottom: 15mm;
-        }
-      }
-    `;
-    document.head.appendChild(style);
+    // const style = document.createElement('style');
+    // style.id = 'print-styles';
+    // style.innerHTML = `
+    //   @media print {
+    //     .print-section {
+    //       page-break-inside: avoid;
+    //       margin-top: 10mm;
+    //     }
+    //     @page {
+    //       margin-top: 15mm;
+    //       margin-bottom: 15mm;
+    //     }
+    //   }
+    // `;
+    // document.head.appendChild(style);
 
     // Use the browser's print function to save as PDF
     window.print();
 
     // After the print dialog is closed, restore the button visibility and remove styles
-    setTimeout(() => {
-      if (exportButton) exportButton.classList.remove('hidden');
-      if (themeToggle) themeToggle.classList.remove('hidden');
-      if (languageSwitcher) languageSwitcher.classList.remove('hidden');
-      const printStyles = document.getElementById('print-styles');
-      if (printStyles) printStyles.remove();
-    }, 500);
+    // const printStyles = document.getElementById('print-styles');
+    // if (printStyles) printStyles.remove();
   }, []);
 
   return (

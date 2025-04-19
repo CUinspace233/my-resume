@@ -45,7 +45,8 @@
     "skills": {
       "title": "Technical Skills",
       "languages": "Languages",
-      "frameworks": "Frameworks",
+      "frontend_frameworks": "Frontend Frameworks",
+      "backend_frameworks": "Backend Frameworks",
       "devTools": "Development Tools",
       "testing": "Testing",
       "databases": "Databases",
