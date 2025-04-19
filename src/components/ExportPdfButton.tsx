@@ -50,6 +50,8 @@ const ExportPdfButton = () => {
   return (
     <div className="export-pdf-container print:hidden">
       <button
+        type="button"
+        id="export-pdf-button"
         onClick={handleExportPdf}
         className="flex items-center gap-2 bg-black hover:bg-gray-800 cursor-pointer text-white px-2 sm:px-3 py-1.5 sm:py-2 rounded-md transition-colors text-xs sm:text-sm"
         aria-label="Export as PDF"

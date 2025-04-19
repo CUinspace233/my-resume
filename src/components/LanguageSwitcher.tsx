@@ -36,6 +36,8 @@ export default function LanguageSwitcher() {
   return (
     <div className="relative print:hidden language-switcher-container">
       <button
+        type="button"
+        id="language-switcher-button"
         onClick={e => {
           e.stopPropagation();
           setIsOpen(!isOpen);

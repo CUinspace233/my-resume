@@ -30,6 +30,8 @@ export default function ThemeToggle() {
 
   return (
     <button
+      type="button"
+      id="theme-toggle-button"
       onClick={toggleDarkMode}
       className={`group relative inline-flex h-6 sm:h-8 w-10 sm:w-14 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none ${darkMode ? 'bg-indigo-600' : 'bg-blue-100'} theme-toggle-container print:hidden`}
       aria-label="Toggle dark mode"
