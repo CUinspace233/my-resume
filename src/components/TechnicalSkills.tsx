@@ -36,7 +36,7 @@ const TechnicalSkills: FC = () => {
           <div>
             <strong>{t('testing')}:</strong>
           </div>
-          <span className="block">Jest, JUnit</span>
+          <span className="block">Jest, JUnit, Cypress</span>
         </div>
         <div className="p-3 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
           <div>
