@@ -80,8 +80,8 @@
           "period": "2025年3月 - 至今",
           "achievements": [
             "使用 NextJS 开发协会网站主页。",
-            "协助构建 Discord 机器人管理系统以促进社区参与。",
-            "使用 FastAPI 和 Python 开发协会网站的后端服务。",
+            "协助构建 Discord 机器人管理系统, 调用 LLM API 实现会议录音转文本并生成任务清单的功能。",
+            "使用 FastAPI, Python, PostgreSQL(Supabase) 开发协会网站的后端服务。",
             "创建用于 AI 相关教育内容的课程展示和管理系统。",
             "与其它部门成员合作，确保技术解决方案符合协会需求。"
           ]
