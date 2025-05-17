@@ -22,8 +22,8 @@
           "position": "Full Stack Developer Intern",
           "period": "Dec 2024 - Now",
           "achievements": [
-            "Built and optimized core features for the company website using modern frontend stacks.",
-            "Participated in code reviews and implemented website SEO and performance improvements."
+            "Built and optimized core features for the company website using modern frontend and backend stacks.",
+            "Participated in website SEO and performance improvements."
           ],
           "projects": [
             {
@@ -35,7 +35,8 @@
                 "Implemented the frontend of an AI image generation platform using Vue 3 and Nuxt 3 framework.",
                 "Migrated and transformed data to MongoDB, including data cleaning and restructuring to optimize database performance.",
                 "Implemented i18n internationalization to support multiple languages, enhancing global user accessibility.",
-                "Handled website SEO (Search Engine Optimization) to enhance discoverability and improve performance metrics."
+                "Handled website SEO (Search Engine Optimization) to enhance discoverability and improve performance metrics.",
+                "Using FastAPI and MySQL (SQLAlchemy) to build Comment / Emoji / Rating system for the platform."
               ]
             }
           ]

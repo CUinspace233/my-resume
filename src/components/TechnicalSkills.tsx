@@ -24,7 +24,7 @@ const TechnicalSkills: FC = () => {
           <div>
             <strong>{t('backend_frameworks') || 'Backend frameworks'}:</strong>
           </div>
-          <span className="block">FastAPI, Express</span>
+          <span className="block">FastAPI, SQLAlchemy, Express</span>
         </div>
         <div className="p-3 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
           <div>
