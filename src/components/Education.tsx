@@ -16,7 +16,7 @@ const Education: FC = () => {
         </div>
         <p className="text-sm mb-2">{t('degree')}</p>
         <p className="text-xs">
-          <span className="font-medium">{t('coursework')}:</span> {t('courses')}
+          <span className="font-medium">{t('relevantCourses')}:</span> {t('courses')}
         </p>
       </div>
     </section>

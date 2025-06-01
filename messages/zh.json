@@ -10,7 +10,7 @@
       "university": "新南威尔士大学 (UNSW), 悉尼",
       "degree": "计算机科学学士",
       "period": "2024年2月 - 2026年12月",
-      "coursework": "相关课程",
+      "relevantCourses": "相关课程",
       "courses": "Web前端编程, 数据结构与算法, 面向对象编程, 软件工程基础, 计算机系统基础, 软件构建：技术与工具"
     },
     "experience": {
@@ -25,18 +25,18 @@
             "使用现代前后端技术栈构建和优化公司网站的核心功能",
             "负责网站 SEO (搜索引擎优化) 和性能改进。"
           ],
-            "projects": [
-              {
-                "title": "AI 图像生成平台网站",
-                "technologies": ["Vue 3", "Nuxt 3", "Tailwind CSS", "MongoDB", "i18n"],
-                "projectUrl": "https://www.diffus.me",
-                "siteName": "Diffus",
-                "description": [
-                    "使用 Vue 3 和 Nuxt 3 框架构建了 AI 图像生成平台的前端。",
-                    "将数据迁移到 MongoDB，包括数据清洗和重构以优化数据库性能。",
-                    "实现 i18n 国际化以支持多种语言，提升全球用户访问性。",
-                    "处理网站 SEO (搜索引擎优化) 以提高可发现性和性能指标。",
-                    "使用 FastAPI 和 MySQL (SQLAlchemy) 构建评论 / 表情 / 评分系统。"
+          "projects": [
+            {
+              "title": "AI 图像生成平台网站",
+              "technologies": ["Vue 3", "Nuxt 3", "Tailwind CSS", "MongoDB", "i18n"],
+              "projectUrl": "https://www.diffus.me",
+              "siteName": "Diffus",
+              "description": [
+                "使用 Vue 3 和 Nuxt 3 框架构建了 AI 图像生成平台的前端。",
+                "将数据迁移到 MongoDB，包括数据清洗和重构以优化数据库性能。",
+                "实现 i18n 国际化以支持多种语言，提升全球用户访问性。",
+                "处理网站 SEO (搜索引擎优化) 以提高可发现性和性能指标。",
+                "使用 FastAPI 和 MySQL (SQLAlchemy) 构建评论 / 表情 / 评分系统。"
               ]
             }
           ]
