@@ -23,20 +23,20 @@
           "period": "2024年12月 - 至今",
           "achievements": [
             "使用现代前后端技术栈构建和优化公司网站的核心功能",
-            "负责网站 SEO (搜索引擎优化) 和性能改进。"
+            "负责网站 SEO (搜索引擎优化)"
           ],
           "projects": [
             {
               "title": "AI 图像生成平台网站",
-              "technologies": ["Vue 3", "Nuxt 3", "Tailwind CSS", "MongoDB", "i18n"],
+              "technologies": ["Vue 3", "Nuxt 3", "Tailwind CSS", "MongoDB", "FastAPI", "SQLAlchemy", "i18n"],
               "projectUrl": "https://www.diffus.me",
               "siteName": "Diffus",
               "description": [
                 "使用 Vue 3 和 Nuxt 3 框架构建了 AI 图像生成平台的前端。",
-                "将数据迁移到 MongoDB，包括数据清洗和重构以优化数据库性能。",
+                "将数据迁移到 MongoDB，包括数据清洗和重构以适配前端需求。",
                 "实现 i18n 国际化以支持多种语言，提升全球用户访问性。",
-                "处理网站 SEO (搜索引擎优化) 以提高可发现性和性能指标。",
-                "使用 FastAPI 和 MySQL (SQLAlchemy) 构建评论 / 表情 / 评分系统。"
+                "处理网站 SEO (搜索引擎优化) 以提高可发现性。",
+                "从方案设计、文档编写到开发，使用 FastAPI 和 SQLAlchemy (MySQL) 构建评论系统。"
               ]
             }
           ]

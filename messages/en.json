@@ -28,15 +28,15 @@
           "projects": [
             {
               "title": "AI Image Generation Platform Website",
-              "technologies": ["Vue 3", "Nuxt 3", "Tailwind CSS", "MongoDB", "i18n"],
+              "technologies": ["Vue 3", "Nuxt 3", "Tailwind CSS", "MongoDB", "FastAPI", "SQLAlchemy", "i18n"],
               "projectUrl": "https://www.diffus.me",
               "siteName": "Diffus",
               "description": [
                 "Implemented the frontend of an AI image generation platform using Vue 3 and Nuxt 3 framework.",
                 "Migrated and transformed data to MongoDB, including data cleaning and restructuring to optimize database performance.",
                 "Implemented i18n internationalization to support multiple languages, enhancing global user accessibility.",
-                "Handled website SEO (Search Engine Optimization) to enhance discoverability and improve performance metrics.",
-                "Using FastAPI and MySQL (SQLAlchemy) to build Comment / Emoji / Rating system for the platform."
+                "Handled website SEO (Search Engine Optimization) to enhance discoverability.",
+                "From design, documentation, and development, using FastAPI and SQLAlchemy (MySQL) to build Comment system for the platform."
               ]
             }
           ]
@@ -80,10 +80,9 @@
           "position": "IT Subcommittee Member",
           "period": "Mar 2025 - Now",
           "achievements": [
-            "Contributed to the development of the association website homepage using NextJS",
+            "Contributed to the development of the association Task Management System using NextJS",
             "Assisted in building the Discord bot management system, calling LLM API to convert meeting recordings to text and generate task lists.",
             "Developed backend services for the society website using FastAPI, Python, and PostgreSQL(Supabase).",
-            "Creating course display and management system for AI-related educational content.",
             "Collaborated with other subcommittees to align technical solutions with society needs."
           ]
         }

@@ -45,7 +45,7 @@ const Experience: FC = () => {
           {/* Projects */}
           {item.projects && item.projects.length > 0 && (
             <div className="mt-2">
-              <h4 className="text-lg font-medium">{t('projects')}</h4>
+              <h4 className="text-lg font-semibold">{t('projects')}</h4>
               {item.projects.map((project, i) => (
                 <div key={i} className="mt-1 pl-4 border-l-2 border-gray-200">
                   <div className="font-medium text-lg">
