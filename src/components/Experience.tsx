@@ -26,7 +26,7 @@ const Experience: FC = () => {
   const experienceData: ExperienceItem[] = t.raw('experienceData') as ExperienceItem[];
 
   return (
-    <section className="w-full max-w-3xl mx-auto mb-4">
+    <section className="w-full max-w-3xl mx-auto">
       <h2 className="text-xl font-bold mb-2">{t('title')}</h2>
       {experienceData.map((item, index) => (
         <div key={index} className="bg-black/[.05] dark:bg-white/[.06] p-4 rounded-lg mb-3">
@@ -63,7 +63,7 @@ const Experience: FC = () => {
                     )}
                   </div>
 
-                  <div className="text-xs text-gray-400 mb-1 flex flex-col">
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mb-1 flex flex-col">
                     {project.technologies.join(', ')}
                     {project.projectUrl && (
                       <a

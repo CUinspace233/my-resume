@@ -11,7 +11,7 @@
       "degree": "Bachelor of Computer Science",
       "period": "Feb 2024 - Dec 2026",
       "relevantCourses": "Relevant Courses",
-      "courses": "Web Front-End Programming, Data Structures and Algorithms, Object-Oriented Programming, Software Engineering Fundamentals, Computer Systems Fundamentals, Software Construction: Techniques and Tools"
+      "courses": "Web Front-End Programming, Data Structures and Algorithms, Object-Oriented Programming, Software Engineering Fundamentals, Computer Systems Fundamentals, Software Construction: Techniques and Tools, Extended Security Engineering and Cyber Security, Database Systems"
     },
     "experience": {
       "title": "Experience",
@@ -88,13 +88,13 @@
           "position": "IT Subcommittee Member",
           "period": "Mar 2025 - Now",
           "achievements": [
-            "Contributed to the development of the association Task Management System using NextJS",
+            "Contributed to the development of the society's Discord Team Task Management System using React (Next.js)",
             "Assisted in building the Discord bot management system, calling LLM API to convert meeting recordings to text and generate task lists.",
             "Developed backend services for the society website using FastAPI, Python, and PostgreSQL(Supabase).",
             "Collaborated with other subcommittees to align technical solutions with society needs."
           ],
           "repoUrl": "https://github.com/AISoc-UNSW/Ai-Society-2025-Website",
-          "repoDescription": "New Society Website and Task Management System Repo (Under Development):"
+          "repoDescription": "New Society Website and Discord Team Task Management System Repo (Under Development):"
         }
       ]
     }

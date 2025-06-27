@@ -15,7 +15,7 @@ const Societies: FC = () => {
   const societiesData: SocietiesItem[] = t.raw('societiesData') as SocietiesItem[];
 
   return (
-    <section className="w-full max-w-3xl mx-auto mb-2">
+    <section className="w-full max-w-3xl mx-auto mb-4">
       <h2 className="text-xl font-bold mb-2">{t('title')}</h2>
       {societiesData.map((item, index) => (
         <div key={index} className="bg-black/[.05] dark:bg-white/[.06] p-4 rounded-lg">

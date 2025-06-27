@@ -17,7 +17,7 @@ const Projects: FC = () => {
   const projectsData: ProjectData[] = t.raw('projectsData') as ProjectData[];
 
   return (
-    <section className="w-full max-w-3xl mx-auto mb-4 mt-16">
+    <section className="w-full max-w-3xl mx-auto mb-4">
       <h2 className="text-xl font-bold mb-2">{t('title')}</h2>
       <div className="space-y-2">
         {projectsData.map((project, index) => (

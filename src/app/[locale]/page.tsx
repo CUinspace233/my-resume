@@ -5,7 +5,7 @@ import Education from '@/components/Education';
 import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
 import TechnicalSkills from '@/components/TechnicalSkills';
-import Leadership from '@/components/Societies';
+import Societies from '@/components/Societies';
 import ThemeToggle from '@/components/ThemeToggle';
 import ExportPdfButton from '@/components/ExportPdfButton';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
@@ -27,14 +27,20 @@ export default function Home() {
           <article className="flex flex-col space-y-3">
             <div className="first-page">
               <Header />
-              <Education />
-              <Experience />
+              <div className="mb-2">
+                <Education />
+              </div>
+              <div className="mb-2">
+                <Experience />
+              </div>
               <TechnicalSkills />
             </div>
 
             <div className="second-page">
+              <div className="mt-16">
+                <Societies />
+              </div>
               <Projects />
-              <Leadership />
             </div>
           </article>
         </main>

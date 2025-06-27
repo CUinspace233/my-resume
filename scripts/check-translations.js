@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 /**
- * Get all keys recursively from an object
+ * Recursively get all key paths from an object, including objects inside arrays
  * @param {Object} obj - The object to process
  * @param {string} prefix - The prefix for the key
  * @returns {Array<string>} - An array of all key paths
@@ -17,7 +17,17 @@ function getKeysRecursively(obj, prefix = '') {
     if (obj.hasOwnProperty(key)) {
       const currentPath = prefix ? `${prefix}.${key}` : key;
 
-      if (typeof obj[key] === 'object' && obj[key] !== null && !Array.isArray(obj[key])) {
+      if (Array.isArray(obj[key])) {
+        // Process arrays: check each object in the array
+        obj[key].forEach((item, index) => {
+          if (typeof item === 'object' && item !== null) {
+            const arrayItemKeys = getKeysRecursively(item, `${currentPath}[${index}]`);
+            keys = keys.concat(arrayItemKeys);
+          }
+        });
+        // Also record the path of the array itself
+        keys.push(currentPath);
+      } else if (typeof obj[key] === 'object' && obj[key] !== null) {
         // Recursively process nested objects
         keys = keys.concat(getKeysRecursively(obj[key], currentPath));
       } else {
@@ -58,13 +68,17 @@ function checkTranslations() {
     const enKeys = getKeysRecursively(enContent);
     const zhKeys = getKeysRecursively(zhContent);
 
-    // Find missing keys
-    const missingKeys = enKeys.filter(key => !zhKeys.includes(key));
-    const extraKeys = zhKeys.filter(key => !enKeys.includes(key));
+    // Find missing keys (remove index differences)
+    const normalizeKey = key => key.replace(/\[\d+\]/g, '[*]');
+    const normalizedEnKeys = [...new Set(enKeys.map(normalizeKey))];
+    const normalizedZhKeys = [...new Set(zhKeys.map(normalizeKey))];
+
+    const missingKeys = normalizedEnKeys.filter(key => !normalizedZhKeys.includes(key));
+    const extraKeys = normalizedZhKeys.filter(key => !normalizedEnKeys.includes(key));
 
     console.log('🔍 Translation Check Results:');
-    console.log(`📊 English keys: ${enKeys.length}`);
-    console.log(`📊 Chinese keys: ${zhKeys.length}`);
+    console.log(`📊 English keys: ${normalizedEnKeys.length}`);
+    console.log(`📊 Chinese keys: ${normalizedZhKeys.length}`);
 
     if (missingKeys.length > 0) {
       console.error('\n❌ Missing keys in Chinese translation:');

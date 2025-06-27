@@ -41,6 +41,8 @@ body {
     background: none !important;
     margin: 0;
     padding: 0;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   main {
@@ -57,9 +59,29 @@ body {
     margin-bottom: 16px;
   }
 
-  a {
+  /* Only style regular links, preserve colored links */
+  a:not(.text-indigo-400):not(.text-blue-400):not(.text-blue-600) {
     text-decoration: none !important;
     color: black !important;
+  }
+
+  /* Preserve specific color classes for print */
+  .text-indigo-400 {
+    color: #818cf8 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .text-gray-400 {
+    color: #9ca3af !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .text-gray-600 {
+    color: #4b5563 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   .bg-black\/\[\.05\],
@@ -74,13 +96,14 @@ body {
     margin: 0;
   }
 
-  body {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
   .hidden {
     display: none !important;
+  }
+
+  /* Ensure all elements with colors are preserved */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 }
 

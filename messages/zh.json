@@ -11,7 +11,7 @@
       "degree": "计算机科学学士",
       "period": "2024年2月 - 2026年12月",
       "relevantCourses": "相关课程",
-      "courses": "Web前端编程, 数据结构与算法, 面向对象编程, 软件工程基础, 计算机系统基础, 软件构建：技术与工具"
+      "courses": "Web前端编程, 数据结构与算法, 面向对象编程, 软件工程基础, 计算机系统基础, 软件构建：技术与工具, 扩展安全工程与网络安全, 数据库系统"
     },
     "experience": {
       "title": "工作经验",
@@ -62,7 +62,7 @@
           "repoName": "StudyShare",
           "technologies": ["React", "Vite", "TypeScript", "Node.js", "Express"],
           "description": [
-            "在6天的DevSoc蓝图黑客马拉松中，带领4名开发者构建了一个全栈的笔记分享平台。",
+            "在6天的DevSoc黑客马拉松中，带领4名开发者构建了一个全栈的笔记分享平台。",
             "实现了完整的笔记上传系统以及笔记详情页面，包括前端UI和后端集成。",
             "设计了一个直观的界面，让学生可以轻松上传、浏览和下载PDF格式的课程笔记。",
             "通过高效的课程分类增强了搜索功能和用户体验。",
@@ -76,16 +76,17 @@
       "title": "社团与活动",
       "societiesData": [
         {
-          "organization": "新南威尔士大学人工智能协会 (AISoc)",
+          "organization": "新南威尔士大学人工智能社团 (AISoc)",
           "position": "IT部门成员",
           "period": "2025年3月 - 至今",
           "achievements": [
-            "使用 NextJS 开发协会网站主页。",
-            "协助构建 Discord 机器人管理系统, 调用 LLM API 实现会议录音转文本并生成任务清单的功能。",
-            "使用 FastAPI, Python, PostgreSQL(Supabase) 开发协会网站的后端服务。",
-            "创建用于 AI 相关教育内容的课程展示和管理系统。",
-            "与其它部门成员合作，确保技术解决方案符合协会需求。"
-          ]
+            "使用 React (Next.js) 开发社团Discord团队任务管理系统。",
+            "协助构建 Discord 机器人管理系统，调用 LLM API 将会议录音转换为文本并生成任务清单。",
+            "使用 FastAPI、Python 和 PostgreSQL(Supabase) 为社团网站开发后端服务。",
+            "与其他部门成员合作，确保技术解决方案符合社团需求。"
+          ],
+          "repoUrl": "https://github.com/AISoc-UNSW/Ai-Society-2025-Website",
+          "repoDescription": "新社团网站和Discord团队任务管理系统 Repo (开发中):"
         }
       ]
     }

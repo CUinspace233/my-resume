@@ -7,7 +7,7 @@ const Education: FC = () => {
   const t = useTranslations('sections.education');
 
   return (
-    <section className="w-full max-w-3xl mx-auto mb-4">
+    <section className="w-full max-w-3xl mx-auto">
       <h2 className="text-xl font-bold mb-2">{t('title')}</h2>
       <div className="bg-black/[.05] dark:bg-white/[.06] p-4 rounded-lg">
         <div className="flex justify-between items-start mb-2">
