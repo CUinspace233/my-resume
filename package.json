@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "check-translations": "node scripts/check-translations.js",
+    "prepare": "[ -d .git ] && chmod +x scripts/pre-commit-hook.sh && cp scripts/pre-commit-hook.sh .git/hooks/pre-commit || true"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",

@@ -6,6 +6,8 @@ interface SocietiesItem {
   position: string;
   achievements: string[];
   period: string;
+  repoUrl: string;
+  repoDescription: string;
 }
 
 const Societies: FC = () => {
@@ -22,6 +24,28 @@ const Societies: FC = () => {
               {item.position} – {item.organization}
             </h3>
             <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">{item.period}</p>
+          </div>
+          <div className="text-xs text-gray-400 mb-1 flex flex-col">
+            {item.repoUrl && (
+              <>
+                <a
+                  className="text-indigo-400"
+                  href={item.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {item.repoDescription}
+                </a>
+                <a
+                  href={item.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline break-all"
+                >
+                  {item.repoUrl}
+                </a>
+              </>
+            )}
           </div>
           <ul className="list-disc list-inside space-y-1 text-sm">
             {item.achievements.map((achievement, i) => (

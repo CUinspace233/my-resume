@@ -32,7 +32,7 @@ const Projects: FC = () => {
                       href={project.repoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-indigo-400 hover:underline"
+                      className="text-indigo-400"
                     >
                       {project.repoName}
                     </a>

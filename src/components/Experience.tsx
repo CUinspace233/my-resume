@@ -55,7 +55,7 @@ const Experience: FC = () => {
                         href={project.projectUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-indigo-400 hover:underline"
+                        className="text-indigo-400"
                       >
                         {' '}
                         ({project.siteName})

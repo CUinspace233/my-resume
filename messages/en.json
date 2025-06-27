@@ -28,7 +28,15 @@
           "projects": [
             {
               "title": "AI Image Generation Platform Website",
-              "technologies": ["Vue 3", "Nuxt 3", "Tailwind CSS", "MongoDB", "FastAPI", "SQLAlchemy", "i18n"],
+              "technologies": [
+                "Vue 3",
+                "Nuxt 3",
+                "Tailwind CSS",
+                "MongoDB",
+                "FastAPI",
+                "SQLAlchemy",
+                "i18n"
+              ],
               "projectUrl": "https://www.diffus.me",
               "siteName": "Diffus",
               "description": [
@@ -84,7 +92,9 @@
             "Assisted in building the Discord bot management system, calling LLM API to convert meeting recordings to text and generate task lists.",
             "Developed backend services for the society website using FastAPI, Python, and PostgreSQL(Supabase).",
             "Collaborated with other subcommittees to align technical solutions with society needs."
-          ]
+          ],
+          "repoUrl": "https://github.com/AISoc-UNSW/Ai-Society-2025-Website",
+          "repoDescription": "New Society Website and Task Management System Repo (Under Development):"
         }
       ]
     }
