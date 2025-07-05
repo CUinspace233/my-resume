@@ -5,11 +5,20 @@ import { useTranslations } from 'next-intl';
 
 const Header: FC = () => {
   const t = useTranslations('header');
+  const mobile = process.env.NEXT_PUBLIC_MOBILE;
 
   return (
     <header className="w-full max-w-3xl mx-auto mb-4">
       <h1 className="text-2xl font-bold mb-2">{t('name')}</h1>
       <div className="flex flex-wrap gap-2 text-xs">
+        {mobile && (
+          <>
+            <a href={`tel:${mobile.replace(/\s+/g, '')}`} className="hover:underline">
+              Mobile: {mobile}
+            </a>
+            <span className="text-gray-400">|</span>
+          </>
+        )}
         <a href="mailto:gmforzh@gmail.com" className="hover:underline">
           Email: gmforzh@gmail.com
         </a>
