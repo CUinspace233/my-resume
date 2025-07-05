@@ -27,14 +27,14 @@ const Experience: FC = () => {
 
   return (
     <section className="w-full max-w-3xl mx-auto">
-      <h2 className="text-xl font-bold mb-2">{t('title')}</h2>
+      <h2 className="text-xl font-bold">{t('title')}</h2>
       {experienceData.map((item, index) => (
-        <div key={index} className="bg-black/[.05] dark:bg-white/[.06] p-4 rounded-lg mb-3">
+        <div key={index} className="bg-black/[.05] dark:bg-white/[.06] p-2 rounded-lg mb-3">
           <div className="flex justify-between items-start">
-            <h3 className="text-lg font-semibold mb-2">
+            <h3 className="text-lg font-semibold">
               {item.position} – {item.company}
             </h3>
-            <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">{item.period}</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400">{item.period}</p>
           </div>
           <ul className="list-disc list-inside space-y-1 text-sm">
             {item.achievements.map((achievement, i) => (
@@ -47,7 +47,7 @@ const Experience: FC = () => {
             <div className="mt-2">
               <h4 className="text-lg font-semibold">{t('projects')}</h4>
               {item.projects.map((project, i) => (
-                <div key={i} className="mt-1 pl-4 border-l-2 border-gray-200">
+                <div key={i} className="pl-4 border-l-2 border-gray-200">
                   <div className="font-medium text-lg">
                     {project.title}
                     {project.projectUrl && (
@@ -55,7 +55,7 @@ const Experience: FC = () => {
                         href={project.projectUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-indigo-400"
+                        className="text-indigo-600"
                       >
                         {' '}
                         ({project.siteName})
@@ -65,18 +65,8 @@ const Experience: FC = () => {
 
                   <div className="text-xs text-gray-600 dark:text-gray-400 mb-1 flex flex-col">
                     {project.technologies.join(', ')}
-                    {project.projectUrl && (
-                      <a
-                        href={project.projectUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline"
-                      >
-                        {project.projectUrl}
-                      </a>
-                    )}
                   </div>
-                  <ul className="list-disc list-inside space-y-1 text-sm">
+                  <ul className="list-disc list-inside space-y-1 text-xs">
                     {project.description.map((desc, j) => (
                       <li key={j}>{desc}</li>
                     ))}

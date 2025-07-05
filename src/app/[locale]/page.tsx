@@ -23,7 +23,7 @@ export default function Home() {
       </div>
 
       <ScalableContent baseWidth={793}>
-        <main className="bg-white shadow-lg p-[20mm] mt-12 sm:mt-16 mb-8 print:shadow-none print:my-0 print:p-[12mm] text-sm">
+        <main className="bg-white shadow-lg p-[20mm] mt-2 sm:mt-6 mb-8 print:shadow-none print:my-0 text-sm">
           <article className="flex flex-col space-y-3">
             <div className="first-page">
               <Header />
@@ -33,14 +33,16 @@ export default function Home() {
               <div className="mb-2">
                 <Experience />
               </div>
-              <TechnicalSkills />
+              <div className="mb-2">
+                <Projects />
+              </div>
             </div>
 
             <div className="second-page">
-              <div className="mt-16">
+              <div className="mt-10 mb-2">
                 <Societies />
               </div>
-              <Projects />
+              <TechnicalSkills />
             </div>
           </article>
         </main>
@@ -63,18 +65,20 @@ export default function Home() {
             print-color-adjust: exact;
           }
 
-          /* Add styles to remove gray background when printing */
           div.min-h-screen {
             background: white !important;
+            margin: 0 !important;
+            padding: 0 !important;
           }
 
           main {
-            margin: 0;
-            padding: 12mm !important;
+            margin: 0 !important;
+            padding: 8mm !important;
             display: block;
             width: 21cm;
             box-shadow: none !important;
           }
+
           .absolute {
             display: none !important;
           }
@@ -88,6 +92,7 @@ export default function Home() {
           .first-page,
           .second-page {
             display: block;
+            margin-top: 0 !important;
           }
 
           .second-page > * {
