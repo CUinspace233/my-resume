@@ -113,9 +113,9 @@
           "position": "IT部门成员",
           "period": "2025年3月 - 至今",
           "achievements": [
-            "使用 React (Next.js) 开发社团Discord团队任务管理系统。",
-            "协助构建 Discord 机器人管理系统，调用 LLM API 将会议录音转换为文本并生成任务清单。",
-            "使用 FastAPI、Python 和 PostgreSQL(Supabase) 为社团网站开发后端服务。",
+            "使用 React (Next.js) 开发社团Discord团队任务管理平台前端任务管理页面。",
+            "使用Python编写调用 LLM API 将会议录音转换为文本并分析生成任务清单的工具函数。",
+            "使用 FastAPI (Python)和 SQLAlchemy (PostgreSQL) 为社团网站开发后端(User相关API, Task相关API)。",
             "与其他部门成员合作，确保技术解决方案符合社团需求。"
           ],
           "repoUrl": "https://github.com/AISoc-UNSW/Ai-Society-2025-Website",
