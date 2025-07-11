@@ -82,7 +82,7 @@
           "description": [
             "Designed and developed a full-stack AI-powered interview simulation platform, enabling users to practice technical and behavioral interviews in real time.",
             "Implemented dynamic question generation and automated answer evaluation using OpenAI GPT-4o-mini, providing personalized and actionable feedback.",
-            "Integrated trending news sources to generate up-to-date interview questions, ensuring relevance to current industry topics.",
+            "Crawled real-time news data to generate up-to-date interview questions, ensuring relevance to current industry topics.",
             "Engineered a modular backend with FastAPI and async SQLAlchemy for scalable and efficient data management.",
             "Built an interactive frontend with React 19, TypeScript, and Joy UI, delivering a seamless and engaging user experience.",
             "Established a push notification system for daily question delivery and progress tracking, enhancing user engagement and learning outcomes."
