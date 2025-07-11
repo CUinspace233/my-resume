@@ -98,7 +98,7 @@
             "Led a team of 4 developers to build a full-stack note-sharing platform during the 6-day DevSoc Blueprint Hackathon at UNSW.",
             "Implemented the complete note upload system and note details page, including frontend UI and backend integration.",
             "Designed an intuitive interface for students to easily upload, browse, and download course notes in PDF format.",
-            "Organized notes by courses with efficient categorization to enhance searchability and user experience.",
+            "Organized notes by calling school's course API to enhance user search experience.",
             "Collaborated closely with team members to ensure seamless integration between frontend and backend components."
           ]
         }
