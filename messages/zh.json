@@ -54,8 +54,8 @@
     "skills": {
       "title": "技术技能",
       "languages": "编程语言",
-      "frontend_frameworks": "前端框架",
-      "backend_frameworks": "后端框架",
+      "frontend_frameworks": "前端",
+      "backend_frameworks": "后端",
       "devTools": "开发工具",
       "testing": "测试",
       "databases": "数据库",
@@ -118,7 +118,7 @@
             "与其他部门成员合作，确保技术解决方案符合社团需求。"
           ],
           "repoUrl": "https://github.com/AISoc-UNSW/Ai-Society-2025-Website",
-          "repoDescription": "新社团网站和Discord团队任务管理系统 Repo (开发中):"
+          "repoDescription": "社团网站和Discord团队任务管理系统 Repo (开发中):"
         }
       ]
     }

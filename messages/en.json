@@ -54,8 +54,8 @@
     "skills": {
       "title": "Technical Skills",
       "languages": "Languages",
-      "frontend_frameworks": "Frontend Frameworks",
-      "backend_frameworks": "Backend Frameworks",
+      "frontend_frameworks": "Frontend",
+      "backend_frameworks": "Backend",
       "devTools": "Development Tools",
       "testing": "Testing",
       "databases": "Databases",
@@ -118,7 +118,7 @@
             "Collaborated with other subcommittees to align technical solutions with society needs."
           ],
           "repoUrl": "https://github.com/AISoc-UNSW/Ai-Society-2025-Website",
-          "repoDescription": "New Society Website and Discord Team Task Management System Repo (Under Development):"
+          "repoDescription": "Society Website and Discord Team Task Management System Repo (Under Development):"
         }
       ]
     }

@@ -16,15 +16,15 @@ const TechnicalSkills: FC = () => {
         </div>
         <div className="p-2 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
           <div>
-            <strong>{t('frontend_frameworks') || 'Frontend frameworks'}:</strong>
+            <strong>{t('frontend_frameworks') || 'Frontend'}:</strong>
           </div>
-          <span className="block">React, Vue 3, Nuxt 3, Vite, TailwindCSS</span>
+          <span className="block">React, Next.js, Vue 3, Nuxt 3, Vite, TailwindCSS</span>
         </div>
         <div className="p-2 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
           <div>
-            <strong>{t('backend_frameworks') || 'Backend frameworks'}:</strong>
+            <strong>{t('backend_frameworks') || 'Backend'}:</strong>
           </div>
-          <span className="block">FastAPI, SQLAlchemy, Express</span>
+          <span className="block">FastAPI, SQLAlchemy, Express.js</span>
         </div>
         <div className="p-2 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
           <div>
