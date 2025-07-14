@@ -11,8 +11,11 @@ import ExportPdfButton from '@/components/ExportPdfButton';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ScalableContent from '@/components/ScalableContent';
 import GithubLink from '@/components/GithubLink';
+import { useLocale } from 'next-intl';
 
 export default function Home() {
+  const locale = useLocale();
+
   return (
     <div className="min-h-screen flex flex-col items-center p-8 font-[family-name:var(--font-geist-sans)] bg-gray-100">
       <div className="fixed z-20 top-2 right-2 sm:top-4 sm:right-4 flex items-center gap-1 sm:gap-2">
@@ -78,6 +81,114 @@ export default function Home() {
             width: 21cm;
             box-shadow: none !important;
           }
+
+          ${locale === 'zh'
+            ? `
+            /* Base font size */
+            main * {
+              font-size: 14px !important;
+              line-height: 1.5 !important;
+            }
+            
+            /* Title font size */
+            main h1 {
+              font-size: 25px !important;
+              margin-bottom: 8px !important;
+              line-height: 1.3 !important;
+            }
+            
+            main h2 {
+              font-size: 20px !important;
+              margin-bottom: 8px !important;
+              line-height: 1.4 !important;
+            }
+            
+            main h3 {
+              font-size: 16px !important;
+              line-height: 1.4 !important;
+            }
+            
+            main h4 {
+              font-size: 15px !important;
+              line-height: 1.4 !important;
+            }
+            
+            /* Small font size */
+            main .text-xs,
+            main .text-xs * {
+              font-size: 12px !important;
+            }
+            
+            /* Contact information */
+            main header div {
+              font-size: 12px !important;
+            }
+            
+            /* List items */
+            main li {
+              margin-bottom: 3px !important;
+            }
+            
+            /* Spacing adjustment */
+            main article {
+              gap: 16px !important;
+            }
+            
+            main .mb-2 {
+              margin-bottom: 12px !important;
+            }
+            
+            main .mb-3 {
+              margin-bottom: 14px !important;
+            }
+            
+            main .space-y-1 > * + * {
+              margin-top: 6px !important;
+            }
+            
+            main .space-y-3 > * + * {
+              margin-top: 16px !important;
+            }
+            
+            /* Content box padding */
+            main .p-2 {
+              padding: 10px !important;
+            }
+            
+            /* Second page top spacing */
+            main .second-page {
+              margin-top: 28px !important;
+            }
+            
+            main .mt-10 {
+              margin-top: 28px !important;
+            }
+            
+          `
+            : `
+            /* English version keep original size */
+            main * {
+              font-size: 14px !important;
+              line-height: 1.5 !important;
+            }
+            
+            main h1 {
+              font-size: 24px !important;
+            }
+            
+            main h2 {
+              font-size: 20px !important;
+            }
+            
+            main h3 {
+              font-size: 16px !important;
+            }
+            
+            main .text-xs,
+            main .text-xs * {
+              font-size: 12px !important;
+            }
+          `}
 
           .absolute {
             display: none !important;
