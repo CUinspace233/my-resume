@@ -22,7 +22,7 @@
           "position": "Full Stack Developer Intern",
           "period": "Dec 2024 - Now",
           "achievements": [
-            "Rewrote the company's WordPress website using Vue 3 + Nuxt 3 (deployed).",
+            "Rewrote the company's WordPress marketing website using Vue 3 + Nuxt 3 (deployed).",
             "Designed and implemented a comment feature for the website (deployed)."
           ],
           "projects": [
@@ -40,7 +40,7 @@
               "projectUrl": "https://www.diffus.me",
               "siteName": "www.diffus.me",
               "description": [
-                "Implemented the frontend of an AI image generation platform using Vue 3 and Nuxt 3 framework.",
+                "Implemented the marketing website of an AI image generation platform using Vue 3 and Nuxt 3 framework.",
                 "Migrated and transformed data to MongoDB, including data cleaning and restructuring to optimize database performance.",
                 "Implemented i18n internationalization to support multiple languages, enhancing global user accessibility.",
                 "Handled website SEO (Search Engine Optimization) to enhance discoverability.",
