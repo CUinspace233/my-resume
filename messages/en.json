@@ -5,11 +5,22 @@
     "email": "gmforzh@gmail.com"
   },
   "sections": {
+    "awards": {
+      "title": "Awards & Competitions",
+      "awardsData": [
+        {
+          "place": "Ranked 9th in Australia and NZ (Top 10%)",
+          "award": "AllUni programming competition Division B",
+          "period": "Aug 2025",
+          "link": "https://alluni.io/contest/b2025/ranking/"
+        }
+      ]
+    },
     "education": {
       "title": "Education",
       "university": "University of New South Wales (UNSW), Sydney",
       "degree": "Bachelor of Computer Science (WES iGPA: 4.0/4.0, WAM: 83.5)",
-      "period": "Feb 2024 - Dec 2026",
+      "period": "Feb 2024 - Jun 2026",
       "relevantCourses": "Relevant Courses",
       "courses": "Web Front-End Programming (96), Software Engineering Fundamentals (96), Computer Systems Fundamentals (87), Programming Fundamentals (85), Data Structures and Algorithms (Distinction), Object-Oriented Programming (Distinction), Software Construction: Techniques and Tools (Distinction), Extended Security Engineering and Cyber Security, Database Systems"
     },

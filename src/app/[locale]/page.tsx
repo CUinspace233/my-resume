@@ -11,6 +11,7 @@ import ExportPdfButton from '@/components/ExportPdfButton';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ScalableContent from '@/components/ScalableContent';
 import GithubLink from '@/components/GithubLink';
+import Awards from '@/components/Awards';
 import { useLocale } from 'next-intl';
 
 export default function Home() {
@@ -44,6 +45,9 @@ export default function Home() {
             <div className="second-page">
               <div className="mt-10 mb-2">
                 <Societies />
+              </div>
+              <div className="mb-2">
+                <Awards />
               </div>
               <TechnicalSkills />
             </div>

@@ -5,13 +5,24 @@
     "email": "gmforzh@gmail.com"
   },
   "sections": {
+    "awards": {
+      "title": "竞赛经历",
+      "awardsData": [
+        {
+          "place": "全澳洲及新西兰排名第9 (Top 10%)",
+          "award": "AllUni编程竞赛 Division B",
+          "period": "2025年8月",
+          "link": "https://alluni.io/contest/b2025/ranking/"
+        }
+      ]
+    },
     "education": {
       "title": "教育背景",
       "university": "新南威尔士大学 (UNSW), 悉尼",
       "degree": "计算机科学学士 (WES iGPA: 4.0/4.0, WAM加权平均: 83.5)",
-      "period": "2024年2月 - 2026年12月",
+      "period": "2024年2月 - 2026年6月",
       "relevantCourses": "相关课程",
-      "courses": "Web前端编程 (96), 软件工程基础 (96), 计算机系统基础 (87), 编程基础 (85), 数据结构与算法 (Distinction), 面向对象编程 (Distinction), 软件构建：技术与工具 (Distinction), 扩展安全工程与网络安全, 数据库系统"
+      "courses": "Web前端编程 (96), 软件工程基础 (96), 计算机系统基础 (87), 编程基础 (85), 数据结构与算法 (Distinction), 面向对象编程 (Distinction), 软件构建：技术与工具 (Distinction), (进阶)安全工程与网络安全, 数据库系统"
     },
     "experience": {
       "title": "工作经验",
