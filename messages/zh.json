@@ -34,7 +34,7 @@
           "period": "2024年12月 - 至今",
           "achievements": [
             "使用 Vue 3 + Nuxt 3 重写公司WordPress市场端网站 (已部署)",
-            "设计并实现网站的评论功能 (已部署)"
+            "设计并实现网站的评论和 emoji 功能 (已部署)"
           ],
           "projects": [
             {
@@ -55,7 +55,7 @@
                 "将数据迁移到 MongoDB，包括数据清洗和重构以适配前端需求。",
                 "实现 i18n 国际化以支持多种语言，提升全球用户访问性。",
                 "处理网站 SEO (搜索引擎优化) 以提高可发现性。",
-                "从方案设计、文档编写到开发，使用 FastAPI 和 SQLAlchemy (MySQL) 构建评论系统。"
+                "从方案设计、文档编写到开发，使用 FastAPI 和 SQLAlchemy (MySQL) 构建评论和 emoji 系统。"
               ]
             }
           ]
@@ -120,7 +120,7 @@
       "societiesData": [
         {
           "organization": "新南威尔士大学人工智能社团 (AISoc)",
-          "position": "IT部门成员",
+          "position": "IT部门部长 (Director)",
           "period": "2025年3月 - 至今",
           "achievements": [
             "使用 React (Next.js) 开发社团Discord团队任务管理平台前端任务管理页面。",
