@@ -12,7 +12,7 @@ const TechnicalSkills: FC = () => {
           <div>
             <strong>{t('languages')}:</strong>
           </div>
-          <span className="block">C, JavaScript, TypeScript, Python, Java, Shell</span>
+          <span className="block">C, JavaScript, TypeScript, Python, Java, Rust, Shell</span>
         </div>
         <div className="p-2 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
           <div>
