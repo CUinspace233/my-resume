@@ -8,6 +8,8 @@ interface SocietiesItem {
   period: string;
   repoUrl: string;
   repoDescription: string;
+  societyWebsiteUrl: string;
+  societyWebsiteDescription: string;
 }
 
 const Societies: FC = () => {
@@ -25,7 +27,26 @@ const Societies: FC = () => {
             </h3>
             <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">{item.period}</p>
           </div>
-          <div className="text-xs text-gray-400 mb-1 flex flex-col">
+          {/* Society Website */}
+          <div className="text-xs text-gray-400 mb-1 flex gap-1">
+            {item.societyWebsiteUrl && (
+              <>
+                <a
+                  className="text-indigo-600"
+                  href={item.societyWebsiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {item.societyWebsiteDescription}
+                </a>
+                <a href={item.societyWebsiteUrl} target="_blank" rel="noopener noreferrer">
+                  {item.societyWebsiteUrl}
+                </a>
+              </>
+            )}
+          </div>
+          {/* Repo */}
+          <div className="text-xs text-gray-400 mb-1 flex gap-1">
             {item.repoUrl && (
               <>
                 <a

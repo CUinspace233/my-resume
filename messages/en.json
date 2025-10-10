@@ -126,10 +126,12 @@
             "Contributed to the development of the frontend of the society's Discord Team Task Management System using React (Next.js) and FastAPI.",
             "Developed tool functions to call LLM API to convert meeting recordings to text and generate task lists.",
             "Developed backend (User related APIs, Task related APIs) for the society website using FastAPI, Python, and SQLAlchemy(PostgreSQL).",
-            "Collaborated with other subcommittees to align technical solutions with society needs."
+            "Maintained and updated the society website."
           ],
           "repoUrl": "https://github.com/AISoc-UNSW/Ai-Society-2025-Website",
-          "repoDescription": "Society Website and Discord Team Task Management System Repo (Under Development):"
+          "repoDescription": "Discord Team Task Management System Repo:",
+          "societyWebsiteUrl": "https://unswaisoc.com/",
+          "societyWebsiteDescription": "Society Website:"
         }
       ]
     }
