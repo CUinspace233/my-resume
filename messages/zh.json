@@ -125,7 +125,7 @@
           "achievements": [
             "使用 React (Next.js) 开发社团Discord团队任务管理平台前端任务管理页面。",
             "使用Python编写调用 LLM API 将会议录音转换为文本并分析生成任务清单的工具函数。",
-            "使用 FastAPI (Python)和 SQLAlchemy (PostgreSQL) 为社团网站开发后端(User相关API, Task相关API)。",
+            "使用 FastAPI (Python)和 SQLAlchemy (PostgreSQL) 开发后端。",
             "维护并更新社团网站。"
           ],
           "repoUrl": "https://github.com/AISoc-UNSW/Ai-Society-2025-Website",
