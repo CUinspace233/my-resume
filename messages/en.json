@@ -55,7 +55,7 @@
                 "Migrated and transformed data to MongoDB, including data cleaning and restructuring to optimize database performance.",
                 "Implemented i18n internationalization to support multiple languages, enhancing global user accessibility.",
                 "Handled website SEO (Search Engine Optimization) to enhance discoverability.",
-                "From design, documentation, and development, using FastAPI and SQLAlchemy (MySQL) to build Comment and emoji system for the platform."
+                "From design, documentation, and development, using FastAPI and SQLAlchemy (MySQL) to implement the Comment and emoji feature for the platform."
               ]
             }
           ]
