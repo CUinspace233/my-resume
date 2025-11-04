@@ -2,12 +2,29 @@
 
 import { useCallback } from 'react';
 import { FaFilePdf } from 'react-icons/fa6';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 const ExportPdfButton = () => {
   const t = useTranslations('buttons');
+  let locale = useLocale();
+  if (locale === 'en') {
+    locale = '';
+  } else {
+    locale = '_中文';
+  }
 
   const handleExportPdf = useCallback(() => {
+    // Generate date string in YY_MM_DD format
+    const now = new Date();
+    const year = now.getFullYear().toString().slice(-2);
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const dateStr = `${year}_${month}_${day}`;
+
+    // Set document title for PDF filename
+    const originalTitle = document.title;
+    document.title = `Henrick_Lin_Resume${locale}_${dateStr}`;
+
     // Hide the button and theme toggle
     const exportButton = document.querySelector('.export-pdf-container');
     const themeToggle = document.querySelector('.theme-toggle-container');
@@ -19,6 +36,7 @@ const ExportPdfButton = () => {
 
     // Restore the visibility of the button and theme toggle
     const restore = () => {
+      document.title = originalTitle;
       if (exportButton) exportButton.classList.remove('hidden');
       if (themeToggle) themeToggle.classList.remove('hidden');
       if (languageSwitcher) languageSwitcher.classList.remove('hidden');
@@ -50,7 +68,7 @@ const ExportPdfButton = () => {
     // After the print dialog is closed, restore the button visibility and remove styles
     // const printStyles = document.getElementById('print-styles');
     // if (printStyles) printStyles.remove();
-  }, []);
+  }, [locale]);
 
   return (
     <div className="export-pdf-container print:hidden">
