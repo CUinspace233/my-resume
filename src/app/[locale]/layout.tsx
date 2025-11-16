@@ -6,8 +6,32 @@ import { notFound } from 'next/navigation';
 export const metadata: Metadata = {
   title: "Henrick Lin's Resume",
   description: "Henrick Lin's Resume",
+  manifest: '/manifest.json',
   icons: {
     icon: [{ url: '/smallsizeavatar.png', sizes: '16x16', type: 'image/png' }],
+    apple: [{ url: '/smallsizeavatar.png', sizes: '192x192', type: 'image/png' }],
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: "Henrick Lin's Resume",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    siteName: "Henrick Lin's Resume",
+    title: "Henrick Lin's Resume",
+    description: "Henrick Lin's Resume",
+  },
+  themeColor: '#000000',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+    viewportFit: 'cover',
   },
 };
 
