@@ -26,16 +26,12 @@
     },
     "experience": {
       "title": "Work Experience",
-      "projects": "Projects at Graviti",
+      "projects": "Projects:",
       "experienceData": [
         {
           "company": "Graviti",
           "position": "Full Stack Developer Intern",
           "period": "Dec 2024 - Now",
-          "achievements": [
-            "Rewrote the company's marketing website using Vue 3 + Nuxt 3 (deployed).",
-            "Designed and implemented the comment and emoji feature for the website (deployed)."
-          ],
           "projects": [
             {
               "title": "AI Image Generation Platform Website",
@@ -58,6 +54,15 @@
                 "From design, documentation, and development, using FastAPI and SQLAlchemy (MySQL) to implement the Comment and emoji feature for the platform."
               ]
             }
+          ]
+        },
+        {
+          "company": "Cool AI",
+          "position": "AIGC Algorithm Engineer Intern",
+          "period": "Dec 2025 - Now",
+          "achievements": [
+            "Dockerized deployment for multimodal perception models (e.g., audio, vision, and speech-related models).",
+            "Designed model inference APIs and services with FastAPI, enabling fast startup and testing in both local and server environments."
           ]
         }
       ]
@@ -91,26 +96,11 @@
             "Zustand"
           ],
           "description": [
-            "Designed and developed a full-stack AI-powered interview simulation platform, enabling users to practice technical and behavioral interviews in real time.",
-            "Implemented dynamic question generation and automated answer evaluation using LLM API, providing personalized and actionable feedback.",
-            "Crawled real-time news data to generate up-to-date interview questions, ensuring relevance to current industry topics.",
-            "Engineered a modular backend with FastAPI and async SQLAlchemy for scalable and efficient data management.",
-            "Built an interactive frontend with React 19, TypeScript, and Joy UI, delivering a seamless and engaging user experience.",
-            "Established a push notification system for daily question delivery and progress tracking, enhancing user engagement and learning outcomes."
-          ]
-        },
-        {
-          "title": "StudyShare - Note Sharing Platform",
-          "repoUrl": "https://github.com/sususu5/StudyShare",
-          "repoName": "StudyShare",
-          "period": "Oct 2024",
-          "technologies": ["React", "Vite", "TypeScript", "Node.js", "Express.js"],
-          "description": [
-            "Led a team of 4 developers to build a full-stack note-sharing platform during the 6-day DevSoc Blueprint Hackathon at UNSW.",
-            "Implemented the complete note upload system and note details page, including frontend UI and backend integration.",
-            "Designed an intuitive interface for students to easily upload, browse, and download course notes in PDF format.",
-            "Organized notes by calling school's course API to enhance user search experience.",
-            "Collaborated closely with team members to ensure seamless integration between frontend and backend components."
+            "Built an end-to-end AI interview practice platform (FastAPI + React) spanning generation → evaluation → persistence → analytics.",
+            "Implemented streaming question generation via SSE, with a resilient UI (placeholder + deltas + fallback to non-streaming).",
+            "Delivered structured, explainable LLM grading (0–100 + breakdown) with deterministic fallback when JSON parsing fails.",
+            "Shipped a scheduled news→trending questions (APScheduler + RSS news API) with relevance scoring + thresholding.",
+            "Built a Daily Challenge notification system using browser Notification API + persisted state, including dedupe, interview-aware pauses, and reminders."
           ]
         }
       ]

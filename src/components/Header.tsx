@@ -8,7 +8,7 @@ const Header: FC = () => {
   const mobile = process.env.NEXT_PUBLIC_MOBILE;
 
   return (
-    <header className="w-full max-w-3xl mx-auto mb-4">
+    <header className="w-full max-w-3xl mx-auto mb-3">
       <h1 className="text-2xl font-bold mb-2">{t('name')}</h1>
       <div className="flex flex-wrap gap-2 text-xs">
         {mobile && (

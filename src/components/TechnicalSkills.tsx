@@ -30,7 +30,7 @@ const TechnicalSkills: FC = () => {
           <div>
             <strong>{t('devTools')}:</strong>
           </div>
-          <span className="block">Git, Linux, Shell Scripting</span>
+          <span className="block">Git, Linux, Shell Scripting, Docker</span>
         </div>
         <div className="p-2 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
           <div>

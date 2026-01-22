@@ -26,16 +26,12 @@
     },
     "experience": {
       "title": "工作经验",
-      "projects": "公司项目",
+      "projects": "项目：",
       "experienceData": [
         {
           "company": "Graviti",
           "position": "全栈开发实习生",
           "period": "2024年12月 - 至今",
-          "achievements": [
-            "使用 Vue 3 + Nuxt 3 重写公司市场端网站 (已部署)",
-            "设计并实现网站的评论和 emoji 功能 (已部署)"
-          ],
           "projects": [
             {
               "title": "AI 图像生成平台网站",
@@ -54,10 +50,19 @@
                 "使用 Vue 3 和 Nuxt 3 框架构建了 AI 图像生成平台的市场端网站。",
                 "将数据迁移到 MongoDB，包括数据清洗和重构以适配前端需求。",
                 "实现 i18n 国际化以支持多种语言，提升全球用户访问性。",
-                "处理网站 SEO (搜索引擎优化) 以提高可发现性。",
+                "利用 Nuxt 框架的 SSR 等特性处理网站 SEO (搜索引擎优化) 并优化首屏加载速度，以提高搜索引擎收录率。",
                 "从方案设计、文档编写到开发，使用 FastAPI 和 SQLAlchemy (MySQL) 实现评论和 emoji 功能。"
               ]
             }
+          ]
+        },
+        {
+          "company": "酷爱科技",
+          "position": "AIGC 算法工程师实习生",
+          "period": "2025年12月 - 至今",
+          "achievements": [
+            "多模态感知模型（如音频 / 视觉 / 语音相关模型）的 Docker 化部署",
+            "利用 FastAPI 进行模型推理接口与服务化设计，支持本地与服务器环境下的快速启动与测试"
           ]
         }
       ]
@@ -91,26 +96,11 @@
             "Zustand"
           ],
           "description": [
-            "设计并开发了全栈AI对话式面试模拟平台，支持用户实时练习技术面试/行为面试等问题。",
-            "基于 LLM API 实现动态问题生成和自动化答案评估，提供个性化反馈。",
-            "通过爬取实时新闻数据，根据新闻生成每日面试问题，确保内容与行业热点同步。",
-            "使用FastAPI和SQLAlchemy构建模块化后端。",
-            "通过React 19、TypeScript和Joy UI开发交互式前端，提供流畅的用户体验。",
-            "搭建推送通知系统，每日发送问题并跟踪学习进度，提升用户参与度。"
-          ]
-        },
-        {
-          "title": "StudyShare - 笔记分享平台",
-          "repoUrl": "https://github.com/sususu5/StudyShare",
-          "repoName": "StudyShare",
-          "period": "2024年10月",
-          "technologies": ["React", "Vite", "TypeScript", "Node.js", "Express.js"],
-          "description": [
-            "在6天的DevSoc黑客马拉松中，带领4名开发者构建了一个全栈的笔记分享平台。",
-            "实现了完整的笔记上传系统以及笔记详情页面，包括前端UI和后端集成。",
-            "设计了一个直观的界面，让学生可以轻松上传、浏览和下载PDF格式的课程笔记。",
-            "通过调用学校课程API进行笔记分类，增强了用户搜索体验。",
-            "与团队成员紧密合作，确保前端和后端组件之间的无缝集成。"
+            "AI 模拟面试平台：React + FastAPI 实现“出题→作答→AI 评测→记录→趋势分析”的训练闭环。",
+            "SSE 流式出题体验：后端提供流式生成接口，前端做占位消息 + 增量拼接 + 失败回退非流式，显著优化等待体验。",
+            "结构化 AI 评测 + 稳定降级：强制 LLM 输出严格 JSON（多维指标评分），解析失败自动 fallback 到规则化评分，保证可用性。",
+            "新闻驱动 Trending Questions：APScheduler 定时抓取 RSS 新闻，LLM 生成面试题并做相关度评分/阈值过滤，落库供前端检索。",
+            "Daily Challenge 推送系统：浏览器 Notification + Zustand 持久化，定时推送 reminder。"
           ]
         }
       ]

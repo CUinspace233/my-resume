@@ -31,21 +31,21 @@ export default function Home() {
           <article className="flex flex-col space-y-3">
             <div className="first-page">
               <Header />
-              <div className="mb-2">
+              <div className="mb-1">
                 <Education />
               </div>
-              <div className="mb-2">
+              <div className="mb-1">
                 <Experience />
               </div>
-              <div className="mb-2">
+              <div className="mb-1">
+                <Societies />
+              </div>
+              <div className="mb-1">
                 <Projects />
               </div>
             </div>
 
             <div className="second-page">
-              <div className="mt-10 mb-2">
-                <Societies />
-              </div>
               <div className="mb-2">
                 <Awards />
               </div>
