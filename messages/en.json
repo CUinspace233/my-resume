@@ -113,7 +113,7 @@
           "position": "Director of IT",
           "period": "Mar 2025 - Now",
           "achievements": [
-            "Contributed to the development of the frontend of the society's Discord Team Task Management System using React (Next.js) and FastAPI.",
+            "Frontend of the society's Discord Team Task Management System using React (Next.js) and FastAPI.",
             "Developed tool functions to call LLM API to convert meeting recordings to text and generate task lists.",
             "Developed backend using FastAPI (Python) and SQLAlchemy(PostgreSQL).",
             "Maintained and updated the society website."

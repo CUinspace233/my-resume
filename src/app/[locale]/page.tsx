@@ -192,6 +192,11 @@ export default function Home() {
             main .text-xs * {
               font-size: 12px !important;
             }
+
+            /* Second page top spacing */
+            main .second-page {
+              margin-top: 32px !important;
+            }
           `}
 
           .absolute {
