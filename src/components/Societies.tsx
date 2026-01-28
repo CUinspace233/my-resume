@@ -28,7 +28,7 @@ const Societies: FC = () => {
             <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">{item.period}</p>
           </div>
           {/* Society Website */}
-          <div className="text-xs text-gray-400 mb-1 flex gap-1">
+          {/* <div className="text-xs text-gray-400 mb-1 flex gap-1">
             {item.societyWebsiteUrl && (
               <>
                 <a
@@ -44,7 +44,7 @@ const Societies: FC = () => {
                 </a>
               </>
             )}
-          </div>
+          </div> */}
           {/* Repo */}
           <div className="text-xs text-gray-400 mb-1 flex gap-1">
             {item.repoUrl && (
@@ -68,7 +68,7 @@ const Societies: FC = () => {
               </>
             )}
           </div>
-          <ul className="list-disc list-inside space-y-1 text-sm">
+          <ul className="list-disc list-inside space-y-1 text-xs">
             {item.achievements.map((achievement, i) => (
               <li key={i}>{achievement}</li>
             ))}

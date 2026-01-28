@@ -98,7 +98,7 @@
           "description": [
             "Built an end-to-end AI interview practice platform (FastAPI + React) spanning generation → evaluation → persistence → analytics.",
             "Implemented streaming question generation via SSE, with a resilient UI (placeholder + deltas + fallback to non-streaming).",
-            "Delivered structured, explainable LLM grading (0–100 + breakdown) with deterministic fallback when JSON parsing fails.",
+            "Delivered structured, explainable LLM grading with deterministic fallback when JSON parsing fails.",
             "Shipped a scheduled news→trending questions (APScheduler + RSS news API) with relevance scoring + thresholding.",
             "Built a Daily Challenge notification system using browser Notification API + persisted state, including dedupe, interview-aware pauses, and reminders."
           ]
@@ -113,9 +113,10 @@
           "position": "Director of IT",
           "period": "Mar 2025 - Now",
           "achievements": [
-            "Frontend of the society's Discord Team Task Management System using React (Next.js) and FastAPI.",
-            "Developed tool functions to call LLM API to convert meeting recordings to text and generate task lists.",
-            "Developed backend using FastAPI (Python) and SQLAlchemy(PostgreSQL).",
+            "Built a Discord meeting-to-task system (Next.js 15 + FastAPI + PostgreSQL + Async SQLAlchemy).",
+            "Designed a Discord Bot for real-time audio capture, establishing a seamless pipeline from voice ingestion and STT transcription to LLM-based task generation.",
+            "Engineered a task engine with Prompt Engineering and recursive models for multi-level hierarchies.",
+            "Optimized interactive performance using React useTransition for asynchronous state updates, eliminating UI blocking during complex task operations and ensuring a highly responsive interface.",
             "Maintained and updated the society website."
           ],
           "repoUrl": "https://github.com/AISoc-UNSW/Ai-Society-2025-Website",

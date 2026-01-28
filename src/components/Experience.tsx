@@ -37,7 +37,7 @@ const Experience: FC = () => {
             <p className="text-xs text-gray-600 dark:text-gray-400">{item.period}</p>
           </div>
           {item.achievements && item.achievements.length > 0 && (
-            <ul className="list-disc list-inside space-y-1 text-sm">
+            <ul className="list-disc list-inside space-y-1 text-xs">
               {item.achievements.map((achievement, i) => (
                 <li key={i}>{achievement}</li>
               ))}

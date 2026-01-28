@@ -113,10 +113,11 @@
           "position": "IT部门部长 (Director)",
           "period": "2025年3月 - 至今",
           "achievements": [
-            "使用 React (Next.js) 开发社团Discord团队任务管理平台前端任务管理页面。",
-            "使用Python编写调用 LLM API 将会议录音转换为文本并分析生成任务清单的工具函数。",
-            "使用 FastAPI (Python)和 SQLAlchemy (PostgreSQL) 开发后端。",
-            "维护并更新社团网站。"
+            "基于 Next.js 15 + FastAPI + PostgreSQL 构建 Discord 会议转任务系统，利用 Server Actions 和 异步 SQLAlchemy 实现高性能数据交互。",
+            "设计 Discord Bot 捕获实时语音流，构建从 语音采集 (Discord) 到 文本转录 (Whisper) 再到 任务生成 (LLM) 的全自动闭环工作流。",
+            "通过 Prompt Engineering 实现任务的结构化提取与语义去重，并支持多级子任务 (Recursive Hierarchy) 的递归建模与动态交互。",
+            "利用 React useTransition 异步处理复杂任务的状态更新，消除大列表操作中的 UI 阻塞感，确保高并发交互下的界面响应性能",
+            "维护并更新社团网站 (https://unswaisoc.com/)。"
           ],
           "repoUrl": "https://github.com/AISoc-UNSW/Ai-Society-2025-Website",
           "repoDescription": "Discord会议生成任务系统 Repo:",
