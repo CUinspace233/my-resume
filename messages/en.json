@@ -50,7 +50,7 @@
                 "Implemented the marketing website of an AI image generation platform using Vue 3 and Nuxt 3 framework.",
                 "Migrated and transformed data to MongoDB, including data cleaning and restructuring to optimize database performance.",
                 "Implemented i18n internationalization to support multiple languages, enhancing global user accessibility.",
-                "Handled website SEO (Search Engine Optimization) to enhance discoverability.",
+                "Leveraged Nuxt SSR and other features to optimize SEO and first-contentful paint (FCP), significantly improving search engine indexing and page load performance.",
                 "From design, documentation, and development, using FastAPI and SQLAlchemy (MySQL) to implement the Comment and emoji feature for the platform."
               ]
             }
