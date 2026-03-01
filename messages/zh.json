@@ -84,6 +84,7 @@
           "title": "MockMate - 你的AI面试教练",
           "repoUrl": "https://github.com/CUinspace233/mock-mate",
           "repoName": "MockMate",
+          "projectUrl": "https://mockmate.cuinspace.com",
           "period": "2025年7月",
           "technologies": [
             "Python",
