@@ -97,11 +97,11 @@
             "Zustand"
           ],
           "description": [
-            "AI 模拟面试平台：React + FastAPI 实现“出题→作答→AI 评测→记录→趋势分析”的训练闭环。",
-            "SSE 流式出题体验：后端提供流式生成接口，前端做占位消息 + 增量拼接 + 失败回退非流式，显著优化等待体验。",
-            "结构化 AI 评测 + 稳定降级：强制 LLM 输出严格 JSON（多维指标评分），解析失败自动 fallback 到规则化评分，保证可用性。",
-            "新闻驱动 Trending Questions：APScheduler 定时抓取 RSS 新闻，LLM 生成面试题并做相关度评分/阈值过滤，落库供前端检索。",
-            "Daily Challenge 推送系统：浏览器 Notification + Zustand 持久化，定时推送 reminder。"
+            "AI 模拟面试平台：React + FastAPI 实现\"出题→追问→作答→AI 整体评测→记录\"的多轮面试训练闭环，支持自定义问题数与追问深度。",
+            "SSE 流式出题与追问：后端流式生成主问题及追问，前端增量拼接 + 失败回退非流式，还原真实面试节奏。",
+            "结构化 AI 评测：强制 LLM 输出严格 JSON 多维评分，追问模式下基于完整对话历史统一评估。",
+            "APScheduler 定时抓取 RSS 新闻 + LLM 生成面试题，经相关度评分过滤后落库，结合浏览器 Notification + Zustand 持久化实现 Daily Challenge 推送。",
+            "搭建了基于 GitHub Actions 的 CI/CD 流水线，实现 PR 自动代码检查与合并后自动 SSH 部署。"
           ]
         }
       ]

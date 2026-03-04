@@ -97,11 +97,11 @@
             "Zustand"
           ],
           "description": [
-            "Built an end-to-end AI interview practice platform (FastAPI + React) spanning generation → evaluation → persistence → analytics.",
-            "Implemented streaming question generation via SSE, with a resilient UI (placeholder + deltas + fallback to non-streaming).",
-            "Delivered structured, explainable LLM grading with deterministic fallback when JSON parsing fails.",
-            "Shipped a scheduled news→trending questions (APScheduler + RSS news API) with relevance scoring + thresholding.",
-            "Built a Daily Challenge notification system using browser Notification API + persisted state, including dedupe, interview-aware pauses, and reminders."
+            "Built a multi-round AI interview training platform (React + FastAPI) covering \"question → follow-up → answer → holistic AI evaluation → record\", with configurable question count and follow-up depth.",
+            "Implemented SSE-based streaming for both main questions and follow-ups, with frontend incremental rendering and non-streaming fallback to preserve real interview pacing.",
+            "Delivered structured AI evaluation by enforcing strict JSON multi-dimensional scoring, with unified assessment based on full conversation history in follow-up mode.",
+            "Built an APScheduler pipeline to fetch RSS news and generate interview questions with LLM, persisted after relevance filtering, and paired it with browser Notification API + Zustand persistence for Daily Challenge pushes.",
+            "Built a GitHub Actions CI/CD pipeline with automated PR checks and SSH-based auto-deployment after merge."
           ]
         }
       ]

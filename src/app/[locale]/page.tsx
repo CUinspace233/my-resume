@@ -130,28 +130,32 @@ export default function Home() {
             
             /* List items */
             main li {
-              margin-bottom: 3px !important;
+              margin-bottom: 2px !important;
             }
-            
+
             /* Spacing adjustment */
             main article {
-              gap: 16px !important;
+              gap: 8px !important;
             }
-            
+
+            main .mb-1 {
+              margin-bottom: 4px !important;
+            }
+
             main .mb-2 {
-              margin-bottom: 12px !important;
+              margin-bottom: 6px !important;
             }
-            
+
             main .mb-3 {
-              margin-bottom: 14px !important;
+              margin-bottom: 8px !important;
             }
-            
+
             main .space-y-1 > * + * {
-              margin-top: 6px !important;
+              margin-top: 4px !important;
             }
-            
+
             main .space-y-3 > * + * {
-              margin-top: 16px !important;
+              margin-top: 8px !important;
             }
             
             /* Content box padding */
@@ -172,30 +176,57 @@ export default function Home() {
             : `
             /* English version keep original size */
             main * {
-              font-size: 14px !important;
-              line-height: 1.5 !important;
+              font-size: 13.5px !important;
+              line-height: 1.45 !important;
             }
-            
+
             main h1 {
-              font-size: 24px !important;
+              font-size: 23px !important;
+              margin-bottom: 6px !important;
             }
-            
+
             main h2 {
-              font-size: 20px !important;
+              font-size: 19px !important;
+              margin-bottom: 6px !important;
             }
-            
+
             main h3 {
-              font-size: 16px !important;
+              font-size: 15.5px !important;
             }
-            
+
             main .text-xs,
             main .text-xs * {
-              font-size: 12px !important;
+              font-size: 11.5px !important;
+            }
+
+            /* Spacing adjustment */
+            main article {
+              gap: 6px !important;
+            }
+
+            main .mb-1 {
+              margin-bottom: 3px !important;
+            }
+
+            main .mb-2 {
+              margin-bottom: 5px !important;
+            }
+
+            main li {
+              margin-bottom: 2px !important;
+            }
+
+            main .space-y-1 > * + * {
+              margin-top: 3px !important;
+            }
+
+            main .space-y-3 > * + * {
+              margin-top: 6px !important;
             }
 
             /* Second page top spacing */
             main .second-page {
-              margin-top: 32px !important;
+              margin-top: 26px !important;
             }
           `}
 
