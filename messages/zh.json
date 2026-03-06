@@ -85,7 +85,7 @@
           "repoUrl": "https://github.com/CUinspace233/mock-mate",
           "repoName": "MockMate",
           "projectUrl": "https://mockmate.cuinspace.com",
-          "period": "2025年7月",
+          "period": "2025年7月 - 至今",
           "technologies": [
             "Python",
             "FastAPI",
@@ -112,7 +112,7 @@
         {
           "organization": "新南威尔士大学人工智能社团 (AISoc)",
           "position": "IT部门部长 (Director)",
-          "period": "2025年3月 - 至今",
+          "period": "2025年3月 - 12月",
           "achievements": [
             "基于 Next.js 15 + FastAPI + PostgreSQL 构建 Discord 会议转任务系统，利用 Server Actions 和 异步 SQLAlchemy 实现高性能数据交互。",
             "设计 Discord Bot 捕获实时语音流，构建从 语音采集 (Discord) 到 文本转录 (Whisper) 再到 任务生成 (LLM) 的全自动闭环工作流。",
