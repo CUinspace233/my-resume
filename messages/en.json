@@ -115,7 +115,7 @@
           "period": "Mar 2025 - Dec 2025",
           "achievements": [
             "Built a Discord meeting-to-task system (Next.js 15 + FastAPI + PostgreSQL + Async SQLAlchemy).",
-            "Designed a Discord Bot for real-time audio capture, establishing a seamless pipeline from voice ingestion and STT transcription to LLM-based task generation.",
+            "Designed a Discord Bot for audio capture, establishing a seamless pipeline from voice ingestion and STT transcription to LLM-based task generation.",
             "Engineered a task engine with Prompt Engineering and recursive models for multi-level hierarchies.",
             "Optimized interactive performance using React useTransition for asynchronous state updates, eliminating UI blocking during complex task operations and ensuring a highly responsive interface.",
             "Maintained and updated the society website."
