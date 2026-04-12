@@ -131,5 +131,46 @@
   "buttons": {
     "exportPdf": "导出PDF",
     "switchLanguage": "切换语言"
+  },
+  "landing": {
+    "nav": {
+      "about": "关于",
+      "projects": "项目",
+      "resume": "简历"
+    },
+    "hero": {
+      "eyebrow": "UNSW 计算机科学 · iGPA 4.0 · 2026年6月毕业",
+      "headline1": "全栈开发工程师",
+      "headline2": "React · Next.js · Python · FastAPI",
+      "subtitle": "主要做 Web 应用和 AI 工具开发：前端用 Vue/React，后端用 Python/FastAPI，部署用 Docker。目前在酷爱科技实习。",
+      "ctaPrimary": "查看简历",
+      "ctaSecondary": "GitHub"
+    },
+    "techStack": {
+      "label": "技术栈"
+    },
+    "features": {
+      "label": "工作与项目",
+      "typeLabel": {
+        "internship": "实习",
+        "project": "项目",
+        "activity": "活动"
+      }
+    },
+    "metrics": {
+      "label": "一些数字",
+      "items": [
+        { "value": "4.0 / 4.0", "label": "UNSW WES iGPA" },
+        { "value": "WAM 83.5", "label": "加权平均分" },
+        { "value": "Top 10%", "label": "AllUni 编程竞赛 澳新地区" },
+        { "value": "2+", "label": "完成实习经历" }
+      ]
+    },
+    "about": {
+      "label": "关于我",
+      "body": "UNSW 悉尼计算机科学在读，2026年6月毕业。曾在 Graviti 实习，负责 diffus.me 的市场端网站开发（Vue 3、Nuxt 3、FastAPI）；目前在酷爱科技实习，负责多模态模型的推理接口设计和 Docker 化部署。在 UNSW 人工智能社团担任 IT 部长期间，用 Next.js 15 和 FastAPI 搭建了 Discord 会议转任务系统。",
+      "contact": "联系我",
+      "viewResume": "完整简历"
+    }
   }
 }

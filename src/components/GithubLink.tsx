@@ -22,7 +22,7 @@ const GithubLink: FC<GithubLinkProps> = ({ repoUrl, className = '', size = 'medi
       href={repoUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`text-black hover:text-gray-600 inline-block print:hidden ${sizeClasses[size]} ${className}`}
+      className={`text-[#171717] dark:text-[#ededed] hover:opacity-60 inline-block print:hidden ${sizeClasses[size]} ${className}`}
       aria-label="View source code on GitHub"
     >
       <svg

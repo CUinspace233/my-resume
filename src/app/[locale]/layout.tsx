@@ -1,11 +1,10 @@
-import type { Metadata } from 'next';
-import '../globals.css';
+import type { Metadata, Viewport } from 'next';
 import IntlProvider from '@/components/IntlProvider';
 import { notFound } from 'next/navigation';
 
 export const metadata: Metadata = {
-  title: "Henrick Lin's Resume",
-  description: "Henrick Lin's Resume",
+  title: "Henrick Lin — Full-Stack Engineer",
+  description: "Full-stack engineer at UNSW Sydney. React, Next.js, Python, FastAPI.",
   manifest: '/manifest.json',
   icons: {
     icon: [{ url: '/smallsizeavatar.png', sizes: '16x16', type: 'image/png' }],
@@ -14,25 +13,26 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: "Henrick Lin's Resume",
+    title: "Henrick Lin",
   },
   formatDetection: {
     telephone: false,
   },
   openGraph: {
     type: 'website',
-    siteName: "Henrick Lin's Resume",
-    title: "Henrick Lin's Resume",
-    description: "Henrick Lin's Resume",
+    siteName: "Henrick Lin",
+    title: "Henrick Lin — Full-Stack Engineer",
+    description: "Full-stack engineer at UNSW Sydney. React, Next.js, Python, FastAPI.",
   },
-  themeColor: '#000000',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-    viewportFit: 'cover',
-  },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
+  themeColor: '#ffffff',
 };
 
 type Props = {
@@ -52,12 +52,8 @@ export default async function RootLayout({ children, params }: Props) {
   const messages = (await import(`../../../messages/${locale}.json`)).default;
 
   return (
-    <html lang={locale}>
-      <body>
-        <IntlProvider locale={locale} messages={messages} timeZone="UTC">
-          {children}
-        </IntlProvider>
-      </body>
-    </html>
+    <IntlProvider locale={locale} messages={messages} timeZone="UTC">
+      {children}
+    </IntlProvider>
   );
 }
