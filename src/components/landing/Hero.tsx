@@ -15,10 +15,7 @@ export default function Hero() {
         <div className="flex flex-col gap-6">
           {/* Eyebrow */}
           <div className="flex items-center gap-2">
-            <span
-              className="w-1.5 h-1.5 rounded-full shrink-0"
-              style={{ background: '#0a72ef' }}
-            />
+            <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#0a72ef' }} />
             <span
               className="font-[family-name:var(--font-geist-mono)] text-[11px] font-medium uppercase tracking-widest"
               style={{ color: '#4d4d4d' }}

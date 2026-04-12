@@ -3,9 +3,22 @@
 import { useTranslations } from 'next-intl';
 
 const TECH = [
-  'TypeScript', 'Python', 'React', 'Next.js', 'Vue 3', 'Nuxt 3',
-  'FastAPI', 'SQLAlchemy', 'PostgreSQL', 'MongoDB', 'Docker', 'GitHub Actions',
-  'Tailwind CSS', 'SQLite', 'Zustand', 'Redis',
+  'TypeScript',
+  'Python',
+  'React',
+  'Next.js',
+  'Vue 3',
+  'Nuxt 3',
+  'FastAPI',
+  'SQLAlchemy',
+  'PostgreSQL',
+  'MongoDB',
+  'Docker',
+  'GitHub Actions',
+  'Tailwind CSS',
+  'SQLite',
+  'Zustand',
+  'Redis',
 ];
 
 export default function TechStackGrid() {

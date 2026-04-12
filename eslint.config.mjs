@@ -20,6 +20,15 @@ const eslintConfig = [
       'prettier/prettier': 'error',
       'arrow-body-style': 'off',
       'prefer-arrow-callback': ['error', { allowNamedFunctions: false }],
+
+      // use <img> for external SVG charts that don't need Next.js image optimization
+      '@next/next/no-img-element': 'off',
+
+      // allow `any` when reading raw i18n data structures
+      '@typescript-eslint/no-explicit-any': 'off',
+
+      // not needed with Next.js JSX transform
+      'react/react-in-jsx-scope': 'off',
     },
   },
 ];

@@ -10,7 +10,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check-translations": "node scripts/check-translations.js",
-    "prepare": "[ -d .git ] && chmod +x scripts/pre-commit-hook.sh && cp scripts/pre-commit-hook.sh .git/hooks/pre-commit || true"
+    "prepare": "husky"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
@@ -24,6 +24,15 @@
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0"
   },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix --max-warnings=0"
+    ],
+    "*.{js,mjs,json,css,md}": [
+      "prettier --write"
+    ]
+  },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4.0.15",
@@ -34,6 +43,8 @@
     "eslint-config-next": "15.2.3",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "prettier": "^3.5.3",
     "tailwindcss": "^4",
     "typescript": "^5"
