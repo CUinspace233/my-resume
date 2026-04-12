@@ -7,7 +7,9 @@ export default function ThemeToggle() {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    const isDark = localStorage.getItem('theme') === 'dark';
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = stored !== null ? stored === 'dark' : prefersDark;
     setDarkMode(isDark);
     if (isDark) {
       document.documentElement.classList.add('dark');
@@ -33,26 +35,23 @@ export default function ThemeToggle() {
       type="button"
       id="theme-toggle-button"
       onClick={toggleDarkMode}
-      className={`group relative inline-flex h-6 sm:h-8 w-10 sm:w-14 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none ${darkMode ? 'bg-indigo-600' : 'bg-blue-100'} theme-toggle-container print:hidden`}
       aria-label="Toggle dark mode"
+      className="print:hidden relative inline-flex items-center justify-center w-8 h-8 rounded-md transition-colors cursor-pointer focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2"
+      style={{
+        boxShadow: '0px 0px 0px 1px rgb(235,235,235)',
+        background: 'transparent',
+      }}
     >
-      <span className="sr-only">Toggle dark mode</span>
-      <span
-        className={`pointer-events-none relative inline-block h-5 sm:h-7 w-5 sm:w-7 transform rounded-full bg-white shadow-md transition duration-200 ease-in-out ${darkMode ? 'translate-x-4 sm:translate-x-6' : 'translate-x-0'}`}
-      >
-        <span
-          aria-hidden="true"
-          className={`absolute inset-0 flex h-full w-full items-center justify-center transition-opacity duration-200 ease-in ${darkMode ? 'opacity-0' : 'opacity-100'}`}
-        >
-          <SunIcon className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-500" />
-        </span>
-        <span
-          aria-hidden="true"
-          className={`absolute inset-0 flex h-full w-full items-center justify-center transition-opacity duration-200 ease-in ${darkMode ? 'opacity-100' : 'opacity-0'}`}
-        >
-          <MoonIcon className="h-3 w-3 sm:h-4 sm:w-4 text-indigo-200" />
-        </span>
-      </span>
+      <SunIcon
+        className="absolute h-4 w-4 text-[#171717] transition-opacity duration-150"
+        style={{ opacity: darkMode ? 0 : 1 }}
+        aria-hidden="true"
+      />
+      <MoonIcon
+        className="absolute h-4 w-4 text-[#ededed] transition-opacity duration-150"
+        style={{ opacity: darkMode ? 1 : 0 }}
+        aria-hidden="true"
+      />
     </button>
   );
 }

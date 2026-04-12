@@ -1,20 +1,57 @@
 @import 'tailwindcss';
+@variant dark (&:where(.dark, .dark *));
+
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* DESIGN.md tokens */
+  --vercel-black: #171717;
+  --gray-600: #4d4d4d;
+  --gray-500: #666666;
+  --gray-400: #808080;
+  --gray-100: #ebebeb;
+  --gray-50: #fafafa;
+  --ship: #ff5b4f;
+  --preview: #de1d8d;
+  --develop: #0a72ef;
+  --link: #0072f5;
+  --focus: hsla(212, 100%, 48%, 1);
+
+  /* Shadow tokens */
+  --ring-border: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  --ring-border-light: rgb(235, 235, 235) 0px 0px 0px 1px;
+  --card-shadow: rgba(0,0,0,0.08) 0px 0px 0px 1px,
+                 rgba(0,0,0,0.04) 0px 2px 2px,
+                 rgba(0,0,0,0.04) 0px 8px 8px -8px,
+                 #fafafa 0px 0px 0px 1px inset;
 }
 
 html.dark {
-  --background: rgb(32, 33, 39);
+  --background: #0a0a0a;
   --foreground: #ededed;
+
+  /* Dark overrides */
+  --gray-600: #a1a1a1;
+  --gray-500: #888888;
+  --gray-400: #666666;
+  --gray-100: #222222;
+  --gray-50: #111111;
+
+  --ring-border: rgba(255, 255, 255, 0.10) 0px 0px 0px 1px;
+  --ring-border-light: rgba(255, 255, 255, 0.08) 0px 0px 0px 1px;
+  --card-shadow: rgba(255,255,255,0.08) 0px 0px 0px 1px,
+                 rgba(0,0,0,0.40) 0px 2px 2px,
+                 rgba(0,0,0,0.40) 0px 8px 8px -8px,
+                 rgba(255,255,255,0.04) 0px 0px 0px 1px inset;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-geist-sans: var(--font-geist-sans);
+  --font-geist-mono: var(--font-geist-mono);
 }
 
 /* @media (prefers-color-scheme: dark) {

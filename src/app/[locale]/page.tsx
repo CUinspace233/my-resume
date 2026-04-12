@@ -1,256 +1,58 @@
-'use client';
-
-import Header from '@/components/Header';
-import Education from '@/components/Education';
-import Experience from '@/components/Experience';
-import Projects from '@/components/Projects';
-import TechnicalSkills from '@/components/TechnicalSkills';
-import Societies from '@/components/Societies';
-import ThemeToggle from '@/components/ThemeToggle';
-import ExportPdfButton from '@/components/ExportPdfButton';
-import LanguageSwitcher from '@/components/LanguageSwitcher';
-import ScalableContent from '@/components/ScalableContent';
-import GithubLink from '@/components/GithubLink';
-import Awards from '@/components/Awards';
-import { useLocale } from 'next-intl';
+import SiteNav from '@/components/landing/SiteNav';
+import Hero from '@/components/landing/Hero';
+import TechStackGrid from '@/components/landing/TechStackGrid';
+import FeatureCards from '@/components/landing/FeatureCards';
+import MetricTiles from '@/components/landing/MetricTiles';
+import ContributionsChart from '@/components/landing/ContributionsChart';
+import AboutBand from '@/components/landing/AboutBand';
 
 export default function Home() {
-  const locale = useLocale();
-
   return (
-    <div className="min-h-screen flex flex-col items-center p-8 font-[family-name:var(--font-geist-sans)] bg-gray-100">
-      <div className="fixed z-20 top-2 right-2 sm:top-4 sm:right-4 flex items-center gap-1 sm:gap-2">
-        <ExportPdfButton />
-        <LanguageSwitcher />
-        <GithubLink repoUrl="https://github.com/CUinspace233/my-resume" size="responsive" />
-        <ThemeToggle />
-      </div>
+    <div className="min-h-screen bg-white dark:bg-[#0a0a0a] font-[family-name:var(--font-geist-sans)]">
+      <SiteNav />
 
-      <ScalableContent baseWidth={793}>
-        <main className="bg-white shadow-lg p-[20mm] mt-2 sm:mt-6 mb-8 print:shadow-none print:my-0 text-sm">
-          <article className="flex flex-col space-y-3">
-            <div className="first-page">
-              <Header />
-              <div className="mb-1">
-                <Education />
-              </div>
-              <div className="mb-1">
-                <Experience />
-              </div>
-              <div className="mb-1">
-                <Societies />
-              </div>
-              <div className="mb-1">
-                <Projects />
-              </div>
-            </div>
+      <Hero />
 
-            <div className="second-page">
-              <div className="mb-2">
-                <Awards />
-              </div>
-              <TechnicalSkills />
-            </div>
-          </article>
-        </main>
-      </ScalableContent>
+      <TechStackGrid />
 
-      <style jsx global>{`
-        @media print {
-          @page {
-            size: A4;
-            margin: 0;
-          }
-          body {
-            margin: 0;
-            padding: 0;
-            background: white;
-            display: block;
-            width: 21cm;
-            height: 29.7cm;
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
-          }
+      <FeatureCards />
 
-          div.min-h-screen {
-            background: white !important;
-            margin: 0 !important;
-            padding: 0 !important;
-          }
+      <MetricTiles />
 
-          main {
-            margin: 0 !important;
-            padding: 8mm !important;
-            display: block;
-            width: 21cm;
-            box-shadow: none !important;
-          }
+      <ContributionsChart />
 
-          ${locale === 'zh'
-            ? `
-            /* Base font size */
-            main * {
-              font-size: 14px !important;
-              line-height: 1.5 !important;
-            }
-            
-            /* Title font size */
-            main h1 {
-              font-size: 25px !important;
-              margin-bottom: 8px !important;
-              line-height: 1.3 !important;
-            }
-            
-            main h2 {
-              font-size: 20px !important;
-              margin-bottom: 8px !important;
-              line-height: 1.4 !important;
-            }
-            
-            main h3 {
-              font-size: 16px !important;
-              line-height: 1.4 !important;
-            }
-            
-            main h4 {
-              font-size: 15px !important;
-              line-height: 1.4 !important;
-            }
-            
-            /* Small font size */
-            main .text-xs,
-            main .text-xs * {
-              font-size: 12px !important;
-            }
-            
-            /* Contact information */
-            main header div {
-              font-size: 12px !important;
-            }
-            
-            /* List items */
-            main li {
-              margin-bottom: 2px !important;
-            }
+      <AboutBand />
 
-            /* Spacing adjustment */
-            main article {
-              gap: 8px !important;
-            }
-
-            main .mb-1 {
-              margin-bottom: 4px !important;
-            }
-
-            main .mb-2 {
-              margin-bottom: 6px !important;
-            }
-
-            main .mb-3 {
-              margin-bottom: 8px !important;
-            }
-
-            main .space-y-1 > * + * {
-              margin-top: 4px !important;
-            }
-
-            main .space-y-3 > * + * {
-              margin-top: 8px !important;
-            }
-            
-            /* Content box padding */
-            main .p-2 {
-              padding: 10px !important;
-            }
-            
-            /* Second page top spacing */
-            main .second-page {
-              margin-top: 28px !important;
-            }
-            
-            main .mt-10 {
-              margin-top: 28px !important;
-            }
-            
-          `
-            : `
-            /* English version keep original size */
-            main * {
-              font-size: 13.5px !important;
-              line-height: 1.45 !important;
-            }
-
-            main h1 {
-              font-size: 23px !important;
-              margin-bottom: 6px !important;
-            }
-
-            main h2 {
-              font-size: 19px !important;
-              margin-bottom: 6px !important;
-            }
-
-            main h3 {
-              font-size: 15.5px !important;
-            }
-
-            main .text-xs,
-            main .text-xs * {
-              font-size: 11.5px !important;
-            }
-
-            /* Spacing adjustment */
-            main article {
-              gap: 6px !important;
-            }
-
-            main .mb-1 {
-              margin-bottom: 3px !important;
-            }
-
-            main .mb-2 {
-              margin-bottom: 5px !important;
-            }
-
-            main li {
-              margin-bottom: 2px !important;
-            }
-
-            main .space-y-1 > * + * {
-              margin-top: 3px !important;
-            }
-
-            main .space-y-3 > * + * {
-              margin-top: 6px !important;
-            }
-
-            /* Second page top spacing */
-            main .second-page {
-              margin-top: 26px !important;
-            }
-          `}
-
-          .absolute {
-            display: none !important;
-          }
-
-          .page-break {
-            page-break-after: always;
-            height: 0;
-            display: block;
-          }
-
-          .first-page,
-          .second-page {
-            display: block;
-            margin-top: 0 !important;
-          }
-
-          .second-page > * {
-            page-break-inside: avoid;
-          }
-        }
-      `}</style>
+      {/* Footer */}
+      <footer
+        className="px-6 py-8 max-w-[1200px] mx-auto flex items-center justify-between flex-wrap gap-4"
+        style={{ borderTop: '1px solid #ebebeb' }}
+      >
+        <span
+          className="font-[family-name:var(--font-geist-sans)] text-xs"
+          style={{ color: '#808080' }}
+        >
+          Henrick Lin · UNSW Computer Science
+        </span>
+        <div className="flex gap-4">
+          <a
+            href="https://github.com/CUinspace233"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-[family-name:var(--font-geist-sans)] text-xs hover:underline"
+            style={{ color: '#808080' }}
+          >
+            GitHub ↗
+          </a>
+          <a
+            href="mailto:gmforzh@gmail.com"
+            className="font-[family-name:var(--font-geist-sans)] text-xs hover:underline"
+            style={{ color: '#808080' }}
+          >
+            gmforzh@gmail.com
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }
