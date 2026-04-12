@@ -35,13 +35,19 @@ const ExportPdfButton = () => {
       const clone = resumeRoot.cloneNode(true) as HTMLElement;
       clone.style.width = '793px';
       clone.style.maxWidth = '793px';
+      clone.style.boxSizing = 'border-box';
       clone.style.borderRadius = '0';
       clone.style.margin = '0';
-      clone.style.padding = '20mm';
+      clone.style.padding = '8mm';
       clone.style.background = '#ffffff';
       clone.style.color = '#171717';
       clone.style.boxShadow = 'none';
       clone.style.transform = 'none';
+
+      const cloneArticle = clone.querySelector(':scope > article') as HTMLElement | null;
+      if (cloneArticle) {
+        cloneArticle.style.width = '100%';
+      }
 
       exportHost = document.createElement('div');
       exportHost.style.position = 'fixed';
@@ -64,26 +70,45 @@ const ExportPdfButton = () => {
 
       const pageWidth = 210;
       const pageHeight = 297;
-      const pageMargin = 10;
+      const pageMargin = 1;
       const printableWidth = pageWidth - pageMargin * 2;
       const printableHeight = pageHeight - pageMargin * 2;
       const pageSections = Array.from(
         clone.querySelectorAll(':scope > article > .first-page, :scope > article > .second-page')
       ) as HTMLElement[];
       const targets = pageSections.length > 0 ? pageSections : [clone];
+      const exportWidth = clone.clientWidth;
 
       for (const [index, target] of targets.entries()) {
-        const imageData = await toJpeg(target, {
+        const pageFrame = document.createElement('div');
+        pageFrame.style.width = `${exportWidth}px`;
+        pageFrame.style.boxSizing = 'border-box';
+        pageFrame.style.margin = '0';
+        pageFrame.style.background = '#ffffff';
+        pageFrame.style.color = '#171717';
+        pageFrame.style.overflow = 'hidden';
+
+        const pageContent = target.cloneNode(true) as HTMLElement;
+        pageContent.style.width = '100%';
+        pageContent.style.boxSizing = 'border-box';
+        pageContent.style.margin = '0';
+        pageContent.style.padding = '8mm';
+        pageContent.style.background = '#ffffff';
+        pageContent.style.transform = 'none';
+
+        pageFrame.appendChild(pageContent);
+        exportHost.appendChild(pageFrame);
+
+        const imageData = await toJpeg(pageFrame, {
           quality: 0.98,
           pixelRatio: 2,
           backgroundColor: '#ffffff',
           cacheBust: true,
-          width: 793,
-          height: target.scrollHeight,
+          width: exportWidth,
+          height: pageFrame.scrollHeight,
           style: {
             margin: '0',
-            width: '793px',
-            maxWidth: '793px',
+            width: `${exportWidth}px`,
             background: '#ffffff',
             color: '#171717',
             transform: 'none',
@@ -104,30 +129,19 @@ const ExportPdfButton = () => {
         }
 
         pdf.addImage(imageData, 'JPEG', x, y, imageWidth, imageHeight, undefined, 'FAST');
+        pageFrame.remove();
       }
 
       const pdfBlob = pdf.output('blob');
-      const pdfFile = new File([pdfBlob], fileName, { type: 'application/pdf' });
-
-      if (
-        typeof navigator !== 'undefined' &&
-        'canShare' in navigator &&
-        navigator.canShare?.({ files: [pdfFile] })
-      ) {
-        await navigator.share({
-          files: [pdfFile],
-          title: fileName,
-        });
-      } else {
-        const blobUrl = URL.createObjectURL(pdfBlob);
-        const link = document.createElement('a');
-        link.href = blobUrl;
-        link.download = fileName;
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
-      }
+      const blobUrl = URL.createObjectURL(pdfBlob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = fileName;
+      link.rel = 'noopener';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
     } catch (error) {
       console.error('Failed to export PDF:', error);
     } finally {
