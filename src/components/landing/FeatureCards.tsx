@@ -124,7 +124,12 @@ export default function FeatureCards() {
     company: string;
     position: string;
     period: string;
-    projects?: Array<{ title: string; technologies: string[]; projectUrl?: string; description: string[] }>;
+    projects?: Array<{
+      title: string;
+      technologies: string[];
+      projectUrl?: string;
+      description: string[];
+    }>;
     achievements?: string[];
   }>;
 

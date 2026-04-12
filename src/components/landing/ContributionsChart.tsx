@@ -12,10 +12,7 @@ export default function ContributionsChart() {
       >
         GitHub Contributions
       </p>
-      <div
-        className="p-4 rounded-lg overflow-x-auto"
-        style={{ boxShadow: 'var(--card-shadow)' }}
-      >
+      <div className="p-4 rounded-lg overflow-x-auto" style={{ boxShadow: 'var(--card-shadow)' }}>
         <img
           src="https://ghchart.rshah.org/0a72ef/CUinspace233"
           alt="GitHub contribution chart for CUinspace233"

@@ -3,8 +3,8 @@ import IntlProvider from '@/components/IntlProvider';
 import { notFound } from 'next/navigation';
 
 export const metadata: Metadata = {
-  title: "Henrick Lin — Full-Stack Engineer",
-  description: "Full-stack engineer at UNSW Sydney. React, Next.js, Python, FastAPI.",
+  title: 'Henrick Lin — Full-Stack Engineer',
+  description: 'Full-stack engineer at UNSW Sydney. React, Next.js, Python, FastAPI.',
   manifest: '/manifest.json',
   icons: {
     icon: [{ url: '/smallsizeavatar.png', sizes: '16x16', type: 'image/png' }],
@@ -13,16 +13,16 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: "Henrick Lin",
+    title: 'Henrick Lin',
   },
   formatDetection: {
     telephone: false,
   },
   openGraph: {
     type: 'website',
-    siteName: "Henrick Lin",
-    title: "Henrick Lin — Full-Stack Engineer",
-    description: "Full-stack engineer at UNSW Sydney. React, Next.js, Python, FastAPI.",
+    siteName: 'Henrick Lin',
+    title: 'Henrick Lin — Full-Stack Engineer',
+    description: 'Full-stack engineer at UNSW Sydney. React, Next.js, Python, FastAPI.',
   },
 };
 

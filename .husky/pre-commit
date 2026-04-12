@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Translation completeness check
+echo "Checking translation completeness..."
+node scripts/check-translations.js
+if [ $? -ne 0 ]; then
+  echo "Pre-commit failed: fix missing translation keys before committing."
+  exit 1
+fi
+
+# Lint and format staged files
+npx lint-staged

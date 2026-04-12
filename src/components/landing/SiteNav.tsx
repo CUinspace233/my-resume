@@ -1,7 +1,6 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import { usePathname } from 'next/navigation';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeToggle from '@/components/ThemeToggle';
 import GithubLink from '@/components/GithubLink';
@@ -45,7 +44,11 @@ export default function SiteNav() {
         <div className="flex items-center justify-end gap-2">
           <LanguageSwitcher />
           <ThemeToggle />
-          <GithubLink repoUrl="https://github.com/CUinspace233" size="small" className="hidden sm:inline-block" />
+          <GithubLink
+            repoUrl="https://github.com/CUinspace233"
+            size="small"
+            className="hidden sm:inline-block"
+          />
           <Link
             href={`/${locale}/resume`}
             className="font-[family-name:var(--font-geist-sans)] text-xs font-medium text-white bg-[#171717] dark:bg-[#ededed] dark:text-[#171717] px-3 py-1.5 rounded-md hover:opacity-80 transition-opacity whitespace-nowrap text-center hidden sm:block"
