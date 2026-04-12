@@ -1,6 +1,23 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
+
 export default function ContributionsChart() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const scrollToRight = () => {
+      el.scrollLeft = el.scrollWidth - el.clientWidth;
+    };
+
+    scrollToRight();
+    window.addEventListener('resize', scrollToRight);
+    return () => window.removeEventListener('resize', scrollToRight);
+  }, []);
+
   return (
     <section
       className="px-6 py-16 max-w-[1200px] mx-auto"
@@ -12,7 +29,11 @@ export default function ContributionsChart() {
       >
         GitHub Contributions
       </p>
-      <div className="p-4 rounded-lg overflow-x-auto" style={{ boxShadow: 'var(--card-shadow)' }}>
+      <div
+        ref={scrollRef}
+        className="p-4 rounded-lg overflow-x-auto"
+        style={{ boxShadow: 'var(--card-shadow)' }}
+      >
         <img
           src="https://ghchart.rshah.org/0a72ef/CUinspace233"
           alt="GitHub contribution chart for CUinspace233"
