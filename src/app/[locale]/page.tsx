@@ -45,6 +45,15 @@ export default function Home() {
             GitHub ↗
           </a>
           <a
+            href="https://www.linkedin.com/in/henrick-lin-8a2043325/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-[family-name:var(--font-geist-sans)] text-xs hover:underline"
+            style={{ color: '#808080' }}
+          >
+            LinkedIn ↗
+          </a>
+          <a
             href="mailto:gmforzh@gmail.com"
             className="font-[family-name:var(--font-geist-sans)] text-xs hover:underline"
             style={{ color: '#808080' }}
