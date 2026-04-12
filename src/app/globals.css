@@ -1,7 +1,6 @@
 @import 'tailwindcss';
 @variant dark (&:where(.dark, .dark *));
 
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -22,10 +21,9 @@
   /* Shadow tokens */
   --ring-border: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   --ring-border-light: rgb(235, 235, 235) 0px 0px 0px 1px;
-  --card-shadow: rgba(0,0,0,0.08) 0px 0px 0px 1px,
-                 rgba(0,0,0,0.04) 0px 2px 2px,
-                 rgba(0,0,0,0.04) 0px 8px 8px -8px,
-                 #fafafa 0px 0px 0px 1px inset;
+  --card-shadow:
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 2px 2px,
+    rgba(0, 0, 0, 0.04) 0px 8px 8px -8px, #fafafa 0px 0px 0px 1px inset;
 }
 
 html.dark {
@@ -39,12 +37,11 @@ html.dark {
   --gray-100: #222222;
   --gray-50: #111111;
 
-  --ring-border: rgba(255, 255, 255, 0.10) 0px 0px 0px 1px;
+  --ring-border: rgba(255, 255, 255, 0.1) 0px 0px 0px 1px;
   --ring-border-light: rgba(255, 255, 255, 0.08) 0px 0px 0px 1px;
-  --card-shadow: rgba(255,255,255,0.08) 0px 0px 0px 1px,
-                 rgba(0,0,0,0.40) 0px 2px 2px,
-                 rgba(0,0,0,0.40) 0px 8px 8px -8px,
-                 rgba(255,255,255,0.04) 0px 0px 0px 1px inset;
+  --card-shadow:
+    rgba(255, 255, 255, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.4) 0px 2px 2px,
+    rgba(0, 0, 0, 0.4) 0px 8px 8px -8px, rgba(255, 255, 255, 0.04) 0px 0px 0px 1px inset;
 }
 
 @theme inline {
@@ -68,7 +65,7 @@ body {
 }
 
 /* Ensure the main content area also follows dark mode */
-.dark main {
+.dark main:not(.resume-paper) {
   background-color: var(--background);
   color: var(--foreground);
 }
@@ -168,26 +165,5 @@ html {
 @media (min-width: 768px) {
   html {
     font-size: 16px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  main {
-    transform: scale(0.9);
-    transform-origin: top center;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  main {
-    transform: scale(0.8);
-    transform-origin: top center;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  main {
-    transform: scale(0.7);
-    transform-origin: top center;
   }
 }

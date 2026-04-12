@@ -10,11 +10,10 @@ interface GithubLinkProps {
 
 const GithubLink: FC<GithubLinkProps> = ({ repoUrl, className = '', size = 'medium' }) => {
   const sizeClasses = {
-    small: 'w-6 h-6',
-    medium: 'w-8 h-8',
-    large: 'w-10 h-10',
-    responsive:
-      'w-6.5 h-6.5 sm:w-7.5 sm:h-7.5 md:w-8.5 md:h-8.5 lg:w-9.5 lg:h-9.5 xl:w-10.5 xl:h-10.5',
+    small: 'w-9 h-9 p-1.5',
+    medium: 'w-9 h-9 p-1.5',
+    large: 'w-11 h-11 p-2',
+    responsive: 'w-9 h-9 p-1.5 sm:w-9 sm:h-9 sm:p-1.5 md:w-9 md:h-9 md:p-1.5',
   };
 
   return (
@@ -22,7 +21,7 @@ const GithubLink: FC<GithubLinkProps> = ({ repoUrl, className = '', size = 'medi
       href={repoUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`text-[#171717] dark:text-[#ededed] hover:opacity-60 inline-block print:hidden ${sizeClasses[size]} ${className}`}
+      className={`inline-flex shrink-0 items-center justify-center rounded-xl border border-black/10 bg-white/90 text-[#171717] transition-opacity hover:opacity-60 print:hidden dark:border-white/10 dark:bg-[#171717] dark:text-[#ededed] ${sizeClasses[size]} ${className}`}
       aria-label="View source code on GitHub"
     >
       <svg

@@ -76,11 +76,11 @@ const ExportPdfButton = () => {
         type="button"
         id="export-pdf-button"
         onClick={handleExportPdf}
-        className="flex items-center gap-2 bg-black hover:bg-gray-800 cursor-pointer text-white px-2 sm:px-3 py-1.5 sm:py-2 rounded-md transition-colors text-xs sm:text-sm"
+        className="flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#171717] px-3 sm:px-3.5 py-2 text-sm font-medium text-white transition-colors hover:bg-black cursor-pointer"
         aria-label="Export as PDF"
       >
-        <FaFilePdf className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-        <span className="hidden sm:inline">{t('exportPdf')}</span>
+        <FaFilePdf className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
+        <span className="hidden md:inline">{t('exportPdf')}</span>
       </button>
     </div>
   );

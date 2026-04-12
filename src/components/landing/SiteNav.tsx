@@ -15,7 +15,7 @@ export default function SiteNav() {
       className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-[#0a0a0a]/90 backdrop-blur-md print:hidden"
       style={{ boxShadow: '0px 1px 0px 0px rgba(0,0,0,0.08)' }}
     >
-      <div className="max-w-[1200px] mx-auto px-6 h-14 grid grid-cols-2 sm:grid-cols-3 items-center">
+      <div className="mx-auto grid h-16 max-w-[1200px] grid-cols-2 items-center px-6 sm:grid-cols-3">
         {/* Left: name */}
         <Link
           href={`/${locale}`}
@@ -41,18 +41,18 @@ export default function SiteNav() {
         </div>
 
         {/* Right: controls + resume CTA */}
-        <div className="flex items-center justify-end gap-2">
+        <div className="flex items-center justify-end gap-1.5">
           <LanguageSwitcher />
           <ThemeToggle />
           <GithubLink
             repoUrl="https://github.com/CUinspace233"
-            size="small"
-            className="hidden sm:inline-block"
+            size="medium"
+            className="hidden sm:inline-flex"
           />
           <Link
             href={`/${locale}/resume`}
-            className="font-[family-name:var(--font-geist-sans)] text-xs font-medium text-white bg-[#171717] dark:bg-[#ededed] dark:text-[#171717] px-3 py-1.5 rounded-md hover:opacity-80 transition-opacity whitespace-nowrap text-center hidden sm:block"
-            style={{ minWidth: '72px' }}
+            className="hidden h-9 items-center justify-center rounded-xl bg-[#171717] px-3.5 text-[13px] font-medium whitespace-nowrap text-center text-white transition-opacity hover:opacity-80 dark:bg-[#ededed] dark:text-[#171717] sm:inline-flex"
+            style={{ minWidth: '112px' }}
           >
             {t('resume')} →
           </Link>

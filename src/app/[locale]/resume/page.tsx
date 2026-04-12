@@ -19,26 +19,27 @@ export default function ResumePage() {
   const locale = useLocale();
 
   return (
-    <div className="min-h-screen flex flex-col items-center p-8 font-[family-name:var(--font-geist-sans)] bg-gray-100">
+    <div className="min-h-screen flex flex-col items-center bg-gray-100 px-3 pb-8 pt-20 font-[family-name:var(--font-geist-sans)] dark:bg-[#2a2a2d] sm:p-8">
       {/* Back link */}
-      <div className="fixed z-20 top-2 left-2 sm:top-4 sm:left-4 print:hidden">
+      <div className="fixed left-3 top-[max(0.75rem,env(safe-area-inset-top))] z-30 print:hidden sm:left-4 sm:top-4">
         <Link
           href={`/${locale}`}
-          className="font-[family-name:var(--font-geist-sans)] text-xs font-medium text-[#4d4d4d] hover:text-[#171717] transition-colors flex items-center gap-1"
+          className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-black/10 bg-white/92 px-3.5 text-sm font-medium text-[#171717] shadow-[0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-md transition-colors hover:bg-white dark:border-white/10 dark:bg-[#171717]/92 dark:text-[#ededed]"
         >
-          ← Home
+          <span aria-hidden="true">←</span>
+          <span>Home</span>
         </Link>
       </div>
 
-      <div className="fixed z-20 top-2 right-2 sm:top-4 sm:right-4 flex items-center gap-1 sm:gap-2">
+      <div className="fixed right-3 top-[max(0.75rem,env(safe-area-inset-top))] z-30 flex items-center gap-1.5 rounded-2xl border border-black/10 bg-white/82 p-1.5 shadow-[0_12px_32px_rgba(0,0,0,0.12)] backdrop-blur-md dark:border-white/10 dark:bg-[#111111]/86 sm:right-4 sm:top-4 sm:gap-2 sm:bg-transparent sm:p-0 sm:shadow-none">
         <ExportPdfButton />
         <LanguageSwitcher />
         <GithubLink repoUrl="https://github.com/CUinspace233/my-resume" size="responsive" />
         <ThemeToggle />
       </div>
 
-      <ScalableContent baseWidth={793}>
-        <main className="bg-white shadow-lg p-[20mm] mt-2 sm:mt-6 mb-8 print:shadow-none print:my-0 text-sm">
+      <ScalableContent baseWidth={793} mobileBreakpoint={768}>
+        <main className="resume-sheet resume-paper w-full max-w-[793px] rounded-2xl border border-black/5 bg-white p-4 text-[15px] text-[#171717] shadow-[0_12px_36px_rgba(0,0,0,0.12)] mt-0 mb-8 dark:border-black/8 dark:bg-[#fcfcfb] dark:text-[#171717] sm:mt-10 sm:rounded-none sm:p-6 sm:text-sm md:p-[20mm] print:shadow-none print:my-0">
           <article className="flex flex-col space-y-3">
             <div className="first-page">
               <Header />
@@ -67,6 +68,45 @@ export default function ResumePage() {
       </ScalableContent>
 
       <style jsx global>{`
+        @media screen and (max-width: 767px) {
+          .resume-sheet {
+            line-height: 1.55;
+          }
+
+          .resume-sheet h1 {
+            font-size: 1.85rem;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+          }
+
+          .resume-sheet h2 {
+            font-size: 1.1rem;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+          }
+
+          .resume-sheet .text-xs,
+          .resume-sheet .text-xs * {
+            font-size: 0.88rem !important;
+            line-height: 1.45 !important;
+          }
+
+          .resume-sheet .text-sm,
+          .resume-sheet .text-sm * {
+            font-size: 0.98rem;
+            line-height: 1.5;
+          }
+
+          .resume-sheet ul {
+            padding-left: 0.2rem;
+          }
+
+          .resume-sheet .grid.grid-cols-2 {
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+          }
+        }
+
         @media print {
           @page {
             size: A4;

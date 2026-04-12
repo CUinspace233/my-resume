@@ -20,10 +20,7 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <div
-      className="print:hidden inline-flex items-center rounded-md overflow-hidden"
-      style={{ boxShadow: '0px 0px 0px 1px rgb(235,235,235)' }}
-    >
+    <div className="language-switcher-container print:hidden inline-flex h-9 shrink-0 items-center overflow-hidden rounded-xl border border-black/10 bg-white/90 p-0.5 dark:border-white/10 dark:bg-[#171717]">
       {LANGUAGES.map(({ code, label }) => {
         const active = locale === code;
         return (
@@ -31,11 +28,11 @@ export default function LanguageSwitcher() {
             key={code}
             type="button"
             onClick={() => switchLocale(code)}
-            className="font-[family-name:var(--font-geist-sans)] text-xs font-medium w-8 h-8 transition-colors cursor-pointer"
+            className="font-[family-name:var(--font-geist-sans)] flex h-8 min-w-[40px] items-center justify-center rounded-[9px] px-2 text-[13px] font-semibold transition-colors cursor-pointer"
             style={
               active
                 ? { background: 'var(--foreground)', color: 'var(--background)' }
-                : { background: 'transparent', color: '#808080' }
+                : { background: 'transparent', color: 'var(--gray-500)' }
             }
           >
             {label}
