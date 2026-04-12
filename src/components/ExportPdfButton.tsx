@@ -24,6 +24,9 @@ const ExportPdfButton = () => {
 
     try {
       const [{ toJpeg }, { jsPDF }] = await Promise.all([import('html-to-image'), import('jspdf')]);
+      const isMobileExport = window.innerWidth < 768;
+      const exportBaseWidth = isMobileExport ? 700 : 793;
+      const exportPadding = isMobileExport ? '4.5mm' : '5mm';
 
       const now = new Date();
       const year = now.getFullYear().toString().slice(-2);
@@ -33,16 +36,18 @@ const ExportPdfButton = () => {
       const fileName = `Henrick_Lin_Resume${locale}_${dateStr}.pdf`;
 
       const clone = resumeRoot.cloneNode(true) as HTMLElement;
-      clone.style.width = '793px';
-      clone.style.maxWidth = '793px';
+      clone.setAttribute('data-pdf-export', 'true');
+      clone.style.width = `${exportBaseWidth}px`;
+      clone.style.maxWidth = `${exportBaseWidth}px`;
       clone.style.boxSizing = 'border-box';
       clone.style.borderRadius = '0';
       clone.style.margin = '0';
-      clone.style.padding = '8mm';
+      clone.style.padding = exportPadding;
       clone.style.background = '#ffffff';
       clone.style.color = '#171717';
       clone.style.boxShadow = 'none';
       clone.style.transform = 'none';
+      clone.style.webkitTextSizeAdjust = '100%';
 
       const cloneArticle = clone.querySelector(':scope > article') as HTMLElement | null;
       if (cloneArticle) {
@@ -53,7 +58,7 @@ const ExportPdfButton = () => {
       exportHost.style.position = 'fixed';
       exportHost.style.left = '-10000px';
       exportHost.style.top = '0';
-      exportHost.style.width = '793px';
+      exportHost.style.width = `${exportBaseWidth}px`;
       exportHost.style.padding = '0';
       exportHost.style.margin = '0';
       exportHost.style.background = '#ffffff';
@@ -70,7 +75,7 @@ const ExportPdfButton = () => {
 
       const pageWidth = 210;
       const pageHeight = 297;
-      const pageMargin = 1;
+      const pageMargin = isMobileExport ? 0.5 : 1;
       const printableWidth = pageWidth - pageMargin * 2;
       const printableHeight = pageHeight - pageMargin * 2;
       const pageSections = Array.from(
@@ -89,12 +94,14 @@ const ExportPdfButton = () => {
         pageFrame.style.overflow = 'hidden';
 
         const pageContent = target.cloneNode(true) as HTMLElement;
+        pageContent.setAttribute('data-pdf-export', 'true');
         pageContent.style.width = '100%';
         pageContent.style.boxSizing = 'border-box';
         pageContent.style.margin = '0';
-        pageContent.style.padding = '8mm';
+        pageContent.style.padding = exportPadding;
         pageContent.style.background = '#ffffff';
         pageContent.style.transform = 'none';
+        pageContent.style.webkitTextSizeAdjust = '100%';
 
         pageFrame.appendChild(pageContent);
         exportHost.appendChild(pageFrame);
@@ -112,13 +119,14 @@ const ExportPdfButton = () => {
             background: '#ffffff',
             color: '#171717',
             transform: 'none',
+            webkitTextSizeAdjust: '100%',
           },
         });
 
         const imageProps = pdf.getImageProperties(imageData);
-        const widthRatio = printableWidth / imageProps.width;
-        const heightRatio = printableHeight / imageProps.height;
-        const scale = Math.min(widthRatio, heightRatio);
+        const widthScale = printableWidth / imageProps.width;
+        const heightScale = printableHeight / imageProps.height;
+        const scale = Math.min(widthScale, heightScale);
         const imageWidth = imageProps.width * scale;
         const imageHeight = imageProps.height * scale;
         const x = pageMargin + (printableWidth - imageWidth) / 2;

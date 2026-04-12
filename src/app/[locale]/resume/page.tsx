@@ -68,40 +68,85 @@ export default function ResumePage() {
       </ScalableContent>
 
       <style jsx global>{`
+        .resume-sheet[data-pdf-export='true'] {
+          font-size: 1.14rem;
+          line-height: 1.58;
+        }
+
+        .resume-sheet[data-pdf-export='true'] h1 {
+          font-size: 2.2rem;
+          line-height: 1.1;
+          margin-bottom: 0.76rem;
+        }
+
+        .resume-sheet[data-pdf-export='true'] h2 {
+          font-size: 1.42rem;
+          line-height: 1.25;
+          margin-bottom: 0.52rem;
+        }
+
+        .resume-sheet[data-pdf-export='true'] h3 {
+          font-size: 1.18rem;
+          line-height: 1.32;
+        }
+
+        .resume-sheet[data-pdf-export='true'] h4 {
+          font-size: 1.08rem;
+          line-height: 1.32;
+        }
+
+        .resume-sheet[data-pdf-export='true'] p,
+        .resume-sheet[data-pdf-export='true'] li,
+        .resume-sheet[data-pdf-export='true'] a {
+          font-size: 1.08rem;
+        }
+
+        .resume-sheet[data-pdf-export='true'] .text-xs,
+        .resume-sheet[data-pdf-export='true'] .text-xs * {
+          font-size: 1rem !important;
+          line-height: 1.46 !important;
+        }
+
+        .resume-sheet[data-pdf-export='true'] .text-sm,
+        .resume-sheet[data-pdf-export='true'] .text-sm * {
+          font-size: 1.12rem;
+          line-height: 1.52;
+        }
+
         @media screen and (max-width: 767px) {
-          .resume-sheet {
+          .resume-sheet:not([data-pdf-export='true']) {
             line-height: 1.55;
           }
 
-          .resume-sheet h1 {
+          .resume-sheet:not([data-pdf-export='true']) h1 {
             font-size: 1.85rem;
             line-height: 1.15;
             margin-bottom: 0.75rem;
           }
 
-          .resume-sheet h2 {
+          .resume-sheet:not([data-pdf-export='true']) h2 {
             font-size: 1.1rem;
             line-height: 1.3;
             margin-bottom: 0.5rem;
           }
 
-          .resume-sheet .text-xs,
-          .resume-sheet .text-xs * {
+          .resume-sheet:not([data-pdf-export='true']) .text-xs,
+          .resume-sheet:not([data-pdf-export='true']) .text-xs * {
             font-size: 0.88rem !important;
             line-height: 1.45 !important;
           }
 
-          .resume-sheet .text-sm,
-          .resume-sheet .text-sm * {
+          .resume-sheet:not([data-pdf-export='true']) .text-sm,
+          .resume-sheet:not([data-pdf-export='true']) .text-sm * {
             font-size: 0.98rem;
             line-height: 1.5;
           }
 
-          .resume-sheet ul {
+          .resume-sheet:not([data-pdf-export='true']) ul {
             padding-left: 0.2rem;
           }
 
-          .resume-sheet .grid.grid-cols-2 {
+          .resume-sheet:not([data-pdf-export='true']) .grid.grid-cols-2 {
             grid-template-columns: 1fr;
             gap: 0.5rem;
           }
