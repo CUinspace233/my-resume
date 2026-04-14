@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import IntlProvider from '@/components/IntlProvider';
+import { locales } from '@/i18n/config';
 import { notFound } from 'next/navigation';
 
 export const metadata: Metadata = {
@@ -40,11 +41,16 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
+export function generateStaticParams() {
+  return locales.map(locale => ({ locale }));
+}
+
+export const dynamicParams = false;
+
 export default async function RootLayout({ children, params }: Props) {
   const { locale } = await params;
 
-  const validLocales = ['en', 'zh'];
-  if (!validLocales.includes(locale)) {
+  if (!locales.includes(locale)) {
     notFound();
   }
 
