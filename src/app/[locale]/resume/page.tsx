@@ -34,8 +34,8 @@ export default function ResumePage() {
       <div className="fixed right-3 top-[max(0.75rem,env(safe-area-inset-top))] z-30 flex items-center gap-1.5 rounded-2xl border border-black/10 bg-white/82 p-1.5 shadow-[0_12px_32px_rgba(0,0,0,0.12)] backdrop-blur-md dark:border-white/10 dark:bg-[#111111]/86 sm:right-4 sm:top-4 sm:gap-2 sm:bg-transparent sm:p-0 sm:shadow-none">
         <ExportPdfButton />
         <LanguageSwitcher />
-        <GithubLink repoUrl="https://github.com/CUinspace233/my-resume" size="responsive" />
         <ThemeToggle />
+        <GithubLink repoUrl="https://github.com/CUinspace233/my-resume" size="responsive" />
       </div>
 
       <ScalableContent baseWidth={793} mobileBreakpoint={768}>
