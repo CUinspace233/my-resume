@@ -1,46 +1,25 @@
-'use client';
+import ContributionsChartClient from './ContributionsChartClient';
 
-import { useEffect, useRef } from 'react';
+async function fetchContributionsCount(): Promise<number | null> {
+  try {
+    const res = await fetch('https://github.com/users/CUinspace233/contributions', {
+      headers: {
+        Accept: 'text/html',
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) return null;
+    const html = await res.text();
+    const matches = [...html.matchAll(/data-count="(\d+)"/g)];
+    const total = matches.reduce((sum, m) => sum + parseInt(m[1], 10), 0);
+    return total > 0 ? total : null;
+  } catch {
+    return null;
+  }
+}
 
-export default function ContributionsChart() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    const scrollToRight = () => {
-      el.scrollLeft = el.scrollWidth - el.clientWidth;
-    };
-
-    scrollToRight();
-    window.addEventListener('resize', scrollToRight);
-    return () => window.removeEventListener('resize', scrollToRight);
-  }, []);
-
-  return (
-    <section
-      className="px-6 py-16 max-w-[1200px] mx-auto"
-      style={{ borderTop: '1px solid #ebebeb' }}
-    >
-      <p
-        className="font-[family-name:var(--font-geist-mono)] text-[11px] font-medium uppercase tracking-widest mb-6"
-        style={{ color: '#808080' }}
-      >
-        GitHub Contributions
-      </p>
-      <div
-        ref={scrollRef}
-        className="p-4 rounded-lg overflow-x-auto"
-        style={{ boxShadow: 'var(--card-shadow)' }}
-      >
-        <img
-          src="https://ghchart.rshah.org/0a72ef/CUinspace233"
-          alt="GitHub contribution chart for CUinspace233"
-          className="w-full min-w-[600px]"
-          style={{ imageRendering: 'crisp-edges' }}
-        />
-      </div>
-    </section>
-  );
+export default async function ContributionsChart() {
+  const count = await fetchContributionsCount();
+  return <ContributionsChartClient contributionsCount={count} />;
 }
