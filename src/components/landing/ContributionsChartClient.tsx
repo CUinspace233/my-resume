@@ -39,13 +39,10 @@ export default function ContributionsChartClient({ contributionsCount }: Props) 
             className="font-[family-name:var(--font-geist-mono)] text-[11px]"
             style={{ color: '#808080' }}
           >
-            <span
-              className="font-bold text-sm"
-              style={{ color: '#0a72ef' }}
-            >
+            <span className="font-bold text-sm" style={{ color: '#0a72ef' }}>
               {contributionsCount.toLocaleString()}
-            </span>
-            {' '}contributions in the last year
+            </span>{' '}
+            contributions in the last year
           </p>
         )}
       </div>
