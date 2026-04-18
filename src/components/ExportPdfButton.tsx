@@ -35,6 +35,29 @@ const ExportPdfButton = () => {
 
     try {
       if (isMobileBrowser) {
+        const clearExporting = () => {
+          setIsExporting(false);
+          window.removeEventListener('pagehide', clearExporting);
+          document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
+
+        const handleVisibilityChange = () => {
+          if (document.visibilityState === 'hidden') {
+            clearExporting();
+          }
+        };
+
+        window.addEventListener('pagehide', clearExporting, { once: true });
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        // Mobile browsers may show a download/preview prompt without leaving the page.
+        // Clear the loading state after a short grace period if no navigation happened.
+        window.setTimeout(() => {
+          if (document.visibilityState === 'visible') {
+            clearExporting();
+          }
+        }, 4000);
+
         requestAnimationFrame(() => {
           window.location.assign(mobileExportUrl);
         });
