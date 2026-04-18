@@ -58,8 +58,10 @@ export default async function RootLayout({ children, params }: Props) {
   const messages = (await import(`../../../messages/${locale}.json`)).default;
 
   return (
-    <IntlProvider locale={locale} messages={messages} timeZone="UTC">
-      {children}
-    </IntlProvider>
+    <div lang={locale}>
+      <IntlProvider locale={locale} messages={messages} timeZone="UTC">
+        {children}
+      </IntlProvider>
+    </div>
   );
 }

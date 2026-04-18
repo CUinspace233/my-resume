@@ -13,6 +13,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@fontsource/noto-sans-sc": "^5.2.9",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@sparticuz/chromium": "^147.0.1",
