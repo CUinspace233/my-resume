@@ -11,10 +11,20 @@ const ExportPdfButton = () => {
   const [isExporting, setIsExporting] = useState(false);
 
   const handleExportPdf = useCallback(async () => {
+    const exportUrl = `/api/resume-pdf?locale=${locale}`;
+    const isMobileBrowser =
+      typeof navigator !== 'undefined' &&
+      /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+
     setIsExporting(true);
 
     try {
-      const response = await fetch(`/api/resume-pdf?locale=${locale}`);
+      if (isMobileBrowser) {
+        window.location.assign(exportUrl);
+        return;
+      }
+
+      const response = await fetch(exportUrl);
 
       if (!response.ok) {
         throw new Error(`Failed to export PDF: ${response.status}`);
