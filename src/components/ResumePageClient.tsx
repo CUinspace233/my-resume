@@ -76,7 +76,20 @@ export default function ResumePageClient({ locale, isPrintMode }: ResumePageClie
           >
             <span>cuinspace.com </span>
             <span className="resume-link-arrow" aria-hidden="true">
-              ↗
+              <svg
+                viewBox="0 0 12 12"
+                className="h-[0.85em] w-[0.85em]"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 9L9 3M5 3H9V7"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </span>
           </a>
 
@@ -230,8 +243,8 @@ export default function ResumePageClient({ locale, isPrintMode }: ResumePageClie
         }
 
         .resume-link-arrow {
-          font-family:
-            Arial, Helvetica, 'Segoe UI Symbol', 'Apple Symbols', 'Noto Sans Symbols', sans-serif;
+          display: inline-flex;
+          vertical-align: -0.08em;
         }
 
         @media print {
@@ -279,8 +292,7 @@ export default function ResumePageClient({ locale, isPrintMode }: ResumePageClie
           }
 
           .resume-website-link.absolute .resume-link-arrow {
-            font-family:
-              Arial, Helvetica, 'Segoe UI Symbol', 'Apple Symbols', 'Noto Sans Symbols', sans-serif !important;
+            display: inline-flex !important;
           }
 
           .page-break {
