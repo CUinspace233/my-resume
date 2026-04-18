@@ -4,8 +4,17 @@ import { launchPdfBrowser } from '@/lib/pdfBrowser';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
 
 const VALID_LOCALES = new Set(['en', 'zh']);
+
+function getPdfOrigin(request: NextRequest) {
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+
+  return request.nextUrl.origin;
+}
 
 export async function GET(request: NextRequest) {
   const localeParam = request.nextUrl.searchParams.get('locale') ?? 'en';
@@ -14,27 +23,34 @@ export async function GET(request: NextRequest) {
 
   try {
     browser = await launchPdfBrowser();
-    const page = await browser.newPage({
+    const context = await browser.newContext({
+      serviceWorkers: 'block',
       viewport: {
         width: 1280,
         height: 1810,
       },
     });
+    const page = await context.newPage();
+    page.setDefaultNavigationTimeout(20000);
+    page.setDefaultTimeout(20000);
 
-    const resumeUrl = new URL(`/${locale}/resume`, request.nextUrl.origin);
+    const resumeUrl = new URL(`/${locale}/resume`, getPdfOrigin(request));
     resumeUrl.searchParams.set('print', '1');
     resumeUrl.searchParams.set('pdf', '1');
 
     await page.goto(resumeUrl.toString(), {
-      waitUntil: 'networkidle',
+      waitUntil: 'domcontentloaded',
     });
     await page.emulateMedia({
       media: 'print',
     });
-    await page.waitForLoadState('networkidle');
+    await page.waitForSelector('.resume-paper', {
+      state: 'visible',
+    });
     await page.evaluate(async () => {
       await document.fonts.ready;
     });
+    await page.waitForTimeout(150);
 
     const pdfBuffer = await page.pdf({
       format: 'A4',
