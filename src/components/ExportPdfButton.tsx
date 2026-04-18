@@ -5,22 +5,39 @@ import { FaFilePdf } from 'react-icons/fa6';
 import { LuLoaderCircle } from 'react-icons/lu';
 import { useLocale, useTranslations } from 'next-intl';
 
+const getResumePdfFileName = (locale: string) => {
+  const date = new Date();
+  const localeSuffix = locale === 'zh' ? '_中文' : '';
+
+  return `Henrick_Lin_Resume${localeSuffix}_${date
+    .getFullYear()
+    .toString()
+    .slice(-2)}_${String(date.getMonth() + 1).padStart(2, '0')}_${String(date.getDate()).padStart(
+    2,
+    '0'
+  )}.pdf`;
+};
+
 const ExportPdfButton = () => {
   const locale = useLocale();
   const t = useTranslations('buttons');
   const [isExporting, setIsExporting] = useState(false);
 
   const handleExportPdf = useCallback(async () => {
+    const fileName = getResumePdfFileName(locale);
     const exportUrl = `/api/resume-pdf?locale=${locale}`;
     const isMobileBrowser =
       typeof navigator !== 'undefined' &&
       /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+    const mobileExportUrl = `/api/resume-pdf/${encodeURIComponent(fileName)}?locale=${locale}`;
 
     setIsExporting(true);
 
     try {
       if (isMobileBrowser) {
-        window.location.assign(exportUrl);
+        requestAnimationFrame(() => {
+          window.location.assign(mobileExportUrl);
+        });
         return;
       }
 
@@ -32,14 +49,6 @@ const ExportPdfButton = () => {
 
       const blob = await response.blob();
       const blobUrl = URL.createObjectURL(blob);
-      const date = new Date();
-      const localeSuffix = locale === 'zh' ? '_中文' : '';
-      const fileName = `Henrick_Lin_Resume${localeSuffix}_${date
-        .getFullYear()
-        .toString()
-        .slice(-2)}_${String(date.getMonth() + 1).padStart(2, '0')}_${String(
-        date.getDate()
-      ).padStart(2, '0')}.pdf`;
 
       const link = document.createElement('a');
       link.href = blobUrl;
@@ -53,7 +62,9 @@ const ExportPdfButton = () => {
     } catch (error) {
       console.error('Failed to export PDF:', error);
     } finally {
-      setIsExporting(false);
+      if (!isMobileBrowser) {
+        setIsExporting(false);
+      }
     }
   }, [locale]);
 
@@ -73,7 +84,9 @@ const ExportPdfButton = () => {
         ) : (
           <FaFilePdf className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
         )}
-        <span className="hidden md:inline">{isExporting ? 'Exporting…' : t('exportPdf')}</span>
+        <span className={isExporting ? 'inline' : 'hidden md:inline'}>
+          {isExporting ? 'Exporting…' : t('exportPdf')}
+        </span>
       </button>
     </div>
   );
