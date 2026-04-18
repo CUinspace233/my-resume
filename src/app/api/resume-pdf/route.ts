@@ -9,6 +9,17 @@ export const maxDuration = 60;
 const VALID_LOCALES = new Set(['en', 'zh']);
 
 function getPdfOrigin(request: NextRequest) {
+  const forwardedProto = request.headers.get('x-forwarded-proto');
+  const forwardedHost = request.headers.get('x-forwarded-host');
+
+  if (forwardedProto && forwardedHost) {
+    return `${forwardedProto}://${forwardedHost}`;
+  }
+
+  if (request.nextUrl.origin) {
+    return request.nextUrl.origin;
+  }
+
   if (process.env.VERCEL_URL) {
     return `https://${process.env.VERCEL_URL}`;
   }
@@ -20,6 +31,8 @@ export async function GET(request: NextRequest) {
   const localeParam = request.nextUrl.searchParams.get('locale') ?? 'en';
   const locale = VALID_LOCALES.has(localeParam) ? localeParam : 'en';
   let browser = null;
+  let pageUrl = '';
+  let pageTitle = '';
 
   try {
     browser = await launchPdfBrowser();
@@ -45,12 +58,14 @@ export async function GET(request: NextRequest) {
       media: 'print',
     });
     await page.waitForSelector('.resume-paper', {
-      state: 'visible',
+      state: 'attached',
     });
     await page.evaluate(async () => {
       await document.fonts.ready;
     });
     await page.waitForTimeout(150);
+    pageUrl = page.url();
+    pageTitle = await page.title();
 
     const pdfBuffer = await page.pdf({
       format: 'A4',
@@ -80,7 +95,13 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (error) {
-    console.error('Failed to generate PDF:', error);
+    console.error('Failed to generate PDF:', {
+      error,
+      origin: getPdfOrigin(request),
+      locale,
+      pageUrl,
+      pageTitle,
+    });
     return NextResponse.json({ error: 'Failed to generate PDF' }, { status: 500 });
   } finally {
     await browser?.close();
