@@ -81,6 +81,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+:lang(zh) body,
+:lang(zh) .resume-sheet,
+:lang(zh) [data-pdf-mode='true'] {
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+
 /* Ensure the main content area also follows dark mode */
 .dark main:not(.resume-paper) {
   background-color: var(--background);

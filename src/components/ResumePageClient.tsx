@@ -20,9 +20,14 @@ type ResumePageClientProps = {
 };
 
 export default function ResumePageClient({ locale, isPrintMode }: ResumePageClientProps) {
+  const fontClass =
+    locale === 'zh'
+      ? "font-['Noto_Sans_SC','PingFang_SC','Hiragino_Sans_GB','Microsoft_YaHei',sans-serif]"
+      : 'font-[family-name:var(--font-geist-sans)]';
+
   return (
     <div
-      className={`min-h-screen flex flex-col items-center font-[family-name:var(--font-geist-sans)] ${
+      className={`min-h-screen flex flex-col items-center ${fontClass} ${
         isPrintMode
           ? 'bg-white px-0 pb-0 pt-0'
           : 'bg-gray-100 px-3 pb-8 pt-20 dark:bg-[#2a2a2d] sm:p-8'
