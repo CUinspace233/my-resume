@@ -27,7 +27,7 @@ export default function ContributionsChartClient({ contributionsCount }: Props) 
       className="px-6 py-16 max-w-[1200px] mx-auto"
       style={{ borderTop: '1px solid #ebebeb' }}
     >
-      <div className="flex items-baseline justify-between mb-6">
+      <div className="mb-6">
         <p
           className="font-[family-name:var(--font-geist-mono)] text-[11px] font-medium uppercase tracking-widest"
           style={{ color: '#808080' }}
@@ -36,7 +36,7 @@ export default function ContributionsChartClient({ contributionsCount }: Props) 
         </p>
         {contributionsCount !== null && (
           <p
-            className="font-[family-name:var(--font-geist-mono)] text-[11px]"
+            className="font-[family-name:var(--font-geist-mono)] text-[11px] mt-1"
             style={{ color: '#808080' }}
           >
             <span className="font-bold text-sm" style={{ color: '#0a72ef' }}>
