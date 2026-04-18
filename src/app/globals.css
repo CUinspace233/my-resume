@@ -1,6 +1,18 @@
 @import 'tailwindcss';
 @variant dark (&:where(.dark, .dark *));
 
+html {
+  scroll-behavior: smooth;
+  /* Offset for the 64px fixed SiteNav so anchored sections aren't hidden. */
+  scroll-padding-top: 80px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
