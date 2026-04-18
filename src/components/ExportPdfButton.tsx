@@ -78,6 +78,10 @@ const ExportPdfButton = () => {
       const pageMargin = isMobileExport ? 0.5 : 1;
       const printableWidth = pageWidth - pageMargin * 2;
       const printableHeight = pageHeight - pageMargin * 2;
+      const websiteUrl = 'https://www.cuinspace.com';
+      const websiteLabel = 'cuinspace.com';
+      const websiteRightInset = isMobileExport ? 4.5 : 5;
+      const websiteBottomInset = 4;
       const pageSections = Array.from(
         clone.querySelectorAll(':scope > article > .first-page, :scope > article > .second-page')
       ) as HTMLElement[];
@@ -104,6 +108,7 @@ const ExportPdfButton = () => {
         pageContent.style.webkitTextSizeAdjust = '100%';
 
         pageFrame.appendChild(pageContent);
+
         exportHost.appendChild(pageFrame);
 
         const imageData = await toJpeg(pageFrame, {
@@ -137,6 +142,15 @@ const ExportPdfButton = () => {
         }
 
         pdf.addImage(imageData, 'JPEG', x, y, imageWidth, imageHeight, undefined, 'FAST');
+        pdf.setFont('helvetica', 'normal');
+        pdf.setFontSize(9);
+        pdf.setTextColor(128, 128, 128);
+
+        const websiteTextWidth = pdf.getTextWidth(websiteLabel);
+        const websiteX = pageWidth - pageMargin - websiteRightInset - websiteTextWidth;
+        const websiteY = pageHeight - pageMargin - websiteBottomInset;
+
+        pdf.textWithLink(websiteLabel, websiteX, websiteY, { url: websiteUrl });
         pageFrame.remove();
       }
 

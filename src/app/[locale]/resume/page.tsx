@@ -39,7 +39,17 @@ export default function ResumePage() {
       </div>
 
       <ScalableContent baseWidth={793} mobileBreakpoint={768}>
-        <main className="resume-sheet resume-paper w-full max-w-[793px] rounded-2xl border border-black/5 bg-white p-4 text-[15px] text-[#171717] shadow-[0_12px_36px_rgba(0,0,0,0.12)] mt-0 mb-8 dark:border-black/8 dark:bg-[#fcfcfb] dark:text-[#171717] sm:mt-10 sm:rounded-none sm:p-6 sm:text-sm md:p-[20mm] print:shadow-none print:my-0">
+        <main className="resume-sheet resume-paper relative w-full max-w-[793px] rounded-2xl border border-black/5 bg-white p-4 text-[15px] text-[#171717] shadow-[0_12px_36px_rgba(0,0,0,0.12)] mt-0 mb-8 dark:border-black/8 dark:bg-[#fcfcfb] dark:text-[#171717] sm:mt-10 sm:rounded-none sm:p-6 sm:text-sm md:p-[20mm] print:shadow-none print:my-0">
+          {/* Personal website link, pinned to the bottom-right corner of the A4 sheet. */}
+          <a
+            href="https://www.cuinspace.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="resume-website-link absolute bottom-2 right-3 text-[10px] text-[#808080] hover:text-[#171717] hover:underline sm:bottom-3 sm:right-4 md:bottom-[8mm] md:right-[20mm]"
+          >
+            cuinspace.com ↗
+          </a>
+
           <article className="flex flex-col space-y-3">
             <div className="first-page">
               <Header />
@@ -289,6 +299,15 @@ export default function ResumePage() {
 
           .absolute {
             display: none !important;
+          }
+
+          .resume-website-link.absolute {
+            display: inline !important;
+            position: absolute !important;
+            bottom: 6mm !important;
+            right: 8mm !important;
+            font-size: 9px !important;
+            color: #808080 !important;
           }
 
           .page-break {
