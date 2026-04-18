@@ -74,7 +74,10 @@ export default function ResumePageClient({ locale, isPrintMode }: ResumePageClie
             rel="noopener noreferrer"
             className="resume-website-link absolute bottom-2 right-3 text-[10px] text-[#808080] hover:text-[#171717] hover:underline sm:bottom-3 sm:right-4 md:bottom-[8mm] md:right-[20mm]"
           >
-            cuinspace.com ↗
+            <span>cuinspace.com </span>
+            <span className="resume-link-arrow" aria-hidden="true">
+              ↗
+            </span>
           </a>
 
           <article className="flex flex-col space-y-3">
@@ -226,6 +229,11 @@ export default function ResumePageClient({ locale, isPrintMode }: ResumePageClie
           color: #808080 !important;
         }
 
+        .resume-link-arrow {
+          font-family:
+            Arial, Helvetica, 'Segoe UI Symbol', 'Apple Symbols', 'Noto Sans Symbols', sans-serif;
+        }
+
         @media print {
           @page {
             size: A4;
@@ -268,6 +276,11 @@ export default function ResumePageClient({ locale, isPrintMode }: ResumePageClie
             right: 8mm !important;
             font-size: 9px !important;
             color: #808080 !important;
+          }
+
+          .resume-website-link.absolute .resume-link-arrow {
+            font-family:
+              Arial, Helvetica, 'Segoe UI Symbol', 'Apple Symbols', 'Noto Sans Symbols', sans-serif !important;
           }
 
           .page-break {

@@ -2,6 +2,7 @@
 
 import { useCallback, useState } from 'react';
 import { FaFilePdf } from 'react-icons/fa6';
+import { LuLoaderCircle } from 'react-icons/lu';
 import { useLocale, useTranslations } from 'next-intl';
 
 const ExportPdfButton = () => {
@@ -55,8 +56,13 @@ const ExportPdfButton = () => {
         disabled={isExporting}
         className="flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#171717] px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-black disabled:cursor-wait disabled:opacity-70 sm:px-3.5"
         aria-label="Export as PDF"
+        aria-busy={isExporting}
       >
-        <FaFilePdf className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
+        {isExporting ? (
+          <LuLoaderCircle className="h-4 w-4 animate-spin sm:h-[18px] sm:w-[18px]" />
+        ) : (
+          <FaFilePdf className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
+        )}
         <span className="hidden md:inline">{isExporting ? 'Exporting…' : t('exportPdf')}</span>
       </button>
     </div>
