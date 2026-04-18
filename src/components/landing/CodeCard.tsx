@@ -1,6 +1,19 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
+
+const MAX_TILT = 8;
+
 export default function CodeCard() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ rx: 0, ry: 0 });
+  const [hovered, setHovered] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    setReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }, []);
+
   const lines = [
     {
       tokens: [
@@ -105,13 +118,43 @@ export default function CodeCard() {
     { tokens: [{ text: '// gmforzh@gmail.com', color: '#444' }] },
   ];
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (reducedMotion || !containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const nx = (e.clientX - rect.left) / rect.width - 0.5;
+    const ny = (e.clientY - rect.top) / rect.height - 0.5;
+    setTilt({ rx: -ny * MAX_TILT * 2, ry: nx * MAX_TILT * 2 });
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+    setTilt({ rx: 0, ry: 0 });
+  };
+
+  const transform = reducedMotion
+    ? undefined
+    : `perspective(1000px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) scale(${hovered ? 1.01 : 1})`;
+
+  const boxShadow =
+    hovered && !reducedMotion
+      ? '0px 0px 0px 1px rgba(255,255,255,0.14), 0px 8px 40px rgba(0,0,0,0.60)'
+      : '0px 0px 0px 1px rgba(255,255,255,0.10), 0px 4px 24px rgba(0,0,0,0.40)';
+
   return (
     <div
+      ref={containerRef}
       className="relative w-full rounded-xl overflow-hidden"
       style={{
         background: '#0d0d0d',
-        boxShadow: '0px 0px 0px 1px rgba(255,255,255,0.10), 0px 4px 24px rgba(0,0,0,0.40)',
+        boxShadow,
+        transform,
+        transition: 'transform 120ms ease-out, box-shadow 200ms ease-out',
+        transformStyle: 'preserve-3d',
+        willChange: 'transform',
       }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Window chrome */}
       <div
