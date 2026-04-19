@@ -27,12 +27,12 @@ const ACCENT: Record<string, string> = {
 function FeatureCard({ card, typeLabel }: { card: CardData; typeLabel: string }) {
   const accent = ACCENT[card.type];
   const href = card.url ?? card.repoUrl;
+  const Tag = href ? 'a' : 'div';
+  const linkProps = href ? { href, target: '_blank' as const, rel: 'noopener noreferrer' } : {};
 
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Tag
+      {...linkProps}
       className="flex flex-col rounded-xl bg-white dark:bg-[#111] overflow-hidden transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5 cursor-pointer"
       style={{ boxShadow: 'var(--card-shadow)', textDecoration: 'none' }}
     >
@@ -164,7 +164,7 @@ function FeatureCard({ card, typeLabel }: { card: CardData; typeLabel: string })
           </div>
         )}
       </div>
-    </a>
+    </Tag>
   );
 }
 
