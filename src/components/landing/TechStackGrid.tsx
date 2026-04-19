@@ -29,12 +29,12 @@ export default function TechStackGrid() {
       className="px-6 py-12 max-w-[1200px] mx-auto"
       style={{ borderTop: '1px solid #ebebeb' }}
     >
-      <p
+      <h2
         className="font-[family-name:var(--font-geist-mono)] text-[11px] font-medium uppercase tracking-widest mb-6"
         style={{ color: '#808080' }}
       >
         {t('label')}
-      </p>
+      </h2>
       <div className="flex flex-wrap gap-2">
         {TECH.map(tech => (
           <span

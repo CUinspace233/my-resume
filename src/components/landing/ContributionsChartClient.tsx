@@ -28,12 +28,12 @@ export default function ContributionsChartClient({ contributionsCount }: Props) 
       style={{ borderTop: '1px solid #ebebeb' }}
     >
       <div className="mb-6">
-        <p
+        <h2
           className="font-[family-name:var(--font-geist-mono)] text-[11px] font-medium uppercase tracking-widest"
           style={{ color: '#808080' }}
         >
           GitHub Contributions
-        </p>
+        </h2>
         {contributionsCount !== null && (
           <p
             className="font-[family-name:var(--font-geist-mono)] text-[11px] mt-1"

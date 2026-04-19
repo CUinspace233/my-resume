@@ -3,29 +3,43 @@ import IntlProvider from '@/components/IntlProvider';
 import { locales } from '@/i18n/config';
 import { notFound } from 'next/navigation';
 
-export const metadata: Metadata = {
-  title: 'Henrick Lin — Full-Stack Engineer',
-  description: 'Full-stack engineer at UNSW Sydney. React, Next.js, Python, FastAPI.',
-  manifest: '/manifest.json',
-  icons: {
-    icon: [{ url: '/smallsizeavatar.png', sizes: '16x16', type: 'image/png' }],
-    apple: [{ url: '/smallsizeavatar.png', sizes: '192x192', type: 'image/png' }],
-  },
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'default',
-    title: 'Henrick Lin',
-  },
-  formatDetection: {
-    telephone: false,
-  },
-  openGraph: {
-    type: 'website',
-    siteName: 'Henrick Lin',
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.cuinspace.com';
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  return {
     title: 'Henrick Lin — Full-Stack Engineer',
     description: 'Full-stack engineer at UNSW Sydney. React, Next.js, Python, FastAPI.',
-  },
-};
+    manifest: '/manifest.json',
+    icons: {
+      icon: [{ url: '/smallsizeavatar.png', sizes: '16x16', type: 'image/png' }],
+      apple: [{ url: '/smallsizeavatar.png', sizes: '192x192', type: 'image/png' }],
+    },
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: 'default',
+      title: 'Henrick Lin',
+    },
+    formatDetection: {
+      telephone: false,
+    },
+    alternates: {
+      canonical: `${BASE_URL}/${locale}`,
+      languages: {
+        en: `${BASE_URL}/en`,
+        zh: `${BASE_URL}/zh`,
+      },
+    },
+    openGraph: {
+      type: 'website',
+      siteName: 'Henrick Lin',
+      title: 'Henrick Lin — Full-Stack Engineer',
+      description: 'Full-stack engineer at UNSW Sydney. React, Next.js, Python, FastAPI.',
+      url: `${BASE_URL}/${locale}`,
+      locale: locale === 'zh' ? 'zh_CN' : 'en_US',
+    },
+  };
+}
 
 export const viewport: Viewport = {
   width: 'device-width',

@@ -265,12 +265,12 @@ export default function FeatureCards() {
 
   return (
     <section id="projects" className="px-6 py-16 max-w-[1200px] mx-auto">
-      <p
+      <h2
         className="font-[family-name:var(--font-geist-mono)] text-[11px] font-medium uppercase tracking-widest mb-8"
         style={{ color: '#808080' }}
       >
         {t('label')}
-      </p>
+      </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {cards.map((card, i) => (
           <FeatureCard key={i} card={card} typeLabel={typeLabels[card.type]} />

@@ -14,12 +14,12 @@ export default function AboutBand() {
       style={{ borderTop: '1px solid #171717' }}
     >
       <div className="max-w-[680px]">
-        <p
+        <h2
           className="font-[family-name:var(--font-geist-mono)] text-[11px] font-medium uppercase tracking-widest mb-6"
           style={{ color: '#808080' }}
         >
           {t('label')}
-        </p>
+        </h2>
 
         <p
           className="font-[family-name:var(--font-geist-sans)] font-normal leading-relaxed mb-8"
