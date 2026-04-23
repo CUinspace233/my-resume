@@ -105,12 +105,12 @@ export default function ResumePageClient({ locale, isPrintMode }: ResumePageClie
               <div className="mb-1">
                 <Societies />
               </div>
-              <div className="mb-1">
-                <Projects />
-              </div>
             </div>
 
             <div className="second-page">
+              <div className="mb-1">
+                <Projects />
+              </div>
               <div className="mb-2">
                 <Awards />
               </div>
@@ -231,7 +231,7 @@ export default function ResumePageClient({ locale, isPrintMode }: ResumePageClie
         }
 
         .resume-sheet[data-pdf-mode='true'] .second-page {
-          margin-top: ${locale === 'zh' ? '28px' : '26px'} !important;
+          margin-top: ${locale === 'zh' ? '64px' : '60px'} !important;
         }
 
         .resume-sheet[data-pdf-mode='true'] .resume-website-link {
