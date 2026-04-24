@@ -66,7 +66,7 @@
           ],
           "projects": [
             {
-              "title": "Regulatory Document Compliance Review Platform",
+              "title": "Document Compliance Review Platform",
               "technologies": [
                 "FastAPI",
                 "React",
@@ -77,7 +77,7 @@
                 "Rule Engine"
               ],
               "description": [
-                "Built an end-to-end regulatory document compliance review platform (FastAPI + React/Vite) covering document parsing, clause-level and full-document compliance checking, violation annotation, and audit report generation.",
+                "Built an end-to-end document compliance review platform (FastAPI + React/Vite) covering document parsing, clause-level and full-document compliance checking, violation annotation, and audit report generation.",
                 "Designed a hybrid Rule Engine + LLM + Guardrail architecture combining compliance clause retrieval, controlled prompting, and output validation to improve violation detection accuracy and controllability in complex regulatory scenarios.",
                 "Constructed a Retrieval-Augmented review pipeline using vector search and few-shot enhancement with similar violation cases for dynamic compliance references; optimized prompt engineering to reduce average clause-level prompt length from 15,299 to 2,918 tokens.",
                 "Implemented risk-tiered dynamic reasoning: deep reasoning is only enabled for high-risk clauses, reducing typical review latency from 853s to 652s — a 23.6% speedup.",
