@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var s=localStorage.getItem('theme');var d=s!==null?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');}catch(e){}})();`,
+            __html: `(function(){try{localStorage.removeItem('theme');var r=document.documentElement;var m=window.matchMedia('(prefers-color-scheme: dark)');var a=function(d){r.classList.toggle('dark',d)};a(m.matches);m.addEventListener('change',function(e){a(e.matches)})}catch(e){}})();`,
           }}
         />
         {children}
