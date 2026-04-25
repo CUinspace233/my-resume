@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import IntlProvider from '@/components/IntlProvider';
-import { locales } from '@/i18n/config';
+import { locales, type AppLocale } from '@/i18n/config';
 import { notFound } from 'next/navigation';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.cuinspace.com';
@@ -55,6 +55,10 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
+function isSupportedLocale(locale: string): locale is AppLocale {
+  return locales.some(supportedLocale => supportedLocale === locale);
+}
+
 export function generateStaticParams() {
   return locales.map(locale => ({ locale }));
 }
@@ -64,7 +68,7 @@ export const dynamicParams = false;
 export default async function RootLayout({ children, params }: Props) {
   const { locale } = await params;
 
-  if (!locales.includes(locale)) {
+  if (!isSupportedLocale(locale)) {
     notFound();
   }
 
