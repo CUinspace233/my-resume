@@ -1,8 +1,8 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
 import CodeCard from './CodeCard';
+import ResumeTransitionLink from './ResumeTransitionLink';
 
 export default function Hero() {
   const t = useTranslations('landing.hero');
@@ -63,12 +63,12 @@ export default function Hero() {
 
           {/* CTAs */}
           <div className="flex items-center gap-3 flex-wrap">
-            <Link
+            <ResumeTransitionLink
               href={`/${locale}/resume`}
               className="font-[family-name:var(--font-geist-sans)] text-sm font-medium text-white bg-[#171717] dark:bg-[#ededed] dark:text-[#171717] px-4 py-2 rounded-md hover:opacity-80 transition-opacity"
             >
               {t('ctaPrimary')}
-            </Link>
+            </ResumeTransitionLink>
             <a
               href="https://github.com/CUinspace233"
               target="_blank"

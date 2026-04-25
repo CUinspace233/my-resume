@@ -5,6 +5,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeToggle from '@/components/ThemeToggle';
 import GithubLink from '@/components/GithubLink';
 import Link from 'next/link';
+import ResumeTransitionLink from './ResumeTransitionLink';
 
 export default function SiteNav() {
   const t = useTranslations('landing.nav');
@@ -49,13 +50,13 @@ export default function SiteNav() {
             size="medium"
             className="hidden sm:inline-flex"
           />
-          <Link
+          <ResumeTransitionLink
             href={`/${locale}/resume`}
             className="hidden h-9 items-center justify-center rounded-xl bg-[#171717] px-3.5 text-[13px] font-medium whitespace-nowrap text-center text-white transition-opacity hover:opacity-80 dark:bg-[#ededed] dark:text-[#171717] sm:inline-flex"
             style={{ minWidth: '112px' }}
           >
             {t('resume')} →
-          </Link>
+          </ResumeTransitionLink>
         </div>
       </div>
     </nav>

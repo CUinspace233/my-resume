@@ -8,7 +8,7 @@ import AboutBand from '@/components/landing/AboutBand';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0a0a0a] font-[family-name:var(--font-geist-sans)]">
+    <div className="landing-page-shell min-h-screen bg-white dark:bg-[#0a0a0a] font-[family-name:var(--font-geist-sans)]">
       <SiteNav />
 
       <Hero />
