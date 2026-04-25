@@ -63,10 +63,7 @@ function FeatureCard({ card, typeLabel }: { card: CardData; typeLabel: string })
             />
           )}
           {/* Gradient fade into card body */}
-          <div
-            className="absolute bottom-0 left-0 right-0 h-8 pointer-events-none"
-            style={{ background: 'linear-gradient(to bottom, transparent, #111)' }}
-          />
+          <div className="absolute bottom-0 left-0 right-0 h-4 pointer-events-none bg-gradient-to-b from-transparent to-white dark:to-[#111]" />
         </div>
       )}
 
