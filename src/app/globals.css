@@ -81,6 +81,121 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.github-shader-logo {
+  display: block;
+  background-image: url('/github-shader-logo.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@supports (
+  (mask-image: url('/github-shader-logo.png')) or
+    (-webkit-mask-image: url('/github-shader-logo.png'))
+) {
+  .github-shader-logo {
+    --github-logo-filter-start: drop-shadow(0 0 6px rgba(10, 114, 239, 0.2)) saturate(1)
+      contrast(1.16);
+    --github-logo-filter-mid: drop-shadow(0 0 9px rgba(255, 91, 79, 0.22)) saturate(1.06)
+      contrast(1.22);
+    background:
+      linear-gradient(
+        115deg,
+        transparent 0%,
+        transparent 34%,
+        rgba(15, 23, 42, 0.72) 45%,
+        transparent 56%,
+        transparent 100%
+      ),
+      radial-gradient(circle at 24% 18%, rgba(10, 114, 239, 0.58) 0 7%, transparent 24%),
+      linear-gradient(
+        135deg,
+        #05070c 0%,
+        #111827 14%,
+        #0a72ef 30%,
+        #1e3a8a 44%,
+        #334155 54%,
+        #0f172a 66%,
+        #ff5b4f 82%,
+        #080a10 100%
+      ),
+      linear-gradient(45deg, #0a72ef 0%, #1f2937 52%, #ff5b4f 100%);
+    background-size:
+      230% 230%,
+      150% 150%,
+      180% 180%,
+      190% 190%;
+    filter: var(--github-logo-filter-start);
+    mask: url('/github-shader-logo.png') center / contain no-repeat;
+    -webkit-mask: url('/github-shader-logo.png') center / contain no-repeat;
+    animation: github-logo-shader 4.6s ease-in-out infinite;
+  }
+
+  .dark .github-shader-logo {
+    --github-logo-filter-start: drop-shadow(0 0 7px rgba(10, 114, 239, 0.24)) saturate(1)
+      contrast(1.08);
+    --github-logo-filter-mid: drop-shadow(0 0 11px rgba(255, 91, 79, 0.3)) saturate(1.08)
+      contrast(1.18);
+    background:
+      linear-gradient(
+        115deg,
+        transparent 0%,
+        transparent 34%,
+        rgba(255, 255, 255, 0.95) 45%,
+        transparent 56%,
+        transparent 100%
+      ),
+      radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.86) 0 7%, transparent 24%),
+      linear-gradient(
+        135deg,
+        #111318 0%,
+        #273044 12%,
+        #0a72ef 28%,
+        #dbeafe 42%,
+        #ffffff 50%,
+        #94a3b8 64%,
+        #ff5b4f 80%,
+        #222631 100%
+      ),
+      linear-gradient(45deg, #0a72ef 0%, #ededed 48%, #ff5b4f 100%);
+  }
+}
+
+@keyframes github-logo-shader {
+  0% {
+    background-position:
+      120% 50%,
+      0% 20%,
+      0% 50%,
+      0% 50%;
+    filter: var(--github-logo-filter-start);
+  }
+
+  50% {
+    background-position:
+      -45% 50%,
+      90% 72%,
+      100% 50%,
+      100% 50%;
+    filter: var(--github-logo-filter-mid);
+  }
+
+  100% {
+    background-position:
+      120% 50%,
+      0% 20%,
+      0% 50%,
+      0% 50%;
+    filter: var(--github-logo-filter-start);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .github-shader-logo {
+    animation: none;
+  }
+}
+
 :lang(zh) body,
 :lang(zh) .resume-sheet,
 :lang(zh) [data-pdf-mode='true'] {
