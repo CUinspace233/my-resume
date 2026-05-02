@@ -1,0 +1,27 @@
+<svg width="640" height="640" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="640" rx="120" fill="white"/>
+  <path
+    d="M529 265.8C541.7 281.1 550.2 299.7 553.8 320C565.9 388.2 523.5 451.9 469.1 469.5C456.4 523.5 405.5 560.2 348.9 560.2C315.9 560.2 285.8 547.8 263.1 527.4C253.2 529.7 243 530.9 232.4 530.9C164.4 530.9 111.7 480.2 111.7 410.9C111.7 398.9 113.4 387.1 116.7 375.9C94 353.4 80 322.3 80 287.9C80 231.2 118.5 183.5 170.6 169.8C186.6 118.1 233.2 80 288.6 80C321.6 80 351.7 92.8 374.5 113.8C385.2 112.1 396.2 111.8 407.5 112.7C483.8 118.9 540.1 189.8 529 265.8Z"
+    fill="url(#cloudGradient)"
+  />
+  <path
+    d="M208.8 255.5L248.6 322L208.8 388.5"
+    stroke="white"
+    stroke-width="33"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M335.2 387.8H433.4"
+    stroke="white"
+    stroke-width="33"
+    stroke-linecap="round"
+  />
+  <defs>
+    <linearGradient id="cloudGradient" x1="320" y1="80" x2="320" y2="560.2" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A99BFF"/>
+      <stop offset="0.52" stop-color="#6D8DF8"/>
+      <stop offset="1" stop-color="#3346F5"/>
+    </linearGradient>
+  </defs>
+</svg>

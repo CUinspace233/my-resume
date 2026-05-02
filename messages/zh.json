@@ -169,6 +169,12 @@
         "internship": "实习",
         "project": "项目",
         "activity": "活动"
+      },
+      "codexProfileManager": {
+        "title": "Codex Profile Manager",
+        "period": "2026年4月",
+        "description": "一个轻量级 Codex CLI profile helper，用于并行保留多个 ChatGPT 账号与 API-key 登录，并让每个 profile 使用独立的 CODEX_HOME。",
+        "technologies": ["Shell", "Codex CLI", "CODEX_HOME", "API Key", "Auth Profiles"]
       }
     },
     "metrics": {

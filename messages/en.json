@@ -177,6 +177,12 @@
         "internship": "INTERNSHIP",
         "project": "PROJECT",
         "activity": "ACTIVITY"
+      },
+      "codexProfileManager": {
+        "title": "Codex Profile Manager",
+        "period": "Apr 2026",
+        "description": "A small CLI helper for keeping multiple ChatGPT and API-key Codex logins side by side, with each profile running from its own isolated CODEX_HOME.",
+        "technologies": ["Shell", "Codex CLI", "CODEX_HOME", "API Key", "Auth Profiles"]
       }
     },
     "metrics": {

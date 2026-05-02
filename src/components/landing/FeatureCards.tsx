@@ -37,12 +37,12 @@ function FeatureCard({ card, typeLabel }: { card: CardData; typeLabel: string })
       style={{ boxShadow: 'var(--card-shadow)', textDecoration: 'none' }}
     >
       {/* Cover image */}
-      {card.imageUrl && (
+      {(card.imageUrl || card.imageLabel) && (
         <div
           className="relative w-full h-36 overflow-hidden flex items-center justify-center"
           style={{ background: card.imageBg ?? '#fff' }}
         >
-          {card.imageLabel ? (
+          {card.imageLabel && card.imageUrl ? (
             <div className="flex items-center gap-3 z-10">
               <div className="relative w-14 h-14 shrink-0">
                 <Image src={card.imageUrl} alt={card.company} fill className="object-contain" />
@@ -54,13 +54,20 @@ function FeatureCard({ card, typeLabel }: { card: CardData; typeLabel: string })
                 {card.imageLabel}
               </span>
             </div>
-          ) : (
+          ) : card.imageUrl ? (
             <Image
               src={card.imageUrl}
               alt={card.company}
               fill
               className={card.imageFill ? 'object-cover' : 'object-contain p-6'}
             />
+          ) : (
+            <span
+              className="font-[family-name:var(--font-geist-mono)] text-white"
+              style={{ fontSize: '34px', fontWeight: 700, letterSpacing: '0.08em' }}
+            >
+              {card.imageLabel}
+            </span>
           )}
           {/* Gradient fade into card body */}
           <div className="absolute bottom-0 left-0 right-0 h-4 pointer-events-none bg-gradient-to-b from-transparent to-white dark:to-[#111]" />
@@ -190,6 +197,7 @@ export default function FeatureCards() {
     technologies: string[];
     repoUrl?: string;
     projectUrl?: string;
+    imageUrl?: string;
     description: string[];
   }>;
 
@@ -206,6 +214,12 @@ export default function FeatureCards() {
     internship: t('typeLabel.internship'),
     project: t('typeLabel.project'),
     activity: t('typeLabel.activity'),
+  };
+  const codexProfileManager = t.raw('codexProfileManager') as {
+    title: string;
+    period: string;
+    description: string;
+    technologies: string[];
   };
 
   const cards: CardData[] = [
@@ -243,6 +257,18 @@ export default function FeatureCards() {
       repoUrl: projData[0]?.repoUrl,
       url: 'https://mockmate.cuinspace.com',
       imageUrl: '/mockmate-logo.png',
+    },
+    // Codex Profile Manager project
+    {
+      type: 'project',
+      company: codexProfileManager.title,
+      role: '',
+      period: codexProfileManager.period,
+      description: codexProfileManager.description,
+      tech: codexProfileManager.technologies,
+      repoUrl: 'https://github.com/CUinspace233/codex-profile-manager',
+      imageUrl: '/codex-profile-manager-logo.svg',
+      imageBg: '#fff',
     },
     // AISoc Discord bot
     {
