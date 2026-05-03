@@ -175,6 +175,12 @@
         "period": "2026年4月",
         "description": "一个轻量级 Codex CLI profile helper，用于并行保留多个 ChatGPT 账号与 API-key 登录，并让每个 profile 使用独立的 CODEX_HOME。",
         "technologies": ["Shell", "Codex CLI", "CODEX_HOME", "API Key", "Auth Profiles"]
+      },
+      "webFontSwitcher": {
+        "title": "web-font-switcher",
+        "period": "2026年5月",
+        "description": "一个 Chrome 字体切换插件，可按网页文本语言应用不同字体，支持实时预览和自定义字体。",
+        "technologies": ["Chrome Extension", "Manifest V3", "JavaScript", "CSS", "Google Fonts"]
       }
     },
     "metrics": {

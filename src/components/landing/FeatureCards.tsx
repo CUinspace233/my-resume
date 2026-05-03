@@ -221,6 +221,12 @@ export default function FeatureCards() {
     description: string;
     technologies: string[];
   };
+  const webFontSwitcher = t.raw('webFontSwitcher') as {
+    title: string;
+    period: string;
+    description: string;
+    technologies: string[];
+  };
 
   const cards: CardData[] = [
     // Cool AI internship
@@ -269,6 +275,18 @@ export default function FeatureCards() {
       repoUrl: 'https://github.com/CUinspace233/codex-profile-manager',
       imageUrl: '/codex-profile-manager-logo.svg',
       imageBg: '#fff',
+    },
+    // Web Font Switcher project
+    {
+      type: 'project',
+      company: webFontSwitcher.title,
+      role: '',
+      period: webFontSwitcher.period,
+      description: webFontSwitcher.description,
+      tech: webFontSwitcher.technologies,
+      repoUrl: 'https://github.com/CUinspace233/web-font-switcher',
+      imageUrl: '/web-font-switcher-icon.png',
+      imageBg: '#f7f7f2',
     },
     // AISoc Discord bot
     {

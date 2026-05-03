@@ -183,6 +183,12 @@
         "period": "Apr 2026",
         "description": "A small CLI helper for keeping multiple ChatGPT and API-key Codex logins side by side, with each profile running from its own isolated CODEX_HOME.",
         "technologies": ["Shell", "Codex CLI", "CODEX_HOME", "API Key", "Auth Profiles"]
+      },
+      "webFontSwitcher": {
+        "title": "web-font-switcher",
+        "period": "May 2026",
+        "description": "A Chrome extension that applies different fonts based on page text language, with live previews and custom font support.",
+        "technologies": ["Chrome Extension", "Manifest V3", "JavaScript", "CSS", "Google Fonts"]
       }
     },
     "metrics": {
