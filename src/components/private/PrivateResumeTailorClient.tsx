@@ -166,7 +166,9 @@ export default function PrivateResumeTailorClient({
   const [isPreparingPreview, setIsPreparingPreview] = useState(false);
   const [error, setError] = useState('');
   const [previewVersion, setPreviewVersion] = useState(0);
+  const [previewFrameHeight, setPreviewFrameHeight] = useState(2200);
   const isCreatingPreviewDraftRef = useRef(false);
+  const previewResizeObserverRef = useRef<ResizeObserver | null>(null);
 
   const previewUrl = useMemo(() => {
     if (!draftId) return '';
@@ -198,6 +200,12 @@ export default function PrivateResumeTailorClient({
   useEffect(() => {
     isCreatingPreviewDraftRef.current = false;
   }, [selectedLocale]);
+
+  useEffect(() => {
+    return () => {
+      previewResizeObserverRef.current?.disconnect();
+    };
+  }, []);
 
   const setResumeDraft = (updater: (draft: ResumeContent) => void) => {
     setResume(current => {
@@ -356,6 +364,25 @@ export default function PrivateResumeTailorClient({
       },
     });
   };
+
+  const syncPreviewFrameHeight = useCallback((iframe: HTMLIFrameElement) => {
+    const documentElement = iframe.contentDocument?.documentElement;
+    const body = iframe.contentDocument?.body;
+
+    if (!documentElement || !body) return;
+
+    const updateFrameHeight = () => {
+      setPreviewFrameHeight(Math.ceil(Math.max(documentElement.scrollHeight, body.scrollHeight)));
+    };
+
+    previewResizeObserverRef.current?.disconnect();
+    previewResizeObserverRef.current = new ResizeObserver(updateFrameHeight);
+    previewResizeObserverRef.current.observe(documentElement);
+    previewResizeObserverRef.current.observe(body);
+
+    updateFrameHeight();
+    window.setTimeout(updateFrameHeight, 250);
+  }, []);
 
   if (!isPasswordConfigured) {
     return (
@@ -783,7 +810,13 @@ export default function PrivateResumeTailorClient({
                       key={previewUrl}
                       title="Tailored resume preview"
                       src={previewUrl}
-                      className="h-[900px] w-full bg-[#f7f4ee]"
+                      onLoad={event => syncPreviewFrameHeight(event.currentTarget)}
+                      style={
+                        {
+                          '--preview-frame-height': `${previewFrameHeight}px`,
+                        } as React.CSSProperties
+                      }
+                      className="pointer-events-none h-[var(--preview-frame-height)] w-full bg-[#f7f4ee] md:pointer-events-auto md:h-[900px]"
                     />
                   ) : (
                     <div className="grid h-[360px] place-items-center bg-[#f7f4ee] text-sm font-semibold text-[#625b51]">
