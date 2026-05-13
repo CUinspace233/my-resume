@@ -22,7 +22,7 @@ export async function PATCH(request: NextRequest, { params }: Params) {
   }
 
   const { draftId } = await params;
-  const draft = getTailoredResumeDraft(draftId);
+  const draft = await getTailoredResumeDraft(draftId);
 
   if (!draft) {
     return privateJson({ error: 'Draft not found or expired' }, { status: 404 });
@@ -37,7 +37,7 @@ export async function PATCH(request: NextRequest, { params }: Params) {
   try {
     const baseResume = await getBaseResume(draft.locale);
     validateTailoredResume(baseResume, body.resume);
-    const updatedDraft = updateTailoredResumeDraft(draftId, body.resume);
+    const updatedDraft = await updateTailoredResumeDraft(draftId, body.resume);
 
     return privateJson({ draftId, tailoredResume: updatedDraft?.resume });
   } catch (error) {

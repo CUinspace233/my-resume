@@ -27,7 +27,7 @@ export default async function TailoredResumePreviewPage({
     );
   }
 
-  const draft = getTailoredResumeDraft(draftId);
+  const draft = await getTailoredResumeDraft(draftId);
 
   if (!draft || draft.locale !== locale) {
     return (

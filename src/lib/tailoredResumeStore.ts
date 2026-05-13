@@ -1,6 +1,9 @@
 import type { JdInsights, ResumeContent, TailoredResumeDraft } from '@/types/resume';
+import { Redis } from '@upstash/redis';
 
 const DRAFT_TTL_MS = 30 * 60 * 1000;
+const DRAFT_TTL_SECONDS = DRAFT_TTL_MS / 1000;
+const DRAFT_KEY_PREFIX = 'resume-tailor:draft:';
 
 type TailoredResumeStore = Map<string, TailoredResumeDraft>;
 
@@ -14,6 +17,28 @@ function getStore() {
   return globalThis.__tailoredResumeDrafts;
 }
 
+function getRedisEnv() {
+  const url = process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN;
+
+  if (!url || !token) {
+    return null;
+  }
+
+  return { url, token };
+}
+
+function getRedis() {
+  const env = getRedisEnv();
+  if (!env) return null;
+
+  return new Redis(env);
+}
+
+function getDraftKey(draftId: string) {
+  return `${DRAFT_KEY_PREFIX}${draftId}`;
+}
+
 function pruneExpiredDrafts() {
   const now = Date.now();
   for (const [draftId, draft] of getStore()) {
@@ -23,7 +48,22 @@ function pruneExpiredDrafts() {
   }
 }
 
-export function createTailoredResumeDraft({
+function getRemainingTtlSeconds(draft: TailoredResumeDraft) {
+  return Math.max(0, Math.ceil((draft.expiresAt - Date.now()) / 1000));
+}
+
+async function setDraft(draft: TailoredResumeDraft, ttlSeconds: number) {
+  const redis = getRedis();
+
+  if (redis) {
+    await redis.set(getDraftKey(draft.id), draft, { ex: ttlSeconds });
+    return;
+  }
+
+  getStore().set(draft.id, draft);
+}
+
+export async function createTailoredResumeDraft({
   locale,
   resume,
   jdTitle,
@@ -53,17 +93,34 @@ export function createTailoredResumeDraft({
     jdInsights,
   };
 
-  getStore().set(draft.id, draft);
+  await setDraft(draft, DRAFT_TTL_SECONDS);
   return draft;
 }
 
-export function getTailoredResumeDraft(draftId: string) {
+export async function getTailoredResumeDraft(draftId: string) {
+  const redis = getRedis();
+
+  if (redis) {
+    const draft = await redis.get<TailoredResumeDraft>(getDraftKey(draftId));
+
+    if (!draft) {
+      return null;
+    }
+
+    if (draft.expiresAt <= Date.now()) {
+      await redis.del(getDraftKey(draftId));
+      return null;
+    }
+
+    return draft;
+  }
+
   pruneExpiredDrafts();
   return getStore().get(draftId) ?? null;
 }
 
-export function updateTailoredResumeDraft(draftId: string, resume: ResumeContent) {
-  const draft = getTailoredResumeDraft(draftId);
+export async function updateTailoredResumeDraft(draftId: string, resume: ResumeContent) {
+  const draft = await getTailoredResumeDraft(draftId);
 
   if (!draft) {
     return null;
@@ -74,6 +131,12 @@ export function updateTailoredResumeDraft(draftId: string, resume: ResumeContent
     resume,
   };
 
-  getStore().set(draftId, nextDraft);
+  const remainingTtlSeconds = getRemainingTtlSeconds(nextDraft);
+
+  if (remainingTtlSeconds <= 0) {
+    return null;
+  }
+
+  await setDraft(nextDraft, remainingTtlSeconds);
   return nextDraft;
 }

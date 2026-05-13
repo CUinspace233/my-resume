@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
   try {
     const baseResume = await getBaseResume(body.locale);
     validateTailoredResume(baseResume, body.resume);
-    const draft = createTailoredResumeDraft({
+    const draft = await createTailoredResumeDraft({
       locale: body.locale,
       resume: body.resume,
       changeSummary: [],

@@ -60,7 +60,7 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  const draft = getTailoredResumeDraft(draftId);
+  const draft = await getTailoredResumeDraft(draftId);
 
   if (!draft || draft.locale !== locale) {
     return NextResponse.json(

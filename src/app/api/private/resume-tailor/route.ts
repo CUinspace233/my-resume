@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
       validateTailoredResume(baseResume, output.tailoredResume);
     }
 
-    const draft = createTailoredResumeDraft({
+    const draft = await createTailoredResumeDraft({
       locale,
       resume: output.tailoredResume,
       jdTitle: output.jdTitle,
