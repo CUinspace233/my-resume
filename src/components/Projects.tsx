@@ -1,28 +1,17 @@
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
-
-// Project metadata definition
-interface ProjectData {
-  title: string;
-  repoUrl?: string;
-  repoName?: string;
-  technologies: string[];
-  description: string[];
-  projectUrl?: string;
-  siteName?: string;
-  period?: string;
-}
+import type { ResumeProject } from '@/types/resume';
 
 const Projects: FC = () => {
-  const t = useTranslations('sections.projects');
-  const projectsData: ProjectData[] = t.raw('projectsData') as ProjectData[];
+  const t = useTranslations('resume.projects');
+  const projectsData = t.raw('items') as ResumeProject[];
 
   return (
     <section className="w-full max-w-3xl mx-auto">
       <h2 className="text-xl font-bold">{t('title')}</h2>
       <div className="space-y-1">
-        {projectsData.map((project, index) => (
-          <div key={index} className="bg-black/[.05] dark:bg-white/[.06] p-2 rounded-lg">
+        {projectsData.map(project => (
+          <div key={project.id} className="bg-black/[.05] dark:bg-white/[.06] p-2 rounded-lg">
             <div className="flex justify-between items-start mb-1">
               <h3 className="text-lg font-semibold">{project.title}</h3>
               <p className="text-xs text-gray-600 dark:text-gray-400">{project.period}</p>
@@ -54,8 +43,8 @@ const Projects: FC = () => {
               </div>
             </div>
             <ul className="list-disc list-inside space-y-1 text-xs">
-              {project.description.map((item, i) => (
-                <li key={i}>{item}</li>
+              {project.description.map(item => (
+                <li key={item.id}>{item.text}</li>
               ))}
             </ul>
           </div>

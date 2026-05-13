@@ -186,10 +186,22 @@
     "metrics": {
       "label": "一些数字",
       "items": [
-        { "value": "4.0 / 4.0", "label": "UNSW WES iGPA" },
-        { "value": "WAM 83.5", "label": "加权平均分" },
-        { "value": "Top 10%", "label": "AllUni 编程竞赛 澳新地区" },
-        { "value": "2+", "label": "完成实习经历" }
+        {
+          "value": "4.0 / 4.0",
+          "label": "UNSW WES iGPA"
+        },
+        {
+          "value": "WAM 83.5",
+          "label": "加权平均分"
+        },
+        {
+          "value": "Top 10%",
+          "label": "AllUni 编程竞赛 澳新地区"
+        },
+        {
+          "value": "2+",
+          "label": "完成实习经历"
+        }
       ]
     },
     "about": {
@@ -197,6 +209,276 @@
       "body": "UNSW 悉尼计算机科学在读，2026年6月毕业。曾在 Graviti 实习，负责 diffus.me 的市场端网站开发（Vue 3、Nuxt 3、FastAPI）；目前在酷爱科技实习，负责多模态模型的推理接口设计和 Docker 化部署。在 UNSW 人工智能社团担任 IT 部长期间，用 Next.js 15 和 FastAPI 搭建了 Discord 会议转任务系统。",
       "contact": "联系我",
       "viewResume": "完整简历"
+    }
+  },
+  "common": {
+    "actions": {
+      "exportPdf": "导出PDF",
+      "exportingPdf": "导出中…",
+      "exportPdfAria": "导出 PDF"
+    },
+    "navigation": {
+      "githubAria": "在 GitHub 上查看源码",
+      "toggleThemeAria": "切换深色模式"
+    }
+  },
+  "resume": {
+    "ui": {
+      "home": "首页",
+      "websiteLabel": "cuinspace.com"
+    },
+    "pdf": {
+      "fileNameBase": "Henrick_Lin_Resume",
+      "localizedSuffix": "_中文"
+    },
+    "header": {
+      "name": "林则翰 (Henrick Lin)",
+      "email": "gmforzh@gmail.com",
+      "emailHref": "mailto:gmforzh@gmail.com",
+      "githubUrl": "https://github.com/CUinspace233",
+      "githubLabel": "github.com/CUinspace233",
+      "linkedinUrl": "https://www.linkedin.com/in/henrick-lin-8a2043325/",
+      "linkedinLabel": "linkedin.com/in/henrick-lin-8a2043325"
+    },
+    "education": {
+      "id": "unsw-bachelor-computer-science",
+      "title": "教育背景",
+      "university": "新南威尔士大学 (UNSW), 悉尼",
+      "degree": "计算机科学学士 (WES iGPA: 4.0/4.0, WAM加权平均: 83.5)",
+      "period": "2024年2月 - 2026年6月",
+      "relevantCourses": "相关课程",
+      "courses": "Web前端编程 (96), 软件工程基础 (96), 计算机系统基础 (87), 编程基础 (85), 数据结构与算法 (Distinction), 面向对象编程 (Distinction), 软件构建：技术与工具 (Distinction), (进阶)安全工程与网络安全, 数据库系统"
+    },
+    "experience": {
+      "title": "工作经验",
+      "projectsLabel": "项目：",
+      "items": [
+        {
+          "id": "graviti",
+          "company": "Graviti",
+          "position": "全栈开发实习生",
+          "period": "2024年12月 - 2025年12月",
+          "projects": [
+            {
+              "id": "diffus-ai-image-generation-platform",
+              "title": "AI 图像生成平台网站",
+              "technologies": [
+                "Vue 3",
+                "Nuxt 3",
+                "Tailwind CSS",
+                "MongoDB",
+                "FastAPI",
+                "SQLAlchemy",
+                "i18n"
+              ],
+              "projectUrl": "https://www.diffus.me",
+              "siteName": "www.diffus.me",
+              "description": [
+                {
+                  "id": "marketing-site",
+                  "text": "使用 Vue 3 和 Nuxt 3 框架构建了 AI 图像生成平台的市场端网站。"
+                },
+                {
+                  "id": "mongodb-migration",
+                  "text": "将数据迁移到 MongoDB，包括数据清洗和重构以适配前端需求。"
+                },
+                {
+                  "id": "i18n",
+                  "text": "实现 i18n 国际化以支持多种语言，提升全球用户访问性。"
+                },
+                {
+                  "id": "nuxt-seo-fcp",
+                  "text": "利用 Nuxt 框架的 SSR 等特性处理网站 SEO (搜索引擎优化) 并优化首屏加载速度，以提高搜索引擎收录率。"
+                },
+                {
+                  "id": "comments-emoji",
+                  "text": "从方案设计、文档编写到开发，使用 FastAPI 和 SQLAlchemy (MySQL) 实现评论和 emoji 功能。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cool-ai",
+          "company": "酷爱科技",
+          "position": "AIGC 算法工程师实习生",
+          "period": "2025年12月 - 至今",
+          "achievements": [
+            {
+              "id": "model-dockerization",
+              "text": "多模态感知模型（如音频 / 视觉 / 语音相关模型）的 Docker 化部署"
+            },
+            {
+              "id": "fastapi-inference-services",
+              "text": "利用 FastAPI 进行模型推理接口与服务化设计，支持本地与服务器环境下的快速启动与测试"
+            }
+          ],
+          "projects": [
+            {
+              "id": "document-compliance-review-platform",
+              "title": "文档合规性审查平台",
+              "technologies": ["FastAPI", "React", "Vite", "LLM", "RAG", "向量检索", "规则引擎"],
+              "description": [
+                {
+                  "id": "end-to-end-platform",
+                  "text": "负责搭建基于 FastAPI + React/Vite 的文档合规性审查平台，覆盖文档解析、条款级/全文级合规检测、违规标注与审查报告生成的端到端闭环。"
+                },
+                {
+                  "id": "rule-llm-guardrail",
+                  "text": "设计并实现「规则引擎 + LLM + Guardrail」混合架构，结合合规条款召回、受控提示词和输出校验，提升复杂合规场景下违规识别的准确性与可控性。"
+                },
+                {
+                  "id": "rag-pipeline",
+                  "text": "构建检索增强审查链路，结合向量检索与相似违规案例 Few-shot 增强，为模型提供动态合规参照；同时优化提示词工程，将条款级平均提示词长度由 15299 压缩至 2918。"
+                },
+                {
+                  "id": "dynamic-reasoning",
+                  "text": "实现风险分级与动态推理开关，仅对高风险条款开启深度推理，将典型审查耗时从 853s 降至 652s，整体提速约 23.6%。"
+                },
+                {
+                  "id": "human-feedback-loop",
+                  "text": "搭建 Human-in-the-Loop 反馈闭环，将审核人员「正确/错误/漏审」标注回流到向量案例库，持续优化合规检索效果并降低误报漏报率。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "societies": {
+      "title": "社团与活动",
+      "items": [
+        {
+          "id": "unsw-aisoc",
+          "organization": "新南威尔士大学人工智能社团 (AISoc)",
+          "position": "IT部门部长 (Director)",
+          "period": "2025年3月 - 12月",
+          "achievements": [
+            {
+              "id": "meeting-task-system",
+              "text": "基于 Next.js 15 + FastAPI + PostgreSQL 构建 Discord 会议转任务系统，利用 Server Actions 和 异步 SQLAlchemy 实现高性能数据交互。"
+            },
+            {
+              "id": "discord-audio-pipeline",
+              "text": "设计 Discord Bot 捕获语音流，构建从 语音采集 (Discord) 到 语音转文字 再到 任务生成 (LLM) 的全自动闭环工作流。"
+            },
+            {
+              "id": "recursive-task-engine",
+              "text": "通过 Prompt Engineering 实现任务的结构化提取与语义去重，并支持多级子任务 (Recursive Hierarchy) 的递归建模与动态交互。"
+            },
+            {
+              "id": "react-transition-performance",
+              "text": "利用 React useTransition 异步处理复杂任务的状态更新，消除大列表操作中的 UI 阻塞感，确保高并发交互下的界面响应性能"
+            },
+            {
+              "id": "society-website-maintenance",
+              "text": "维护并更新社团网站 (https://unswaisoc.com/)。"
+            }
+          ],
+          "repoUrl": "https://github.com/AISoc-UNSW/Ai-Society-2025-Website",
+          "repoDescription": "Discord会议生成任务系统 Repo:",
+          "societyWebsiteUrl": "https://unswaisoc.com/",
+          "societyWebsiteDescription": "社团网站:"
+        }
+      ]
+    },
+    "projects": {
+      "title": "项目经验",
+      "items": [
+        {
+          "id": "mockmate",
+          "title": "MockMate - 你的AI面试教练",
+          "imageUrl": "/mockmate-logo.png",
+          "repoUrl": "https://github.com/CUinspace233/mock-mate",
+          "repoName": "MockMate",
+          "projectUrl": "https://mockmate.cuinspace.com",
+          "period": "2025年7月 - 至今",
+          "technologies": [
+            "Python",
+            "FastAPI",
+            "SQLAlchemy",
+            "SQLite",
+            "React",
+            "TypeScript",
+            "Vite",
+            "Zustand"
+          ],
+          "description": [
+            {
+              "id": "multi-round-interviews",
+              "text": "AI 模拟面试平台：React + FastAPI 实现\"出题→追问→作答→AI 整体评测→记录\"的多轮面试训练闭环，支持自定义问题数与追问深度。"
+            },
+            {
+              "id": "sse-streaming",
+              "text": "SSE 流式出题与追问：后端流式生成主问题及追问，前端增量拼接 + 失败回退非流式，还原真实面试节奏。"
+            },
+            {
+              "id": "structured-evaluation",
+              "text": "结构化 AI 评测：强制 LLM 输出严格 JSON 多维评分，追问模式下基于完整对话历史统一评估。"
+            },
+            {
+              "id": "daily-challenge",
+              "text": "APScheduler 定时抓取 RSS 新闻 + LLM 生成面试题，经相关度评分过滤后落库，结合浏览器 Notification + Zustand 持久化实现 Daily Challenge 推送。"
+            },
+            {
+              "id": "github-actions-cicd",
+              "text": "搭建了基于 GitHub Actions 的 CI/CD 流水线，实现 PR 自动代码检查与合并后自动 SSH 部署。"
+            }
+          ]
+        }
+      ]
+    },
+    "awards": {
+      "title": "竞赛经历",
+      "items": [
+        {
+          "id": "alluni-division-b",
+          "place": "全澳洲及新西兰排名第9 (Top 10%)",
+          "award": "AllUni编程竞赛 Division B",
+          "period": "2025年8月",
+          "link": "https://alluni.io/contest/b2025/ranking/"
+        }
+      ]
+    },
+    "skills": {
+      "title": "技术技能",
+      "groups": [
+        {
+          "id": "languages",
+          "label": "编程语言",
+          "items": ["C", "JavaScript", "TypeScript", "Python", "Java", "Rust", "Shell"]
+        },
+        {
+          "id": "frontend",
+          "label": "前端",
+          "items": ["React", "Next.js", "Vue 3", "Nuxt 3", "Vite", "TailwindCSS"]
+        },
+        {
+          "id": "backend",
+          "label": "后端",
+          "items": ["FastAPI", "SQLAlchemy", "Express.js"]
+        },
+        {
+          "id": "dev-tools",
+          "label": "开发工具",
+          "items": ["Git", "Linux", "Shell Scripting", "Docker"]
+        },
+        {
+          "id": "testing",
+          "label": "测试",
+          "items": ["Jest", "JUnit", "Cypress"]
+        },
+        {
+          "id": "databases",
+          "label": "数据库",
+          "items": ["PostgreSQL", "MongoDB", "MySQL", "SQLite"]
+        },
+        {
+          "id": "3d-software",
+          "label": "3D软件",
+          "items": ["Autodesk Maya"]
+        }
+      ]
     }
   }
 }

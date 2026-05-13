@@ -2,23 +2,17 @@
 
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
-
-interface AwardItem {
-  place: string;
-  award: string;
-  period: string;
-  link: string;
-}
+import type { ResumeAwardItem } from '@/types/resume';
 
 const Awards: FC = () => {
-  const t = useTranslations('sections.awards');
-  const awardsData: AwardItem[] = t.raw('awardsData') as AwardItem[];
+  const t = useTranslations('resume.awards');
+  const awardsData = t.raw('items') as ResumeAwardItem[];
 
   return (
     <section className="w-full max-w-3xl mx-auto">
       <h2 className="text-xl font-bold">{t('title')}</h2>
-      {awardsData.map((item, index) => (
-        <div key={index} className="bg-black/[.05] dark:bg-white/[.06] p-2 rounded-lg mb-3">
+      {awardsData.map(item => (
+        <div key={item.id} className="bg-black/[.05] dark:bg-white/[.06] p-2 rounded-lg mb-3">
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row justify-start items-center gap-1">
               <span className="text-lg">•</span>

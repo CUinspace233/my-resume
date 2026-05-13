@@ -1,35 +1,17 @@
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
-
-interface ProjectData {
-  title: string;
-  repoUrl?: string;
-  repoName?: string;
-  technologies: string[];
-  description: string[];
-  projectUrl?: string;
-  siteName?: string;
-}
-
-interface ExperienceItem {
-  company: string;
-  position: string;
-  period: string;
-  achievements: string[];
-  projects: ProjectData[];
-}
+import type { ResumeExperienceItem } from '@/types/resume';
 
 const Experience: FC = () => {
-  const t = useTranslations('sections.experience');
+  const t = useTranslations('resume.experience');
 
-  // Get experience data from translations
-  const experienceData: ExperienceItem[] = t.raw('experienceData') as ExperienceItem[];
+  const experienceData = t.raw('items') as ResumeExperienceItem[];
 
   return (
     <section className="w-full max-w-3xl mx-auto">
       <h2 className="text-xl font-bold">{t('title')}</h2>
-      {experienceData.map((item, index) => (
-        <div key={index} className="bg-black/[.05] dark:bg-white/[.06] p-2 rounded-lg mb-1">
+      {experienceData.map(item => (
+        <div key={item.id} className="bg-black/[.05] dark:bg-white/[.06] p-2 rounded-lg mb-1">
           <div className="flex justify-between items-start mb-1">
             <h3 className="text-lg font-semibold">
               {item.position} – {item.company}
@@ -38,8 +20,8 @@ const Experience: FC = () => {
           </div>
           {item.achievements && item.achievements.length > 0 && (
             <ul className="list-disc list-inside space-y-1 text-xs">
-              {item.achievements.map((achievement, i) => (
-                <li key={i}>{achievement}</li>
+              {item.achievements.map(achievement => (
+                <li key={achievement.id}>{achievement.text}</li>
               ))}
             </ul>
           )}
@@ -47,9 +29,9 @@ const Experience: FC = () => {
           {/* Projects */}
           {item.projects && item.projects.length > 0 && (
             <div>
-              <h4 className="text-lg font-semibold">{t('projects')}</h4>
-              {item.projects.map((project, i) => (
-                <div key={i} className="pl-4 border-l-2 border-gray-200">
+              <h4 className="text-lg font-semibold">{t('projectsLabel')}</h4>
+              {item.projects.map(project => (
+                <div key={project.id} className="pl-4 border-l-2 border-gray-200">
                   <div className="font-medium text-lg">
                     {project.title}
                     {project.projectUrl && project.siteName && (
@@ -69,8 +51,8 @@ const Experience: FC = () => {
                     {project.technologies.join(', ')}
                   </div>
                   <ul className="list-disc list-inside space-y-1 text-xs">
-                    {project.description.map((desc, j) => (
-                      <li key={j}>{desc}</li>
+                    {project.description.map(desc => (
+                      <li key={desc.id}>{desc.text}</li>
                     ))}
                   </ul>
                 </div>

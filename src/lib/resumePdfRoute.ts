@@ -76,7 +76,7 @@ export async function handleResumePdfRequest(request: NextRequest) {
       },
     });
 
-    const { asciiFileName, localizedFileName } = getResumePdfFileNames(locale);
+    const { asciiFileName, localizedFileName } = await getResumePdfFileNames(locale);
 
     return new NextResponse(Buffer.from(pdfBuffer), {
       headers: {

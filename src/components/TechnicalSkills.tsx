@@ -1,55 +1,23 @@
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
+import type { ResumeSkillGroup } from '@/types/resume';
 
 const TechnicalSkills: FC = () => {
-  const t = useTranslations('sections.skills');
+  const t = useTranslations('resume.skills');
+  const skillGroups = t.raw('groups') as ResumeSkillGroup[];
 
   return (
     <section className="w-full max-w-3xl mx-auto py-2">
       <h2 className="text-xl font-bold mb-2 text-left">{t('title')}</h2>
       <div className="grid grid-cols-2 gap-1">
-        <div className="p-2 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
-          <div>
-            <strong>{t('languages')}:</strong>
+        {skillGroups.map(group => (
+          <div key={group.id} className="p-2 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
+            <div>
+              <strong>{group.label}:</strong>
+            </div>
+            <span className="block">{group.items.join(', ')}</span>
           </div>
-          <span className="block">C, JavaScript, TypeScript, Python, Java, Rust, Shell</span>
-        </div>
-        <div className="p-2 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
-          <div>
-            <strong>{t('frontend_frameworks') || 'Frontend'}:</strong>
-          </div>
-          <span className="block">React, Next.js, Vue 3, Nuxt 3, Vite, TailwindCSS</span>
-        </div>
-        <div className="p-2 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
-          <div>
-            <strong>{t('backend_frameworks') || 'Backend'}:</strong>
-          </div>
-          <span className="block">FastAPI, SQLAlchemy, Express.js</span>
-        </div>
-        <div className="p-2 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
-          <div>
-            <strong>{t('devTools')}:</strong>
-          </div>
-          <span className="block">Git, Linux, Shell Scripting, Docker</span>
-        </div>
-        <div className="p-2 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
-          <div>
-            <strong>{t('testing')}:</strong>
-          </div>
-          <span className="block">Jest, JUnit, Cypress</span>
-        </div>
-        <div className="p-2 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
-          <div>
-            <strong>{t('databases')}:</strong>
-          </div>
-          <span className="block">PostgreSQL, MongoDB, MySQL, SQLite</span>
-        </div>
-        <div className="p-2 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
-          <div>
-            <strong>{t('3dSoftware')}:</strong>
-          </div>
-          <span className="block">Autodesk Maya</span>
-        </div>
+        ))}
       </div>
     </section>
   );

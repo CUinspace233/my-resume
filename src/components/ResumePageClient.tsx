@@ -13,6 +13,7 @@ import ScalableContent from '@/components/ScalableContent';
 import Societies from '@/components/Societies';
 import TechnicalSkills from '@/components/TechnicalSkills';
 import ThemeToggle from '@/components/ThemeToggle';
+import { useTranslations } from 'next-intl';
 
 type ResumePageClientProps = {
   locale: string;
@@ -20,6 +21,7 @@ type ResumePageClientProps = {
 };
 
 export default function ResumePageClient({ locale, isPrintMode }: ResumePageClientProps) {
+  const t = useTranslations('resume.ui');
   const fontClass =
     locale === 'zh'
       ? "font-['Noto_Sans_SC','PingFang_SC','Hiragino_Sans_GB','Microsoft_YaHei',sans-serif]"
@@ -44,7 +46,7 @@ export default function ResumePageClient({ locale, isPrintMode }: ResumePageClie
           className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-black/10 bg-white/92 px-3.5 text-sm font-medium text-[#171717] shadow-[0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-md transition-colors hover:bg-white dark:border-white/10 dark:bg-[#171717]/92 dark:text-[#ededed]"
         >
           <span aria-hidden="true">←</span>
-          <span>Home</span>
+          <span>{t('home')}</span>
         </HomeTransitionLink>
       </div>
 
@@ -74,7 +76,7 @@ export default function ResumePageClient({ locale, isPrintMode }: ResumePageClie
             rel="noopener noreferrer"
             className="resume-website-link absolute bottom-2 right-3 text-[10px] text-[#808080] hover:text-[#171717] hover:underline sm:bottom-3 sm:right-4 md:bottom-[8mm] md:right-[20mm]"
           >
-            <span>cuinspace.com </span>
+            <span>{t('websiteLabel')} </span>
             <span className="resume-link-arrow" aria-hidden="true">
               <svg
                 viewBox="0 0 12 12"

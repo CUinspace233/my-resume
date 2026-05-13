@@ -5,11 +5,10 @@ import { FaFilePdf } from 'react-icons/fa6';
 import { LuLoaderCircle } from 'react-icons/lu';
 import { useLocale, useTranslations } from 'next-intl';
 
-const getResumePdfFileName = (locale: string) => {
+const getResumePdfFileName = (baseName: string, localeSuffix: string) => {
   const date = new Date();
-  const localeSuffix = locale === 'zh' ? '_中文' : '';
 
-  return `Henrick_Lin_Resume${localeSuffix}_${date
+  return `${baseName}${localeSuffix}_${date
     .getFullYear()
     .toString()
     .slice(-2)}_${String(date.getMonth() + 1).padStart(2, '0')}_${String(date.getDate()).padStart(
@@ -20,11 +19,12 @@ const getResumePdfFileName = (locale: string) => {
 
 const ExportPdfButton = () => {
   const locale = useLocale();
-  const t = useTranslations('buttons');
+  const t = useTranslations('common.actions');
+  const pdf = useTranslations('resume.pdf');
   const [isExporting, setIsExporting] = useState(false);
 
   const handleExportPdf = useCallback(async () => {
-    const fileName = getResumePdfFileName(locale);
+    const fileName = getResumePdfFileName(pdf('fileNameBase'), pdf('localizedSuffix'));
     const exportUrl = `/api/resume-pdf?locale=${locale}`;
     const isMobileBrowser =
       typeof navigator !== 'undefined' &&
@@ -89,7 +89,7 @@ const ExportPdfButton = () => {
         setIsExporting(false);
       }
     }
-  }, [locale]);
+  }, [locale, pdf]);
 
   return (
     <div className="export-pdf-container print:hidden">
@@ -99,7 +99,7 @@ const ExportPdfButton = () => {
         onClick={handleExportPdf}
         disabled={isExporting}
         className="flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#171717] px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-black disabled:cursor-wait disabled:opacity-70 sm:px-3.5"
-        aria-label="Export as PDF"
+        aria-label={t('exportPdfAria')}
         aria-busy={isExporting}
       >
         {isExporting ? (
@@ -108,7 +108,7 @@ const ExportPdfButton = () => {
           <FaFilePdf className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
         )}
         <span className={isExporting ? 'inline' : 'hidden md:inline'}>
-          {isExporting ? 'Exporting…' : t('exportPdf')}
+          {isExporting ? t('exportingPdf') : t('exportPdf')}
         </span>
       </button>
     </div>

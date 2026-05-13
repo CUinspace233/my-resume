@@ -40,6 +40,72 @@ function getKeysRecursively(obj, prefix = '') {
   return keys;
 }
 
+function getResumeIdSets(obj, prefix = 'resume') {
+  const resume = obj.resume;
+  const sets = {};
+
+  function walk(value, currentPath) {
+    if (Array.isArray(value)) {
+      const ids = value
+        .filter(item => typeof item === 'object' && item !== null && typeof item.id === 'string')
+        .map(item => item.id)
+        .sort();
+
+      if (ids.length > 0) {
+        sets[currentPath] = ids;
+      }
+
+      value.forEach((item, index) => {
+        if (typeof item === 'object' && item !== null) {
+          const itemPath =
+            typeof item.id === 'string'
+              ? `${currentPath}[id=${item.id}]`
+              : `${currentPath}[${index}]`;
+          walk(item, itemPath);
+        }
+      });
+      return;
+    }
+
+    if (typeof value === 'object' && value !== null) {
+      Object.entries(value).forEach(([key, child]) => {
+        walk(child, `${currentPath}.${key}`);
+      });
+    }
+  }
+
+  if (resume && typeof resume === 'object') {
+    walk(resume, prefix);
+  }
+
+  return sets;
+}
+
+function getIdSetMismatches(enContent, zhContent) {
+  const enSets = getResumeIdSets(enContent);
+  const zhSets = getResumeIdSets(zhContent);
+  const paths = [...new Set([...Object.keys(enSets), ...Object.keys(zhSets)])].sort();
+
+  return paths
+    .map(path => {
+      const enIds = enSets[path] ?? [];
+      const zhIds = zhSets[path] ?? [];
+      const missingInZh = enIds.filter(id => !zhIds.includes(id));
+      const extraInZh = zhIds.filter(id => !enIds.includes(id));
+
+      if (missingInZh.length === 0 && extraInZh.length === 0) {
+        return null;
+      }
+
+      return {
+        path,
+        missingInZh,
+        extraInZh,
+      };
+    })
+    .filter(Boolean);
+}
+
 /**
  * Check for missing keys in the translation files
  */
@@ -75,6 +141,7 @@ function checkTranslations() {
 
     const missingKeys = normalizedEnKeys.filter(key => !normalizedZhKeys.includes(key));
     const extraKeys = normalizedZhKeys.filter(key => !normalizedEnKeys.includes(key));
+    const idSetMismatches = getIdSetMismatches(enContent, zhContent);
 
     console.log('🔍 Translation Check Results:');
     console.log(`📊 English keys: ${normalizedEnKeys.length}`);
@@ -94,7 +161,20 @@ function checkTranslations() {
       });
     }
 
-    if (missingKeys.length === 0 && extraKeys.length === 0) {
+    if (idSetMismatches.length > 0) {
+      console.error('\n❌ Resume id mismatches between English and Chinese translations:');
+      idSetMismatches.forEach(mismatch => {
+        console.error(`   • ${mismatch.path}`);
+        if (mismatch.missingInZh.length > 0) {
+          console.error(`     Missing in Chinese: ${mismatch.missingInZh.join(', ')}`);
+        }
+        if (mismatch.extraInZh.length > 0) {
+          console.error(`     Extra in Chinese: ${mismatch.extraInZh.join(', ')}`);
+        }
+      });
+    }
+
+    if (missingKeys.length === 0 && extraKeys.length === 0 && idSetMismatches.length === 0) {
       console.log('✅ All translation keys are in sync!');
       return true;
     } else {

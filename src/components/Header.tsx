@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 
 const Header: FC = () => {
-  const t = useTranslations('header');
+  const t = useTranslations('resume.header');
   const locale = useLocale();
   const mobile =
     locale === 'zh' ? process.env.NEXT_PUBLIC_MOBILE_ZH : process.env.NEXT_PUBLIC_MOBILE_EN;
@@ -21,26 +21,26 @@ const Header: FC = () => {
             <span className="text-gray-400">|</span>
           </>
         )}
-        <a href="mailto:gmforzh@gmail.com" className="hover:underline">
-          gmforzh@gmail.com
+        <a href={t('emailHref')} className="hover:underline">
+          {t('email')}
         </a>
         <span className="text-gray-400">|</span>
         <a
-          href="https://github.com/CUinspace233"
+          href={t('githubUrl')}
           target="_blank"
           rel="noopener noreferrer"
           className="underline underline-offset-3"
         >
-          github.com/CUinspace233
+          {t('githubLabel')}
         </a>
         <span className="text-gray-400">|</span>
         <a
-          href="https://www.linkedin.com/in/henrick-lin-8a2043325/"
+          href={t('linkedinUrl')}
           target="_blank"
           rel="noopener noreferrer"
           className="underline underline-offset-3"
         >
-          linkedin.com/in/henrick-lin-8a2043325
+          {t('linkedinLabel')}
         </a>
       </div>
     </header>

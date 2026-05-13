@@ -1,8 +1,11 @@
 'use client';
 
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
+import { useTranslations } from 'next-intl';
 
 export default function ThemeToggle() {
+  const t = useTranslations('common.navigation');
+
   const toggleDarkMode = () => {
     const newMode = !document.documentElement.classList.contains('dark');
 
@@ -19,7 +22,7 @@ export default function ThemeToggle() {
         type="button"
         id="theme-toggle-button"
         onClick={toggleDarkMode}
-        aria-label="Toggle dark mode"
+        aria-label={t('toggleThemeAria')}
         className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl border border-black/10 bg-white/90 text-[#171717] transition-colors cursor-pointer focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 dark:border-white/10 dark:bg-[#171717] dark:text-[#ededed]"
       >
         <SunIcon

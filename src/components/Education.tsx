@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { useTranslations } from 'next-intl';
 
 const Education: FC = () => {
-  const t = useTranslations('sections.education');
+  const t = useTranslations('resume.education');
 
   return (
     <section className="w-full max-w-3xl mx-auto">
