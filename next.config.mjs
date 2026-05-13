@@ -9,9 +9,29 @@ const withNextIntl = createNextIntlPlugin({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'ghchart.rshah.org' },
-    ],
+    remotePatterns: [{ protocol: 'https', hostname: 'ghchart.rshah.org' }],
+  },
+  async headers() {
+    return [
+      {
+        source: '/:locale(en|zh)/private/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow, noarchive',
+          },
+        ],
+      },
+      {
+        source: '/api/private/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow, noarchive',
+          },
+        ],
+      },
+    ];
   },
 };
 

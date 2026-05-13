@@ -203,7 +203,7 @@ body {
 }
 
 /* Ensure the main content area also follows dark mode */
-.dark main:not(.resume-paper) {
+.dark main:not(.resume-paper):not(.private-tailor-page) {
   background-color: var(--background);
   color: var(--foreground);
 }

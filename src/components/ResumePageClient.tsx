@@ -13,7 +13,9 @@ import ScalableContent from '@/components/ScalableContent';
 import Societies from '@/components/Societies';
 import TechnicalSkills from '@/components/TechnicalSkills';
 import ThemeToggle from '@/components/ThemeToggle';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 
 type ResumePageClientProps = {
   locale: string;
@@ -22,6 +24,7 @@ type ResumePageClientProps = {
 
 export default function ResumePageClient({ locale, isPrintMode }: ResumePageClientProps) {
   const t = useTranslations('resume.ui');
+  const navigation = useTranslations('common.navigation');
   const fontClass =
     locale === 'zh'
       ? "font-['Noto_Sans_SC','PingFang_SC','Hiragino_Sans_GB','Microsoft_YaHei',sans-serif]"
@@ -51,13 +54,20 @@ export default function ResumePageClient({ locale, isPrintMode }: ResumePageClie
       </div>
 
       <div
-        className={`fixed right-3 top-[max(0.75rem,env(safe-area-inset-top))] z-30 flex items-center gap-1.5 rounded-2xl border border-black/10 bg-white/82 p-1.5 shadow-[0_12px_32px_rgba(0,0,0,0.12)] backdrop-blur-md dark:border-white/10 dark:bg-[#111111]/86 sm:right-4 sm:top-4 sm:gap-2 sm:bg-transparent sm:p-0 sm:shadow-none ${
+        className={`fixed right-6 top-[max(0.75rem,env(safe-area-inset-top))] z-30 flex max-w-[calc(100vw-3rem)] items-center gap-1.5 overflow-visible rounded-2xl border border-black/10 bg-white/82 py-1.5 pl-1.5 pr-3 shadow-[0_12px_32px_rgba(0,0,0,0.12)] backdrop-blur-md dark:border-white/10 dark:bg-[#111111]/86 sm:right-6 sm:top-4 sm:gap-2 sm:bg-transparent sm:p-0 sm:shadow-none ${
           isPrintMode ? 'hidden' : ''
         } ${isPrintMode ? '' : 'resume-controls-enter'}`}
       >
         <ExportPdfButton />
         <LanguageSwitcher />
         <ThemeToggle />
+        <Link
+          href={`/${locale}/private/resume-tailor`}
+          className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-black/10 bg-white/90 text-[#171717] transition-colors hover:bg-white focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 dark:border-white/10 dark:bg-[#171717] dark:text-[#ededed] print:hidden"
+          aria-label={navigation('tailorResumeAria')}
+        >
+          <AdjustmentsHorizontalIcon className="h-4 w-4" aria-hidden="true" />
+        </Link>
         <GithubLink repoUrl="https://github.com/CUinspace233/my-resume" size="responsive" />
       </div>
 

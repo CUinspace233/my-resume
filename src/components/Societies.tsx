@@ -60,7 +60,7 @@ const Societies: FC = () => {
           </div>
           <ul className="list-disc list-inside space-y-1 text-xs">
             {item.achievements.map(achievement => (
-              <li key={achievement.id}>{achievement.text}</li>
+              <li key={achievement}>{achievement}</li>
             ))}
           </ul>
         </div>

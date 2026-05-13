@@ -21,7 +21,7 @@ const Experience: FC = () => {
           {item.achievements && item.achievements.length > 0 && (
             <ul className="list-disc list-inside space-y-1 text-xs">
               {item.achievements.map(achievement => (
-                <li key={achievement.id}>{achievement.text}</li>
+                <li key={achievement}>{achievement}</li>
               ))}
             </ul>
           )}
@@ -52,7 +52,7 @@ const Experience: FC = () => {
                   </div>
                   <ul className="list-disc list-inside space-y-1 text-xs">
                     {project.description.map(desc => (
-                      <li key={desc.id}>{desc.text}</li>
+                      <li key={desc}>{desc}</li>
                     ))}
                   </ul>
                 </div>

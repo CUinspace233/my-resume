@@ -27,7 +27,13 @@ export default function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(`/${savedLocale}`, request.url));
   }
 
-  return intlMiddleware(request);
+  const response = intlMiddleware(request);
+
+  if (/^\/(en|zh)\/private(\/|$)/.test(request.nextUrl.pathname)) {
+    response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
+  }
+
+  return response;
 }
 
 export const config = {

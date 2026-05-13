@@ -219,7 +219,8 @@
     },
     "navigation": {
       "githubAria": "在 GitHub 上查看源码",
-      "toggleThemeAria": "切换深色模式"
+      "toggleThemeAria": "切换深色模式",
+      "tailorResumeAria": "根据 JD 微调简历"
     }
   },
   "resume": {
@@ -274,26 +275,11 @@
               "projectUrl": "https://www.diffus.me",
               "siteName": "www.diffus.me",
               "description": [
-                {
-                  "id": "marketing-site",
-                  "text": "使用 Vue 3 和 Nuxt 3 框架构建了 AI 图像生成平台的市场端网站。"
-                },
-                {
-                  "id": "mongodb-migration",
-                  "text": "将数据迁移到 MongoDB，包括数据清洗和重构以适配前端需求。"
-                },
-                {
-                  "id": "i18n",
-                  "text": "实现 i18n 国际化以支持多种语言，提升全球用户访问性。"
-                },
-                {
-                  "id": "nuxt-seo-fcp",
-                  "text": "利用 Nuxt 框架的 SSR 等特性处理网站 SEO (搜索引擎优化) 并优化首屏加载速度，以提高搜索引擎收录率。"
-                },
-                {
-                  "id": "comments-emoji",
-                  "text": "从方案设计、文档编写到开发，使用 FastAPI 和 SQLAlchemy (MySQL) 实现评论和 emoji 功能。"
-                }
+                "使用 Vue 3 和 Nuxt 3 框架构建了 AI 图像生成平台的市场端网站。",
+                "将数据迁移到 MongoDB，包括数据清洗和重构以适配前端需求。",
+                "实现 i18n 国际化以支持多种语言，提升全球用户访问性。",
+                "利用 Nuxt 框架的 SSR 等特性处理网站 SEO (搜索引擎优化) 并优化首屏加载速度，以提高搜索引擎收录率。",
+                "从方案设计、文档编写到开发，使用 FastAPI 和 SQLAlchemy (MySQL) 实现评论和 emoji 功能。"
               ]
             }
           ]
@@ -304,14 +290,8 @@
           "position": "AIGC 算法工程师实习生",
           "period": "2025年12月 - 至今",
           "achievements": [
-            {
-              "id": "model-dockerization",
-              "text": "多模态感知模型（如音频 / 视觉 / 语音相关模型）的 Docker 化部署"
-            },
-            {
-              "id": "fastapi-inference-services",
-              "text": "利用 FastAPI 进行模型推理接口与服务化设计，支持本地与服务器环境下的快速启动与测试"
-            }
+            "多模态感知模型（如音频 / 视觉 / 语音相关模型）的 Docker 化部署",
+            "利用 FastAPI 进行模型推理接口与服务化设计，支持本地与服务器环境下的快速启动与测试"
           ],
           "projects": [
             {
@@ -319,26 +299,11 @@
               "title": "文档合规性审查平台",
               "technologies": ["FastAPI", "React", "Vite", "LLM", "RAG", "向量检索", "规则引擎"],
               "description": [
-                {
-                  "id": "end-to-end-platform",
-                  "text": "负责搭建基于 FastAPI + React/Vite 的文档合规性审查平台，覆盖文档解析、条款级/全文级合规检测、违规标注与审查报告生成的端到端闭环。"
-                },
-                {
-                  "id": "rule-llm-guardrail",
-                  "text": "设计并实现「规则引擎 + LLM + Guardrail」混合架构，结合合规条款召回、受控提示词和输出校验，提升复杂合规场景下违规识别的准确性与可控性。"
-                },
-                {
-                  "id": "rag-pipeline",
-                  "text": "构建检索增强审查链路，结合向量检索与相似违规案例 Few-shot 增强，为模型提供动态合规参照；同时优化提示词工程，将条款级平均提示词长度由 15299 压缩至 2918。"
-                },
-                {
-                  "id": "dynamic-reasoning",
-                  "text": "实现风险分级与动态推理开关，仅对高风险条款开启深度推理，将典型审查耗时从 853s 降至 652s，整体提速约 23.6%。"
-                },
-                {
-                  "id": "human-feedback-loop",
-                  "text": "搭建 Human-in-the-Loop 反馈闭环，将审核人员「正确/错误/漏审」标注回流到向量案例库，持续优化合规检索效果并降低误报漏报率。"
-                }
+                "负责搭建基于 FastAPI + React/Vite 的文档合规性审查平台，覆盖文档解析、条款级/全文级合规检测、违规标注与审查报告生成的端到端闭环。",
+                "设计并实现「规则引擎 + LLM + Guardrail」混合架构，结合合规条款召回、受控提示词和输出校验，提升复杂合规场景下违规识别的准确性与可控性。",
+                "构建检索增强审查链路，结合向量检索与相似违规案例 Few-shot 增强，为模型提供动态合规参照；同时优化提示词工程，将条款级平均提示词长度由 15299 压缩至 2918。",
+                "实现风险分级与动态推理开关，仅对高风险条款开启深度推理，将典型审查耗时从 853s 降至 652s，整体提速约 23.6%。",
+                "搭建 Human-in-the-Loop 反馈闭环，将审核人员「正确/错误/漏审」标注回流到向量案例库，持续优化合规检索效果并降低误报漏报率。"
               ]
             }
           ]
@@ -354,26 +319,11 @@
           "position": "IT部门部长 (Director)",
           "period": "2025年3月 - 12月",
           "achievements": [
-            {
-              "id": "meeting-task-system",
-              "text": "基于 Next.js 15 + FastAPI + PostgreSQL 构建 Discord 会议转任务系统，利用 Server Actions 和 异步 SQLAlchemy 实现高性能数据交互。"
-            },
-            {
-              "id": "discord-audio-pipeline",
-              "text": "设计 Discord Bot 捕获语音流，构建从 语音采集 (Discord) 到 语音转文字 再到 任务生成 (LLM) 的全自动闭环工作流。"
-            },
-            {
-              "id": "recursive-task-engine",
-              "text": "通过 Prompt Engineering 实现任务的结构化提取与语义去重，并支持多级子任务 (Recursive Hierarchy) 的递归建模与动态交互。"
-            },
-            {
-              "id": "react-transition-performance",
-              "text": "利用 React useTransition 异步处理复杂任务的状态更新，消除大列表操作中的 UI 阻塞感，确保高并发交互下的界面响应性能"
-            },
-            {
-              "id": "society-website-maintenance",
-              "text": "维护并更新社团网站 (https://unswaisoc.com/)。"
-            }
+            "基于 Next.js 15 + FastAPI + PostgreSQL 构建 Discord 会议转任务系统，利用 Server Actions 和 异步 SQLAlchemy 实现高性能数据交互。",
+            "设计 Discord Bot 捕获语音流，构建从 语音采集 (Discord) 到 语音转文字 再到 任务生成 (LLM) 的全自动闭环工作流。",
+            "通过 Prompt Engineering 实现任务的结构化提取与语义去重，并支持多级子任务 (Recursive Hierarchy) 的递归建模与动态交互。",
+            "利用 React useTransition 异步处理复杂任务的状态更新，消除大列表操作中的 UI 阻塞感，确保高并发交互下的界面响应性能",
+            "维护并更新社团网站 (https://unswaisoc.com/)。"
           ],
           "repoUrl": "https://github.com/AISoc-UNSW/Ai-Society-2025-Website",
           "repoDescription": "Discord会议生成任务系统 Repo:",
@@ -404,26 +354,11 @@
             "Zustand"
           ],
           "description": [
-            {
-              "id": "multi-round-interviews",
-              "text": "AI 模拟面试平台：React + FastAPI 实现\"出题→追问→作答→AI 整体评测→记录\"的多轮面试训练闭环，支持自定义问题数与追问深度。"
-            },
-            {
-              "id": "sse-streaming",
-              "text": "SSE 流式出题与追问：后端流式生成主问题及追问，前端增量拼接 + 失败回退非流式，还原真实面试节奏。"
-            },
-            {
-              "id": "structured-evaluation",
-              "text": "结构化 AI 评测：强制 LLM 输出严格 JSON 多维评分，追问模式下基于完整对话历史统一评估。"
-            },
-            {
-              "id": "daily-challenge",
-              "text": "APScheduler 定时抓取 RSS 新闻 + LLM 生成面试题，经相关度评分过滤后落库，结合浏览器 Notification + Zustand 持久化实现 Daily Challenge 推送。"
-            },
-            {
-              "id": "github-actions-cicd",
-              "text": "搭建了基于 GitHub Actions 的 CI/CD 流水线，实现 PR 自动代码检查与合并后自动 SSH 部署。"
-            }
+            "AI 模拟面试平台：React + FastAPI 实现\"出题→追问→作答→AI 整体评测→记录\"的多轮面试训练闭环，支持自定义问题数与追问深度。",
+            "SSE 流式出题与追问：后端流式生成主问题及追问，前端增量拼接 + 失败回退非流式，还原真实面试节奏。",
+            "结构化 AI 评测：强制 LLM 输出严格 JSON 多维评分，追问模式下基于完整对话历史统一评估。",
+            "APScheduler 定时抓取 RSS 新闻 + LLM 生成面试题，经相关度评分过滤后落库，结合浏览器 Notification + Zustand 持久化实现 Daily Challenge 推送。",
+            "搭建了基于 GitHub Actions 的 CI/CD 流水线，实现 PR 自动代码检查与合并后自动 SSH 部署。"
           ]
         }
       ]

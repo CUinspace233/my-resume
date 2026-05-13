@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react';
 import { FaFilePdf } from 'react-icons/fa6';
 import { LuLoaderCircle } from 'react-icons/lu';
 import { useLocale, useTranslations } from 'next-intl';
+import { downloadPdf } from '@/lib/pdfDownload';
 
 const getResumePdfFileName = (baseName: string, localeSuffix: string) => {
   const date = new Date();
@@ -26,69 +27,15 @@ const ExportPdfButton = () => {
   const handleExportPdf = useCallback(async () => {
     const fileName = getResumePdfFileName(pdf('fileNameBase'), pdf('localizedSuffix'));
     const exportUrl = `/api/resume-pdf?locale=${locale}`;
-    const isMobileBrowser =
-      typeof navigator !== 'undefined' &&
-      /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
     const mobileExportUrl = `/api/resume-pdf/${encodeURIComponent(fileName)}?locale=${locale}`;
 
-    setIsExporting(true);
-
-    try {
-      if (isMobileBrowser) {
-        const clearExporting = () => {
-          setIsExporting(false);
-          window.removeEventListener('pagehide', clearExporting);
-          document.removeEventListener('visibilitychange', handleVisibilityChange);
-        };
-
-        const handleVisibilityChange = () => {
-          if (document.visibilityState === 'hidden') {
-            clearExporting();
-          }
-        };
-
-        window.addEventListener('pagehide', clearExporting, { once: true });
-        document.addEventListener('visibilitychange', handleVisibilityChange);
-
-        // Mobile browsers may show a download/preview prompt without leaving the page.
-        // Clear the loading state after a short grace period if no navigation happened.
-        window.setTimeout(() => {
-          if (document.visibilityState === 'visible') {
-            clearExporting();
-          }
-        }, 4000);
-
-        requestAnimationFrame(() => {
-          window.location.assign(mobileExportUrl);
-        });
-        return;
-      }
-
-      const response = await fetch(exportUrl);
-
-      if (!response.ok) {
-        throw new Error(`Failed to export PDF: ${response.status}`);
-      }
-
-      const blob = await response.blob();
-      const blobUrl = URL.createObjectURL(blob);
-
-      const link = document.createElement('a');
-      link.href = blobUrl;
-      link.download = fileName;
-      link.rel = 'noopener';
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-
-      setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
-    } catch (error) {
-      console.error('Failed to export PDF:', error);
-    } finally {
-      if (!isMobileBrowser) {
-        setIsExporting(false);
-      }
-    }
+    await downloadPdf({
+      exportUrl,
+      fileName,
+      mobileExportUrl,
+      setIsExporting,
+      onError: error => console.error('Failed to export PDF:', error),
+    });
   }, [locale, pdf]);
 
   return (

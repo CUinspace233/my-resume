@@ -44,7 +44,7 @@ const Projects: FC = () => {
             </div>
             <ul className="list-disc list-inside space-y-1 text-xs">
               {project.description.map(item => (
-                <li key={item.id}>{item.text}</li>
+                <li key={item}>{item}</li>
               ))}
             </ul>
           </div>
