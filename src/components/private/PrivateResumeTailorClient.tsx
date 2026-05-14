@@ -157,6 +157,7 @@ export default function PrivateResumeTailorClient({
   const [userInstructions, setUserInstructions] = useState('');
   const [draftId, setDraftId] = useState<string | null>(null);
   const [resume, setResume] = useState<ResumeContent | null>(baseResume);
+  const [skillInputs, setSkillInputs] = useState<Record<string, string>>({});
   const [changeSummary, setChangeSummary] = useState<string[]>([]);
   const [jdInsights, setJdInsights] = useState<JdInsights | null>(null);
   const [isAuthenticating, setIsAuthenticating] = useState(false);
@@ -256,6 +257,7 @@ export default function PrivateResumeTailorClient({
 
     setDraftId(body.draftId);
     setResume(body.tailoredResume);
+    setSkillInputs({});
     setChangeSummary(body.changeSummary);
     setJdInsights(body.jdInsights);
     setPreviewVersion(version => version + 1);
@@ -488,6 +490,7 @@ export default function PrivateResumeTailorClient({
                       setSelectedLocale(option.code);
                       setDraftId(null);
                       setResume(null);
+                      setSkillInputs({});
                       setChangeSummary([]);
                       setJdInsights(null);
                       setError('');
@@ -643,13 +646,18 @@ export default function PrivateResumeTailorClient({
                             </p>
                             <button
                               type="button"
-                              onClick={() =>
+                              onClick={() => {
                                 setResumeDraft(draft => {
                                   draft.skills.groups = draft.skills.groups.filter(
                                     item => item.id !== group.id
                                   );
-                                })
-                              }
+                                });
+                                setSkillInputs(current => {
+                                  const next = { ...current };
+                                  delete next[group.id];
+                                  return next;
+                                });
+                              }}
                               className="inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-2.5 text-xs font-semibold text-red-700 transition hover:bg-red-100"
                               aria-label={`Delete ${group.label}`}
                             >
@@ -671,29 +679,32 @@ export default function PrivateResumeTailorClient({
                           />
                           <TextField
                             label="Skills"
-                            value={group.items.join(', ')}
-                            onChange={value =>
+                            value={skillInputs[group.id] ?? group.items.join(', ')}
+                            onChange={value => {
+                              setSkillInputs(current => ({ ...current, [group.id]: value }));
                               setResumeDraft(draft => {
                                 const target = draft.skills.groups.find(
                                   item => item.id === group.id
                                 );
                                 if (target) target.items = csvToList(value);
-                              })
-                            }
+                              });
+                            }}
                           />
                         </div>
                       ))}
                       <button
                         type="button"
-                        onClick={() =>
+                        onClick={() => {
+                          const id = createSkillGroupId(resume.skills.groups);
                           setResumeDraft(draft => {
                             draft.skills.groups.push({
-                              id: createSkillGroupId(draft.skills.groups),
+                              id,
                               label: 'New skill group',
                               items: [],
                             });
-                          })
-                        }
+                          });
+                          setSkillInputs(current => ({ ...current, [id]: '' }));
+                        }}
                         className="flex h-10 cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-[#c8c1b6] bg-white/70 text-sm font-semibold text-[#4f493f] transition hover:border-[#2f6f73] hover:text-[#2f6f73]"
                       >
                         <PlusIcon className="h-4 w-4" aria-hidden="true" />
