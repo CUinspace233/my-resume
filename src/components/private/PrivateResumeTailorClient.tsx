@@ -3,6 +3,7 @@
 import {
   ArrowLeftIcon,
   ArrowDownTrayIcon,
+  ArrowUpTrayIcon,
   CheckCircleIcon,
   DocumentTextIcon,
   ExclamationTriangleIcon,
@@ -14,7 +15,7 @@ import {
 import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { downloadPdf } from '@/lib/pdfDownload';
-import type { JdInsights, ResumeContent } from '@/types/resume';
+import type { JdInsights, ResumeContent, TailoredResumeExportPackage } from '@/types/resume';
 
 type Props = {
   locale: string;
@@ -28,7 +29,16 @@ type TailorResponse = {
   tailoredResume: ResumeContent;
   changeSummary: string[];
   jdInsights: JdInsights;
+  jdTitle?: string;
+  company?: string;
   error?: string;
+};
+
+const emptyJdInsights: JdInsights = {
+  roleKeywords: [],
+  requiredSkills: [],
+  matchNotes: [],
+  gapNotes: [],
 };
 
 function cloneResume(resume: ResumeContent) {
@@ -64,6 +74,62 @@ function createSkillGroupId(groups: ResumeContent['skills']['groups']) {
   }
 
   return id;
+}
+
+function slugifyFilePart(value?: string) {
+  const slug = value
+    ?.normalize('NFKD')
+    .replace(/[^\w\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '_')
+    .slice(0, 48);
+
+  return slug || 'JD';
+}
+
+function getDatedFileName(company?: string, jdTitle?: string) {
+  const now = new Date();
+  const fileDate = `${now.getFullYear().toString().slice(-2)}_${String(now.getMonth() + 1).padStart(
+    2,
+    '0'
+  )}_${String(now.getDate()).padStart(2, '0')}`;
+  const target = slugifyFilePart(company ?? jdTitle);
+
+  return `Henrick_Lin_Resume_Tailored_${target}_${fileDate}.json`;
+}
+
+function isStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every(item => typeof item === 'string');
+}
+
+function isJdInsights(value: unknown): value is JdInsights {
+  if (!value || typeof value !== 'object') return false;
+
+  const candidate = value as Partial<JdInsights>;
+
+  return (
+    isStringArray(candidate.roleKeywords) &&
+    isStringArray(candidate.requiredSkills) &&
+    isStringArray(candidate.matchNotes) &&
+    isStringArray(candidate.gapNotes)
+  );
+}
+
+function isTailoredResumeExportPackage(value: unknown): value is TailoredResumeExportPackage {
+  if (!value || typeof value !== 'object') return false;
+
+  const candidate = value as Partial<TailoredResumeExportPackage>;
+
+  return (
+    candidate.type === 'resume-tailor-draft' &&
+    candidate.version === 1 &&
+    typeof candidate.locale === 'string' &&
+    Boolean(candidate.resume) &&
+    isStringArray(candidate.changeSummary) &&
+    isJdInsights(candidate.jdInsights) &&
+    (candidate.company == null || typeof candidate.company === 'string') &&
+    (candidate.jdTitle == null || typeof candidate.jdTitle === 'string')
+  );
 }
 
 function TextField({
@@ -160,15 +226,19 @@ export default function PrivateResumeTailorClient({
   const [skillInputs, setSkillInputs] = useState<Record<string, string>>({});
   const [changeSummary, setChangeSummary] = useState<string[]>([]);
   const [jdInsights, setJdInsights] = useState<JdInsights | null>(null);
+  const [jdTitle, setJdTitle] = useState<string | undefined>();
+  const [company, setCompany] = useState<string | undefined>();
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
+  const [isImportingJson, setIsImportingJson] = useState(false);
   const [isPreparingPreview, setIsPreparingPreview] = useState(false);
   const [error, setError] = useState('');
   const [previewVersion, setPreviewVersion] = useState(0);
   const [previewFrameHeight, setPreviewFrameHeight] = useState(2200);
   const isCreatingPreviewDraftRef = useRef(false);
+  const jsonImportInputRef = useRef<HTMLInputElement | null>(null);
   const previewResizeObserverRef = useRef<ResizeObserver | null>(null);
 
   const previewUrl = useMemo(() => {
@@ -260,18 +330,42 @@ export default function PrivateResumeTailorClient({
     setSkillInputs({});
     setChangeSummary(body.changeSummary);
     setJdInsights(body.jdInsights);
+    setJdTitle(body.jdTitle);
+    setCompany(body.company);
     setPreviewVersion(version => version + 1);
   };
 
   const createPreviewDraft = useCallback(
-    async (resumeDraft: ResumeContent) => {
+    async (
+      resumeDraft: ResumeContent,
+      options?: {
+        locale?: string;
+        changeSummary?: string[];
+        jdInsights?: JdInsights;
+        company?: string;
+        jdTitle?: string;
+      }
+    ) => {
+      const draftLocale = options?.locale ?? selectedLocale;
       const response = await fetch('/api/private/resume-tailor/draft', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ locale: selectedLocale, resume: resumeDraft }),
+        body: JSON.stringify({
+          locale: draftLocale,
+          resume: resumeDraft,
+          changeSummary: options?.changeSummary ?? changeSummary,
+          jdInsights: options?.jdInsights ?? jdInsights ?? emptyJdInsights,
+          company: options?.company ?? company,
+          jdTitle: options?.jdTitle ?? jdTitle,
+        }),
       });
       const body = (await response.json()) as {
         draftId?: string;
+        tailoredResume?: ResumeContent;
+        changeSummary?: string[];
+        jdInsights?: JdInsights;
+        company?: string;
+        jdTitle?: string;
         error?: string;
       };
 
@@ -280,11 +374,16 @@ export default function PrivateResumeTailorClient({
       }
 
       setDraftId(body.draftId);
+      if (body.tailoredResume) setResume(body.tailoredResume);
+      if (body.changeSummary) setChangeSummary(body.changeSummary);
+      if (body.jdInsights) setJdInsights(body.jdInsights);
+      setCompany(body.company);
+      setJdTitle(body.jdTitle);
       setPreviewVersion(version => version + 1);
 
       return body.draftId;
     },
-    [selectedLocale]
+    [changeSummary, company, jdInsights, jdTitle, selectedLocale]
   );
 
   useEffect(() => {
@@ -365,6 +464,81 @@ export default function PrivateResumeTailorClient({
         setError(exportError instanceof Error ? exportError.message : 'Failed to export PDF');
       },
     });
+  };
+
+  const exportJson = async () => {
+    if (!resume) return;
+
+    setError('');
+
+    const savedDraftId = await saveDraft();
+    if (!savedDraftId) return;
+
+    const exportPackage: TailoredResumeExportPackage = {
+      type: 'resume-tailor-draft',
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      locale: selectedLocale,
+      resume,
+      changeSummary,
+      jdInsights: jdInsights ?? emptyJdInsights,
+      company,
+      jdTitle,
+    };
+    const blob = new Blob([JSON.stringify(exportPackage, null, 2)], {
+      type: 'application/json',
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+
+    link.href = url;
+    link.download = getDatedFileName(company, jdTitle);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  };
+
+  const importJson = async (file: File) => {
+    setError('');
+    setIsImportingJson(true);
+
+    try {
+      const parsed = JSON.parse(await file.text()) as unknown;
+
+      if (!isTailoredResumeExportPackage(parsed)) {
+        throw new Error('Invalid tailored resume JSON file');
+      }
+
+      if (!['en', 'zh'].includes(parsed.locale)) {
+        throw new Error('Unsupported resume locale in JSON file');
+      }
+
+      const importedDraftId = await createPreviewDraft(parsed.resume, {
+        locale: parsed.locale,
+        changeSummary: parsed.changeSummary,
+        jdInsights: parsed.jdInsights,
+        company: parsed.company ?? undefined,
+        jdTitle: parsed.jdTitle ?? undefined,
+      });
+
+      setSelectedLocale(parsed.locale);
+      setDraftId(importedDraftId);
+      setResume(parsed.resume);
+      setSkillInputs({});
+      setChangeSummary(parsed.changeSummary);
+      setJdInsights(parsed.jdInsights);
+      setCompany(parsed.company ?? undefined);
+      setJdTitle(parsed.jdTitle ?? undefined);
+      setPreviewVersion(version => version + 1);
+    } catch (importError) {
+      setError(importError instanceof Error ? importError.message : 'Failed to import JSON');
+    } finally {
+      setIsImportingJson(false);
+      if (jsonImportInputRef.current) {
+        jsonImportInputRef.current.value = '';
+      }
+    }
   };
 
   const syncPreviewFrameHeight = useCallback((iframe: HTMLIFrameElement) => {
@@ -493,6 +667,8 @@ export default function PrivateResumeTailorClient({
                       setSkillInputs({});
                       setChangeSummary([]);
                       setJdInsights(null);
+                      setJdTitle(undefined);
+                      setCompany(undefined);
                       setError('');
                     }}
                     className={`h-10 cursor-pointer rounded-lg text-sm font-semibold transition ${
@@ -519,12 +695,46 @@ export default function PrivateResumeTailorClient({
           <button
             type="button"
             onClick={generateDraft}
-            disabled={isGenerating || jdText.trim().length < 50}
+            disabled={isGenerating || isImportingJson || jdText.trim().length < 50}
             className="mt-5 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#171717] px-4 text-sm font-semibold text-white shadow-[0_14px_30px_rgba(23,23,23,0.18)] transition hover:-translate-y-0.5 hover:bg-black disabled:cursor-not-allowed disabled:translate-y-0 disabled:opacity-50"
           >
             <SparklesIcon className="h-4 w-4" aria-hidden="true" />
             {isGenerating ? 'Generating...' : 'Generate tailored draft'}
           </button>
+
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              onClick={() => jsonImportInputRef.current?.click()}
+              disabled={isGenerating || isImportingJson || isSaving || isExporting}
+              className="flex h-11 cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#d9d2c6] bg-white px-3 text-sm font-semibold text-[#4f493f] shadow-sm transition hover:border-[#2f6f73] disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              <ArrowUpTrayIcon
+                className={`h-4 w-4 ${isImportingJson ? 'animate-pulse' : ''}`}
+                aria-hidden="true"
+              />
+              {isImportingJson ? 'Importing...' : 'Import JSON'}
+            </button>
+            <button
+              type="button"
+              onClick={exportJson}
+              disabled={!resume || isGenerating || isImportingJson || isSaving || isExporting}
+              className="flex h-11 cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#d9d2c6] bg-white px-3 text-sm font-semibold text-[#4f493f] shadow-sm transition hover:border-[#2f6f73] disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" />
+              Export JSON
+            </button>
+            <input
+              ref={jsonImportInputRef}
+              type="file"
+              accept="application/json,.json"
+              className="hidden"
+              onChange={event => {
+                const file = event.target.files?.[0];
+                if (file) void importJson(file);
+              }}
+            />
+          </div>
 
           {jdInsights && (
             <div className="mt-5 grid gap-4 rounded-2xl border border-[#e4ded2] bg-[#f8f5ef] p-4 text-sm">
@@ -583,7 +793,7 @@ export default function PrivateResumeTailorClient({
                     <button
                       type="button"
                       onClick={saveDraft}
-                      disabled={isSaving || isExporting || isPreparingPreview}
+                      disabled={isSaving || isExporting || isImportingJson || isPreparingPreview}
                       className="h-11 cursor-pointer rounded-xl border border-[#d9d2c6] bg-white px-4 text-sm font-semibold text-[#4f493f] shadow-sm transition hover:border-[#bdb4a5] disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       {isSaving
@@ -594,8 +804,17 @@ export default function PrivateResumeTailorClient({
                     </button>
                     <button
                       type="button"
+                      onClick={exportJson}
+                      disabled={isSaving || isExporting || isImportingJson || isPreparingPreview}
+                      className="flex h-11 cursor-pointer items-center gap-2 rounded-xl border border-[#d9d2c6] bg-white px-4 text-sm font-semibold text-[#4f493f] shadow-sm transition hover:border-[#bdb4a5] disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" />
+                      Export JSON
+                    </button>
+                    <button
+                      type="button"
                       onClick={exportPdf}
-                      disabled={isSaving || isExporting || isPreparingPreview}
+                      disabled={isSaving || isExporting || isImportingJson || isPreparingPreview}
                       className="flex h-11 cursor-pointer items-center gap-2 rounded-xl bg-[#2474d7] px-4 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(36,116,215,0.25)] transition hover:-translate-y-0.5 hover:bg-[#1d63bd] disabled:cursor-not-allowed disabled:translate-y-0 disabled:opacity-50"
                     >
                       <ArrowDownTrayIcon

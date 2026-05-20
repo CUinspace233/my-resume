@@ -132,4 +132,18 @@ export type ResumeTailorResponse = {
   tailoredResume: ResumeContent;
   changeSummary: string[];
   jdInsights: JdInsights;
+  jdTitle?: string;
+  company?: string;
+};
+
+export type TailoredResumeExportPackage = {
+  type: 'resume-tailor-draft';
+  version: 1;
+  exportedAt: string;
+  locale: string;
+  resume: ResumeContent;
+  changeSummary: string[];
+  jdInsights: JdInsights;
+  jdTitle?: string | null;
+  company?: string | null;
 };
