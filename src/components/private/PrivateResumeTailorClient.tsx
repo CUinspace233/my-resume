@@ -115,6 +115,16 @@ function isJdInsights(value: unknown): value is JdInsights {
   );
 }
 
+function hasJdInsightsContent(value: JdInsights | null) {
+  return Boolean(
+    value &&
+      (value.roleKeywords.length > 0 ||
+        value.requiredSkills.length > 0 ||
+        value.matchNotes.length > 0 ||
+        value.gapNotes.length > 0)
+  );
+}
+
 function isTailoredResumeExportPackage(value: unknown): value is TailoredResumeExportPackage {
   if (!value || typeof value !== 'object') return false;
 
@@ -130,6 +140,22 @@ function isTailoredResumeExportPackage(value: unknown): value is TailoredResumeE
     (candidate.company == null || typeof candidate.company === 'string') &&
     (candidate.jdTitle == null || typeof candidate.jdTitle === 'string')
   );
+}
+
+async function readJsonResponse<T>(response: Response, fallbackError: string): Promise<T> {
+  const text = await response.text();
+
+  if (!text) {
+    return {} as T;
+  }
+
+  try {
+    return JSON.parse(text) as T;
+  } catch {
+    return {
+      error: response.ok ? fallbackError : `${fallbackError}: ${text}`,
+    } as T;
+  }
 }
 
 function TextField({
@@ -209,6 +235,76 @@ function EditorGroup({
   );
 }
 
+function DraftHeader({
+  selectedLocale,
+  isSaving,
+  isExporting,
+  isImportingJson,
+  isPreparingPreview,
+  onSaveDraft,
+  onExportJson,
+  onExportPdf,
+}: {
+  selectedLocale: string;
+  isSaving: boolean;
+  isExporting: boolean;
+  isImportingJson: boolean;
+  isPreparingPreview: boolean;
+  onSaveDraft: () => void;
+  onExportJson: () => void;
+  onExportPdf: () => void;
+}) {
+  const actionsDisabled = isSaving || isExporting || isImportingJson || isPreparingPreview;
+
+  return (
+    <div className="flex flex-wrap items-start justify-between gap-4 border-b border-[#ebe5dc] pb-5">
+      <PanelHeader
+        eyebrow="Editable draft"
+        title="Review and adjust text"
+        icon={<DocumentTextIcon className="h-5 w-5" aria-hidden="true" />}
+      />
+      <div className="flex flex-wrap gap-2">
+        <Link
+          href={`/${selectedLocale}/resume`}
+          className="inline-flex h-11 items-center gap-2 rounded-xl border border-[#d9d2c6] bg-white px-4 text-sm font-semibold text-[#4f493f] shadow-sm transition hover:border-[#bdb4a5]"
+        >
+          <ArrowLeftIcon className="h-4 w-4" aria-hidden="true" />
+          Resume page
+        </Link>
+        <button
+          type="button"
+          onClick={onSaveDraft}
+          disabled={actionsDisabled}
+          className="h-11 cursor-pointer rounded-xl border border-[#d9d2c6] bg-white px-4 text-sm font-semibold text-[#4f493f] shadow-sm transition hover:border-[#bdb4a5] disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          {isSaving ? 'Saving...' : isPreparingPreview ? 'Preparing...' : 'Save preview'}
+        </button>
+        <button
+          type="button"
+          onClick={onExportJson}
+          disabled={actionsDisabled}
+          className="flex h-11 cursor-pointer items-center gap-2 rounded-xl border border-[#d9d2c6] bg-white px-4 text-sm font-semibold text-[#4f493f] shadow-sm transition hover:border-[#bdb4a5] disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" />
+          Export JSON
+        </button>
+        <button
+          type="button"
+          onClick={onExportPdf}
+          disabled={actionsDisabled}
+          className="flex h-11 cursor-pointer items-center gap-2 rounded-xl bg-[#2474d7] px-4 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(36,116,215,0.25)] transition hover:-translate-y-0.5 hover:bg-[#1d63bd] disabled:cursor-not-allowed disabled:translate-y-0 disabled:opacity-50"
+        >
+          <ArrowDownTrayIcon
+            className={`h-4 w-4 ${isExporting ? 'animate-pulse' : ''}`}
+            aria-hidden="true"
+          />
+          {isExporting ? 'Exporting...' : 'Export PDF'}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function PrivateResumeTailorClient({
   locale,
   hasInitialAccess,
@@ -239,6 +335,7 @@ export default function PrivateResumeTailorClient({
   const [previewFrameHeight, setPreviewFrameHeight] = useState(2200);
   const isCreatingPreviewDraftRef = useRef(false);
   const jsonImportInputRef = useRef<HTMLInputElement | null>(null);
+  const localeLoadRequestRef = useRef(0);
   const previewResizeObserverRef = useRef<ResizeObserver | null>(null);
 
   const previewUrl = useMemo(() => {
@@ -297,7 +394,10 @@ export default function PrivateResumeTailorClient({
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ password }),
     });
-    const body = await response.json();
+    const body = await readJsonResponse<{ error?: string }>(
+      response,
+      'Unable to unlock private tool'
+    );
     setIsAuthenticating(false);
 
     if (!response.ok) {
@@ -317,7 +417,10 @@ export default function PrivateResumeTailorClient({
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ locale: selectedLocale, jdText, userInstructions }),
     });
-    const body = (await response.json()) as TailorResponse;
+    const body = await readJsonResponse<TailorResponse>(
+      response,
+      'Failed to generate tailored resume'
+    );
     setIsGenerating(false);
 
     if (!response.ok) {
@@ -359,7 +462,7 @@ export default function PrivateResumeTailorClient({
           jdTitle: options?.jdTitle ?? jdTitle,
         }),
       });
-      const body = (await response.json()) as {
+      const body = await readJsonResponse<{
         draftId?: string;
         tailoredResume?: ResumeContent;
         changeSummary?: string[];
@@ -367,7 +470,7 @@ export default function PrivateResumeTailorClient({
         company?: string;
         jdTitle?: string;
         error?: string;
-      };
+      }>(response, 'Failed to create preview draft');
 
       if (!response.ok || !body.draftId) {
         throw new Error(body.error ?? 'Failed to create preview draft');
@@ -376,7 +479,9 @@ export default function PrivateResumeTailorClient({
       setDraftId(body.draftId);
       if (body.tailoredResume) setResume(body.tailoredResume);
       if (body.changeSummary) setChangeSummary(body.changeSummary);
-      if (body.jdInsights) setJdInsights(body.jdInsights);
+      if (body.jdInsights) {
+        setJdInsights(hasJdInsightsContent(body.jdInsights) ? body.jdInsights : null);
+      }
       setCompany(body.company);
       setJdTitle(body.jdTitle);
       setPreviewVersion(version => version + 1);
@@ -385,6 +490,59 @@ export default function PrivateResumeTailorClient({
     },
     [changeSummary, company, jdInsights, jdTitle, selectedLocale]
   );
+
+  const loadBaseDraftForLocale = async (nextLocale: string) => {
+    const requestId = localeLoadRequestRef.current + 1;
+
+    localeLoadRequestRef.current = requestId;
+    setError('');
+    setIsPreparingPreview(true);
+    isCreatingPreviewDraftRef.current = true;
+
+    try {
+      const response = await fetch('/api/private/resume-tailor/draft', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ locale: nextLocale }),
+      });
+      const body = await readJsonResponse<{
+        draftId?: string;
+        tailoredResume?: ResumeContent;
+        changeSummary?: string[];
+        jdInsights?: JdInsights;
+        error?: string;
+      }>(response, 'Failed to load resume draft');
+
+      if (!response.ok || !body.draftId || !body.tailoredResume) {
+        throw new Error(body.error ?? 'Failed to load resume draft');
+      }
+
+      if (localeLoadRequestRef.current !== requestId) {
+        return;
+      }
+
+      setSelectedLocale(nextLocale);
+      setDraftId(body.draftId);
+      setResume(body.tailoredResume);
+      setSkillInputs({});
+      setChangeSummary(body.changeSummary ?? []);
+      setJdInsights(
+        hasJdInsightsContent(body.jdInsights ?? null) ? (body.jdInsights ?? null) : null
+      );
+      setJdTitle(undefined);
+      setCompany(undefined);
+      setPreviewVersion(version => version + 1);
+    } catch (loadError) {
+      if (localeLoadRequestRef.current === requestId) {
+        setError(loadError instanceof Error ? loadError.message : 'Failed to load resume draft');
+      }
+    } finally {
+      if (localeLoadRequestRef.current === requestId) {
+        isCreatingPreviewDraftRef.current = false;
+        setIsPreparingPreview(false);
+      }
+    }
+  };
 
   useEffect(() => {
     if (!hasAccess || !resume || draftId || isCreatingPreviewDraftRef.current) return;
@@ -432,7 +590,7 @@ export default function PrivateResumeTailorClient({
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ resume }),
     });
-    const body = await response.json();
+    const body = await readJsonResponse<{ error?: string }>(response, 'Failed to save draft');
     setIsSaving(false);
 
     if (!response.ok) {
@@ -661,17 +819,17 @@ export default function PrivateResumeTailorClient({
                     key={option.code}
                     type="button"
                     onClick={() => {
-                      setSelectedLocale(option.code);
-                      setDraftId(null);
-                      setResume(null);
-                      setSkillInputs({});
-                      setChangeSummary([]);
-                      setJdInsights(null);
-                      setJdTitle(undefined);
-                      setCompany(undefined);
-                      setError('');
+                      if (active) return;
+                      void loadBaseDraftForLocale(option.code);
                     }}
-                    className={`h-10 cursor-pointer rounded-lg text-sm font-semibold transition ${
+                    disabled={
+                      isGenerating ||
+                      isImportingJson ||
+                      isSaving ||
+                      isExporting ||
+                      isPreparingPreview
+                    }
+                    className={`h-10 cursor-pointer rounded-lg text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60 ${
                       active
                         ? 'bg-white text-[#171717] shadow-sm'
                         : 'text-[#6d665c] hover:bg-white/50 hover:text-[#171717]'
@@ -736,7 +894,7 @@ export default function PrivateResumeTailorClient({
             />
           </div>
 
-          {jdInsights && (
+          {hasJdInsightsContent(jdInsights) && jdInsights && (
             <div className="mt-5 grid gap-4 rounded-2xl border border-[#e4ded2] bg-[#f8f5ef] p-4 text-sm">
               <div className="flex items-center gap-2">
                 <CheckCircleIcon className="h-4 w-4 text-[#2f6f73]" aria-hidden="true" />
@@ -776,55 +934,16 @@ export default function PrivateResumeTailorClient({
           {resume ? (
             <>
               <div className="rounded-2xl border border-[#ded6c9] bg-[#fffdf8]/95 p-5 shadow-[0_18px_60px_rgba(51,43,31,0.12)] backdrop-blur">
-                <div className="flex flex-wrap items-start justify-between gap-4 border-b border-[#ebe5dc] pb-5">
-                  <PanelHeader
-                    eyebrow="Editable draft"
-                    title="Review and adjust text"
-                    icon={<DocumentTextIcon className="h-5 w-5" aria-hidden="true" />}
-                  />
-                  <div className="flex flex-wrap gap-2">
-                    <Link
-                      href={`/${selectedLocale}/resume`}
-                      className="inline-flex h-11 items-center gap-2 rounded-xl border border-[#d9d2c6] bg-white px-4 text-sm font-semibold text-[#4f493f] shadow-sm transition hover:border-[#bdb4a5]"
-                    >
-                      <ArrowLeftIcon className="h-4 w-4" aria-hidden="true" />
-                      Resume page
-                    </Link>
-                    <button
-                      type="button"
-                      onClick={saveDraft}
-                      disabled={isSaving || isExporting || isImportingJson || isPreparingPreview}
-                      className="h-11 cursor-pointer rounded-xl border border-[#d9d2c6] bg-white px-4 text-sm font-semibold text-[#4f493f] shadow-sm transition hover:border-[#bdb4a5] disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      {isSaving
-                        ? 'Saving...'
-                        : isPreparingPreview
-                          ? 'Preparing...'
-                          : 'Save preview'}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={exportJson}
-                      disabled={isSaving || isExporting || isImportingJson || isPreparingPreview}
-                      className="flex h-11 cursor-pointer items-center gap-2 rounded-xl border border-[#d9d2c6] bg-white px-4 text-sm font-semibold text-[#4f493f] shadow-sm transition hover:border-[#bdb4a5] disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" />
-                      Export JSON
-                    </button>
-                    <button
-                      type="button"
-                      onClick={exportPdf}
-                      disabled={isSaving || isExporting || isImportingJson || isPreparingPreview}
-                      className="flex h-11 cursor-pointer items-center gap-2 rounded-xl bg-[#2474d7] px-4 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(36,116,215,0.25)] transition hover:-translate-y-0.5 hover:bg-[#1d63bd] disabled:cursor-not-allowed disabled:translate-y-0 disabled:opacity-50"
-                    >
-                      <ArrowDownTrayIcon
-                        className={`h-4 w-4 ${isExporting ? 'animate-pulse' : ''}`}
-                        aria-hidden="true"
-                      />
-                      {isExporting ? 'Exporting...' : 'Export PDF'}
-                    </button>
-                  </div>
-                </div>
+                <DraftHeader
+                  selectedLocale={selectedLocale}
+                  isSaving={isSaving}
+                  isExporting={isExporting}
+                  isImportingJson={isImportingJson}
+                  isPreparingPreview={isPreparingPreview}
+                  onSaveDraft={saveDraft}
+                  onExportJson={exportJson}
+                  onExportPdf={exportPdf}
+                />
 
                 <div className="mt-5 grid items-start gap-5 xl:grid-cols-[minmax(320px,0.9fr)_minmax(380px,1.1fr)]">
                   <div className="grid content-start gap-3">
@@ -1057,16 +1176,29 @@ export default function PrivateResumeTailorClient({
               )}
             </>
           ) : (
-            <div className="grid min-h-[520px] place-items-center rounded-2xl border border-dashed border-[#cfc7ba] bg-[#fffdf8]/80 p-8 text-center shadow-[0_18px_60px_rgba(51,43,31,0.08)]">
-              <div className="max-w-sm">
-                <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl border border-[#e4ded2] bg-white text-[#2f6f73] shadow-sm">
-                  <DocumentTextIcon className="h-7 w-7" aria-hidden="true" />
+            <div className="rounded-2xl border border-dashed border-[#cfc7ba] bg-[#fffdf8]/80 p-5 shadow-[0_18px_60px_rgba(51,43,31,0.08)]">
+              <div className="flex justify-end">
+                <Link
+                  href={`/${selectedLocale}/resume`}
+                  className="inline-flex h-11 items-center gap-2 rounded-xl border border-[#d9d2c6] bg-white px-4 text-sm font-semibold text-[#4f493f] shadow-sm transition hover:border-[#bdb4a5]"
+                >
+                  <ArrowLeftIcon className="h-4 w-4" aria-hidden="true" />
+                  Resume page
+                </Link>
+              </div>
+              <div className="grid min-h-[440px] place-items-center text-center">
+                <div className="max-w-sm">
+                  <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl border border-[#e4ded2] bg-white text-[#2f6f73] shadow-sm">
+                    <DocumentTextIcon className="h-7 w-7" aria-hidden="true" />
+                  </div>
+                  <h2 className="mt-5 text-xl font-semibold text-[#24211c]">
+                    No tailored draft yet
+                  </h2>
+                  <p className="mt-2 text-sm leading-6 text-[#686156]">
+                    Paste a JD, choose the resume language, then generate a temporary draft to
+                    review and export.
+                  </p>
                 </div>
-                <h2 className="mt-5 text-xl font-semibold text-[#24211c]">No tailored draft yet</h2>
-                <p className="mt-2 text-sm leading-6 text-[#686156]">
-                  Paste a JD, choose the resume language, then generate a temporary draft to review
-                  and export.
-                </p>
               </div>
             </div>
           )}

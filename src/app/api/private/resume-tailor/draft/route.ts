@@ -56,16 +56,14 @@ export async function POST(request: NextRequest) {
     return privateJson({ error: 'Invalid locale' }, { status: 400 });
   }
 
-  if (!body.resume) {
-    return privateJson({ error: 'Missing resume draft' }, { status: 400 });
-  }
-
   try {
     const baseResume = await getBaseResume(body.locale);
-    validateTailoredResume(baseResume, body.resume);
+    const resume = body.resume ?? baseResume;
+
+    validateTailoredResume(baseResume, resume);
     const draft = await createTailoredResumeDraft({
       locale: body.locale,
-      resume: body.resume,
+      resume,
       changeSummary: isStringArray(body.changeSummary) ? body.changeSummary : [],
       jdInsights: isJdInsights(body.jdInsights) ? body.jdInsights : emptyJdInsights,
       company: typeof body.company === 'string' ? body.company : undefined,
