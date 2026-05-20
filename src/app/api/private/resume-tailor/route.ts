@@ -77,6 +77,8 @@ export async function POST(request: NextRequest) {
       tailoredResume: draft.resume,
       changeSummary: draft.changeSummary,
       jdInsights: draft.jdInsights,
+      jdTitle: draft.jdTitle,
+      company: draft.company,
     };
 
     return privateJson(response);
