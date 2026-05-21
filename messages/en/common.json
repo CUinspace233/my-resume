@@ -1,0 +1,12 @@
+{
+  "actions": {
+    "exportPdf": "Export PDF",
+    "exportingPdf": "Exporting…",
+    "exportPdfAria": "Export as PDF"
+  },
+  "navigation": {
+    "githubAria": "View source code on GitHub",
+    "toggleThemeAria": "Toggle dark mode",
+    "tailorResumeAria": "Tailor resume with JD"
+  }
+}

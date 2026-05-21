@@ -109,26 +109,93 @@ function getIdSetMismatches(enContent, zhContent) {
 /**
  * Check for missing keys in the translation files
  */
+const messageNamespaces = ['buttons', 'common', 'exportPdf', 'header', 'landing', 'sections'];
+const resumePackageRequiredKeys = [
+  'type',
+  'version',
+  'exportedAt',
+  'locale',
+  'resume',
+  'changeSummary',
+  'jdInsights',
+  'jdTitle',
+  'company',
+];
+
+function readJson(filePath) {
+  return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+}
+
+function validateResumePackage(resumePackage, locale, filePath) {
+  const missingKeys = resumePackageRequiredKeys.filter(key => !(key in resumePackage));
+  const errors = [];
+
+  if (missingKeys.length > 0) {
+    errors.push(`missing keys: ${missingKeys.join(', ')}`);
+  }
+  if (resumePackage.type !== 'resume-tailor-draft') {
+    errors.push('type must be "resume-tailor-draft"');
+  }
+  if (resumePackage.version !== 1) {
+    errors.push('version must be 1');
+  }
+  if (resumePackage.locale !== locale) {
+    errors.push(`locale must be "${locale}"`);
+  }
+  if (!resumePackage.resume || typeof resumePackage.resume !== 'object') {
+    errors.push('resume must be an object');
+  }
+  if (!Array.isArray(resumePackage.changeSummary)) {
+    errors.push('changeSummary must be an array');
+  }
+  if (!resumePackage.jdInsights || typeof resumePackage.jdInsights !== 'object') {
+    errors.push('jdInsights must be an object');
+  }
+
+  if (errors.length > 0) {
+    throw new Error(`${filePath}: ${errors.join('; ')}`);
+  }
+}
+
+function readLocaleMessages(messagesDir, locale) {
+  const localeDir = path.join(messagesDir, locale);
+
+  if (!fs.existsSync(localeDir)) {
+    throw new Error(`Locale message directory not found: messages/${locale}`);
+  }
+
+  const content = {};
+
+  messageNamespaces.forEach(namespace => {
+    const filePath = path.join(localeDir, `${namespace}.json`);
+
+    if (!fs.existsSync(filePath)) {
+      throw new Error(`Message namespace not found: messages/${locale}/${namespace}.json`);
+    }
+
+    content[namespace] = readJson(filePath);
+  });
+
+  const resumeFilePath = path.join(localeDir, 'resume.json');
+
+  if (!fs.existsSync(resumeFilePath)) {
+    throw new Error(`Resume package not found: messages/${locale}/resume.json`);
+  }
+
+  const resumePackage = readJson(resumeFilePath);
+
+  validateResumePackage(resumePackage, locale, `messages/${locale}/resume.json`);
+  content.resume = resumePackage.resume;
+
+  return content;
+}
+
 function checkTranslations() {
   const messagesDir = path.join(__dirname, '../messages');
-  const enFilePath = path.join(messagesDir, 'en.json');
-  const zhFilePath = path.join(messagesDir, 'zh.json');
-
-  // Check if files exist
-  if (!fs.existsSync(enFilePath)) {
-    console.error('❌ English translation file not found: messages/en.json');
-    process.exit(1);
-  }
-
-  if (!fs.existsSync(zhFilePath)) {
-    console.error('❌ Chinese translation file not found: messages/zh.json');
-    process.exit(1);
-  }
 
   try {
-    // Read and parse JSON files
-    const enContent = JSON.parse(fs.readFileSync(enFilePath, 'utf8'));
-    const zhContent = JSON.parse(fs.readFileSync(zhFilePath, 'utf8'));
+    const enContent = readLocaleMessages(messagesDir, 'en');
+    const zhContent = readLocaleMessages(messagesDir, 'zh');
 
     // Get all keys
     const enKeys = getKeysRecursively(enContent);

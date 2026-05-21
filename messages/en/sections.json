@@ -1,0 +1,146 @@
+{
+  "awards": {
+    "title": "Awards & Competitions",
+    "awardsData": [
+      {
+        "place": "Ranked 9th in Australia and NZ (Top 10%)",
+        "award": "AllUni programming competition Division B",
+        "period": "Aug 2025",
+        "link": "https://alluni.io/contest/b2025/ranking/"
+      }
+    ]
+  },
+  "education": {
+    "title": "Education",
+    "university": "University of New South Wales (UNSW), Sydney",
+    "degree": "Bachelor of Computer Science (WES iGPA: 4.0/4.0, WAM: 83.5)",
+    "period": "Feb 2024 - Jun 2026",
+    "relevantCourses": "Relevant Courses",
+    "courses": "Web Front-End Programming (96), Software Engineering Fundamentals (96), Computer Systems Fundamentals (87), Programming Fundamentals (85), Data Structures and Algorithms (Distinction), Object-Oriented Programming (Distinction), Software Construction: Techniques and Tools (Distinction), Extended Security Engineering and Cyber Security, Database Systems"
+  },
+  "experience": {
+    "title": "Work Experience",
+    "projects": "Projects:",
+    "experienceData": [
+      {
+        "company": "Graviti",
+        "position": "Full Stack Developer Intern",
+        "period": "Dec 2024 - Dec 2025",
+        "projects": [
+          {
+            "title": "AI Image Generation Platform Website",
+            "technologies": [
+              "Vue 3",
+              "Nuxt 3",
+              "Tailwind CSS",
+              "MongoDB",
+              "FastAPI",
+              "SQLAlchemy",
+              "i18n"
+            ],
+            "projectUrl": "https://www.diffus.me",
+            "siteName": "www.diffus.me",
+            "description": [
+              "Implemented the marketing website of an AI image generation platform using Vue 3 and Nuxt 3 framework.",
+              "Migrated and transformed data to MongoDB, including data cleaning and restructuring to optimize database performance.",
+              "Implemented i18n internationalization to support multiple languages, enhancing global user accessibility.",
+              "Leveraged Nuxt SSR and other features to optimize SEO and first-contentful paint (FCP), significantly improving search engine indexing and page load performance.",
+              "From design, documentation, and development, using FastAPI and SQLAlchemy (MySQL) to implement the Comment and emoji feature for the platform."
+            ]
+          }
+        ]
+      },
+      {
+        "company": "Cool AI",
+        "position": "AIGC Algorithm Engineer Intern",
+        "period": "Dec 2025 - Now",
+        "achievements": [
+          "Dockerized deployment for multimodal perception models (e.g., audio, vision, and speech-related models).",
+          "Designed model inference APIs and services with FastAPI, enabling fast startup and testing in both local and server environments."
+        ],
+        "projects": [
+          {
+            "title": "Document Compliance Review Platform",
+            "technologies": [
+              "FastAPI",
+              "React",
+              "Vite",
+              "LLM",
+              "RAG",
+              "Vector Search",
+              "Rule Engine"
+            ],
+            "description": [
+              "Built an end-to-end document compliance review platform (FastAPI + React/Vite) covering document parsing, clause-level and full-document compliance checking, violation annotation, and audit report generation.",
+              "Designed a hybrid Rule Engine + LLM + Guardrail architecture combining compliance clause retrieval, controlled prompting, and output validation to improve violation detection accuracy and controllability in complex regulatory scenarios.",
+              "Constructed a Retrieval-Augmented review pipeline using vector search and few-shot enhancement with similar violation cases for dynamic compliance references; optimized prompt engineering to reduce average clause-level prompt length from 15,299 to 2,918 tokens.",
+              "Implemented risk-tiered dynamic reasoning: deep reasoning is only enabled for high-risk clauses, reducing typical review latency from 853s to 652s — a 23.6% speedup.",
+              "Built a Human-in-the-Loop feedback loop routing reviewer annotations (correct/incorrect/missed) back into the vector case library, continuously improving compliance retrieval and reducing false positive/negative rates."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "languages": "Languages",
+    "frontend_frameworks": "Frontend",
+    "backend_frameworks": "Backend",
+    "devTools": "Development Tools",
+    "testing": "Testing",
+    "databases": "Databases",
+    "3dSoftware": "3D Software"
+  },
+  "projects": {
+    "title": "Projects",
+    "projectsData": [
+      {
+        "title": "MockMate - Your AI Interview Coach",
+        "imageUrl": "/mockmate-logo.png",
+        "repoUrl": "https://github.com/CUinspace233/mock-mate",
+        "repoName": "MockMate",
+        "projectUrl": "https://mockmate.cuinspace.com",
+        "period": "July 2025",
+        "technologies": [
+          "Python",
+          "FastAPI",
+          "SQLAlchemy",
+          "SQLite",
+          "React",
+          "TypeScript",
+          "Vite",
+          "Zustand"
+        ],
+        "description": [
+          "Built a multi-round AI interview training platform (React + FastAPI) covering \"question → follow-up → answer → holistic AI evaluation → record\", with configurable question count and follow-up depth.",
+          "Implemented SSE-based streaming for both main questions and follow-ups, with frontend incremental rendering and non-streaming fallback to preserve real interview pacing.",
+          "Delivered structured AI evaluation by enforcing strict JSON multi-dimensional scoring, with unified assessment based on full conversation history in follow-up mode.",
+          "Built an APScheduler pipeline to fetch RSS news and generate interview questions with LLM, persisted after relevance filtering, and paired it with browser Notification API + Zustand persistence for Daily Challenge pushes.",
+          "Built a GitHub Actions CI/CD pipeline with automated PR checks and SSH-based auto-deployment after merge."
+        ]
+      }
+    ]
+  },
+  "societies": {
+    "title": "Extracurricular Activities",
+    "societiesData": [
+      {
+        "organization": "UNSW Artificial Intelligence Society (AISoc)",
+        "position": "Director of IT",
+        "period": "Mar 2025 - Dec 2025",
+        "achievements": [
+          "Built a Discord meeting-to-task system (Next.js 15 + FastAPI + PostgreSQL + Async SQLAlchemy).",
+          "Designed a Discord Bot for audio capture, establishing a seamless pipeline from voice ingestion and STT transcription to LLM-based task generation.",
+          "Engineered a task engine with Prompt Engineering and recursive models for multi-level hierarchies.",
+          "Optimized interactive performance using React useTransition for asynchronous state updates, eliminating UI blocking during complex task operations and ensuring a highly responsive interface.",
+          "Maintained and updated the society website."
+        ],
+        "repoUrl": "https://github.com/AISoc-UNSW/Ai-Society-2025-Website",
+        "repoDescription": "Discord Meeting-to-Task System Repo:",
+        "societyWebsiteUrl": "https://unswaisoc.com/",
+        "societyWebsiteDescription": "Society Website:"
+      }
+    ]
+  }
+}

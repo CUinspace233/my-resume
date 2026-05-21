@@ -1,5 +1,6 @@
 import IntlProvider from '@/components/IntlProvider';
 import ResumePageClient from '@/components/ResumePageClient';
+import { getAppMessages } from '@/lib/messages';
 import { hasPrivateResumeAccess } from '@/lib/privateAuth';
 import { getTailoredResumeDraft } from '@/lib/tailoredResumeStore';
 
@@ -37,7 +38,7 @@ export default async function TailoredResumePreviewPage({
     );
   }
 
-  const messages = (await import(`../../../../../../../messages/${locale}.json`)).default;
+  const messages = await getAppMessages(locale);
 
   return (
     <IntlProvider locale={locale} messages={{ ...messages, resume: draft.resume }} timeZone="UTC">

@@ -1,5 +1,5 @@
 import type { NextRequest } from 'next/server';
-import { getBaseResume } from '@/lib/resumeMessages';
+import { getBaseResume } from '@/lib/messages';
 import { getResumeTailorProvider } from '@/lib/resumeTailorProvider';
 import { validateTailoredResume } from '@/lib/resumeValidation';
 import { createTailoredResumeDraft } from '@/lib/tailoredResumeStore';

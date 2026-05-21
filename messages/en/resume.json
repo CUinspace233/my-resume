@@ -1,0 +1,271 @@
+{
+  "type": "resume-tailor-draft",
+  "version": 1,
+  "exportedAt": "2026-05-21T09:07:43.981Z",
+  "locale": "en",
+  "resume": {
+    "ui": {
+      "home": "Home",
+      "websiteLabel": "cuinspace.com"
+    },
+    "pdf": {
+      "fileNameBase": "Henrick_Lin_Resume",
+      "localizedSuffix": ""
+    },
+    "header": {
+      "name": "Zehan (Henrick) Lin",
+      "email": "gmforzh@gmail.com",
+      "emailHref": "mailto:gmforzh@gmail.com",
+      "githubUrl": "https://github.com/CUinspace233",
+      "githubLabel": "github.com/CUinspace233",
+      "linkedinUrl": "https://www.linkedin.com/in/henrick-lin-8a2043325/",
+      "linkedinLabel": "linkedin.com/in/henrick-lin-8a2043325"
+    },
+    "education": {
+      "id": "unsw-bachelor-computer-science",
+      "title": "Education",
+      "university": "University of New South Wales (UNSW), Sydney",
+      "degree": "Bachelor of Computer Science (WES iGPA: 4.0/4.0, WAM: 83.5)",
+      "period": "Feb 2024 - Jun 2026",
+      "relevantCourses": "Relevant Courses",
+      "courses": "Web Front-End Programming (96), Software Engineering Fundamentals (96), Computer Systems Fundamentals (87), Programming Fundamentals (85), Data Structures and Algorithms (Distinction), Object-Oriented Programming (Distinction), Software Construction: Techniques and Tools (Distinction), Extended Security Engineering and Cyber Security, Database Systems"
+    },
+    "experience": {
+      "title": "Work Experience",
+      "projectsLabel": "Projects:",
+      "items": [
+        {
+          "id": "graviti",
+          "company": "Graviti",
+          "position": "Full Stack Developer Intern",
+          "period": "Dec 2024 - Dec 2025",
+          "achievements": [],
+          "projects": [
+            {
+              "id": "diffus-ai-image-generation-platform",
+              "title": "AI Image Generation Platform Website",
+              "repoUrl": null,
+              "repoName": null,
+              "technologies": [
+                "Vue 3",
+                "Nuxt 3",
+                "Tailwind CSS",
+                "MongoDB",
+                "FastAPI",
+                "SQLAlchemy",
+                "i18n"
+              ],
+              "description": [
+                "Delivered the full-stack launch of the official website for an AI image generation platform using Vue 3 and Nuxt 3.",
+                "Completed the migration to MongoDB, including data cleaning, schema restructuring, and frontend consumption model design, improving page rendering and content organization efficiency.",
+                "Implemented i18n internationalization and Nuxt SSR/SEO optimization to improve global accessibility, search engine indexing, and first-screen loading performance.",
+                "Took features from requirement breakdown and API design to implementation, using FastAPI + SQLAlchemy + MySQL to deliver comment and emoji interaction features and close the loop from product idea to usable functionality."
+              ],
+              "projectUrl": "https://www.diffus.me",
+              "siteName": "www.diffus.me",
+              "imageUrl": null,
+              "period": null
+            }
+          ]
+        },
+        {
+          "id": "cool-ai",
+          "company": "Cool AI",
+          "position": "AI Full-Stack / Algorithm Engineer Intern",
+          "period": "Dec 2025 - Present",
+          "achievements": [
+            "Dockerized multimodal perception models (audio / vision / speech), reducing the cost of switching between local and server environments and improving AI application delivery efficiency.",
+            "Designed model inference APIs and service startup flows with FastAPI, supporting fast integration, validation, and business scenario adoption."
+          ],
+          "projects": [
+            {
+              "id": "document-compliance-review-platform",
+              "title": "Document Compliance Review Platform",
+              "repoUrl": null,
+              "repoName": null,
+              "technologies": [
+                "FastAPI",
+                "React",
+                "Vite",
+                "LLM",
+                "RAG",
+                "Vector Search",
+                "Rule Engine"
+              ],
+              "description": [
+                "Built an end-to-end document compliance review platform with FastAPI + React/Vite, covering document parsing, clause-level and full-document checks, violation annotation, and review report generation.",
+                "Designed and implemented a hybrid Rule Engine + LLM + Guardrail architecture, adding controllable constraints and output validation on top of AI generation to improve accuracy, stability, and explainability in complex compliance scenarios.",
+                "Built a RAG review pipeline using vector search and few-shot enhancement with similar violation cases to provide dynamic grounding for the model; also refactored prompt engineering to reduce average clause-level prompt length from 15,299 to 2,918.",
+                "Designed a risk-tiered dynamic reasoning switch that enables deep reasoning only for high-risk clauses, reducing typical review time from 853s to 652s for an overall speedup of about 23.6%, reflecting technical decision-making and cost-benefit tradeoff awareness.",
+                "Built a Human-in-the-Loop feedback loop that routes reviewer labels (correct / incorrect / missed) back into the vector case library, using human review to cover AI boundaries and continuously improve false positive and false negative behavior."
+              ],
+              "projectUrl": null,
+              "siteName": null,
+              "imageUrl": null,
+              "period": null
+            }
+          ]
+        }
+      ]
+    },
+    "societies": {
+      "title": "Extracurricular Activities",
+      "items": [
+        {
+          "id": "unsw-aisoc",
+          "organization": "UNSW Artificial Intelligence Society (AISoc)",
+          "position": "Director of IT",
+          "achievements": [
+            "Built a Discord meeting-to-task system with Next.js 15 + FastAPI + PostgreSQL, delivering the full-stack product from requirement understanding and system design to a runnable implementation.",
+            "Designed a Discord Bot to capture voice streams, connecting audio collection, speech-to-text, and LLM task generation into an automatically running intelligent workflow.",
+            "Used Prompt Engineering to extract structured tasks and perform semantic deduplication, while supporting recursive modeling and dynamic interaction for multi-level subtasks, creating a reusable AI workflow.",
+            "Used React useTransition to optimize large state updates in complex task lists, reducing UI blocking and improving product usability under high-interaction workloads.",
+            "Maintained and continuously updated the society website (https://unswaisoc.com/) to support daily operations and external presentation."
+          ],
+          "period": "Mar 2025 - Dec 2025",
+          "repoUrl": "https://github.com/AISoc-UNSW/Ai-Society-2025-Website",
+          "repoDescription": "Discord Meeting-to-Task System Repo:",
+          "societyWebsiteUrl": "https://unswaisoc.com/",
+          "societyWebsiteDescription": "Society Website:"
+        }
+      ]
+    },
+    "projects": {
+      "title": "Projects",
+      "items": [
+        {
+          "id": "mockmate",
+          "title": "MockMate - AI Interview Training and Evaluation Platform",
+          "repoUrl": "https://github.com/CUinspace233/mock-mate",
+          "repoName": "MockMate",
+          "technologies": [
+            "Python",
+            "FastAPI",
+            "SQLAlchemy",
+            "SQLite",
+            "React",
+            "TypeScript",
+            "Vite",
+            "Zustand"
+          ],
+          "description": [
+            "Independently delivered an AI mock interview product from frontend/backend development to production deployment, using React + FastAPI to implement the full loop of question generation -> follow-up -> answer -> AI evaluation -> record retention.",
+            "Implemented SSE streaming for question generation and follow-ups, with frontend incremental rendering and non-streaming fallback to balance realistic interaction and system stability.",
+            "Designed a structured AI evaluation pipeline that enforces strict JSON multi-dimensional scoring from the LLM, and evaluates based on the complete conversation history in follow-up mode to improve parsability and reusability.",
+            "Built an automated content production workflow with APScheduler, fetching RSS news on a schedule and using an LLM to generate interview questions, then filtering by relevance score before persistence.",
+            "Built a GitHub Actions CI/CD pipeline with automatic PR checks and SSH-based deployment after merge, demonstrating the ability to independently deliver a production-ready online product."
+          ],
+          "projectUrl": "https://mockmate.cuinspace.com",
+          "siteName": null,
+          "imageUrl": "/mockmate-logo.png",
+          "period": "Jul 2025 - Present"
+        }
+      ]
+    },
+    "awards": {
+      "title": "Awards & Competitions",
+      "items": [
+        {
+          "id": "alluni-division-b",
+          "place": "Ranked 9th across Australia and New Zealand (Top 10%)",
+          "award": "AllUni Programming Competition Division B",
+          "period": "Aug 2025",
+          "link": "https://alluni.io/contest/b2025/ranking/"
+        }
+      ]
+    },
+    "skills": {
+      "title": "Technical Skills",
+      "groups": [
+        {
+          "id": "languages",
+          "label": "Programming Languages",
+          "items": ["Python", "TypeScript", "JavaScript", "Java", "C", "Rust", "Shell"]
+        },
+        {
+          "id": "frontend",
+          "label": "Frontend and Full-Stack Development",
+          "items": ["React", "Next.js", "Vue 3", "Nuxt 3", "Vite", "Tailwind CSS"]
+        },
+        {
+          "id": "backend",
+          "label": "Backend and Service Development",
+          "items": ["FastAPI", "SQLAlchemy", "Express.js", "RESTful API", "SSE"]
+        },
+        {
+          "id": "dev-tools",
+          "label": "Engineering and Deployment",
+          "items": ["Git", "Linux", "Docker", "GitHub Actions", "CI/CD", "Shell Scripting"]
+        },
+        {
+          "id": "testing",
+          "label": "Testing",
+          "items": ["Jest", "JUnit", "Cypress"]
+        },
+        {
+          "id": "databases",
+          "label": "Databases and Retrieval",
+          "items": ["PostgreSQL", "MongoDB", "MySQL", "SQLite", "LightRAG", "VectorRAG"]
+        },
+        {
+          "id": "ai-native",
+          "label": "AI Coding",
+          "items": ["Codex", "Claude Code", "Cursor"]
+        }
+      ]
+    }
+  },
+  "changeSummary": [
+    "Repositioned the profile from general full-stack / algorithm internship experience toward an AI application development + full-stack delivery + independent launch narrative to better match the JD's AI Native full-stack engineer requirements.",
+    "Rewrote editable project descriptions for Graviti, Cool AI, AISoc, and MockMate to emphasize end-to-end delivery, product closure, automated workflows, RAG/LLM/Guardrails, and human fallback for AI boundaries.",
+    "Kept all factual anchors unchanged, including companies, projects, dates, school, and links, while only optimizing editable text and bullet phrasing.",
+    "Added an AI-related skills group to highlight LLM application development, Prompt Engineering, RAG, Agent Workflow, Cursor, Claude Code, ChatGPT, and other highly JD-relevant capabilities.",
+    "Emphasized technical tradeoffs, performance optimization, reliability safeguards, and reusable asset creation in project descriptions, echoing the JD's preference for product judgment, requirement trimming, and reusable templating."
+  ],
+  "jdInsights": {
+    "roleKeywords": [
+      "AI application development",
+      "full-stack development",
+      "AI Native",
+      "independent delivery",
+      "production deployment",
+      "automation toolchain",
+      "Python",
+      "FastAPI",
+      "React",
+      "Cursor",
+      "Claude Code",
+      "LLM",
+      "agent",
+      "product judgment",
+      "requirement translation",
+      "asset creation",
+      "3-person team collaboration"
+    ],
+    "requiredSkills": [
+      "Independently complete and verify projects",
+      "Demonstrate coding ability through GitHub/Demo",
+      "Use AI tools in daily development",
+      "Frontend and backend full-stack development ability",
+      "Python scripting and automation ability",
+      "Closed-loop delivery from requirements to launch",
+      "Understand AI boundaries and provide human fallback",
+      "Self-drive under ambiguous requirements",
+      "Technical selection and tradeoff judgment"
+    ],
+    "matchNotes": [
+      "The candidate has multiple verifiable projects and GitHub/Demo links, meeting the requirement for completed work and verifiable code.",
+      "The FastAPI + React/Next.js/Vue/Nuxt stack covers both frontend and backend, making the candidate suitable for AI full-stack roles.",
+      "Experience with LLM, RAG, Prompt Engineering, Guardrails, and Human-in-the-Loop aligns with AI application development scenarios.",
+      "MockMate and AISoc demonstrate delivery from requirements to deployment, automated workflow construction, and product closure.",
+      "Several experiences show awareness of AI boundaries and human fallback design, including Guardrails, feedback routing, and fallback strategies."
+    ],
+    "gapNotes": [
+      "The resume does not directly provide specific project examples of using Cursor / Claude Code; these can be supplemented in interviews or additional notes.",
+      "The JD emphasizes cross-border e-commerce advertising and marketing scenarios, while the current experience does not directly map to that business domain.",
+      "The JD expects candidates to answer recent high-value work completed with AI tools, requirement-trimming examples, and specific AI failure scenarios; these are not suitable for the formal resume and should be prepared separately."
+    ]
+  },
+  "jdTitle": "AI Application Development Engineer (Full-Stack)",
+  "company": null
+}

@@ -1,0 +1,263 @@
+{
+  "type": "resume-tailor-draft",
+  "version": 1,
+  "exportedAt": "2026-05-21T09:07:43.981Z",
+  "locale": "zh",
+  "resume": {
+    "ui": {
+      "home": "首页",
+      "websiteLabel": "cuinspace.com"
+    },
+    "pdf": {
+      "fileNameBase": "Henrick_Lin_Resume",
+      "localizedSuffix": "_中文"
+    },
+    "header": {
+      "name": "林则翰 (Henrick Lin)",
+      "email": "gmforzh@gmail.com",
+      "emailHref": "mailto:gmforzh@gmail.com",
+      "githubUrl": "https://github.com/CUinspace233",
+      "githubLabel": "github.com/CUinspace233",
+      "linkedinUrl": "https://www.linkedin.com/in/henrick-lin-8a2043325/",
+      "linkedinLabel": "linkedin.com/in/henrick-lin-8a2043325"
+    },
+    "education": {
+      "id": "unsw-bachelor-computer-science",
+      "title": "教育背景",
+      "university": "新南威尔士大学 (UNSW), 悉尼",
+      "degree": "计算机科学学士 (WES iGPA: 4.0/4.0, WAM加权平均: 83.5)",
+      "period": "2024年2月 - 2026年6月",
+      "relevantCourses": "相关课程",
+      "courses": "Web前端编程 (96), 软件工程基础 (96), 计算机系统基础 (87), 编程基础 (85), 数据结构与算法 (Distinction), 面向对象编程 (Distinction), 软件构建：技术与工具 (Distinction), (进阶)安全工程与网络安全, 数据库系统"
+    },
+    "experience": {
+      "title": "工作经验",
+      "projectsLabel": "项目：",
+      "items": [
+        {
+          "id": "graviti",
+          "company": "Graviti",
+          "position": "全栈开发实习生",
+          "period": "2024年12月 - 2025年12月",
+          "achievements": [],
+          "projects": [
+            {
+              "id": "diffus-ai-image-generation-platform",
+              "title": "AI 图像生成平台网站",
+              "repoUrl": null,
+              "repoName": null,
+              "technologies": [
+                "Vue 3",
+                "Nuxt 3",
+                "Tailwind CSS",
+                "MongoDB",
+                "FastAPI",
+                "SQLAlchemy",
+                "i18n"
+              ],
+              "description": [
+                "使用 Vue 3 + Nuxt 3 搭建 AI 图像生成平台官网的全栈交付并推动功能上线。",
+                "完成数据迁移至 MongoDB，包含数据清洗、结构重构与前端消费模型设计，提升页面渲染与内容组织效率。",
+                "实现 i18n 国际化与 Nuxt SSR/SEO 优化，兼顾全球用户访问体验、搜索引擎收录与首屏加载性能。",
+                "从需求拆解、接口设计到开发落地，使用 FastAPI + SQLAlchemy + MySQL 完成评论与 emoji 互动功能，具备从产品想法到可用功能的闭环交付能力。"
+              ],
+              "projectUrl": "https://www.diffus.me",
+              "siteName": "www.diffus.me",
+              "imageUrl": null,
+              "period": null
+            }
+          ]
+        },
+        {
+          "id": "cool-ai",
+          "company": "酷爱科技",
+          "position": "AI 全栈/算法工程师实习生",
+          "period": "2025年12月 - 至今",
+          "achievements": [
+            "将多模态感知模型（音频 / 视觉 / 语音）进行 Docker 化部署，降低本地与服务器环境切换成本，提升 AI 应用交付效率。",
+            "基于 FastAPI 设计模型推理接口与服务化启动流程，支持快速联调、验证与面向业务场景的接入。"
+          ],
+          "projects": [
+            {
+              "id": "document-compliance-review-platform",
+              "title": "文档合规性审查平台",
+              "repoUrl": null,
+              "repoName": null,
+              "technologies": ["FastAPI", "React", "Vite", "LLM", "RAG", "向量检索", "规则引擎"],
+              "description": [
+                "负责基于 FastAPI + React/Vite 搭建文档合规性审查平台，覆盖文档解析、条款级/全文级检测、违规标注与审查报告生成的端到端产品闭环。",
+                "设计并实现“规则引擎 + LLM + Guardrail”混合架构，在 AI 生成能力之外加入可控约束与输出校验，提升复杂合规场景下的准确性、稳定性与可解释性。",
+                "构建 RAG 审查链路，结合向量检索与相似违规案例 Few-shot 增强，为模型提供动态依据；同时重构提示词工程，将条款级平均提示词长度由 15299 压缩至 2918。",
+                "基于风险分级设计动态推理开关，仅对高风险条款开启深度推理，将典型审查耗时从 853s 降至 652s，整体提速约 23.6%，体现技术选型与成本收益权衡能力。",
+                "搭建 Human-in-the-Loop 反馈闭环，将审核人员“正确/错误/漏审”标注回流向量案例库，用人工兜底 AI 边界并持续优化误报、漏报表现。"
+              ],
+              "projectUrl": null,
+              "siteName": null,
+              "imageUrl": null,
+              "period": null
+            }
+          ]
+        }
+      ]
+    },
+    "societies": {
+      "title": "社团与活动",
+      "items": [
+        {
+          "id": "unsw-aisoc",
+          "organization": "新南威尔士大学人工智能社团 (AISoc)",
+          "position": "IT 部门负责人（Director）",
+          "achievements": [
+            "基于 Next.js 15 + FastAPI + PostgreSQL 构建 Discord 会议转任务系统，完成从需求理解、系统设计到可运行产品落地的全栈交付。",
+            "设计 Discord Bot 捕获语音流，串联语音采集、语音转文字与 LLM 任务生成，搭建可自动运行的智能工作流。",
+            "通过 Prompt Engineering 实现任务结构化提取与语义去重，并支持多级子任务的递归建模与动态交互，沉淀可复用的 AI 工作链路。",
+            "使用 React useTransition 优化复杂任务列表的大量状态更新，降低界面阻塞感，提升高并发交互下的产品可用性。",
+            "维护并持续更新社团官网（https://unswaisoc.com/），支持组织日常运营与对外展示。"
+          ],
+          "period": "2025年3月 - 12月",
+          "repoUrl": "https://github.com/AISoc-UNSW/Ai-Society-2025-Website",
+          "repoDescription": "Discord会议生成任务系统 Repo:",
+          "societyWebsiteUrl": "https://unswaisoc.com/",
+          "societyWebsiteDescription": "社团网站:"
+        }
+      ]
+    },
+    "projects": {
+      "title": "项目经验",
+      "items": [
+        {
+          "id": "mockmate",
+          "title": "MockMate - AI 面试训练与评测平台",
+          "repoUrl": "https://github.com/CUinspace233/mock-mate",
+          "repoName": "MockMate",
+          "technologies": [
+            "Python",
+            "FastAPI",
+            "SQLAlchemy",
+            "SQLite",
+            "React",
+            "TypeScript",
+            "Vite",
+            "Zustand"
+          ],
+          "description": [
+            "独立完成 AI 模拟面试产品从前后端开发到上线部署，基于 React + FastAPI 实现“出题 → 追问 → 作答 → AI 评测 → 记录沉淀”的完整闭环。",
+            "实现 SSE 流式出题与追问，前端采用增量拼接与失败回退非流式策略，平衡真实交互体验与系统稳定性。",
+            "设计结构化 AI 评测链路，强制 LLM 输出严格 JSON 多维评分，并在追问模式下基于完整对话历史统一评估，提升结果可解析性与可复用性。",
+            "通过 APScheduler 定时抓取 RSS 新闻并结合 LLM 自动生成题目，使用相关度评分过滤后入库，构建可自动运行的内容生产流程。",
+            "搭建基于 GitHub Actions 的 CI/CD 流水线，实现 PR 自动检查与合并后自动 SSH 部署，具备独立交付线上可用产品能力。"
+          ],
+          "projectUrl": "https://mockmate.cuinspace.com",
+          "siteName": null,
+          "imageUrl": "/mockmate-logo.png",
+          "period": "2025年7月 - 至今"
+        }
+      ]
+    },
+    "awards": {
+      "title": "竞赛经历",
+      "items": [
+        {
+          "id": "alluni-division-b",
+          "place": "全澳洲及新西兰排名第9 (Top 10%)",
+          "award": "AllUni编程竞赛 Division B",
+          "period": "2025年8月",
+          "link": "https://alluni.io/contest/b2025/ranking/"
+        }
+      ]
+    },
+    "skills": {
+      "title": "技术技能",
+      "groups": [
+        {
+          "id": "languages",
+          "label": "编程语言",
+          "items": ["Python", "TypeScript", "JavaScript", "Java", "C", "Rust", "Shell"]
+        },
+        {
+          "id": "frontend",
+          "label": "前端与全栈开发",
+          "items": ["React", "Next.js", "Vue 3", "Nuxt 3", "Vite", "Tailwind CSS"]
+        },
+        {
+          "id": "backend",
+          "label": "后端与服务开发",
+          "items": ["FastAPI", "SQLAlchemy", "Express.js", "RESTful API", "SSE"]
+        },
+        {
+          "id": "dev-tools",
+          "label": "工程化与部署",
+          "items": ["Git", "Linux", "Docker", "GitHub Actions", "CI/CD", "Shell Scripting"]
+        },
+        {
+          "id": "testing",
+          "label": "测试",
+          "items": ["Jest", "JUnit", "Cypress"]
+        },
+        {
+          "id": "databases",
+          "label": "数据库与检索",
+          "items": ["PostgreSQL", "MongoDB", "MySQL", "SQLite", "LightRAG", "VectorRAG"]
+        },
+        {
+          "id": "ai-native",
+          "label": "AI Coding",
+          "items": ["Codex", "Claude Code", "Cursor"]
+        }
+      ]
+    }
+  },
+  "changeSummary": [
+    "将岗位定位从通用全栈/算法实习经历，强化为“AI 应用开发 + 全栈交付 + 独立上线”叙事，以贴合 JD 对 AI Native 全栈工程师的要求。",
+    "重写 Graviti、酷爱科技、AISoc 与 MockMate 的可编辑项目描述，突出端到端交付、产品闭环、自动化流程、RAG/LLM/Guardrails、人工兜底 AI 边界等关键词。",
+    "保留全部公司、项目、时间、学校、链接等事实锚点不变，仅优化可编辑文本与要点表达。",
+    "技能区新增 AI 相关能力分组，集中呈现 LLM 应用开发、Prompt Engineering、RAG、Agent Workflow、Cursor/Claude Code/ChatGPT 等与 JD 高相关能力。",
+    "在项目描述中强调技术取舍、性能优化、稳定性保障与可复用资产沉淀，呼应 JD 对“会砍需求、能做判断、可复用模板化”的偏好。"
+  ],
+  "jdInsights": {
+    "roleKeywords": [
+      "AI 应用开发",
+      "全栈开发",
+      "AI Native",
+      "独立交付",
+      "线上部署",
+      "自动化工具链",
+      "Python",
+      "FastAPI",
+      "React",
+      "Cursor",
+      "Claude Code",
+      "LLM",
+      "智能体",
+      "产品判断",
+      "需求转化",
+      "资产沉淀",
+      "3人小组协同"
+    ],
+    "requiredSkills": [
+      "独立完成项目并可验证",
+      "GitHub/Demo 可展示代码能力",
+      "日常使用 AI 工具进行开发",
+      "前后端全栈开发能力",
+      "Python 脚本与自动化能力",
+      "从需求到上线的闭环交付",
+      "对 AI 边界有认知并能人工兜底",
+      "能在模糊需求下自驱推进",
+      "具备技术选型与取舍能力"
+    ],
+    "matchNotes": [
+      "候选人具备多个可验证项目与 GitHub/Demo，满足“有真正写完的东西”和代码可验证要求。",
+      "FastAPI + React/Next.js/Vue/Nuxt 技术栈覆盖前后端，适合 AI 全栈方向。",
+      "有 LLM、RAG、Prompt Engineering、Guardrails、Human-in-the-Loop 相关经验，符合 AI 应用开发场景。",
+      "MockMate、AISoc 项目体现了从需求到部署上线、自动化链路搭建与产品闭环能力。",
+      "多处经历体现对 AI 边界的认识与人工兜底设计，如 Guardrails、反馈回流、失败回退策略。"
+    ],
+    "gapNotes": [
+      "简历中未直接给出使用 Cursor / Claude Code 的具体项目实践案例，可在面试或附加说明中补充。",
+      "JD 强调跨境电商广告营销场景，现有经历与该业务场景并不直接对应。",
+      "JD 希望候选人能回答近期用 AI 工具完成的高价值事项、砍需求案例、AI 做不好的具体场景，这些内容不适合写入正式简历，建议单独准备。"
+    ]
+  },
+  "jdTitle": "AI 应用开发工程师（全栈方向）",
+  "company": null
+}

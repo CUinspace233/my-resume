@@ -1,0 +1,12 @@
+{
+  "actions": {
+    "exportPdf": "导出PDF",
+    "exportingPdf": "导出中…",
+    "exportPdfAria": "导出 PDF"
+  },
+  "navigation": {
+    "githubAria": "在 GitHub 上查看源码",
+    "toggleThemeAria": "切换深色模式",
+    "tailorResumeAria": "根据 JD 微调简历"
+  }
+}

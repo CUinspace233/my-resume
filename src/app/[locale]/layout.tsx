@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import IntlProvider from '@/components/IntlProvider';
 import { locales, type AppLocale } from '@/i18n/config';
+import { getAppMessages } from '@/lib/messages';
 import { notFound } from 'next/navigation';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.cuinspace.com';
@@ -72,8 +73,7 @@ export default async function RootLayout({ children, params }: Props) {
     notFound();
   }
 
-  // load messages
-  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const messages = await getAppMessages(locale);
 
   return (
     <div lang={locale}>

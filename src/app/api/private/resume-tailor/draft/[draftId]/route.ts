@@ -1,5 +1,5 @@
 import type { NextRequest } from 'next/server';
-import { getBaseResume } from '@/lib/resumeMessages';
+import { getBaseResume } from '@/lib/messages';
 import {
   privateJson,
   requestHasPrivateResumeAccess,

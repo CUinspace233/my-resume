@@ -4,7 +4,7 @@ import {
   requestHasPrivateResumeAccess,
   unauthorizedPrivateJson,
 } from '@/lib/privateAuth';
-import { getBaseResume } from '@/lib/resumeMessages';
+import { getBaseResume } from '@/lib/messages';
 import { validateTailoredResume } from '@/lib/resumeValidation';
 import { createTailoredResumeDraft } from '@/lib/tailoredResumeStore';
 import type { JdInsights, ResumeContent } from '@/types/resume';

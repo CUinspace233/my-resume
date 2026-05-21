@@ -1,5 +1,5 @@
 import { hasPrivateResumeAccess, isPrivatePasswordConfigured } from '@/lib/privateAuth';
-import { getBaseResume } from '@/lib/resumeMessages';
+import { getBaseResume } from '@/lib/messages';
 import PrivateResumeTailorClient from '@/components/private/PrivateResumeTailorClient';
 import { connection } from 'next/server';
 
