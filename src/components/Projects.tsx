@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
+import ResumeText from '@/components/ResumeText';
 import type { ResumeProject } from '@/types/resume';
 
 const Projects: FC = () => {
@@ -13,11 +14,17 @@ const Projects: FC = () => {
         {projectsData.map(project => (
           <div key={project.id} className="bg-black/[.05] dark:bg-white/[.06] p-2 rounded-lg">
             <div className="flex justify-between items-start mb-1">
-              <h3 className="text-lg font-semibold">{project.title}</h3>
-              <p className="text-xs text-gray-600 dark:text-gray-400">{project.period}</p>
+              <h3 className="text-lg font-semibold">
+                <ResumeText text={project.title} />
+              </h3>
+              <p className="text-xs text-gray-600 dark:text-gray-400">
+                <ResumeText text={project.period ?? ''} />
+              </p>
             </div>
             <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">
-              <span className="flex flex-col mb-1">{project.technologies.join(', ')}</span>
+              <span className="flex flex-col mb-1">
+                <ResumeText text={project.technologies.join(', ')} />
+              </span>
               <div className="flex gap-2">
                 {project.projectUrl && (
                   <a
@@ -44,7 +51,9 @@ const Projects: FC = () => {
             </div>
             <ul className="list-disc list-inside space-y-1 text-xs">
               {project.description.map(item => (
-                <li key={item}>{item}</li>
+                <li key={item}>
+                  <ResumeText text={item} />
+                </li>
               ))}
             </ul>
           </div>

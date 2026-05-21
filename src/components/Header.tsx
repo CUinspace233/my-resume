@@ -2,6 +2,7 @@
 
 import { FC } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
+import ResumeText from '@/components/ResumeText';
 
 const Header: FC = () => {
   const t = useTranslations('resume.header');
@@ -11,7 +12,9 @@ const Header: FC = () => {
 
   return (
     <header className="w-full max-w-3xl mx-auto mb-3">
-      <h1 className="text-2xl font-bold mb-2">{t('name')}</h1>
+      <h1 className="text-2xl font-bold mb-2">
+        <ResumeText text={t('name')} />
+      </h1>
       <div className="flex flex-wrap gap-x-1.5 gap-y-0.5 text-xs">
         {mobile && (
           <>
@@ -22,7 +25,7 @@ const Header: FC = () => {
           </>
         )}
         <a href={t('emailHref')} className="hover:underline">
-          {t('email')}
+          <ResumeText text={t('email')} />
         </a>
         <span className="text-gray-400">|</span>
         <a
@@ -31,7 +34,7 @@ const Header: FC = () => {
           rel="noopener noreferrer"
           className="underline underline-offset-3"
         >
-          {t('githubLabel')}
+          <ResumeText text={t('githubLabel')} />
         </a>
         <span className="text-gray-400">|</span>
         <a
@@ -40,7 +43,7 @@ const Header: FC = () => {
           rel="noopener noreferrer"
           className="underline underline-offset-3"
         >
-          {t('linkedinLabel')}
+          <ResumeText text={t('linkedinLabel')} />
         </a>
       </div>
     </header>

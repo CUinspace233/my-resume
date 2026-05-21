@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
+import ResumeText from '@/components/ResumeText';
 import type { ResumeSkillGroup } from '@/types/resume';
 
 const TechnicalSkills: FC = () => {
@@ -13,9 +14,13 @@ const TechnicalSkills: FC = () => {
         {skillGroups.map(group => (
           <div key={group.id} className="p-2 rounded-lg bg-black/[.05] dark:bg-white/[.06]">
             <div>
-              <strong>{group.label}:</strong>
+              <strong>
+                <ResumeText text={group.label} />:
+              </strong>
             </div>
-            <span className="block">{group.items.join(', ')}</span>
+            <span className="block">
+              <ResumeText text={group.items.join(', ')} />
+            </span>
           </div>
         ))}
       </div>

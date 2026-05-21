@@ -2,6 +2,7 @@
 
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
+import ResumeText from '@/components/ResumeText';
 import type { ResumeAwardItem } from '@/types/resume';
 
 const Awards: FC = () => {
@@ -16,11 +17,17 @@ const Awards: FC = () => {
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row justify-start items-center gap-1">
               <span className="text-lg">•</span>
-              <span className="text-sm font-bold">{item.place}</span>
+              <span className="text-sm font-bold">
+                <ResumeText text={item.place} />
+              </span>
               <span>-</span>
-              <span className="text-sm">{item.award}</span>
+              <span className="text-sm">
+                <ResumeText text={item.award} />
+              </span>
             </div>
-            <span className="text-xs text-gray-600 dark:text-gray-400">{item.period}</span>
+            <span className="text-xs text-gray-600 dark:text-gray-400">
+              <ResumeText text={item.period} />
+            </span>
           </div>
           {item.link && (
             <div className="text-sm text-gray-600 dark:text-gray-400 ml-3">

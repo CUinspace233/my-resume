@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
+import ResumeText from '@/components/ResumeText';
 import type { ResumeExperienceItem } from '@/types/resume';
 
 const Experience: FC = () => {
@@ -14,14 +15,18 @@ const Experience: FC = () => {
         <div key={item.id} className="bg-black/[.05] dark:bg-white/[.06] p-2 rounded-lg mb-1">
           <div className="flex justify-between items-start mb-1">
             <h3 className="text-lg font-semibold">
-              {item.position} – {item.company}
+              <ResumeText text={`${item.position} – ${item.company}`} />
             </h3>
-            <p className="text-xs text-gray-600 dark:text-gray-400">{item.period}</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400">
+              <ResumeText text={item.period} />
+            </p>
           </div>
           {item.achievements && item.achievements.length > 0 && (
             <ul className="list-disc list-inside space-y-1 text-xs">
               {item.achievements.map(achievement => (
-                <li key={achievement}>{achievement}</li>
+                <li key={achievement}>
+                  <ResumeText text={achievement} />
+                </li>
               ))}
             </ul>
           )}
@@ -33,7 +38,7 @@ const Experience: FC = () => {
               {item.projects.map(project => (
                 <div key={project.id} className="pl-4 border-l-2 border-gray-200">
                   <div className="font-medium text-lg">
-                    {project.title}
+                    <ResumeText text={project.title} />
                     {project.projectUrl && project.siteName && (
                       <a
                         href={project.projectUrl}
@@ -48,11 +53,13 @@ const Experience: FC = () => {
                   </div>
 
                   <div className="text-xs text-gray-600 dark:text-gray-400 mb-1 flex flex-col">
-                    {project.technologies.join(', ')}
+                    <ResumeText text={project.technologies.join(', ')} />
                   </div>
                   <ul className="list-disc list-inside space-y-1 text-xs">
                     {project.description.map(desc => (
-                      <li key={desc}>{desc}</li>
+                      <li key={desc}>
+                        <ResumeText text={desc} />
+                      </li>
                     ))}
                   </ul>
                 </div>
