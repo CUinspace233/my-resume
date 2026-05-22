@@ -1,5 +1,5 @@
 import createNextIntlPlugin from 'next-intl/plugin';
-import withPWA from 'next-pwa';
+import withPWA from '@ducanh2912/next-pwa';
 
 const withNextIntl = createNextIntlPlugin({
   locales: ['en', 'zh'],
