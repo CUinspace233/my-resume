@@ -43,5 +43,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
+    {
+      url: `${BASE_URL}/en/blog/multi-agent-collaboration`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: {
+        languages: {
+          en: `${BASE_URL}/en/blog/multi-agent-collaboration`,
+          zh: `${BASE_URL}/zh/blog/multi-agent-collaboration`,
+        },
+      },
+    },
+    {
+      url: `${BASE_URL}/zh/blog/multi-agent-collaboration`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: {
+        languages: {
+          en: `${BASE_URL}/en/blog/multi-agent-collaboration`,
+          zh: `${BASE_URL}/zh/blog/multi-agent-collaboration`,
+        },
+      },
+    },
   ];
 }

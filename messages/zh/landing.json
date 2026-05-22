@@ -25,7 +25,23 @@
     "readTime": "8 分钟阅读",
     "title": "Agent 不是聊天机器人：工具调用、上下文管理与循环推理",
     "summary": "用一套可视化结构拆解 Claude Code 风格运行时如何把模型输出变成工具执行、上下文更新和下一轮推理。",
-    "cta": "阅读文章"
+    "cta": "阅读文章",
+    "items": {
+      "runtime": {
+        "eyebrow": "Agent Runtime",
+        "tag": "深度拆解",
+        "readTime": "8 分钟阅读",
+        "title": "Agent 不是聊天机器人：工具调用、上下文管理与循环推理",
+        "summary": "用一套可视化结构拆解 Claude Code 风格运行时如何把模型输出变成工具执行、上下文更新和下一轮推理。"
+      },
+      "multiAgent": {
+        "eyebrow": "Multi Agent",
+        "tag": "源码阅读",
+        "readTime": "12 分钟阅读",
+        "title": "Claude Code Multi Agent：把协作做成运行时协议",
+        "summary": "更细地拆解 Claude Code 如何用 team config、task list、mailbox、agent 生命周期、权限和恢复机制组织多个 agent 协作。"
+      }
+    }
   },
   "features": {
     "label": "工作与项目",
