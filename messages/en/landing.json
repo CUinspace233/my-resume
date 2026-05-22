@@ -1,6 +1,7 @@
 {
   "nav": {
     "about": "About",
+    "blog": "Blog",
     "projects": "Projects",
     "resume": "Resume"
   },
@@ -14,6 +15,17 @@
   },
   "techStack": {
     "label": "Tech I work with"
+  },
+  "blog": {
+    "label": "Writing",
+    "headline": "Notes on how agent systems actually work.",
+    "description": "I write down implementation-level observations from projects and source-code reading, especially where AI tools meet real runtime constraints.",
+    "eyebrow": "Agent Runtime",
+    "tag": "Deep Dive",
+    "readTime": "8 min read",
+    "title": "Agents are not chatbots: tool calls, context, and looped reasoning",
+    "summary": "A visual breakdown of how a Claude Code-style runtime turns model output into tool execution, context updates, and the next reasoning step.",
+    "cta": "Read the article"
   },
   "features": {
     "label": "Work & Projects",

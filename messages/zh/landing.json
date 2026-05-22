@@ -1,6 +1,7 @@
 {
   "nav": {
     "about": "关于",
+    "blog": "博客",
     "projects": "项目",
     "resume": "简历"
   },
@@ -14,6 +15,17 @@
   },
   "techStack": {
     "label": "技术栈"
+  },
+  "blog": {
+    "label": "文章",
+    "headline": "记录 Agent 系统真正运转起来的样子。",
+    "description": "这里记录我在项目实践和源码阅读中遇到的工程细节，尤其关注 AI 工具如何和真实运行时约束衔接。",
+    "eyebrow": "Agent Runtime",
+    "tag": "深度拆解",
+    "readTime": "8 分钟阅读",
+    "title": "Agent 不是聊天机器人：工具调用、上下文管理与循环推理",
+    "summary": "用一套可视化结构拆解 Claude Code 风格运行时如何把模型输出变成工具执行、上下文更新和下一轮推理。",
+    "cta": "阅读文章"
   },
   "features": {
     "label": "工作与项目",

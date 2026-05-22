@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.cuinspace.com';
+const LAST_MODIFIED = new Date('2026-05-22T00:00:00.000Z');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -17,6 +18,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/en/blog/agent-runtime-anatomy`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: {
+        languages: {
+          en: `${BASE_URL}/en/blog/agent-runtime-anatomy`,
+          zh: `${BASE_URL}/zh/blog/agent-runtime-anatomy`,
+        },
+      },
+    },
+    {
+      url: `${BASE_URL}/zh/blog/agent-runtime-anatomy`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: {
+        languages: {
+          en: `${BASE_URL}/en/blog/agent-runtime-anatomy`,
+          zh: `${BASE_URL}/zh/blog/agent-runtime-anatomy`,
+        },
+      },
     },
   ];
 }

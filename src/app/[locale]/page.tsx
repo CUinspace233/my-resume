@@ -2,6 +2,7 @@ import SiteNav from '@/components/landing/SiteNav';
 import Hero from '@/components/landing/Hero';
 import TechStackGrid from '@/components/landing/TechStackGrid';
 import FeatureCards from '@/components/landing/FeatureCards';
+import BlogSpotlight from '@/components/landing/BlogSpotlight';
 import MetricTiles from '@/components/landing/MetricTiles';
 import ContributionsChart from '@/components/landing/ContributionsChart';
 import AboutBand from '@/components/landing/AboutBand';
@@ -16,6 +17,8 @@ export default function Home() {
       <TechStackGrid />
 
       <FeatureCards />
+
+      <BlogSpotlight />
 
       <MetricTiles />
 

@@ -27,18 +27,24 @@ export default function SiteNav() {
 
         {/* Center: nav links */}
         <div className="hidden sm:flex items-center justify-center gap-6">
-          <a
-            href="#projects"
+          <Link
+            href={`/${locale}#projects`}
             className="font-[family-name:var(--font-geist-sans)] text-sm font-medium text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-[#ededed] transition-colors"
           >
             {t('projects')}
-          </a>
-          <a
-            href="#about"
+          </Link>
+          <Link
+            href={`/${locale}#blog`}
+            className="font-[family-name:var(--font-geist-sans)] text-sm font-medium text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-[#ededed] transition-colors"
+          >
+            {t('blog')}
+          </Link>
+          <Link
+            href={`/${locale}#about`}
             className="font-[family-name:var(--font-geist-sans)] text-sm font-medium text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-[#ededed] transition-colors"
           >
             {t('about')}
-          </a>
+          </Link>
         </div>
 
         {/* Right: controls + resume CTA */}
