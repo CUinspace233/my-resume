@@ -26,13 +26,13 @@ const articleCopy = {
     eyebrow: 'Runtime Anatomy / Claude Code source notes',
     title: 'Agent 不是聊天机器人，而是一台会反复接线的运行时机器',
     intro:
-      '最近我系统读了一遍 Claude Code 这类 Agent 工具的源码。真正有意思的地方不是模型会不会回答，而是它如何把下一步意图交给运行时：触发工具、收集结果、整理上下文，然后继续推理。这篇文章重点拆三件事：工具调用、上下文管理、循环推理。',
+      '最近我系统读了一遍 Claude Code 这类 Agent 工具的源码。读完以后，我的注意力从“模型会不会回答”转到了另一件事：模型如何把下一步意图交给运行时。触发工具、收集结果、整理上下文，然后继续推理。这篇文章重点拆三件事：工具调用、上下文管理、循环推理。',
     thesis: 'LLM 负责决定下一步，运行时负责让下一步真的发生。',
     steps: [
       {
         label: '1. Model',
         title: '模型先给出下一步意图',
-        body: '它可能输出文本，也可能输出一个结构化的 tool_use block。运行时不把这当成答案终点，而是当成下一步动作。',
+        body: '它可能输出文本，也可能输出一个结构化的 tool_use block。运行时看到 tool_use，会把它解释成下一步动作。',
       },
       {
         label: '2. Tool',
@@ -55,8 +55,8 @@ const articleCopy = {
       '普通聊天的心智模型是：用户发一句，模型答一句。Agent 的心智模型完全不同：用户发出目标后，运行时会进入一个循环。每次循环都把当前消息、系统提示、工具定义和上下文状态发给模型；如果模型返回工具调用，就暂停回答，先执行工具；拿到结果后再把结果作为新的用户侧消息放回上下文，继续请求模型。',
     stateLead: '这里最关键的是',
     stateBody:
-      'Agent 的连续性不是来自模型记忆，而是来自运行时把每轮的观察结果有纪律地拼回下一轮输入。模型每次都像站在新的现场，只是这个现场由运行时整理过。',
-    toolTitle: '工具调用不是函数调用',
+      'Agent 的连续性来自运行时的回填纪律。每一轮观察结果都会被整理进下一轮输入；模型每次都像站在新的现场，只是这个现场由运行时提前布置好。',
+    toolTitle: '工具调用是一段受控执行协议',
     toolBody:
       '从模型视角看，工具像一个 JSON 函数。但从运行时视角看，工具是一段受控执行协议：它要先被发现，再被校验，再经过权限和 hook，最后才会真正碰文件、shell、MCP 或网络资源。',
     toolStages: [
@@ -68,9 +68,9 @@ const articleCopy = {
       '包装 tool_result',
       '回填模型上下文',
     ],
-    contextTitle: '上下文不是聊天记录，而是工作台',
+    contextTitle: '上下文是一张会被不断整理的工作台',
     contextBody:
-      '一个长任务里，真正吃掉上下文窗口的通常不是用户问题，而是工具结果、文件内容、附件、记忆和中间推理轨迹。从 Claude Code 的源码看，上下文治理不是一个功能点，而是一整套分层机制：工具结果预算、micro-compact、auto-compact、reactive compact、session memory。它们的目标不是“省 token”这么简单，而是尽量保住下一步推理所需的现场。',
+      '一个长任务里，最容易吃掉上下文窗口的通常是工具结果、文件内容、附件、记忆和中间推理轨迹。从 Claude Code 的源码看，上下文治理是一整套分层机制：工具结果预算、micro-compact、auto-compact、reactive compact、session memory。它们当然能省 token，但更重要的目标是保住下一步推理所需的现场。',
     contextCaption: '概念示意，不是实测 token 分布',
     compactBody:
       '自动压缩的触发逻辑很像内存管理：先计算当前 token 使用量，再和模型有效窗口、预留输出空间、buffer 做比较。超过阈值时，运行时会尝试把历史折叠成摘要；如果压缩连续失败，还会有熔断，避免每一轮都浪费一次必然失败的 API 调用。',
@@ -84,7 +84,7 @@ const articleCopy = {
     ],
     takeawaysTitle: '读完 Claude Code 源码后，我带走的架构判断',
     takeaways: [
-      '第一，Agent 的产品体验主要由运行时决定，不只由模型决定。模型会提出工具调用，但权限提示是否清晰、并发是否安全、错误是否能恢复、上下文是否被压缩得足够保真，都是工程系统的责任。',
+      '第一，Agent 的产品体验主要由运行时决定。模型会提出工具调用，但权限提示是否清晰、并发是否安全、错误是否能恢复、上下文是否被压缩得足够保真，都是工程系统的责任。',
       '第二，工具返回值必须被当成 prompt 资产管理。输出太长要截断或落盘，重要摘要要保留，低价值噪声要被替换，否则长任务会被自己的观察结果淹没。',
       '第三，循环推理需要明确的终止条件。没有工具调用时可以结束；hook 阻塞时要重试；token 或 prompt-too-long 错误可以恢复，但恢复必须有次数限制。否则 Agent 会从“自主推进”变成“自主空转”。',
     ],
@@ -95,7 +95,7 @@ const articleCopy = {
       [
         '主循环',
         '把一次用户请求扩展成多轮模型请求、工具执行和状态回填。',
-        '先看这里，才能理解 Agent 为什么不是“一问一答”。',
+        '先看这里，才能理解 Agent 为什么会从“一问一答”变成持续推进。',
       ],
       [
         '工具协议',
@@ -124,7 +124,7 @@ const articleCopy = {
     eyebrow: 'Runtime Anatomy / Claude Code source notes',
     title: 'Agents are not chatbots. They are runtimes that keep reconnecting the loop.',
     intro:
-      'I recently spent time reading through the source of Claude Code-style agent tooling. The interesting part is not whether the model can answer. It is how the runtime turns the model’s next intent into action: call a tool, collect the result, reshape the context, and continue reasoning. This article focuses on three mechanisms: tool use, context management, and looped reasoning.',
+      'I recently spent time reading through the source of Claude Code-style agent tooling. After reading it, I cared less about whether the model can answer and more about how the runtime turns the model’s next intent into action: call a tool, collect the result, reshape the context, and continue reasoning. This article focuses on three mechanisms: tool use, context management, and looped reasoning.',
     thesis: 'The LLM decides the next move. The runtime makes that move real.',
     steps: [
       {
@@ -153,8 +153,8 @@ const articleCopy = {
       'A normal chat model feels like one user message followed by one assistant answer. An agent runtime works differently. After the user gives a goal, the runtime enters a loop. Each iteration sends the current messages, system prompt, tool definitions, and context state to the model. If the model returns a tool call, the runtime pauses the answer, executes the tool, then feeds the result back into the next model request.',
     stateLead: 'The crucial line is',
     stateBody:
-      'The continuity of an agent does not come from model memory. It comes from the runtime carefully feeding every observation back into the next input. Each model call starts from a freshly prepared scene, and that scene is assembled by the runtime.',
-    toolTitle: 'A tool call is not just a function call',
+      'Agent continuity comes from runtime discipline. Every observation is fed back into the next input, so each model call starts from a freshly prepared scene assembled by the runtime.',
+    toolTitle: 'A tool call is a controlled execution protocol',
     toolBody:
       'From the model’s point of view, a tool looks like a JSON function. From the runtime’s point of view, it is a controlled execution protocol. It must be discovered, validated, authorized, routed through hooks, and only then allowed to touch files, shell commands, MCP servers, or network resources.',
     toolStages: [
@@ -166,9 +166,9 @@ const articleCopy = {
       'Wrap tool_result',
       'Feed context back',
     ],
-    contextTitle: 'Context is not chat history. It is a workbench.',
+    contextTitle: 'Context is a workbench that keeps getting rebuilt.',
     contextBody:
-      'In a long task, the context window is usually consumed not by the user’s request, but by tool results, file contents, attachments, memory, and intermediate traces. Reading Claude Code’s source makes this clear: context management is not a single feature, but a layered system of result budgeting, micro-compaction, auto-compaction, reactive compaction, and session memory. The goal is not merely to save tokens; it is to preserve the scene needed for the next step.',
+      'In a long task, the context window is usually consumed by tool results, file contents, attachments, memory, and intermediate traces. Reading Claude Code’s source makes this clear: context management is a layered system of result budgeting, micro-compaction, auto-compaction, reactive compaction, and session memory. Saving tokens matters, but the deeper goal is preserving the scene needed for the next step.',
     contextCaption: 'Conceptual distribution, not measured token usage',
     compactBody:
       'Auto-compaction behaves a lot like memory management. The runtime estimates token usage, compares it with the effective model window, reserved output space, and buffer, then folds history into a summary when the threshold is crossed. If compaction keeps failing, a circuit breaker prevents every future turn from wasting another doomed API call.',
@@ -182,7 +182,7 @@ const articleCopy = {
     ],
     takeawaysTitle: 'Architecture judgments I took from reading Claude Code',
     takeaways: [
-      'First, the agent product experience is mostly shaped by the runtime, not only by the model. The model may propose tool calls, but clear permissions, safe concurrency, recoverable errors, and faithful context compression are engineering responsibilities.',
+      'First, the agent product experience is mostly shaped by the runtime. The model may propose tool calls, but clear permissions, safe concurrency, recoverable errors, and faithful context compression are engineering responsibilities.',
       'Second, tool results must be managed as prompt assets. Long outputs need truncation or persistence, important summaries must survive, and low-value noise must be replaced before the agent drowns in its own observations.',
       'Third, looped reasoning needs explicit stop conditions. No tool call can mean completion; blocking hooks can trigger retries; token and prompt-too-long errors may be recoverable, but recovery must be bounded. Otherwise autonomy becomes a spin loop.',
     ],
