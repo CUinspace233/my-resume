@@ -8,7 +8,6 @@ const DRAFT_KEY_PREFIX = 'resume-tailor:draft:';
 type TailoredResumeStore = Map<string, TailoredResumeDraft>;
 
 declare global {
-  // eslint-disable-next-line no-var
   var __tailoredResumeDrafts: TailoredResumeStore | undefined;
 }
 

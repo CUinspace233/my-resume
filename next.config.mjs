@@ -1,5 +1,8 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 import withPWA from '@ducanh2912/next-pwa';
+import { fileURLToPath } from 'node:url';
+
+const projectRoot = fileURLToPath(new URL('.', import.meta.url));
 
 const withNextIntl = createNextIntlPlugin({
   locales: ['en', 'zh'],
@@ -8,6 +11,7 @@ const withNextIntl = createNextIntlPlugin({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  outputFileTracingRoot: projectRoot,
   images: {
     remotePatterns: [{ protocol: 'https', hostname: 'ghchart.rshah.org' }],
   },
