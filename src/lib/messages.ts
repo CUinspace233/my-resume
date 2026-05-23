@@ -1,13 +1,6 @@
 import type { ResumeContent, TailoredResumeExportPackage } from '@/types/resume';
 
-const MESSAGE_NAMESPACES = [
-  'buttons',
-  'common',
-  'exportPdf',
-  'header',
-  'landing',
-  'sections',
-] as const;
+const MESSAGE_NAMESPACES = ['buttons', 'common', 'exportPdf', 'header', 'landing'] as const;
 
 type MessageNamespace = (typeof MESSAGE_NAMESPACES)[number];
 type Locale = 'en' | 'zh';
@@ -24,7 +17,6 @@ const messageLoaders: Record<Locale, Record<MessageNamespace, NamespaceLoader>> 
     exportPdf: () => import('../../messages/en/exportPdf.json'),
     header: () => import('../../messages/en/header.json'),
     landing: () => import('../../messages/en/landing.json'),
-    sections: () => import('../../messages/en/sections.json'),
   },
   zh: {
     buttons: () => import('../../messages/zh/buttons.json'),
@@ -32,7 +24,6 @@ const messageLoaders: Record<Locale, Record<MessageNamespace, NamespaceLoader>> 
     exportPdf: () => import('../../messages/zh/exportPdf.json'),
     header: () => import('../../messages/zh/header.json'),
     landing: () => import('../../messages/zh/landing.json'),
-    sections: () => import('../../messages/zh/sections.json'),
   },
 };
 

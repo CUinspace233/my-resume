@@ -50,6 +50,7 @@
       "project": "PROJECT",
       "activity": "ACTIVITY"
     },
+    "mockMateDescription": "An AI interview training platform covering question generation, follow-ups, structured evaluation, history records, and resume-project technical drilling.",
     "codexProfileManager": {
       "title": "Codex Profile Manager",
       "period": "Apr 2026",

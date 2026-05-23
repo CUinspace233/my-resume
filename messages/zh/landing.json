@@ -50,6 +50,7 @@
       "project": "项目",
       "activity": "活动"
     },
+    "mockMateDescription": "AI 面试训练平台，覆盖出题、追问、结构化评测、历史记录，并支持基于简历项目的技术深挖训练。",
     "codexProfileManager": {
       "title": "Codex Profile Manager",
       "period": "2026年4月",

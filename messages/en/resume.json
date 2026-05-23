@@ -150,9 +150,10 @@
           ],
           "description": [
             "Independently delivered an AI mock interview product from frontend/backend development to production deployment, using React + FastAPI to implement the full loop of question generation -> follow-up -> answer -> AI evaluation -> record retention.",
-            "Implemented SSE streaming for question generation and follow-ups, with frontend incremental rendering and non-streaming fallback to balance realistic interaction and system stability.",
-            "Designed a structured AI evaluation pipeline that enforces strict JSON multi-dimensional scoring from the LLM, and evaluates based on the complete conversation history in follow-up mode to improve parsability and reusability.",
-            "Built an automated content production workflow with APScheduler, fetching RSS news on a schedule and using an LLM to generate interview questions, then filtering by relevance score before persistence.",
+            "Implemented SSE-based main-question and follow-up generation for both general interviews and resume-project technical drilling, including frontend incremental rendering, non-streaming fallback, DB flushing, and local draft recovery.",
+            "Built resume parsing with strict JSON LLM extraction to convert uploaded resumes into evidence-backed project structures, enabling project-context technical questions grounded in real resume claims.",
+            "Designed a structured AI evaluation pipeline that enforces strict JSON multi-dimensional scoring and evaluates complete follow-up conversations to improve parsability, consistency, and record reusability.",
+            "Automated RSS-driven question production with APScheduler, using LLM relevance filtering before persistence to keep generated interview content focused on high-signal topics.",
             "Built a GitHub Actions CI/CD pipeline with automatic PR checks and SSH-based deployment after merge, demonstrating the ability to independently deliver a production-ready online product."
           ],
           "projectUrl": "https://mockmate.cuinspace.com",

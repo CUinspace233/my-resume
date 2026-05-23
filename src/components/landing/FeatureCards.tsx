@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import type { ResumeExperienceItem, ResumeProject, ResumeSocietyItem } from '@/types/resume';
 
 interface CardData {
   type: 'internship' | 'project' | 'activity';
@@ -174,41 +175,13 @@ function FeatureCard({ card, typeLabel }: { card: CardData; typeLabel: string })
 
 export default function FeatureCards() {
   const t = useTranslations('landing.features');
-  const exp = useTranslations('sections.experience');
-  const proj = useTranslations('sections.projects');
-  const soc = useTranslations('sections.societies');
+  const exp = useTranslations('resume.experience');
+  const proj = useTranslations('resume.projects');
+  const soc = useTranslations('resume.societies');
 
-  const expData = exp.raw('experienceData') as Array<{
-    company: string;
-    position: string;
-    period: string;
-    projects?: Array<{
-      title: string;
-      technologies: string[];
-      projectUrl?: string;
-      description: string[];
-    }>;
-    achievements?: string[];
-  }>;
-
-  const projData = proj.raw('projectsData') as Array<{
-    title: string;
-    period: string;
-    technologies: string[];
-    repoUrl?: string;
-    projectUrl?: string;
-    imageUrl?: string;
-    description: string[];
-  }>;
-
-  const socData = soc.raw('societiesData') as Array<{
-    organization: string;
-    position: string;
-    period: string;
-    achievements: string[];
-    repoUrl?: string;
-    societyWebsiteUrl?: string;
-  }>;
+  const expData = exp.raw('items') as ResumeExperienceItem[];
+  const projData = proj.raw('items') as ResumeProject[];
+  const socData = soc.raw('items') as ResumeSocietyItem[];
 
   const typeLabels = {
     internship: t('typeLabel.internship'),
@@ -221,6 +194,7 @@ export default function FeatureCards() {
     description: string;
     technologies: string[];
   };
+  const mockMateDescription = t('mockMateDescription');
   const webFontSwitcher = t.raw('webFontSwitcher') as {
     title: string;
     period: string;
@@ -258,11 +232,11 @@ export default function FeatureCards() {
       company: projData[0]?.title ?? 'MockMate',
       role: '',
       period: projData[0]?.period ?? '',
-      description: projData[0]?.description?.[0] ?? '',
+      description: mockMateDescription,
       tech: projData[0]?.technologies?.slice(0, 6) ?? [],
       repoUrl: projData[0]?.repoUrl,
-      url: 'https://mockmate.cuinspace.com',
-      imageUrl: '/mockmate-logo.png',
+      url: projData[0]?.projectUrl,
+      imageUrl: projData[0]?.imageUrl ?? '/mockmate-logo.png',
     },
     // Codex Profile Manager project
     {
