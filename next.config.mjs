@@ -1,5 +1,6 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 import withPWA from '@ducanh2912/next-pwa';
+import { PHASE_DEVELOPMENT_SERVER } from 'next/constants.js';
 import { fileURLToPath } from 'node:url';
 
 const projectRoot = fileURLToPath(new URL('.', import.meta.url));
@@ -58,4 +59,10 @@ const pwaConfig = withPWA({
   ],
 });
 
-export default withNextIntl(pwaConfig(nextConfig));
+export default phase =>
+  withNextIntl(
+    pwaConfig({
+      ...nextConfig,
+      distDir: phase === PHASE_DEVELOPMENT_SERVER ? '.next-dev' : '.next',
+    })
+  );
