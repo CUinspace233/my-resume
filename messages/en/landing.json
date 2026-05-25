@@ -23,7 +23,7 @@
     "eyebrow": "Agent Runtime",
     "tag": "Deep Dive",
     "readTime": "8 min read",
-    "title": "Agents are not chatbots: tool calls, context, and looped reasoning",
+    "title": "Agents are not chatbots. They are runtimes that keep reconnecting the loop.",
     "summary": "A visual breakdown of how a Claude Code-style runtime turns model output into tool execution, context updates, and the next reasoning step.",
     "cta": "Read the article",
     "items": {
@@ -31,14 +31,14 @@
         "eyebrow": "Agent Runtime",
         "tag": "Deep Dive",
         "readTime": "8 min read",
-        "title": "Agents are not chatbots: tool calls, context, and looped reasoning",
+        "title": "Agents are not chatbots. They are runtimes that keep reconnecting the loop.",
         "summary": "A visual breakdown of how a Claude Code-style runtime turns model output into tool execution, context updates, and the next reasoning step."
       },
       "multiAgent": {
         "eyebrow": "Multi Agent",
         "tag": "Source Notes",
         "readTime": "12 min read",
-        "title": "Claude Code multi-agent: collaboration as a runtime protocol",
+        "title": "Claude Code multi-agent turns collaboration into protocol.",
         "summary": "A deeper source-reading note on how Claude Code uses team config, task lists, mailboxes, agent lifecycles, permissions, and recovery to coordinate work."
       }
     }

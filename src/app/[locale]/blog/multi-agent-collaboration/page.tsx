@@ -25,12 +25,12 @@ const blogSeo: BlogSeoConfig = {
   tags: ['Claude Code', 'Multi Agent', 'Agent Swarm', 'Coordinator'],
   copy: {
     en: {
-      title: 'Claude Code multi-agent: collaboration as a runtime protocol',
+      title: 'Claude Code multi-agent turns collaboration into protocol.',
       description:
         'A detailed source-reading note on Claude Code multi-agent coordination: teams, task lists, mailboxes, agent lifecycles, permissions, and recoverable handoff.',
     },
     zh: {
-      title: 'Claude Code Multi Agent：把协作做成运行时协议',
+      title: 'Claude Code 里的 Multi Agent：把协作做成协议',
       description:
         '一篇更深入的 Claude Code 源码阅读笔记，拆解 Multi Agent 如何通过 team、task list、mailbox、生命周期、权限和恢复机制协作。',
     },

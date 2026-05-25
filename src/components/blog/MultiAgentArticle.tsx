@@ -18,13 +18,13 @@ const articleCopy = {
     eyebrow: 'Multi-agent / Claude Code source notes',
     title: 'Claude Code 里的 Multi Agent：把协作做成协议',
     intro:
-      '这次我重新顺着 Claude Code 的源码看了一遍 multi agent。越看越觉得，最有意思的地方并不在“可以同时开几个模型”，而在它对协作这件事的处理方式：它没有把多 agent 做成一个热闹的聊天室，反而先拆成几个很普通、但很硬的工程事实。谁属于哪个队伍，任务写在哪里，消息怎么送达，后台 agent 怎么结束，权限向谁申请，失败后还能不能接着跑。模型当然重要，但真正让多个 agent 不互相踩脚的，是这些运行时协议。',
+      '这次我重新顺着 Claude Code 的源码看了一遍 multi agent。越看越觉得，重点并不在“可以同时开几个模型”，而在它对协作这件事的处理方式：它先把协作拆成一组运行时能记录和传递的状态。谁属于哪个队伍，任务写在哪里，消息怎么送达，后台 agent 怎么结束，权限向谁申请，失败后还能不能接着跑。模型当然重要，但多个 agent 能不能一起工作，最后还是要看这些运行时协议。',
     thesis: 'Multi Agent 的关键在于给并行工作建立共享事实、明确边界和可恢复的交接方式。',
     signals: [
       {
         label: 'Team',
         title: '先有队伍，才谈协作',
-        body: 'TeamCreate 不只是渲染一个面板，它会写 team config，并让 Team 和 TaskList 对齐。后面的成员发现、任务 owner、消息路由，都依赖这个名字空间。',
+        body: '在 Claude Code 里，team 首先是一个名字空间。创建 team 时，运行时会写入一份 team config；后面的成员发现、任务归属和消息路由，都围着这个名字空间展开。',
       },
       {
         label: 'Spawn',
@@ -47,7 +47,7 @@ const articleCopy = {
       'Claude Code 里至少有两类并行。普通 subagent 更像“我临时派出去的一个后台工作包”：它有 agentId、输出文件、进度、abort controller，适合做研究、实现、验证这类边界清楚的任务。它跑完以后，结果通过 task-notification 回到主线程。',
       'team teammate 则更像“加入项目组的长期成员”：它有 name@team 的身份，有 team config，有自己的 mailbox，有 idle loop，还会在空闲时继续等下一条指令或自动认领任务。它跑完一轮不会立刻销毁，下一次 prompt 还能接上已有上下文。',
       '这里还有一个很关键的分层：Prompt 层负责告诉模型什么时候应该创建 team、什么时候应该 spawn teammate、什么时候只需要普通 subagent。运行时不替模型做这个产品判断。到了 AgentTool.call 里，事情已经变成很机械的参数分支：有 team_name 和 name，就走 teammate spawn；没有 name，就按普通 subagent / background / sync / worktree 等路径处理。',
-      '所以这两个东西虽然都从 AgentTool 进去，表面看起来都是“开一个 agent”，但源码里它们的生命周期、权限处理、消息回流和 UI 表示都不一样。这个区分很重要，因为一次性后台作业和长期队友解决的是两种问题。',
+      '这两条车道虽然都从 AgentTool 进入，表面看起来都是“开一个 agent”，但源码里它们的生命周期、权限处理、消息回流和 UI 表示都不一样。这个区分很重要，因为一次性后台作业和长期队友解决的是两种问题。',
     ],
     lanesTitle: '两条 agent 车道',
     lanes: [
@@ -93,7 +93,7 @@ const articleCopy = {
         '后台 agent 以 <task-notification> 回来，带状态、摘要、结果、用量和 output path；teammate 每轮结束后向 team-lead 发 idle notification。',
       ],
     ],
-    codeTitle: '真正难的是让结果回到正确的人手里',
+    codeTitle: '难点在于让结果回到正确的人手里',
     codeCaption: '概念化伪代码，来自 TeamCreate / AgentTool / SendMessage 的结构抽象',
     lifecycleTitle: '生命周期里有很多“看起来啰嗦但很必要”的细节',
     lifecycleBody: [
@@ -112,7 +112,7 @@ const articleCopy = {
     ],
     sharedStateTitle: '共享状态在哪里',
     sharedStateBody: [
-      '这套设计刻意避免让 agent 彼此读取终端。源码里的提示甚至明确说：不要用 terminal tools 去看团队活动，要用 SendMessage 和 Task tools。原因很简单：终端输出主要给人看，稳定性和结构都不适合作为协作协议。真正能协作的状态，必须落在可读、可锁、可恢复的数据结构里。',
+      '这套设计刻意避免让 agent 彼此读取终端。源码里的提示甚至明确说：不要用 terminal tools 去看团队活动，要用 SendMessage 和 Task tools。原因很简单：终端输出主要给人看，稳定性和结构都不适合作为协作协议。能被多个 agent 共同使用的状态，必须落在可读、可锁、可恢复的数据结构里。',
       '所以 Claude Code 把共享事实拆成几张表：team config 记录成员，task list 记录工作，mailbox 记录消息，AppState.tasks 记录本进程内任务状态，transcript/output file 记录后台 agent 的执行痕迹。每一张表都很朴素，但组合起来就有了协作系统需要的最小秩序。',
     ],
     surfaces: [
@@ -140,9 +140,9 @@ const articleCopy = {
     conflictTitle: '它怎么避免 subagent 互相撞车',
     conflictBody: [
       '这里要先说清楚一个边界：Claude Code 没有给所有源码文件加全局写锁，AgentTool 运行时也不会自动判断两个 subagent 会不会改同一个文件。它的做法更工程化一点：把冲突拆成几类，再放到不同层处理。调度归 prompt，任务归 task list，沟通归 mailbox，纠偏归 TaskStop / SendMessage，高风险写入再交给 worktree 隔离。',
-      '最前面的一层仍然是 prompt。coordinator 的提示词会告诉模型：研究类任务可以并行，写同一批文件时要收敛到更少 worker，验证可以并行但最好覆盖不同区域。换句话说，让不让两个 worker 同时写，属于 coordinator 的规划责任；AgentTool.call 只执行已经表达成参数的分支。',
-      '真正进入 team 以后，task list 才变成硬协议。任务有 owner、status、blockedBy，claimTask 会在 lockfile 保护下改状态；已经被别人认领、已经完成、或者被未完成任务阻塞的任务，会被拒绝。启用 busy check 时，同一个 agent 还有未完成任务，也不能再抢新任务。这些机制的价值在于把“谁在做什么”落到共享事实里，让所有 teammate 都能读到同一份状态。',
-      '因此，它处理冲突的目标更接近“尽早可见”，不承诺“永远不会撞车”：谁领了任务，谁被阻塞，谁跑偏了，谁需要被 stop，哪一类写操作需要 worktree 隔离。这个边界很重要，因为源码里没有一个万能机制能自动阻止两个 agent 同时编辑同一个文件；真正的防线是 prompt 调度、任务协议、消息顺序和隔离策略叠在一起。',
+      '第一层仍然是 prompt。coordinator 的提示词会告诉模型：研究类任务可以并行，写同一批文件时要收敛到更少 worker，验证可以并行但最好覆盖不同区域。换句话说，让不让两个 worker 同时写，属于 coordinator 的规划责任；AgentTool.call 只执行已经表达成参数的分支。',
+      '进入 team 之后，task list 会把这种规划写进共享任务状态。任务有 owner、status、blockedBy，claimTask 会在 lockfile 保护下改状态；已经被别人认领、已经完成、或者被未完成任务阻塞的任务，会被拒绝。启用 busy check 时，同一个 agent 还有未完成任务，也不能再抢新任务。这些机制的价值在于把“谁在做什么”落到共享事实里，让所有 teammate 都能读到同一份状态。',
+      '因此，它处理冲突的目标更接近“尽早可见”，不承诺“永远不会撞车”：谁领了任务，谁被阻塞，谁跑偏了，谁需要被 stop，哪一类写操作需要 worktree 隔离。这个边界很重要，因为源码里没有一个万能机制能自动阻止两个 agent 同时编辑同一个文件；能依赖的是 prompt 调度、任务协议、消息顺序和隔离策略一起发挥作用。',
     ],
     conflictPoints: [
       [
@@ -164,13 +164,13 @@ const articleCopy = {
       ],
       ['Worktree isolation', '高风险写任务可以用 isolation: worktree，把改动放到独立工作区里做。'],
     ],
-    coordinatorTitle: 'Coordinator 的核心工作是综合',
+    coordinatorTitle: 'Coordinator 要把并行结果收束成下一步',
     coordinatorBody: [
-      '这里有个容易误解的点：如果 coordinator 是继续同一个 worker，那个 worker 通常确实保留了刚才研究时的上下文。比如它刚读过相关文件、刚跑过测试、刚发现某个函数的问题，那么继续它是合理的，源码里的 coordinator prompt 也明确鼓励在上下文重叠高的时候继续同一个 worker。',
-      '但 coordinator 仍然不该只写一句“根据你的发现去修”。worker 可能确实有上下文，问题在于这句话太含糊：它没有说明 coordinator 是否真的理解了发现，也没有把后续任务的边界固定下来。更好的 follow-up 是把关键事实复述出来：哪个文件、哪一行、为什么出错、希望怎么改、完成标准是什么。这样既利用了 worker 已有上下文，又避免把理解责任重新推回 worker。',
-      '如果是新开一个 worker，那要求更严格。新 worker 没有前一个 worker 的发现上下文，“根据你的发现”对它基本没有意义。coordinator 必须把前一个 worker 的结论整理成一条完整任务说明，不能假设不同 worker 之间会共享脑内状态。',
-      '更准确的说法是：可以提到 worker 的发现，但不能用“根据你的发现”代替 coordinator 自己的综合。它应该先读懂结果，再决定继续原 worker 还是新开 worker，并把下一步写成足够具体的指令。',
-      '这也是 multi agent 容易被误解的地方。并发可以加速信息获取，真正产出质量的地方，反而是中间那次综合。',
+      '冲突控制解决的是“别互相踩脚”，但这只是 multi agent 能工作的底线。多个 subagent 查到的东西不会自动变成方案；它们只是把信息带回来，下一步边界仍然需要 coordinator 重新整理。',
+      '源码里的 coordinator prompt 很强调这种收束动作：研究可以并行，写代码要谨慎收敛；上下文重叠高的时候，可以继续同一个 worker；需要独立验证时，可以换一个新 worker。coordinator 每次 handoff 前都要判断：这件事应该继续交给原 worker，还是整理成一条新任务交给别人。',
+      '如果继续同一个 worker，那个 worker 通常还保留着刚才研究时的上下文。它可能刚读过相关文件、刚跑过测试、刚定位到某个函数的问题。继续它是合理的，但 follow-up 仍然要把关键事实说清楚：哪个文件、哪一行、为什么出错、希望怎么改、完成标准是什么。这样既利用了 worker 的上下文，又不会把理解责任重新推回 worker。',
+      '如果新开一个 worker，要求更高。新 worker 没有前一个 worker 的发现上下文，“根据你的发现去修”对它基本没有意义。coordinator 必须把前一个 worker 的结论整理成完整任务说明，不能假设不同 worker 之间会共享脑内状态。',
+      '这里的原则不是“永远不能提到 worker 的发现”，而是不能用一句含糊的“根据你的发现”代替综合。并发可以加速信息获取，质量取决于 coordinator 能不能把发现、约束和下一步动作重新组织到一起。',
     ],
     coordinatorRules: [
       '研究可以并行，写同一批文件时要收敛到更少 worker。',
@@ -198,7 +198,7 @@ const articleCopy = {
     permissionBody: [
       '权限层是这套系统里最容易被低估的一层。in-process teammate 运行在同一个 Node.js 进程里，但身份仍然独立。它用 AsyncLocalStorage 带上 teammate identity，工具调用时可以把权限请求挂到 leader 的 ToolUseConfirm UI 上，让用户看到是哪个 worker 想做什么。',
       '如果 leader UI 不可用，还有 mailbox 版本的 permission_request / permission_response。普通后台 agent 不能弹 UI，所以 runAgent 会把 shouldAvoidPermissionPrompts 打开，并且工具池会过滤到适合异步执行的集合。换句话说，执行形态决定权限形态。',
-      '这非常现实。多 agent 一旦能改文件、跑命令、开 MCP，就已经是多个执行体共享一个工作区。没有权限协议，它们只是在并发地制造风险。',
+      '原因也很直接：多 agent 一旦能改文件、跑命令、开 MCP，就已经是多个执行体共享一个工作区。没有权限协议，它们只是在并发地制造风险。',
     ],
     lessonsTitle: '我从源码里带走的判断',
     lessons: [
@@ -221,7 +221,7 @@ const articleCopy = {
       {
         label: 'Team',
         title: 'Create the team before collaboration',
-        body: 'TeamCreate is not just a UI action. It writes team config and aligns Team with TaskList. Member discovery, task ownership, and message routing all depend on that namespace.',
+        body: 'In Claude Code, creating a team is not a cosmetic UI step. It writes team config and gives member discovery, task ownership, and message routing a shared namespace.',
       },
       {
         label: 'Spawn',
@@ -376,13 +376,13 @@ const articleCopy = {
         'Risky write tasks can use isolation: worktree so changes happen in a separate checkout.',
       ],
     ],
-    coordinatorTitle: 'The coordinator synthesizes',
+    coordinatorTitle: 'The coordinator turns parallel results into the next step',
     coordinatorBody: [
-      'There is an easy misunderstanding here. If the coordinator continues the same worker, that worker usually does keep its research context. It may have just read the relevant files, run the failing tests, or found the exact function. Continuing it is often the right move, and the coordinator prompt explicitly recommends continuing when context overlap is high.',
-      'Still, the coordinator should not only say “based on your findings, fix it.” The worker may have useful context; the issue is that the instruction is vague. It does not show that the coordinator understood the finding, and it does not lock down the next task boundary. A better follow-up restates the important facts: file, line, cause, desired change, and done criteria. That uses the worker context without handing understanding back to the worker.',
-      'If the coordinator spawns a fresh worker, the requirement is stricter. The new worker does not have the previous worker’s discovery context, so “based on your findings” is basically meaningless. The coordinator has to turn the previous result into a complete task brief.',
-      'So the rule is: you can refer to what the worker found, but do not let “based on your findings” replace synthesis. Read the result, decide whether to continue or spawn fresh, then write the next instruction clearly enough that the work boundary is obvious.',
-      'This is the part of multi-agent that is easy to underrate. Parallelism speeds up information gathering; quality comes from the synthesis step in the middle.',
+      'The previous section was about keeping workers from colliding. That is only the baseline. Quality depends on how the coordinator turns parallel work back into one clear next step. Subagents can bring information back, but their findings do not automatically become a plan.',
+      'The coordinator prompt reflects that shape: research can fan out, write-heavy work should narrow, the same worker can continue when context overlap is high, and a fresh worker can verify independently. The coordinator is not merely forwarding messages. Before every handoff, it decides whether the same worker should continue or whether the result should be rewritten as a fresh task for someone else.',
+      'When the same worker continues, it usually still has useful context. It may have just read the relevant files, run the failing tests, or found the exact function. Continuing it is reasonable, but the follow-up still needs to restate the important facts: file, line, cause, desired change, and done criteria. That uses the worker’s context without handing understanding back to the worker.',
+      'When a fresh worker is spawned, the bar is higher. The new worker does not have the previous worker’s discovery context, so “based on your findings, fix it” is not a real task brief. The coordinator has to turn the previous result into a self-contained instruction.',
+      'So the rule is not “never mention what the worker found.” The rule is: do not let that phrase replace synthesis. Parallelism speeds up information gathering; quality comes from reorganizing findings, constraints, and the next action into a clear handoff.',
     ],
     coordinatorRules: [
       'Run research in parallel; narrow write-heavy work to fewer workers.',
