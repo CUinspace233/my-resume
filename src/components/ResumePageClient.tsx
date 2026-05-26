@@ -16,6 +16,8 @@ import ThemeToggle from '@/components/ThemeToggle';
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { useState } from 'react';
+import { LuLoaderCircle } from 'react-icons/lu';
 
 type ResumePageClientProps = {
   locale: string;
@@ -25,6 +27,7 @@ type ResumePageClientProps = {
 export default function ResumePageClient({ locale, isPrintMode }: ResumePageClientProps) {
   const t = useTranslations('resume.ui');
   const navigation = useTranslations('common.navigation');
+  const [isTailorNavigating, setIsTailorNavigating] = useState(false);
   const fontClass =
     locale === 'zh'
       ? "font-['Noto_Sans_SC','PingFang_SC','Hiragino_Sans_GB','Microsoft_YaHei',sans-serif]"
@@ -63,10 +66,18 @@ export default function ResumePageClient({ locale, isPrintMode }: ResumePageClie
         <ThemeToggle />
         <Link
           href={`/${locale}/private/resume-tailor`}
-          className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-black/10 bg-white/90 text-[#171717] transition-colors hover:bg-white focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 dark:border-white/10 dark:bg-[#171717] dark:text-[#ededed] print:hidden"
+          onClick={() => setIsTailorNavigating(true)}
+          className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-black/10 bg-white/90 text-[#171717] transition-colors hover:bg-[#f5f5f5] focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 dark:border-white/10 dark:bg-[#171717] dark:text-[#ededed] dark:hover:bg-[#242424] print:hidden ${
+            isTailorNavigating ? 'pointer-events-none cursor-wait opacity-80' : ''
+          }`}
           aria-label={navigation('tailorResumeAria')}
+          aria-busy={isTailorNavigating}
         >
-          <AdjustmentsHorizontalIcon className="h-4 w-4" aria-hidden="true" />
+          {isTailorNavigating ? (
+            <LuLoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+          ) : (
+            <AdjustmentsHorizontalIcon className="h-4 w-4" aria-hidden="true" />
+          )}
         </Link>
         <GithubLink repoUrl="https://github.com/CUinspace233/my-resume" size="responsive" />
       </div>
