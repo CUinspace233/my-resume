@@ -43,7 +43,7 @@
           "projects": [
             {
               "id": "diffus-ai-image-generation-platform",
-              "title": "AI 图像生成平台网站",
+              "title": "AI 图像/视频生成平台",
               "repoUrl": null,
               "repoName": null,
               "technologies": [
@@ -56,10 +56,10 @@
                 "i18n"
               ],
               "description": [
-                "使用 Vue 3 + Nuxt 3 搭建 AI 图像生成平台官网的全栈交付并推动功能上线。",
+                "使用 Vue 3 + Nuxt 3 搭建 AI 图像/视频生成平台的官网，并推动功能上线。",
                 "完成数据迁移至 MongoDB，包含数据清洗、结构重构与前端消费模型设计，提升页面渲染与内容组织效率。",
-                "实现 i18n 国际化与 Nuxt SSR/SEO 优化，兼顾全球用户访问体验、搜索引擎收录与首屏加载性能。",
-                "从需求拆解、接口设计到开发落地，使用 FastAPI + SQLAlchemy + MySQL 完成评论与 emoji 互动功能，具备从产品想法到可用功能的闭环交付能力。"
+                "实现 i18n 国际化，利用 Nuxt SSR 进行 SEO 优化，兼顾全球用户访问体验、搜索引擎收录与首屏加载性能。",
+                "从需求拆解、方案设计到开发落地，使用 FastAPI + SQLAlchemy + MySQL 完成网站评论功能，具备从产品想法到可用功能的闭环交付能力。"
               ],
               "projectUrl": "https://www.diffus.me",
               "siteName": "www.diffus.me",
@@ -83,11 +83,20 @@
               "title": "文档合规性审查平台",
               "repoUrl": null,
               "repoName": null,
-              "technologies": ["FastAPI", "React", "Vite", "LLM", "RAG", "向量检索", "规则引擎"],
+              "technologies": [
+                "FastAPI",
+                "React",
+                "Vite",
+                "LLM",
+                "RAG",
+                "向量检索",
+                "Qdrant",
+                "规则引擎"
+              ],
               "description": [
                 "负责基于 FastAPI + React/Vite 搭建文档合规性审查平台，覆盖文档解析、条款级/全文级检测、违规标注与审查报告生成的端到端产品闭环。",
                 "设计并实现“规则引擎 + LLM + Guardrail”混合架构，在 AI 生成能力之外加入可控约束与输出校验，提升复杂合规场景下的准确性、稳定性与可解释性。",
-                "构建 RAG 审查链路，结合向量检索与相似违规案例 Few-shot 增强，为模型提供动态依据；同时重构提示词工程，将条款级平均提示词长度由 15299 压缩至 2918。",
+                "构建 RAG 审查链路，结合 Qdrant 向量检索与相似违规案例 Few-shot 增强，为模型提供动态依据；同时重构提示词工程，将条款级平均提示词长度由 15299 压缩至 2918。",
                 "基于风险分级设计动态推理开关，仅对高风险条款开启深度推理，将典型审查耗时从 853s 降至 652s，整体提速约 23.6%，体现技术选型与成本收益权衡能力。",
                 "搭建 Human-in-the-Loop 反馈闭环，将审核人员“正确/错误/漏审”标注回流向量案例库，用人工兜底 AI 边界并持续优化误报、漏报表现。"
               ],
@@ -198,7 +207,7 @@
         {
           "id": "databases",
           "label": "数据库与检索",
-          "items": ["PostgreSQL", "MongoDB", "MySQL", "SQLite", "LightRAG", "VectorRAG"]
+          "items": ["PostgreSQL", "MongoDB", "MySQL", "SQLite", "Qdrant", "LightRAG"]
         },
         {
           "id": "ai-native",

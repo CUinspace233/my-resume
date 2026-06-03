@@ -43,7 +43,7 @@
           "projects": [
             {
               "id": "diffus-ai-image-generation-platform",
-              "title": "AI Image Generation Platform Website",
+              "title": "AI Image/Video Generation Platform",
               "repoUrl": null,
               "repoName": null,
               "technologies": [
@@ -56,10 +56,10 @@
                 "i18n"
               ],
               "description": [
-                "Delivered the full-stack launch of the official website for an AI image generation platform using Vue 3 and Nuxt 3.",
+                "Built the official website for an AI image/video generation platform using Vue 3 and Nuxt 3, and pushed the features to production.",
                 "Completed the migration to MongoDB, including data cleaning, schema restructuring, and frontend consumption model design, improving page rendering and content organization efficiency.",
-                "Implemented i18n internationalization and Nuxt SSR/SEO optimization to improve global accessibility, search engine indexing, and first-screen loading performance.",
-                "Took features from requirement breakdown and API design to implementation, using FastAPI + SQLAlchemy + MySQL to deliver comment and emoji interaction features and close the loop from product idea to usable functionality."
+                "Implemented i18n internationalization, and used Nuxt SSR for SEO optimization to improve global accessibility, search engine indexing, and first-screen loading performance.",
+                "Took features from requirement breakdown and solution design to implementation, using FastAPI + SQLAlchemy + MySQL to deliver comment features and close the loop from product idea to usable functionality."
               ],
               "projectUrl": "https://www.diffus.me",
               "siteName": "www.diffus.me",
@@ -83,19 +83,11 @@
               "title": "Document Compliance Review Platform",
               "repoUrl": null,
               "repoName": null,
-              "technologies": [
-                "FastAPI",
-                "React",
-                "Vite",
-                "LLM",
-                "RAG",
-                "Vector Search",
-                "Rule Engine"
-              ],
+              "technologies": ["FastAPI", "React", "Vite", "LLM", "RAG", "Qdrant", "Rule Engine"],
               "description": [
                 "Built an end-to-end document compliance review platform with FastAPI + React/Vite, covering document parsing, clause-level and full-document checks, violation annotation, and review report generation.",
                 "Designed and implemented a hybrid Rule Engine + LLM + Guardrail architecture, adding controllable constraints and output validation on top of AI generation to improve accuracy, stability, and explainability in complex compliance scenarios.",
-                "Built a RAG review pipeline using vector search and few-shot enhancement with similar violation cases to provide dynamic grounding for the model; also refactored prompt engineering to reduce average clause-level prompt length from 15,299 to 2,918.",
+                "Built a RAG review pipeline using Qdrant vector search and few-shot enhancement with similar violation cases to provide dynamic grounding for the model; also refactored prompt engineering to reduce average clause-level prompt length from 15,299 to 2,918.",
                 "Designed a risk-tiered dynamic reasoning switch that enables deep reasoning only for high-risk clauses, reducing typical review time from 853s to 652s for an overall speedup of about 23.6%, reflecting technical decision-making and cost-benefit tradeoff awareness.",
                 "Built a Human-in-the-Loop feedback loop that routes reviewer labels (correct / incorrect / missed) back into the vector case library, using human review to cover AI boundaries and continuously improve false positive and false negative behavior."
               ],
@@ -206,7 +198,7 @@
         {
           "id": "databases",
           "label": "Databases and Retrieval",
-          "items": ["PostgreSQL", "MongoDB", "MySQL", "SQLite", "LightRAG", "VectorRAG"]
+          "items": ["PostgreSQL", "MongoDB", "MySQL", "SQLite", "Qdrant", "LightRAG"]
         },
         {
           "id": "ai-native",
