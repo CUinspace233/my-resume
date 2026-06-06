@@ -4,6 +4,8 @@ import { Redis } from '@upstash/redis';
 const DRAFT_TTL_MS = 30 * 60 * 1000;
 const DRAFT_TTL_SECONDS = DRAFT_TTL_MS / 1000;
 const DRAFT_KEY_PREFIX = 'resume-tailor:draft:';
+const KEEPALIVE_KEY = 'resume-tailor:keepalive';
+const KEEPALIVE_TTL_SECONDS = 86_400;
 
 type TailoredResumeStore = Map<string, TailoredResumeDraft>;
 
@@ -138,4 +140,15 @@ export async function updateTailoredResumeDraft(draftId: string, resume: ResumeC
 
   await setDraft(nextDraft, remainingTtlSeconds);
   return nextDraft;
+}
+
+export async function pingRedis() {
+  const redis = getRedis();
+
+  if (!redis) {
+    return { ok: false, skipped: true, reason: 'redis_not_configured' as const };
+  }
+
+  await redis.set(KEEPALIVE_KEY, Date.now(), { ex: KEEPALIVE_TTL_SECONDS });
+  return { ok: true as const };
 }
