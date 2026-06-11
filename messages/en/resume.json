@@ -83,7 +83,7 @@
               "title": "Document Compliance Review Platform",
               "repoUrl": null,
               "repoName": null,
-              "technologies": ["FastAPI", "React", "Vite", "LLM", "RAG", "Qdrant", "Rule Engine"],
+              "technologies": ["FastAPI", "React", "Vite", "LLM", "RAG", "Qdrant"],
               "description": [
                 "Built an end-to-end document compliance review platform with FastAPI + React/Vite, covering document parsing, clause-level and full-document checks, violation annotation, and review report generation.",
                 "Designed and implemented a hybrid Rule Engine + LLM + Guardrail architecture, adding controllable constraints and output validation on top of AI generation to improve accuracy, stability, and explainability in complex compliance scenarios.",
@@ -116,7 +116,7 @@
           ],
           "period": "Mar 2025 - Dec 2025",
           "repoUrl": "https://github.com/AISoc-UNSW/Ai-Society-2025-Website",
-          "repoDescription": "Discord Meeting-to-Task System Repo:",
+          "repoDescription": "Discord Meeting-to-Task System:",
           "societyWebsiteUrl": "https://unswaisoc.com/",
           "societyWebsiteDescription": "Society Website:"
         }
