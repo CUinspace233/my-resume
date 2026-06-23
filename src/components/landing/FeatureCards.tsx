@@ -206,10 +206,10 @@ export default function FeatureCards() {
     // Cool AI internship
     {
       type: 'internship',
-      company: expData[1]?.company ?? 'Cool AI',
-      role: expData[1]?.position ?? '',
-      period: expData[1]?.period ?? '',
-      description: expData[1]?.achievements?.[0] ?? '',
+      company: expData[0]?.company ?? 'Cool AI',
+      role: expData[0]?.position ?? '',
+      period: expData[0]?.period ?? '',
+      description: expData[0]?.achievements?.[0] ?? '',
       tech: ['Python', 'FastAPI', 'Docker', 'Multimodal AI'],
       imageUrl: '/cool-ai-logo.png',
       imageBg: '#1f1f1f',
@@ -217,12 +217,12 @@ export default function FeatureCards() {
     // Graviti internship
     {
       type: 'internship',
-      company: expData[0]?.company ?? 'Graviti',
-      role: expData[0]?.position ?? '',
-      period: expData[0]?.period ?? '',
-      description: expData[0]?.projects?.[0]?.description?.[0] ?? '',
-      tech: expData[0]?.projects?.[0]?.technologies?.slice(0, 5) ?? [],
-      url: expData[0]?.projects?.[0]?.projectUrl,
+      company: expData[1]?.company ?? 'Graviti',
+      role: expData[1]?.position ?? '',
+      period: expData[1]?.period ?? '',
+      description: expData[1]?.projects?.[0]?.description?.[0] ?? '',
+      tech: expData[1]?.projects?.[0]?.technologies?.slice(0, 5) ?? [],
+      url: expData[1]?.projects?.[0]?.projectUrl,
       imageUrl: '/graviti-logo.png',
       imageBg: '#fff',
     },

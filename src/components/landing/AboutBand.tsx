@@ -2,6 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
+import NoahGroupLink from './NoahGroupLink';
 
 export default function AboutBand() {
   const t = useTranslations('landing.about');
@@ -25,7 +26,9 @@ export default function AboutBand() {
           className="font-[family-name:var(--font-geist-sans)] font-normal leading-relaxed mb-8"
           style={{ fontSize: '18px', color: '#4d4d4d', lineHeight: '1.8' }}
         >
-          {t('body')}
+          {t.rich('body', {
+            noah: chunks => <NoahGroupLink>{chunks}</NoahGroupLink>,
+          })}
         </p>
 
         {/* Workflow accent strip */}

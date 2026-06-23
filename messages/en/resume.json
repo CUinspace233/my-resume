@@ -35,6 +35,36 @@
       "projectsLabel": "Projects:",
       "items": [
         {
+          "id": "cool-ai",
+          "company": "Cool AI",
+          "position": "AI Full-Stack / Algorithm Engineer Intern",
+          "period": "Dec 2025 - May 2026",
+          "achievements": [
+            "Dockerized multimodal perception models (audio / vision / speech), reducing the cost of switching between local and server environments and improving AI application delivery efficiency.",
+            "Designed model inference APIs and service startup flows with FastAPI, supporting fast integration, validation, and business scenario adoption."
+          ],
+          "projects": [
+            {
+              "id": "document-compliance-review-platform",
+              "title": "Document Compliance Review Platform",
+              "repoUrl": null,
+              "repoName": null,
+              "technologies": ["FastAPI", "React", "Vite", "LLM", "RAG", "Qdrant"],
+              "description": [
+                "Built an end-to-end document compliance review platform with FastAPI + React/Vite, covering document parsing, clause-level and full-document checks, violation annotation, and review report generation.",
+                "Designed and implemented a hybrid Rule Engine + LLM + Guardrail architecture, adding controllable constraints and output validation on top of AI generation to improve accuracy, stability, and explainability in complex compliance scenarios.",
+                "Built a RAG review pipeline using Qdrant vector search and few-shot enhancement with similar violation cases to provide dynamic grounding for the model; also refactored prompt engineering to reduce average clause-level prompt length from 15,299 to 2,918.",
+                "Designed a risk-tiered dynamic reasoning switch that enables deep reasoning only for high-risk clauses, reducing typical review time from 853s to 652s for an overall speedup of about 23.6%, reflecting technical decision-making and cost-benefit tradeoff awareness.",
+                "Built a Human-in-the-Loop feedback loop that routes reviewer labels (correct / incorrect / missed) back into the vector case library, using human review to cover AI boundaries and continuously improve false positive and false negative behavior."
+              ],
+              "projectUrl": null,
+              "siteName": null,
+              "imageUrl": null,
+              "period": null
+            }
+          ]
+        },
+        {
           "id": "graviti",
           "company": "Graviti",
           "position": "Full Stack Developer Intern",
@@ -63,36 +93,6 @@
               ],
               "projectUrl": "https://www.diffus.me",
               "siteName": "www.diffus.me",
-              "imageUrl": null,
-              "period": null
-            }
-          ]
-        },
-        {
-          "id": "cool-ai",
-          "company": "Cool AI",
-          "position": "AI Full-Stack / Algorithm Engineer Intern",
-          "period": "Dec 2025 - Present",
-          "achievements": [
-            "Dockerized multimodal perception models (audio / vision / speech), reducing the cost of switching between local and server environments and improving AI application delivery efficiency.",
-            "Designed model inference APIs and service startup flows with FastAPI, supporting fast integration, validation, and business scenario adoption."
-          ],
-          "projects": [
-            {
-              "id": "document-compliance-review-platform",
-              "title": "Document Compliance Review Platform",
-              "repoUrl": null,
-              "repoName": null,
-              "technologies": ["FastAPI", "React", "Vite", "LLM", "RAG", "Qdrant"],
-              "description": [
-                "Built an end-to-end document compliance review platform with FastAPI + React/Vite, covering document parsing, clause-level and full-document checks, violation annotation, and review report generation.",
-                "Designed and implemented a hybrid Rule Engine + LLM + Guardrail architecture, adding controllable constraints and output validation on top of AI generation to improve accuracy, stability, and explainability in complex compliance scenarios.",
-                "Built a RAG review pipeline using Qdrant vector search and few-shot enhancement with similar violation cases to provide dynamic grounding for the model; also refactored prompt engineering to reduce average clause-level prompt length from 15,299 to 2,918.",
-                "Designed a risk-tiered dynamic reasoning switch that enables deep reasoning only for high-risk clauses, reducing typical review time from 853s to 652s for an overall speedup of about 23.6%, reflecting technical decision-making and cost-benefit tradeoff awareness.",
-                "Built a Human-in-the-Loop feedback loop that routes reviewer labels (correct / incorrect / missed) back into the vector case library, using human review to cover AI boundaries and continuously improve false positive and false negative behavior."
-              ],
-              "projectUrl": null,
-              "siteName": null,
               "imageUrl": null,
               "period": null
             }

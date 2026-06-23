@@ -31,9 +31,39 @@
       "courses": "Web前端编程 (96), 软件工程基础 (96), 计算机系统基础 (87), 编程基础 (85), 数据结构与算法 (Distinction), 面向对象编程 (Distinction), 软件构建：技术与工具 (Distinction), (进阶)安全工程与网络安全, 数据库系统"
     },
     "experience": {
-      "title": "工作经验",
+      "title": "工作经历",
       "projectsLabel": "项目：",
       "items": [
+        {
+          "id": "cool-ai",
+          "company": "酷爱科技",
+          "position": "AI 全栈/算法工程师实习生",
+          "period": "2025年12月 - 2026年5月",
+          "achievements": [
+            "将多模态感知模型（音频 / 视觉 / 语音）进行 Docker 化部署，降低本地与服务器环境切换成本，提升 AI 应用交付效率。",
+            "基于 FastAPI 设计模型推理接口与服务化启动流程，支持快速联调、验证与面向业务场景的接入。"
+          ],
+          "projects": [
+            {
+              "id": "document-compliance-review-platform",
+              "title": "文档合规性审查平台",
+              "repoUrl": null,
+              "repoName": null,
+              "technologies": ["FastAPI", "React", "Vite", "LLM", "RAG", "向量检索", "Qdrant"],
+              "description": [
+                "负责基于 FastAPI + React/Vite 搭建文档合规性审查平台，覆盖文档解析、条款级/全文级检测、违规标注与审查报告生成的端到端产品闭环。",
+                "设计并实现“规则引擎 + LLM + Guardrail”混合架构，在 AI 生成能力之外加入可控约束与输出校验，提升复杂合规场景下的准确性、稳定性与可解释性。",
+                "构建 RAG 审查链路，结合 Qdrant 向量检索与相似违规案例 Few-shot 增强，为模型提供动态依据；同时重构提示词工程，将条款级平均提示词长度由 15299 压缩至 2918。",
+                "基于风险分级设计动态推理开关，仅对高风险条款开启深度推理，将典型审查耗时从 853s 降至 652s，整体提速约 23.6%，体现技术选型与成本收益权衡能力。",
+                "搭建 Human-in-the-Loop 反馈闭环，将审核人员“正确/错误/漏审”标注回流向量案例库，用人工兜底 AI 边界并持续优化误报、漏报表现。"
+              ],
+              "projectUrl": null,
+              "siteName": null,
+              "imageUrl": null,
+              "period": null
+            }
+          ]
+        },
         {
           "id": "graviti",
           "company": "Graviti",
@@ -63,36 +93,6 @@
               ],
               "projectUrl": "https://www.diffus.me",
               "siteName": "www.diffus.me",
-              "imageUrl": null,
-              "period": null
-            }
-          ]
-        },
-        {
-          "id": "cool-ai",
-          "company": "酷爱科技",
-          "position": "AI 全栈/算法工程师实习生",
-          "period": "2025年12月 - 至今",
-          "achievements": [
-            "将多模态感知模型（音频 / 视觉 / 语音）进行 Docker 化部署，降低本地与服务器环境切换成本，提升 AI 应用交付效率。",
-            "基于 FastAPI 设计模型推理接口与服务化启动流程，支持快速联调、验证与面向业务场景的接入。"
-          ],
-          "projects": [
-            {
-              "id": "document-compliance-review-platform",
-              "title": "文档合规性审查平台",
-              "repoUrl": null,
-              "repoName": null,
-              "technologies": ["FastAPI", "React", "Vite", "LLM", "RAG", "向量检索", "Qdrant"],
-              "description": [
-                "负责基于 FastAPI + React/Vite 搭建文档合规性审查平台，覆盖文档解析、条款级/全文级检测、违规标注与审查报告生成的端到端产品闭环。",
-                "设计并实现“规则引擎 + LLM + Guardrail”混合架构，在 AI 生成能力之外加入可控约束与输出校验，提升复杂合规场景下的准确性、稳定性与可解释性。",
-                "构建 RAG 审查链路，结合 Qdrant 向量检索与相似违规案例 Few-shot 增强，为模型提供动态依据；同时重构提示词工程，将条款级平均提示词长度由 15299 压缩至 2918。",
-                "基于风险分级设计动态推理开关，仅对高风险条款开启深度推理，将典型审查耗时从 853s 降至 652s，整体提速约 23.6%，体现技术选型与成本收益权衡能力。",
-                "搭建 Human-in-the-Loop 反馈闭环，将审核人员“正确/错误/漏审”标注回流向量案例库，用人工兜底 AI 边界并持续优化误报、漏报表现。"
-              ],
-              "projectUrl": null,
-              "siteName": null,
               "imageUrl": null,
               "period": null
             }

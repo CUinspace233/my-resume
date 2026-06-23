@@ -1,6 +1,7 @@
 'use client';
 
 import { type CSSProperties, useEffect, useRef, useState } from 'react';
+import { NOAH_GROUP_URL, NOAH_LINK_COLOR } from './NoahGroupLink';
 
 const MAX_TILT = 8;
 
@@ -21,6 +22,17 @@ type HoloStyle = CSSProperties & {
   '--effect-intensity': number;
 };
 
+type CodeToken = {
+  text: string;
+  color: string;
+  href?: string;
+};
+
+type CodeLine = {
+  indent?: number;
+  tokens: CodeToken[];
+};
+
 export default function CodeCard() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [visualState, setVisualState] = useState(INITIAL_VISUAL_STATE);
@@ -37,7 +49,7 @@ export default function CodeCard() {
     return () => mediaQuery.removeEventListener('change', syncReducedMotion);
   }, []);
 
-  const lines = [
+  const lines: CodeLine[] = [
     {
       tokens: [
         { text: 'const ', color: '#de1d8d' },
@@ -115,7 +127,9 @@ export default function CodeCard() {
       tokens: [
         { text: 'currently', color: '#0a72ef' },
         { text: ': ', color: '#a1a1a1' },
-        { text: '"@ Cool AI · AIGC / Full-Stack Engineer"', color: '#a8cc8c' },
+        { text: '"@ ', color: '#a8cc8c' },
+        { text: 'Noah Holdings', color: NOAH_LINK_COLOR, href: NOAH_GROUP_URL },
+        { text: ' · Full-Stack Engineer"', color: '#a8cc8c' },
         { text: ',', color: '#a1a1a1' },
       ],
     },
@@ -295,11 +309,23 @@ export default function CodeCard() {
                 {i + 1}
               </span>
               <span style={{ paddingLeft: `${(line.indent ?? 0) * 16}px` }}>
-                {(line.tokens ?? []).map((token, j) => (
-                  <span key={j} style={{ color: token.color }}>
-                    {token.text}
-                  </span>
-                ))}
+                {(line.tokens ?? []).map((token, j) =>
+                  token.href ? (
+                    <a
+                      key={j}
+                      href={token.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: token.color, textDecoration: 'none' }}
+                    >
+                      {token.text}
+                    </a>
+                  ) : (
+                    <span key={j} style={{ color: token.color }}>
+                      {token.text}
+                    </span>
+                  )
+                )}
               </span>
             </div>
           ))}

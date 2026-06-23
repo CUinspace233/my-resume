@@ -3,6 +3,7 @@
 import { useTranslations, useLocale } from 'next-intl';
 import CodeCard from './CodeCard';
 import ResumeTransitionLink from './ResumeTransitionLink';
+import NoahGroupLink from './NoahGroupLink';
 
 export default function Hero() {
   const t = useTranslations('landing.hero');
@@ -58,7 +59,9 @@ export default function Hero() {
             className="font-[family-name:var(--font-geist-sans)] font-normal leading-relaxed max-w-[480px]"
             style={{ fontSize: '18px', color: '#4d4d4d' }}
           >
-            {t('subtitle')}
+            {t.rich('subtitle', {
+              noah: chunks => <NoahGroupLink>{chunks}</NoahGroupLink>,
+            })}
           </p>
 
           {/* CTAs */}

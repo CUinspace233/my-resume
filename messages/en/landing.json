@@ -9,7 +9,7 @@
     "eyebrow": "UNSW Computer Science · iGPA 4.0 · Graduating Jun 2026",
     "headline1": "Full-Stack Engineer",
     "headline2": "React · Next.js · Python · FastAPI",
-    "subtitle": "I build web apps and AI-powered tooling — Vue/React on the front, Python/FastAPI on the back, Docker in between. Currently interning at Cool AI.",
+    "subtitle": "I build web apps and AI-powered tooling — Vue/React on the front, Python/FastAPI on the back, Docker in between. Currently interning at <noah>Noah Holdings</noah>.",
     "ctaPrimary": "View Resume",
     "ctaSecondary": "GitHub"
   },
@@ -87,7 +87,7 @@
   },
   "about": {
     "label": "About",
-    "body": "I'm a Computer Science student at UNSW Sydney, graduating June 2026. I've interned at Graviti building the marketing site for diffus.me (Vue 3, Nuxt 3, FastAPI), and I'm currently at Cool AI working on model inference APIs and Docker-based deployment pipelines for multimodal models. Outside of work, I served as Director of IT at UNSW AISoc, where I built a Discord meeting-to-task system in Next.js 15 and FastAPI.",
+    "body": "I'm a Computer Science student at UNSW Sydney, graduating June 2026. I've interned at Graviti building the marketing site for diffus.me (Vue 3, Nuxt 3, FastAPI), and at Cool AI working on model inference APIs and Docker-based deployment pipelines for multimodal models. I'm currently interning at <noah>Noah Holdings</noah> as a Full Stack Engineer. Outside of work, I served as Director of IT at UNSW AISoc, where I built a Discord meeting-to-task system in Next.js 15 and FastAPI.",
     "contact": "Get in touch",
     "viewResume": "Full Resume"
   }
