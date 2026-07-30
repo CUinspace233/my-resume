@@ -155,7 +155,7 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
     highlights: item.details.slice(0, 2).map(detail => pickHighlight(detail, 120)),
   }));
 
-  const marqueeLine = [...ui.marqueeItems, ...ui.marqueeItems].join('  ·  ');
+  const marqueeLine = ui.marqueeItems.join('  ·  ');
 
   return (
     <div className="nora-landing">
@@ -555,7 +555,7 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
             transform: translateX(0);
           }
           to {
-            transform: translateX(-50%);
+            transform: translateX(-100%);
           }
         }
 
