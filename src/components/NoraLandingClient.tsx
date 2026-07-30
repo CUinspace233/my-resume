@@ -717,6 +717,9 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
           .nora-nav-links {
             display: none;
           }
+          .nora-nav-actions {
+            margin-left: auto;
+          }
           .nora-card-grid--2col {
             grid-template-columns: 1fr;
           }
