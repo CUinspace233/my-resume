@@ -100,12 +100,22 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
 
   useEffect(() => {
     const root = document.documentElement;
+    const { body } = document;
+    const previousBodyBackground = body.style.background;
+    const previousBodyColor = body.style.color;
+
     root.classList.remove('dark');
     root.style.colorScheme = 'light';
+    body.style.background = '#ffffff';
+    body.style.color = '#000000';
+
     return () => {
       root.style.colorScheme = '';
+      body.style.background = previousBodyBackground;
+      body.style.color = previousBodyColor;
     };
   }, []);
+
   const ui: UiStrings = UI[locale] ?? UI.en;
 
   const experienceItems = t.raw('experience.items') as Array<{
@@ -155,7 +165,13 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
     highlights: item.details.slice(0, 2).map(detail => pickHighlight(detail, 120)),
   }));
 
-  const marqueeLine = ui.marqueeItems.join('  ·  ');
+  const repeatedItems = [
+    ...ui.marqueeItems,
+    ...ui.marqueeItems,
+    ...ui.marqueeItems,
+    ...ui.marqueeItems,
+  ];
+  const marqueeLine = `${repeatedItems.join('  ·  ')}  ·  `;
 
   return (
     <div className="nora-landing">
@@ -357,11 +373,6 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
           color: var(--ink) !important;
         }
 
-        :global(.dark) body:has(.nora-landing) {
-          background: #ffffff !important;
-          color: #000000 !important;
-        }
-
         .nora-landing .nora-container {
           width: 100%;
           max-width: var(--container);
@@ -416,6 +427,7 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
         }
 
         .nora-btn {
+          cursor: pointer;
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -436,7 +448,6 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
           letter-spacing: -0.1px;
           text-decoration: none;
           border: none;
-          cursor: pointer;
           transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
           white-space: nowrap;
         }
@@ -496,6 +507,7 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
         }
 
         .nora-nav-links a {
+          cursor: pointer;
           color: var(--ink);
           text-decoration: none;
           font-size: 16px;
@@ -538,7 +550,7 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
           display: flex;
           white-space: nowrap;
           width: max-content;
-          animation: nora-marquee 28s linear infinite;
+          animation: nora-marquee 60s linear infinite;
         }
 
         .nora-marquee-track span {
@@ -547,7 +559,6 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
           font-weight: 400;
           letter-spacing: 0.54px;
           text-transform: uppercase;
-          padding-right: var(--space-xxl);
         }
 
         @keyframes nora-marquee {
@@ -555,7 +566,7 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
             transform: translateX(0);
           }
           to {
-            transform: translateX(-100%);
+            transform: translateX(-50%);
           }
         }
 
@@ -681,6 +692,7 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
         }
 
         .nora-footer-links a {
+          cursor: pointer;
           color: var(--ink);
           text-decoration: none;
           font-size: 16px;
