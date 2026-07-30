@@ -130,7 +130,6 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
     | undefined;
 
   const resumePath = locale === 'zh' ? '/zh/resume' : '/resume';
-  const homePath = locale === 'zh' ? '/zh' : '/';
 
   const experienceCards: ExperienceCard[] = experienceItems.map(item => ({
     company: item.company,
@@ -151,9 +150,6 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
   return (
     <div className="nora-landing">
       <header className="nora-nav">
-        <a href={homePath} className="nora-nav-brand">
-          {t('header.name')}
-        </a>
         <nav className="nora-nav-links" aria-label="Primary">
           <a href="#experience">{ui.navExperience}</a>
           <a href="#education">{ui.navEducation}</a>
@@ -187,6 +183,7 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
         <div className="nora-marquee" aria-hidden="true">
           <div className="nora-marquee-track">
             <span>{marqueeLine}</span>
+            <span aria-hidden="true">{marqueeLine}</span>
           </div>
         </div>
 
@@ -308,16 +305,16 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
 
       <style jsx>{`
         .nora-landing {
-          --ink: #000000;
-          --canvas: #ffffff;
-          --inverse-canvas: #000000;
-          --inverse-ink: #ffffff;
-          --surface-soft: #f7f7f5;
-          --hairline: #e6e6e6;
-          --block-lime: #dceeb1;
-          --block-lilac: #c5b0f4;
-          --block-cream: #f4ecd6;
-          --block-navy: #1f1d3d;
+          --ink: light-dark(#000000, #000000);
+          --canvas: light-dark(#ffffff, #ffffff);
+          --inverse-canvas: light-dark(#000000, #000000);
+          --inverse-ink: light-dark(#ffffff, #ffffff);
+          --surface-soft: light-dark(#f7f7f5, #f7f7f5);
+          --hairline: light-dark(#e6e6e6, #e6e6e6);
+          --block-lime: light-dark(#dceeb1, #dceeb1);
+          --block-lilac: light-dark(#c5b0f4, #c5b0f4);
+          --block-cream: light-dark(#f4ecd6, #f4ecd6);
+          --block-navy: light-dark(#1f1d3d, #1f1d3d);
           --radius-lg: 24px;
           --radius-md: 8px;
           --radius-pill: 50px;
@@ -471,14 +468,6 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
           border-bottom: 1px solid var(--hairline);
         }
 
-        .nora-nav-brand {
-          font-weight: 540;
-          font-size: 18px;
-          text-decoration: none;
-          color: var(--ink);
-          letter-spacing: -0.26px;
-        }
-
         .nora-nav-links {
           display: flex;
           gap: var(--space-lg);
@@ -527,6 +516,7 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
         .nora-marquee-track {
           display: flex;
           white-space: nowrap;
+          width: max-content;
           animation: nora-marquee 28s linear infinite;
         }
 
