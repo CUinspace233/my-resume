@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 
@@ -96,6 +97,15 @@ function pickHighlight(description: string, maxLen = 96): string {
 export default function NoraLandingClient({ locale: localeProp }: { locale: string }) {
   const locale = (useLocale() || localeProp) as 'en' | 'zh';
   const t = useTranslations('nrglResume');
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.remove('dark');
+    root.style.colorScheme = 'light';
+    return () => {
+      root.style.colorScheme = '';
+    };
+  }, []);
   const ui: UiStrings = UI[locale] ?? UI.en;
 
   const experienceItems = t.raw('experience.items') as Array<{
@@ -307,7 +317,6 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
         .nora-landing {
           --ink: #000000;
           --canvas: #ffffff;
-          --inverse-canvas: #000000;
           --inverse-ink: #ffffff;
           --surface-soft: #f7f7f5;
           --hairline: #e6e6e6;
@@ -341,9 +350,16 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
         }
 
         .dark .nora-landing,
-        .dark .nora-landing main {
+        .dark .nora-landing main,
+        .nora-landing,
+        .nora-landing main {
           background: var(--canvas) !important;
           color: var(--ink) !important;
+        }
+
+        :global(.dark) body:has(.nora-landing) {
+          background: #ffffff !important;
+          color: #000000 !important;
         }
 
         .nora-landing .nora-container {
@@ -471,7 +487,6 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
           height: 56px;
           padding: 0 var(--space-xxl);
           background: var(--canvas);
-          border-bottom: 1px solid var(--hairline);
         }
 
         .nora-nav-links {
@@ -511,8 +526,8 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
         }
 
         .nora-marquee {
-          background: var(--inverse-canvas);
-          color: var(--inverse-ink);
+          background: var(--canvas);
+          color: var(--ink);
           height: 36px;
           display: flex;
           align-items: center;
