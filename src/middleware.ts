@@ -78,7 +78,9 @@ export default function middleware(request: NextRequest) {
     return handleNoraHost(request);
   }
 
-  if (/^\/(en\/|zh\/)?(nrgl\/resume|nora)(\/|$)/.test(request.nextUrl.pathname)) {
+  const isLocalHost = host === 'localhost' || host === '127.0.0.1';
+
+  if (!isLocalHost && /^\/(en\/|zh\/)?(nrgl\/resume|nora)(\/|$)/.test(request.nextUrl.pathname)) {
     return new NextResponse(null, { status: 404 });
   }
 
