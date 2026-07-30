@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { preferredLocaleCookieName } from '@/i18n/config';
 
 const LANGUAGES = [
@@ -18,7 +18,8 @@ export default function LanguageSwitcher() {
     if (newLocale === locale) return;
     document.cookie = `${preferredLocaleCookieName}=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
     const newPath = `/${newLocale}${pathname.startsWith(`/${locale}`) ? pathname.slice(locale.length + 1) : pathname}`;
-    router.replace(newPath);
+    const queryString = new URLSearchParams(window.location.search).toString();
+    router.replace(queryString ? `${newPath}?${queryString}` : newPath);
   };
 
   return (

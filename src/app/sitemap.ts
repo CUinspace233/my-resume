@@ -20,6 +20,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/nrgl/resume`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          en: `${BASE_URL}/nrgl/resume`,
+          zh: `${BASE_URL}/zh/nrgl/resume`,
+        },
+      },
+    },
+    {
+      url: `${BASE_URL}/zh/nrgl/resume`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          en: `${BASE_URL}/nrgl/resume`,
+          zh: `${BASE_URL}/zh/nrgl/resume`,
+        },
+      },
+    },
+    {
       url: `${BASE_URL}/en/blog/agent-runtime-anatomy`,
       lastModified: LAST_MODIFIED,
       changeFrequency: 'monthly',

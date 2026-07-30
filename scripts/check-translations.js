@@ -109,7 +109,7 @@ function getIdSetMismatches(enContent, zhContent) {
 /**
  * Check for missing keys in the translation files
  */
-const messageNamespaces = ['buttons', 'common', 'exportPdf', 'header', 'landing'];
+const messageNamespaces = ['buttons', 'common', 'exportPdf', 'header', 'landing', 'nrglResume'];
 const resumePackageRequiredKeys = [
   'type',
   'version',

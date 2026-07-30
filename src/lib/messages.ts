@@ -1,6 +1,14 @@
 import type { ResumeContent, TailoredResumeExportPackage } from '@/types/resume';
+import type { NrglResumeContent } from '@/types/nrglResume';
 
-const MESSAGE_NAMESPACES = ['buttons', 'common', 'exportPdf', 'header', 'landing'] as const;
+const MESSAGE_NAMESPACES = [
+  'buttons',
+  'common',
+  'exportPdf',
+  'header',
+  'landing',
+  'nrglResume',
+] as const;
 
 type MessageNamespace = (typeof MESSAGE_NAMESPACES)[number];
 type Locale = 'en' | 'zh';
@@ -17,6 +25,7 @@ const messageLoaders: Record<Locale, Record<MessageNamespace, NamespaceLoader>> 
     exportPdf: () => import('../../messages/en/exportPdf.json'),
     header: () => import('../../messages/en/header.json'),
     landing: () => import('../../messages/en/landing.json'),
+    nrglResume: () => import('../../messages/en/nrglResume.json'),
   },
   zh: {
     buttons: () => import('../../messages/zh/buttons.json'),
@@ -24,6 +33,7 @@ const messageLoaders: Record<Locale, Record<MessageNamespace, NamespaceLoader>> 
     exportPdf: () => import('../../messages/zh/exportPdf.json'),
     header: () => import('../../messages/zh/header.json'),
     landing: () => import('../../messages/zh/landing.json'),
+    nrglResume: () => import('../../messages/zh/nrglResume.json'),
   },
 };
 
@@ -73,6 +83,13 @@ export async function getResumePackage(locale: string) {
 export async function getBaseResume(locale: string) {
   const resumePackage = await getResumePackage(locale);
   return resumePackage.resume;
+}
+
+export async function getNrglResume(locale: string) {
+  assertLocale(locale);
+  const nrglResume = (await messageLoaders[locale].nrglResume()).default;
+
+  return nrglResume as NrglResumeContent;
 }
 
 export async function getAppMessages(locale: string) {
