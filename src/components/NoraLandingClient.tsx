@@ -305,16 +305,16 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
 
       <style jsx>{`
         .nora-landing {
-          --ink: light-dark(#000000, #000000);
-          --canvas: light-dark(#ffffff, #ffffff);
-          --inverse-canvas: light-dark(#000000, #000000);
-          --inverse-ink: light-dark(#ffffff, #ffffff);
-          --surface-soft: light-dark(#f7f7f5, #f7f7f5);
-          --hairline: light-dark(#e6e6e6, #e6e6e6);
-          --block-lime: light-dark(#dceeb1, #dceeb1);
-          --block-lilac: light-dark(#c5b0f4, #c5b0f4);
-          --block-cream: light-dark(#f4ecd6, #f4ecd6);
-          --block-navy: light-dark(#1f1d3d, #1f1d3d);
+          --ink: #000000;
+          --canvas: #ffffff;
+          --inverse-canvas: #000000;
+          --inverse-ink: #ffffff;
+          --surface-soft: #f7f7f5;
+          --hairline: #e6e6e6;
+          --block-lime: #dceeb1;
+          --block-lilac: #c5b0f4;
+          --block-cream: #f4ecd6;
+          --block-navy: #1f1d3d;
           --radius-lg: 24px;
           --radius-md: 8px;
           --radius-pill: 50px;
@@ -340,7 +340,13 @@ export default function NoraLandingClient({ locale: localeProp }: { locale: stri
           min-height: 100vh;
         }
 
-        .nora-container {
+        .dark .nora-landing,
+        .dark .nora-landing main {
+          background: var(--canvas) !important;
+          color: var(--ink) !important;
+        }
+
+        .nora-landing .nora-container {
           width: 100%;
           max-width: var(--container);
           margin: 0 auto;
