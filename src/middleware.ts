@@ -36,11 +36,19 @@ function handleNoraHost(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (pathname === '/' || pathname === '/en' || pathname === '/en/') {
-    return redirectWithSearch(request, '/resume');
+    return rewriteWithSearch(request, '/en/nora');
   }
 
   if (pathname === '/zh' || pathname === '/zh/') {
-    return redirectWithSearch(request, '/zh/resume');
+    return rewriteWithSearch(request, '/zh/nora');
+  }
+
+  if (pathname === '/nora' || pathname === '/en/nora') {
+    return redirectWithSearch(request, '/');
+  }
+
+  if (pathname === '/zh/nora') {
+    return redirectWithSearch(request, '/zh');
   }
 
   if (pathname === '/en/resume' || pathname === '/nrgl/resume' || pathname === '/en/nrgl/resume') {
@@ -70,7 +78,7 @@ export default function middleware(request: NextRequest) {
     return handleNoraHost(request);
   }
 
-  if (/^\/(en\/|zh\/)?nrgl\/resume(\/|$)/.test(request.nextUrl.pathname)) {
+  if (/^\/(en\/|zh\/)?(nrgl\/resume|nora)(\/|$)/.test(request.nextUrl.pathname)) {
     return new NextResponse(null, { status: 404 });
   }
 
