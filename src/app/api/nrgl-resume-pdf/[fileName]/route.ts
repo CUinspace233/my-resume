@@ -10,6 +10,6 @@ export async function GET(request: NextRequest) {
   return handleResumePdfRequest(request, {
     forwardedSearchParams: ['trade'],
     getFileNames: getNrglResumePdfFileNames,
-    getResumePath: locale => `/${locale}/nrgl/resume`,
+    getResumePath: locale => (locale === 'zh' ? '/zh/resume' : '/resume'),
   });
 }

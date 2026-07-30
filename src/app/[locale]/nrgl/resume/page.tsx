@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.cuinspace.com';
+const NORA_BASE_URL = 'https://nora.cuinspace.com';
 
 type NrglResumePageProps = {
   params: Promise<{ locale: string }>;
@@ -20,10 +20,10 @@ export async function generateMetadata({ params }: NrglResumePageProps): Promise
       ? '诺日格拉的教育背景、实习经历与校园经历。'
       : "Nuorigela's education, internship experience, and campus experience.",
     alternates: {
-      canonical: isChinese ? `${BASE_URL}/zh/nrgl/resume` : `${BASE_URL}/nrgl/resume`,
+      canonical: isChinese ? `${NORA_BASE_URL}/zh/resume` : `${NORA_BASE_URL}/resume`,
       languages: {
-        en: `${BASE_URL}/nrgl/resume`,
-        zh: `${BASE_URL}/zh/nrgl/resume`,
+        en: `${NORA_BASE_URL}/resume`,
+        zh: `${NORA_BASE_URL}/zh/resume`,
       },
     },
     openGraph: {
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: NrglResumePageProps): Promise
       description: isChinese
         ? '诺日格拉的教育背景、实习经历与校园经历。'
         : "Nuorigela's education, internship experience, and campus experience.",
-      url: isChinese ? `${BASE_URL}/zh/nrgl/resume` : `${BASE_URL}/nrgl/resume`,
+      url: isChinese ? `${NORA_BASE_URL}/zh/resume` : `${NORA_BASE_URL}/resume`,
       locale: isChinese ? 'zh_CN' : 'en_US',
     },
   };
