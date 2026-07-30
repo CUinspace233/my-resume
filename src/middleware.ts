@@ -1,6 +1,7 @@
 import createMiddleware from 'next-intl/middleware';
 import { NextResponse, type NextRequest } from 'next/server';
 import { defaultLocale, locales, preferredLocaleCookieName } from './i18n/config';
+import { isSupportedLocale, resolveLocalePreference } from './i18n/locale';
 
 const NORA_HOST = 'nora.cuinspace.com';
 
@@ -12,18 +13,14 @@ const intlMiddleware = createMiddleware({
   localeCookie: false,
 });
 
-function isSupportedLocale(locale: string | undefined): locale is (typeof locales)[number] {
-  return locales.some(supportedLocale => supportedLocale === locale);
-}
-
 function getHost(request: NextRequest) {
   return request.headers.get('host')?.split(':')[0]?.toLowerCase() ?? '';
 }
 
-function redirectWithSearch(request: NextRequest, pathname: string) {
+function redirectWithSearch(request: NextRequest, pathname: string, status = 301) {
   const url = request.nextUrl.clone();
   url.pathname = pathname;
-  return NextResponse.redirect(url, 301);
+  return NextResponse.redirect(url, status);
 }
 
 function rewriteWithSearch(request: NextRequest, pathname: string) {
@@ -35,7 +32,21 @@ function rewriteWithSearch(request: NextRequest, pathname: string) {
 function handleNoraHost(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  if (pathname === '/' || pathname === '/en' || pathname === '/en/') {
+  if (pathname === '/') {
+    const preferredLocale = resolveLocalePreference(
+      request.cookies.get(preferredLocaleCookieName)?.value,
+      request.headers.get('accept-language')
+    );
+
+    // Temporary redirect: locale preference can change via cookie or Accept-Language.
+    if (preferredLocale !== defaultLocale) {
+      return redirectWithSearch(request, `/${preferredLocale}`, 307);
+    }
+
+    return rewriteWithSearch(request, '/en/nora');
+  }
+
+  if (pathname === '/en' || pathname === '/en/') {
     return rewriteWithSearch(request, '/en/nora');
   }
 
