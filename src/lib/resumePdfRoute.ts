@@ -5,6 +5,15 @@ import { getResumePdfFileNames } from '@/lib/resumePdf';
 
 const VALID_LOCALES = new Set(['en', 'zh']);
 
+type ResumePdfRequestOptions = {
+  forwardedSearchParams?: string[];
+  getFileNames?: (locale: string) => Promise<{
+    asciiFileName: string;
+    localizedFileName: string;
+  }>;
+  getResumePath?: (locale: string) => string;
+};
+
 function getPdfOrigin(request: NextRequest) {
   const forwardedProto = request.headers.get('x-forwarded-proto');
   const forwardedHost = request.headers.get('x-forwarded-host');
@@ -24,7 +33,14 @@ function getPdfOrigin(request: NextRequest) {
   return request.nextUrl.origin;
 }
 
-export async function handleResumePdfRequest(request: NextRequest) {
+export async function handleResumePdfRequest(
+  request: NextRequest,
+  {
+    forwardedSearchParams = [],
+    getFileNames = getResumePdfFileNames,
+    getResumePath = locale => `/${locale}/resume`,
+  }: ResumePdfRequestOptions = {}
+) {
   const localeParam = request.nextUrl.searchParams.get('locale') ?? 'en';
   const locale = VALID_LOCALES.has(localeParam) ? localeParam : 'en';
   let browser = null;
@@ -44,9 +60,16 @@ export async function handleResumePdfRequest(request: NextRequest) {
     page.setDefaultNavigationTimeout(20000);
     page.setDefaultTimeout(20000);
 
-    const resumeUrl = new URL(`/${locale}/resume`, getPdfOrigin(request));
+    const resumeUrl = new URL(getResumePath(locale), getPdfOrigin(request));
     resumeUrl.searchParams.set('print', '1');
     resumeUrl.searchParams.set('pdf', '1');
+    forwardedSearchParams.forEach(searchParam => {
+      const value = request.nextUrl.searchParams.get(searchParam);
+
+      if (value !== null) {
+        resumeUrl.searchParams.set(searchParam, value);
+      }
+    });
 
     await page.goto(resumeUrl.toString(), {
       waitUntil: 'domcontentloaded',
@@ -76,7 +99,7 @@ export async function handleResumePdfRequest(request: NextRequest) {
       },
     });
 
-    const { asciiFileName, localizedFileName } = await getResumePdfFileNames(locale);
+    const { asciiFileName, localizedFileName } = await getFileNames(locale);
 
     return new NextResponse(Buffer.from(pdfBuffer), {
       headers: {

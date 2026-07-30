@@ -1,0 +1,207 @@
+{
+  "ui": {
+    "home": "Home",
+    "photoAlt": "Portrait of Nuorigela"
+  },
+  "pdf": {
+    "fileNameBase": "Nuorigela_Resume",
+    "localizedSuffix": ""
+  },
+  "header": {
+    "name": "Nuorigela",
+    "eyebrow": "Personal Resume"
+  },
+  "personal": {
+    "title": "Personal Information",
+    "items": [
+      {
+        "id": "location",
+        "label": "Location",
+        "value": "Shanghai, China"
+      },
+      {
+        "id": "birth-date",
+        "label": "Date of Birth",
+        "value": "August 2003"
+      },
+      {
+        "id": "graduation-school",
+        "label": "University",
+        "value": "Shanghai University of International Business and Economics"
+      },
+      {
+        "id": "phone",
+        "label": "Phone",
+        "value": "19542708845",
+        "href": "tel:19542708845"
+      },
+      {
+        "id": "email",
+        "label": "Email",
+        "value": "nora_nuo@163.com",
+        "href": "mailto:nora_nuo@163.com"
+      }
+    ]
+  },
+  "education": {
+    "title": "Education",
+    "items": [
+      {
+        "id": "donghua-international-business",
+        "institution": "Donghua University",
+        "program": "International Business",
+        "period": "Sep 2026–Jun 2028",
+        "details": []
+      },
+      {
+        "id": "suibe-international-economics-trade",
+        "institution": "Shanghai University of International Business and Economics",
+        "program": "International Economics and Trade",
+        "period": "Sep 2022–Jun 2026",
+        "details": [
+          "GPA: 3.612/4.0 (Ranked 10/145 in the program)",
+          "Relevant coursework: International Trade Practice, International Business Law, International Finance, Accounting, International Economics, Marketing, International Trade Insurance, Financial Management, and others.",
+          "Languages: Strong English reading and writing skills; IELTS 6.5, CET-6 486, and CET-4 586."
+        ]
+      }
+    ]
+  },
+  "experience": {
+    "title": "Internship Experience",
+    "items": [
+      {
+        "id": "fsg-hejie-project-assistant",
+        "company": "Shanghai FSG Hejie Enterprise Services Co., Ltd.",
+        "position": "Project Assistant",
+        "period": "Jan 2026–Jun 2026",
+        "achievements": [
+          {
+            "label": "Internal mini-program development support",
+            "description": "Supported the delivery of an internal mini-program by clarifying business requirements and feature logic, coordinating with vendors and internal project members, and tracking development progress, issue feedback, and requirement changes to keep the project on schedule."
+          },
+          {
+            "label": "Competitive mini-program research",
+            "description": "Researched the feature modules, page flows, interaction design, and operating models of comparable mini-programs, then prepared competitive comparisons to support feature planning, experience improvements, and project delivery."
+          },
+          {
+            "label": "HRO recruitment support",
+            "description": "Supported client recruitment through candidate communication, résumé screening, interview coordination, and process follow-up, helping improve candidate matching efficiency and achieving an approximate 70% candidate pass rate."
+          },
+          {
+            "label": "Daily operations execution",
+            "description": "Handled routine internal operations, including JD.com price audits and the recording and escalation of pricing anomalies, helping maintain platform pricing standards."
+          },
+          {
+            "label": "Pet-industry media monitoring",
+            "description": "Regularly monitored pet-related public sentiment, summarized key developments and potential risks, and promptly escalated anomalies to support brand and business operations."
+          },
+          {
+            "label": "Field events and on-site support",
+            "description": "Supported fieldwork based on project and business needs, including on-site execution for competitions and events at company headquarters and offline recruitment activities involving communication, process coordination, and candidate liaison."
+          }
+        ]
+      },
+      {
+        "id": "nowwa-platform-operations",
+        "company": "NOWWA Coffee",
+        "position": "Platform Operations Assistant",
+        "period": "Jan 2026–Jun 2026",
+        "achievements": [
+          {
+            "label": "Qualification review and organization",
+            "description": "Collected, preliminarily reviewed, and organized qualification documents for merchants joining JD.com, ensuring submissions were complete and compliant with platform requirements; processed applications for more than 2,000 merchants."
+          },
+          {
+            "label": "System entry and archiving",
+            "description": "Uploaded, entered, and archived qualification documents in accordance with JD.com standards and established a standardized filing process that improved document retrieval and review efficiency."
+          },
+          {
+            "label": "Progress tracking and coordination",
+            "description": "Tracked qualification reviews, coordinated with internal teams and merchants to obtain missing materials, and created real-time AI-powered visual charts that enabled managers to monitor progress."
+          },
+          {
+            "label": "Data reporting and analysis",
+            "description": "Compiled qualification-management data, analyzed key indicators such as review cycles and issue categories, and prepared statistical reports to support process improvements."
+          },
+          {
+            "label": "Store operations and cross-functional collaboration",
+            "description": "Maintained store information and core operating spreadsheets in the company backend while coordinating with supervisors and other departments. Reviewed and maintained records for more than 1,500 stores and reduced a 1,800+ store discrepancy between JD.com and the Meituan/Ele.me platforms to approximately 200 through systematic coordination and data reconciliation."
+          }
+        ]
+      },
+      {
+        "id": "fanken-trade-assistant",
+        "company": "Fanken Metal Materials (Shanghai) Co., Ltd. (梵肯金属材料（上海）有限公司)",
+        "position": "Trade Assistant",
+        "period": "Jul 2025–Sep 2025",
+        "achievements": [
+          {
+            "label": "Rapid learning and adaptability",
+            "description": "Quickly learned the metal-trading workflow and its key operating procedures through one week of intensive study despite having no prior industry background."
+          },
+          {
+            "label": "Trade documentation",
+            "description": "Independently prepared and reviewed complete sets of trade documents, including quotations and delivery notes, ensuring accuracy and process compliance."
+          },
+          {
+            "label": "Cross-functional coordination",
+            "description": "Served as a key liaison between internal and external parties by negotiating logistics plans with freight companies and confirming order details with clients to keep trade operations running smoothly."
+          },
+          {
+            "label": "Problem solving",
+            "description": "Actively coordinated responses to unexpected logistics issues, identified practical solutions, and protected the company's interests and client relationships."
+          }
+        ]
+      },
+      {
+        "id": "bank-of-china-inclusive-finance",
+        "company": "Bank of China",
+        "position": "Inclusive Finance Department Intern",
+        "period": "Aug 2024–Sep 2024",
+        "achievements": [
+          {
+            "label": "Document review and risk control",
+            "description": "Professionally reviewed the completeness and authenticity of materials submitted by small and medium-sized enterprise clients, including corporate ownership structures, serving as the first line of risk control."
+          },
+          {
+            "label": "Information collection and verification",
+            "description": "Collected first-hand client information and systematically organized and verified identity, qualification, and asset documentation to ensure a reliable information foundation."
+          },
+          {
+            "label": "Data processing and entry",
+            "description": "Independently completed data collection, organization, entry, and validation throughout the credit application process, supporting accurate and efficient downstream approval."
+          }
+        ]
+      }
+    ]
+  },
+  "campus": {
+    "title": "Campus Experience",
+    "items": [
+      {
+        "id": "suibe-student-union-hr",
+        "company": "Student Union, Shanghai University of International Business and Economics",
+        "position": "Human Resources Department Officer",
+        "period": "Sep 2022–May 2023",
+        "achievements": [
+          {
+            "label": "Information management",
+            "description": "Designed and maintained a student union member database and used advanced Excel functions, including VLOOKUP, for data analysis."
+          },
+          {
+            "label": "Performance design",
+            "description": "Designed an automated performance evaluation template that visualized scores and rankings to support evidence-based decision-making."
+          },
+          {
+            "label": "Cross-department collaboration",
+            "description": "Served as the department liaison, coordinating communication and consolidating event requirements and resources."
+          }
+        ]
+      }
+    ]
+  },
+  "summary": {
+    "title": "Professional Summary",
+    "body": "I bring a solid academic foundation and extensive hands-on experience, enabling me to adapt quickly to new environments and deliver work efficiently. I am optimistic, proactive, conscientious, and highly accountable, with strong execution skills. I learn quickly, welcome challenges, and take initiative in practical work. Rather than simply completing assigned tasks, I stay focused on outcomes and continually look for ways to improve processes. I regularly contribute suggestions, enjoy discussing the feasibility of ideas with teammates, and remain open to others' perspectives. I believe strong solutions emerge through collective discussion rather than individual effort. With effective communication and teamwork skills, I collaborate efficiently across departments to advance shared goals. I am especially motivated by the role of a hands-on execution lead: taking ownership of core tasks, driving implementation, and remaining accountable for the final outcome."
+  }
+}

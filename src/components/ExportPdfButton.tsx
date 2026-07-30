@@ -18,16 +18,33 @@ const getResumePdfFileName = (baseName: string, localeSuffix: string) => {
   )}.pdf`;
 };
 
-const ExportPdfButton = () => {
+type ExportPdfButtonProps = {
+  additionalSearchParams?: Record<string, string>;
+  exportPath?: string;
+  pdfNamespace?: 'resume.pdf' | 'nrglResume.pdf';
+};
+
+const ExportPdfButton = ({
+  additionalSearchParams,
+  exportPath = '/api/resume-pdf',
+  pdfNamespace = 'resume.pdf',
+}: ExportPdfButtonProps) => {
   const locale = useLocale();
   const t = useTranslations('common.actions');
-  const pdf = useTranslations('resume.pdf');
+  const pdf = useTranslations(pdfNamespace);
   const [isExporting, setIsExporting] = useState(false);
 
   const handleExportPdf = useCallback(async () => {
     const fileName = getResumePdfFileName(pdf('fileNameBase'), pdf('localizedSuffix'));
-    const exportUrl = `/api/resume-pdf?locale=${locale}`;
-    const mobileExportUrl = `/api/resume-pdf/${encodeURIComponent(fileName)}?locale=${locale}`;
+    const searchParams = new URLSearchParams({ locale });
+
+    Object.entries(additionalSearchParams ?? {}).forEach(([key, value]) => {
+      searchParams.set(key, value);
+    });
+
+    const queryString = searchParams.toString();
+    const exportUrl = `${exportPath}?${queryString}`;
+    const mobileExportUrl = `${exportPath}/${encodeURIComponent(fileName)}?${queryString}`;
 
     await downloadPdf({
       exportUrl,
@@ -36,7 +53,7 @@ const ExportPdfButton = () => {
       setIsExporting,
       onError: error => console.error('Failed to export PDF:', error),
     });
-  }, [locale, pdf]);
+  }, [additionalSearchParams, exportPath, locale, pdf]);
 
   return (
     <div className="export-pdf-container print:hidden">
