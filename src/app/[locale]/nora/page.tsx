@@ -12,10 +12,10 @@ export async function generateMetadata({ params }: NoraPageProps): Promise<Metad
   const isChinese = locale === 'zh';
 
   return {
-    title: isChinese ? '诺日格拉 — 主页' : 'Nuorigela',
+    title: isChinese ? '诺日格拉 — 主页' : 'Nora',
     description: isChinese
       ? '诺日格拉的个人主页：国际商务硕士在读，专注运营执行与跨团队协作。'
-      : "Nuorigela's personal homepage: incoming International Business master's student focused on operations execution and cross-team collaboration.",
+      : "Nora's personal homepage: incoming International Business master's student focused on operations execution and cross-team collaboration.",
     alternates: {
       canonical: isChinese ? `${NORA_BASE_URL}/zh` : NORA_BASE_URL,
       languages: {
@@ -25,10 +25,10 @@ export async function generateMetadata({ params }: NoraPageProps): Promise<Metad
     },
     openGraph: {
       type: 'profile',
-      title: isChinese ? '诺日格拉 — 主页' : 'Nuorigela',
+      title: isChinese ? '诺日格拉 — 主页' : 'Nora',
       description: isChinese
         ? '诺日格拉的个人主页：国际商务硕士在读，专注运营执行与跨团队协作。'
-        : "Nuorigela's personal homepage: incoming International Business master's student focused on operations execution and cross-team collaboration.",
+        : "Nora's personal homepage: incoming International Business master's student focused on operations execution and cross-team collaboration.",
       url: isChinese ? `${NORA_BASE_URL}/zh` : NORA_BASE_URL,
       locale: isChinese ? 'zh_CN' : 'en_US',
     },

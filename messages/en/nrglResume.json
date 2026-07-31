@@ -1,14 +1,14 @@
 {
   "ui": {
     "home": "Home",
-    "photoAlt": "Portrait of Nuorigela"
+    "photoAlt": "Portrait of Nora"
   },
   "pdf": {
-    "fileNameBase": "Nuorigela_Resume",
+    "fileNameBase": "Nora_Resume",
     "localizedSuffix": ""
   },
   "header": {
-    "name": "Nuorigela",
+    "name": "Nora",
     "eyebrow": "Personal Resume"
   },
   "personal": {
@@ -131,7 +131,7 @@
       },
       {
         "id": "fanken-trade-assistant",
-        "company": "VULCAN METALS SHANGHAI CO., LTD (梵肯金属材料（上海）有限公司)",
+        "company": "VULCAN METALS SHANGHAI CO., LTD",
         "position": "Trade Assistant",
         "period": "Jul 2025–Sep 2025",
         "achievements": [

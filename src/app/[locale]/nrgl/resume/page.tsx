@@ -15,10 +15,10 @@ export async function generateMetadata({ params }: NrglResumePageProps): Promise
   const isChinese = locale === 'zh';
 
   return {
-    title: isChinese ? '诺日格拉 — 个人简历' : 'Nuorigela — Resume',
+    title: isChinese ? '诺日格拉 — 个人简历' : 'Nora — Resume',
     description: isChinese
       ? '诺日格拉的教育背景、实习经历与校园经历。'
-      : "Nuorigela's education, internship experience, and campus experience.",
+      : "Nora's education, internship experience, and campus experience.",
     alternates: {
       canonical: isChinese ? `${NORA_BASE_URL}/zh/resume` : `${NORA_BASE_URL}/resume`,
       languages: {
@@ -28,10 +28,10 @@ export async function generateMetadata({ params }: NrglResumePageProps): Promise
     },
     openGraph: {
       type: 'profile',
-      title: isChinese ? '诺日格拉 — 个人简历' : 'Nuorigela — Resume',
+      title: isChinese ? '诺日格拉 — 个人简历' : 'Nora — Resume',
       description: isChinese
         ? '诺日格拉的教育背景、实习经历与校园经历。'
-        : "Nuorigela's education, internship experience, and campus experience.",
+        : "Nora's education, internship experience, and campus experience.",
       url: isChinese ? `${NORA_BASE_URL}/zh/resume` : `${NORA_BASE_URL}/resume`,
       locale: isChinese ? 'zh_CN' : 'en_US',
     },

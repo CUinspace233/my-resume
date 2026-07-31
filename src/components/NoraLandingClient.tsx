@@ -37,9 +37,9 @@ const UI = {
     contactLead:
       'Open to internship and project opportunities in operations, international business, and project coordination.',
     contactResume: 'View Full Resume',
-    footerName: 'Nuorigela',
+    footerName: 'Nora',
     footerTagline: 'Operations & International Business',
-    footerCopyright: '© 2026 Nuorigela. All rights reserved.',
+    footerCopyright: '© 2026 Nora. All rights reserved.',
   },
   zh: {
     navAbout: '关于',
