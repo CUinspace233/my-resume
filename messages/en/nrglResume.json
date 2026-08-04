@@ -76,6 +76,10 @@
         "period": "Jan 2026–Jun 2026",
         "achievements": [
           {
+            "label": "End-to-end project management (Under Armour pop-up store)",
+            "description": "Led the pop-up store project from 0 to 1, coordinating with Under Armour's procurement, operations, IT, supply chain, and other teams, while aligning resources and removing blockers. Independently created the staff SOP manual to standardize on-site execution and ensure on-time delivery."
+          },
+          {
             "label": "Internal mini-program development support",
             "description": "Supported the delivery of an internal mini-program by clarifying business requirements and feature logic, coordinating with vendors and internal project members, and tracking development progress, issue feedback, and requirement changes to keep the project on schedule."
           },
@@ -98,10 +102,6 @@
           {
             "label": "Field events and on-site support",
             "description": "Supported fieldwork based on project and business needs, including on-site execution for competitions and events at company headquarters and offline recruitment activities involving communication, process coordination, and candidate liaison."
-          },
-          {
-            "label": "End-to-end project management (Under Armour pop-up store)",
-            "description": "Led the pop-up store project from 0 to 1, coordinating with Under Armour's procurement, operations, IT, supply chain, and other teams, while aligning resources and removing blockers. Independently created the staff SOP manual to standardize on-site execution and ensure on-time delivery."
           }
         ]
       },
