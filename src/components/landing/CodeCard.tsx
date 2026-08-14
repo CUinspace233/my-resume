@@ -136,15 +136,6 @@ export default function CodeCard() {
     {
       indent: 1,
       tokens: [
-        { text: 'open_to', color: '#0a72ef' },
-        { text: ': ', color: '#a1a1a1' },
-        { text: '"Grad roles · 2026"', color: '#a8cc8c' },
-        { text: ',', color: '#a1a1a1' },
-      ],
-    },
-    {
-      indent: 1,
-      tokens: [
         { text: 'response_time', color: '#0a72ef' },
         { text: ': ', color: '#a1a1a1' },
         { text: '"< 24h"', color: '#a8cc8c' },
