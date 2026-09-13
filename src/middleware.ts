@@ -99,7 +99,10 @@ export default function middleware(request: NextRequest) {
 
   if (request.nextUrl.pathname === '/' && isSupportedLocale(savedLocale)) {
     const localePath = savedLocale === defaultLocale ? '/' : `/${savedLocale}`;
-    return NextResponse.redirect(new URL(localePath, request.url));
+    // Default locale lives at `/`; a 307 to `/` for cookie `en` loops forever.
+    if (localePath !== request.nextUrl.pathname) {
+      return NextResponse.redirect(new URL(localePath, request.url));
+    }
   }
 
   const response = intlMiddleware(request);
